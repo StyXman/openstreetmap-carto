@@ -1,0 +1,81 @@
+Index: osm-carto/project.yaml
+===================================================================
+--- osm-carto.orig/project.yaml
++++ osm-carto/project.yaml
+@@ -230,6 +230,52 @@ Layer:
+     advanced: {}
+     properties:
+       minzoom: 14
++  - id: "shade-small"
++    name: "shade-small"
++    class: "shade-over"
++    geometry: "raster"
++    <<: *extents84
++    Datasource:
++      file: "/home/mdione/src/projects/osm/data/height/mixed-hillshade-small.tif"
++      type: "gdal"
++    advanced: {}
++    properties:
++      maxzoom: 6
++  - id: "shade-medium-over"
++    name: "shade-medium-over"
++    class: "shade-over"
++    geometry: "raster"
++    <<: *extents84
++    Datasource:
++      file: "/home/mdione/src/projects/osm/data/height/mixed-hillshade-medium.tif"
++      type: "gdal"
++    advanced: {}
++    properties:
++      minzoom: 7
++      maxzoom: 7
++  - id: "shade-medium-overlay"
++    name: "shade-medium-overlay"
++    class: "shade-overlay"
++    geometry: "raster"
++    <<: *extents84
++    Datasource:
++      file: "/home/mdione/src/projects/osm/data/height/mixed-hillshade-medium.tif"
++      type: "gdal"
++    advanced: {}
++    properties:
++      minzoom: 8
++      maxzoom: 10
++  - id: "shade-big"
++    name: "shade-big"
++    class: "shade"
++    geometry: "raster"
++    <<: *extents84
++    Datasource:
++      file: "/home/mdione/src/projects/osm/data/height/mixed-hillshade.vrt"
++      type: "gdal"
++    advanced: {}
++    properties:
++      minzoom: 9
+   - id: "water-lines-casing"
+     name: "water-lines-casing"
+     class: ""
+Index: osm-carto/style.mss
+===================================================================
+--- osm-carto.orig/style.mss
++++ osm-carto/style.mss
+@@ -25,3 +25,19 @@ Map {
+   [zoom >= 7] { raster-opacity: 0.8; }
+   [zoom >= 8] { raster-opacity: 0.7; }
+ }
++
++// shade-small [0-6], shade-big [7]
++.shade-over {
++  comp-op: src-over;
++  raster-scaling: lanczos;
++  raster-opacity: 0.15;
++}
++
++// shade-medium [8], shade-big [9-]
++.shade-overlay {
++  raster-scaling: lanczos;
++  [zoom >=8] {
++    comp-op: overlay;
++    raster-opacity: 0.5;
++  }
++}

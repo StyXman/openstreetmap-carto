@@ -1,0 +1,92 @@
+Index: osm-carto/project.yaml
+===================================================================
+--- osm-carto.orig/project.yaml
++++ osm-carto/project.yaml
+@@ -857,8 +857,6 @@ Layer:
+               ('railway_turntable', 420),
+               ('railway_tram', 410),
+               ('railway_tram-service', 405),
+-              ('railway_disused', 400),
+-              ('railway_construction', 400),
+               ('highway_motorway', 380),
+               ('highway_trunk', 370),
+               ('highway_primary', 360),
+@@ -1241,8 +1239,6 @@ Layer:
+               ('railway_turntable', 420),
+               ('railway_tram', 410),
+               ('railway_tram-service', 405),
+-              ('railway_disused', 400),
+-              ('railway_construction', 400),
+               ('highway_motorway', 380),
+               ('highway_trunk', 370),
+               ('highway_primary', 360),
+@@ -1506,7 +1502,6 @@ Layer:
+             name,
+             railway,
+             aerialway,
+-            disused,
+             CASE railway
+               WHEN 'station' THEN 1
+               WHEN 'subway_entrance' THEN 3
+@@ -1533,8 +1528,7 @@ Layer:
+             way,
+             name,
+             railway,
+-            aerialway,
+-            disused
++            aerialway
+         FROM planet_osm_polygon
+         WHERE railway IN ('station', 'halt', 'tram_stop')
+           OR aerialway = 'station'
+Index: osm-carto/roads.mss
+===================================================================
+--- osm-carto.orig/roads.mss
++++ osm-carto/roads.mss
+@@ -802,8 +802,10 @@
+       }
+     }
+ 
++    /*
+     [feature = 'railway_disused'][zoom >= 15],
+     [feature = 'railway_construction'],
++    */
+     [feature = 'railway_miniature'][zoom >= 15],
+     [feature = 'railway_INT-preserved-ssy'][zoom >= 14] {
+       .bridges-casing {
+@@ -1015,8 +1017,10 @@
+       }
+     }
+ 
++    /*
+     [feature = 'railway_disused'][zoom >= 15],
+     [feature = 'railway_construction'],
++    */
+     [feature = 'railway_miniature'][zoom >= 15],
+     [feature = 'railway_INT-preserved-ssy'][zoom >= 14] {
+       .bridges-casing {
+@@ -1989,6 +1993,7 @@ tertiary is rendered from z10 and is not
+       }
+     }
+ 
++    /*
+     [feature = 'railway_construction'] {
+       [zoom >= 13] {
+         line-color: grey;
+@@ -2004,7 +2009,9 @@ tertiary is rendered from z10 and is not
+         }
+       }
+     }
++    */
+ 
++    /*
+     [feature = 'railway_disused'] {
+       [zoom >= 15] {
+         line-color: #aaa;
+@@ -2013,6 +2020,7 @@ tertiary is rendered from z10 and is not
+         line-join: round;
+       }
+     }
++    */
+ 
+     [feature = 'railway_platform'] {
+       [zoom >= 16] {

@@ -1,0 +1,30 @@
+Index: osm-carto/style.mss
+===================================================================
+--- osm-carto.orig/style.mss
++++ osm-carto/style.mss
+@@ -3,17 +3,17 @@ Map {
+ }
+ 
+ @book-fonts:    "DejaVu Sans Book", "Arundina Sans Regular", "Padauk Regular", "Khmer OS Metal Chrieng Regular",
+-                "Mukti Narrow Regular", "gargi Medium", "TSCu_Paranar Regular", "Tibetan Machine Uni Regular", "Mallige Normal",
+-                "Droid Sans Fallback Regular", "Unifont Medium", "unifont Medium";
+-@bold-fonts:    "DejaVu Sans Bold", "Arundina Sans Bold", "Padauk Bold", "Mukti Narrow Bold", "TSCu_Paranar Bold", "Mallige Bold",
++                "TSCu_Paranar Regular", "Tibetan Machine Uni Regular",
++                "Droid Sans Fallback Regular", "Unifont Medium";
++@bold-fonts:    "DejaVu Sans Bold", "Arundina Sans Bold", "Padauk Bold", "TSCu_Paranar Bold",
+                 "DejaVu Sans Book", "Arundina Sans Regular", "Padauk Regular", "Khmer OS Metal Chrieng Regular",
+-                "Mukti Narrow Regular", "gargi Medium", "TSCu_Paranar Regular", "Tibetan Machine Uni Regular", "Mallige Normal",
+-                "Droid Sans Fallback Regular", "Unifont Medium", "unifont Medium";
++                "TSCu_Paranar Regular", "Tibetan Machine Uni Regular",
++                "Droid Sans Fallback Regular", "Unifont Medium";
+ 
+-@oblique-fonts: "DejaVu Sans Oblique", "Arundina Sans Italic", "TSCu_Paranar Italic", "Mallige NormalItalic",
++@oblique-fonts: "DejaVu Sans Oblique", "Arundina Sans Italic", "TSCu_Paranar Italic",
+                 "DejaVu Sans Book", "Arundina Sans Regular", "Padauk Regular", "Khmer OS Metal Chrieng Regular",
+-                "Mukti Narrow Regular", "gargi Medium", "TSCu_Paranar Regular", "Tibetan Machine Uni Regular", "Mallige Normal",
+-                "Droid Sans Fallback Regular", "Unifont Medium", "unifont Medium";
++                "TSCu_Paranar Regular", "Tibetan Machine Uni Regular",
++                "Droid Sans Fallback Regular", "Unifont Medium";
+ 
+ // nice stuff is things that are not so common and that I like to see from far,
+ // like castles, viewpoints and such

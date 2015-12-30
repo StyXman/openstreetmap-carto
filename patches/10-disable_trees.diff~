@@ -1,0 +1,61 @@
+Index: osm-carto/amenity-points.mss
+===================================================================
+--- osm-carto.orig/amenity-points.mss
++++ osm-carto/amenity-points.mss
+@@ -2078,6 +2078,7 @@
+     text-wrap-width: @standard-wrap-width;
+   }
+ 
++  /*
+   [feature = 'natural_tree'][zoom >= 17] {
+     text-name: "[name]";
+     text-size: 9;
+@@ -2092,8 +2093,10 @@
+     text-placement: interior;
+     text-wrap-width: @standard-wrap-width;
+   }
++  */
+ }
+ 
++/*
+ #trees [zoom >= 16] {
+   ::canopy {
+     opacity: 0.3;
+@@ -2158,4 +2161,4 @@
+     }
+   }
+ }
+-
++*/
+Index: osm-carto/project.yaml
+===================================================================
+--- osm-carto.orig/project.yaml
++++ osm-carto/project.yaml
+@@ -1650,27 +1650,6 @@ Layer:
+     properties:
+       minzoom: 10
+     advanced: {}
+-  - id: "trees"
+-    name: "trees"
+-    class: ""
+-    geometry: "polygon"
+-    <<: *extents
+-    Datasource:
+-      <<: *osm2pgsql
+-      table: |-
+-        (SELECT
+-            way, "natural"
+-          FROM planet_osm_point
+-          WHERE "natural" = 'tree'
+-        UNION ALL
+-        SELECT
+-            way, "natural"
+-          FROM planet_osm_line
+-          WHERE "natural" = 'tree_row'
+-        ) AS trees
+-    properties:
+-      minzoom: 16
+-    advanced: {}
+   - id: "placenames-large"
+     name: "placenames-large"
+     class: "country state"

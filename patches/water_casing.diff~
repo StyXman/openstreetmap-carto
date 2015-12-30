@@ -1,0 +1,64 @@
+Index: osm-carto/project.yaml
+===================================================================
+--- osm-carto.orig/project.yaml
++++ osm-carto/project.yaml
+@@ -399,10 +399,10 @@ Layer:
+             way, waterway, intermittent,
+             CASE WHEN tunnel IN ('yes', 'culvert') THEN 'yes' ELSE 'no' END AS int_tunnel
+           FROM planet_osm_line
+-          WHERE waterway IN ('stream', 'drain', 'ditch')
++          WHERE waterway IN ('stream', 'drain', 'ditch', 'river')
+         ) AS water_lines_casing
+     properties:
+-      minzoom: 13
++      minzoom: 6
+     advanced: {}
+   - id: "water-lines-low-zoom"
+     name: "water-lines-low-zoom"
+Index: osm-carto/water.mss
+===================================================================
+--- osm-carto.orig/water.mss
++++ osm-carto/water.mss
+@@ -2,6 +2,28 @@
+ @glacier: #ddecec;
+ @glacier-line: #9cf;
+ 
++// local
++#water-areas::border {
++  [natural = 'lake'][way_pixels >= 4],
++  [natural = 'water'][way_pixels >= 4],
++  [landuse = 'reservoir'][way_pixels >= 4],
++  [waterway = 'riverbank'][way_pixels >= 4],
++  [landuse = 'water'][way_pixels >= 4],
++  [landuse = 'basin'][way_pixels >= 4] {
++    [zoom >= 8] {
++      line-width: 1.5;
++      line-color: @water-dark;
++    }
++  }
++
++  [waterway = 'riverbank'][way_pixels >= 64] {
++    [zoom >= 9] {
++      line-width: 1.5;
++      line-color: @water-dark;
++    }
++  }
++}
++
+ #water-areas {
+   [natural = 'glacier']::natural {
+     [zoom >= 6] {
+@@ -76,6 +98,13 @@
+       }
+     }
+   }
++
++  [waterway = 'river'][zoom >= 6][zoom < 12] {
++    line-color: @water-dark;
++    line-width: 0.5;
++    [zoom >= 9] { line-width: 2.7; }
++    [zoom >= 10] { line-width: 3.1; }
++  }
+ }
+ 
+ #water-lines-low-zoom {

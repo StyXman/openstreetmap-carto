@@ -1,0 +1,85 @@
+Index: osm-carto/project.yaml
+===================================================================
+--- osm-carto.orig/project.yaml
++++ osm-carto/project.yaml
+@@ -276,6 +276,52 @@ Layer:
+     advanced: {}
+     properties:
+       minzoom: 9
++  - id: "slope-small"
++    name: "slope-small"
++    class: "slope-over"
++    geometry: "raster"
++    <<: *extents84
++    Datasource:
++      file: "/home/mdione/src/projects/osm/data/height/mixed-slopeshade-small.tif"
++      type: "gdal"
++    advanced: {}
++    properties:
++      maxzoom: 6
++  - id: "slope-medium-over"
++    name: "slope-medium-over"
++    class: "slope-over"
++    geometry: "raster"
++    <<: *extents84
++    Datasource:
++      file: "/home/mdione/src/projects/osm/data/height/mixed-slopeshade-medium.tif"
++      type: "gdal"
++    advanced: {}
++    properties:
++      minzoom: 7
++      maxzoom: 7
++  - id: "slope-medium-overlay"
++    name: "slope-medium-overlay"
++    class: "slope-overlay"
++    geometry: "raster"
++    <<: *extents84
++    Datasource:
++      file: "/home/mdione/src/projects/osm/data/height/mixed-slopeshade-medium.tif"
++      type: "gdal"
++    advanced: {}
++    properties:
++      minzoom: 8
++      maxzoom: 8
++  - id: "slope-big"
++    name: "slope-big"
++    class: "slope-overlay"
++    geometry: "raster"
++    <<: *extents84
++    Datasource:
++      file: "/home/mdione/src/projects/osm/data/height/mixed-slopeshade.vrt"
++      type: "gdal"
++    advanced: {}
++    properties:
++      minzoom: 9
+   - id: "water-lines-casing"
+     name: "water-lines-casing"
+     class: ""
+Index: osm-carto/style.mss
+===================================================================
+--- osm-carto.orig/style.mss
++++ osm-carto/style.mss
+@@ -41,3 +41,23 @@ Map {
+     raster-opacity: 0.5;
+   }
+ }
++
++// slope-small [0-6], slope-medium [7]
++.slope-over {
++  comp-op: src-over;
++  raster-scaling: lanczos;
++  raster-opacity: 0.4;
++  [zoom >=  8] { raster-opacity: 0.27; }
++  [zoom >=  9] { raster-opacity: 0.13; }
++  [zoom >= 10] { raster-opacity: 0.0; }
++}
++
++// slope-medium [8], slope-big [9-]
++.slope-overlay {
++  raster-scaling: lanczos;
++  comp-op: overlay;
++  // comp-op: soft-light;
++  raster-opacity: 0.7;
++  [zoom >=  9] { raster-opacity: 0.8; }
++  [zoom >= 10] { raster-opacity: 0.9; }
++}

@@ -1,0 +1,118 @@
+Index: osm-carto/project.yaml
+===================================================================
+--- osm-carto.orig/project.yaml
++++ osm-carto/project.yaml
+@@ -1532,50 +1532,8 @@ Layer:
+             admin_level
+           FROM planet_osm_roads
+           WHERE boundary = 'administrative'
+-            AND admin_level IN ('0', '1', '2', '3', '4')
+-          ORDER BY admin_level DESC
++            AND admin_level IN ('2')
+         ) AS admin_low_zoom
+-    properties:
+-      maxzoom: 10
+-    advanced: {}
+-  - id: "admin-mid-zoom"
+-    name: "admin-mid-zoom"
+-    class: ""
+-    geometry: "linestring"
+-    <<: *extents
+-    Datasource:
+-      <<: *osm2pgsql
+-      table: |-
+-        (SELECT
+-            way,
+-            admin_level
+-          FROM planet_osm_roads
+-          WHERE boundary = 'administrative'
+-            AND admin_level IN ('0', '1', '2', '3', '4', '5', '6', '7', '8')
+-          ORDER BY admin_level DESC
+-        ) AS admin_mid_zoom
+-    properties:
+-      minzoom: 11
+-      maxzoom: 12
+-    advanced: {}
+-  - id: "admin-high-zoom"
+-    name: "admin-high-zoom"
+-    class: ""
+-    geometry: "linestring"
+-    <<: *extents
+-    Datasource:
+-      <<: *osm2pgsql
+-      table: |-
+-        (SELECT
+-            way,
+-            admin_level
+-          FROM planet_osm_roads
+-          WHERE boundary = 'administrative'
+-            AND admin_level IN ('0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10')
+-          ORDER BY admin_level::integer DESC -- With 10 as a valid value, we need to do a numeric ordering, not a text ordering
+-        ) AS admin_high_zoom
+-    properties:
+-      minzoom: 13
+     advanced: {}
+   - id: "tourism-boundary"
+     name: "tourism-boundary"
+Index: osm-carto/admin.mss
+===================================================================
+--- osm-carto.orig/admin.mss
++++ osm-carto/admin.mss
+@@ -6,11 +6,11 @@ For each zoomlevel, all borders come fro
+ overlapping borders correctly.
+ */
+ 
+-#admin-low-zoom[zoom < 11],
++#admin-low-zoom[zoom < 11]/*,
+ #admin-mid-zoom[zoom >= 11][zoom < 13],
+-#admin-high-zoom[zoom >= 13] {
+-  [admin_level = '2'],
+-  [admin_level = '3'] {
++#admin-high-zoom[zoom >= 13]*/ {
++  [admin_level = '2']/*,
++  [admin_level = '3']*/ {
+     [zoom >= 4] {
+       background/line-color: white;
+       background/line-width: 0.6;
+@@ -26,14 +26,17 @@ overlapping borders correctly.
+         background/line-width: 6;
+         line-width: 6;
+       }
++      /*
+       [admin_level = '3'] {
+         background/line-width: 5;
+         line-width: 5;
+         line-dasharray: 4,2;
+         line-clip: false;
+       }
++      */
+     }
+   }
++  /*
+   [admin_level = '4'] {
+     [zoom >= 4] {
+       background/line-color: white;
+@@ -52,6 +55,7 @@ overlapping borders correctly.
+       line-width: 3;
+     }
+   }
++  */
+   /*
+   The following code prevents admin boundaries from being rendered on top of
+   each other. Comp-op works on the entire attachment, not on the individual
+@@ -67,6 +71,7 @@ overlapping borders correctly.
+   comp-op: darken;
+ }
+ 
++/*
+ #admin-mid-zoom[zoom >= 11][zoom < 13],
+ #admin-high-zoom[zoom >= 13] {
+   [admin_level = '5'][zoom >= 11] {
+@@ -115,6 +120,7 @@ overlapping borders correctly.
+   opacity: 0.5;
+   comp-op: darken;
+ }
++*/
+ 
+ /*
+ #admin-text[zoom >= 16] {

@@ -1,0 +1,9 @@
+Index: osm-carto/Makefile
+===================================================================
+--- /dev/null
++++ osm-carto/Makefile
+@@ -0,0 +1,4 @@
++all: project.mml
++
++project.mml: project.yaml
++	python scripts/yaml2mml.py < $< > $@

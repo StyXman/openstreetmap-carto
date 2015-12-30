@@ -1,0 +1,61 @@
+Index: osm-carto/project.yaml
+===================================================================
+--- osm-carto.orig/project.yaml
++++ osm-carto/project.yaml
+@@ -75,6 +75,40 @@ Layer:
+     properties:
+       minzoom: 10
+     advanced: {}
++  - id: "terrain-small"
++    name: "terrain-small"
++    class: "terrain"
++    geometry: "raster"
++    <<: *extents84
++    Datasource:
++      file: "/home/mdione/src/projects/osm/data/height/mixed-terrain-small.tif"
++      type: "gdal"
++    advanced: {}
++    properties:
++      maxzoom: 6
++  - id: "terrain-medium"
++    name: "terrain-medium"
++    class: "terrain"
++    geometry: "raster"
++    <<: *extents84
++    Datasource:
++      file: "/home/mdione/src/projects/osm/data/height/mixed-terrain-medium.tif"
++      type: "gdal"
++    advanced: {}
++    properties:
++      minzoom: 7
++      maxzoom: 8
++  - id: "terrain-big"
++    name: "terrain-big"
++    class: "terrain"
++    geometry: "raster"
++    <<: *extents84
++    Datasource:
++      file: "/home/mdione/src/projects/osm/data/height/mixed-terrain.vrt"
++      type: "gdal"
++    advanced: {}
++    properties:
++      minzoom: 8
+   - id: "builtup"
+     name: "builtup"
+     geometry: "polygon"
+Index: osm-carto/style.mss
+===================================================================
+--- osm-carto.orig/style.mss
++++ osm-carto/style.mss
+@@ -17,3 +17,11 @@ Map {
+
+ @water-color: #b5d0d0;
+ @land-color: #f2efe9;
++
++// terrain-small [0-6], terrain-medium [7-8], terrain-big [9-]
++.terrain {
++  raster-scaling: lanczos;
++  raster-opacity: 0.9;
++  [zoom >= 7] { raster-opacity: 0.8; }
++  [zoom >= 8] { raster-opacity: 0.7; }
++}

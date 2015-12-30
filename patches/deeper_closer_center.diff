@@ -1,0 +1,17 @@
+Index: osm-carto/project.yaml
+===================================================================
+--- osm-carto.orig/project.yaml
++++ osm-carto/project.yaml
+@@ -8,9 +8,9 @@ bounds: &world
+   - 180
+   - 85.05112877980659
+ center:
+-  - 0
+-  - 0
+-  - 4
++  - 7.1329
++  - 43.6788
++  - 11
+ format: "png"
+ interactivity: false
+ minzoom: 0

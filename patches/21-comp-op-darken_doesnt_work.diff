@@ -1,0 +1,38 @@
+Index: osm-carto/admin.mss
+===================================================================
+--- osm-carto.orig/admin.mss
++++ osm-carto/admin.mss
+@@ -12,18 +12,18 @@ overlapping borders correctly.
+   [admin_level = '2']/*,
+   [admin_level = '3']*/ {
+     [zoom >= 4] {
+-      background/line-color: white;
+-      background/line-width: 0.6;
++      // background/line-color: white;
++      // background/line-width: 0.6;
+       line-color: @admin-boundaries;
+       line-width: 0.6;
+     }
+     [zoom >= 7] {
+-      background/line-width: 2;
++      // background/line-width: 2;
+       line-width: 2;
+     }
+     [zoom >= 10] {
+       [admin_level = '2'] {
+-        background/line-width: 6;
++        // background/line-width: 6;
+         line-width: 6;
+       }
+       /*
+@@ -117,8 +117,8 @@ overlapping borders correctly.
+       line-clip: false;
+     }
+   }
+-  opacity: 0.5;
+-  comp-op: darken;
++  opacity: 0.7;
++  // comp-op: darken;
+ }
+ */
+ 

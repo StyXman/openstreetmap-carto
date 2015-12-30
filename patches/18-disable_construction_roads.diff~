@@ -1,0 +1,193 @@
+Index: osm-carto/project.yaml
+===================================================================
+--- osm-carto.orig/project.yaml
++++ osm-carto/project.yaml
+@@ -709,7 +709,7 @@ Layer:
+       # an order is generated in SQL.
+       table: |-
+         (SELECT way, (CASE WHEN substr(feature, length(feature)-3, 4) = 'link' THEN substr(feature, 0, length(feature)-4) ELSE feature END) AS feature,
+-                horse, foot, bicycle, tracktype, int_surface, access, construction,
++                horse, foot, bicycle, tracktype, int_surface, access,
+                 service, oneway, link, layernotnull
+           FROM ( -- subselect that contains both roads and rail/aero
+             SELECT
+@@ -728,7 +728,6 @@ Layer:
+                   WHEN access IN ('no', 'private') THEN 'no'::text
+                   ELSE NULL
+                 END AS access,
+-                construction,
+                 CASE
+                   WHEN service IN ('parking_aisle', 'drive-through', 'driveway') THEN 'INT-minor'::text
+                   ELSE 'INT-normal'::text
+@@ -765,7 +764,6 @@ Layer:
+                   WHEN access IN ('no', 'private') THEN 'no'::text
+                   ELSE NULL
+                 END AS access,
+-                construction,
+                 CASE WHEN service IN ('parking_aisle', 'drive-through', 'driveway') THEN 'INT-minor'::text ELSE 'INT-normal'::text END AS service,
+                 NULL AS oneway,
+                 'no' AS link,
+@@ -816,8 +814,7 @@ Layer:
+               ('highway_platform', 90),
+               ('railway_platform', 90),
+               ('aeroway_runway', 60),
+-              ('aeroway_taxiway', 50),
+-              ('highway_construction', 10)
++              ('aeroway_taxiway', 50)
+             ) AS ordertable (feature, prio)
+             USING (feature)
+           ORDER BY
+@@ -991,7 +988,7 @@ Layer:
+       <<: *osm2pgsql
+       table: |-
+         (SELECT way, (CASE WHEN substr(feature, length(feature)-3, 4) = 'link' THEN substr(feature, 0, length(feature)-4) ELSE feature END) AS feature,
+-                horse, foot, bicycle, tracktype, int_surface, access, construction,
++                horse, foot, bicycle, tracktype, int_surface, access,
+                 service, oneway, link, layernotnull
+           FROM ( -- subselect that contains both roads and rail/aero
+             SELECT
+@@ -1010,7 +1007,6 @@ Layer:
+                   WHEN access IN ('no', 'private') THEN 'no'::text
+                   ELSE NULL
+                 END AS access,
+-                construction,
+                 CASE
+                   WHEN service IN ('parking_aisle', 'drive-through', 'driveway') THEN 'INT-minor'::text
+                   ELSE 'INT-normal'::text
+@@ -1049,7 +1045,6 @@ Layer:
+                   WHEN access IN ('no', 'private') THEN 'no'::text
+                   ELSE NULL
+                 END AS access,
+-                construction,
+                 CASE WHEN service IN ('parking_aisle', 'drive-through', 'driveway') THEN 'INT-minor'::text ELSE 'INT-normal'::text END AS service,
+                 NULL AS oneway,
+                 'no' AS link,
+@@ -1102,8 +1097,7 @@ Layer:
+               ('highway_platform', 90),
+               ('railway_platform', 90),
+               ('aeroway_runway', 60),
+-              ('aeroway_taxiway', 50),
+-              ('highway_construction', 10)
++              ('aeroway_taxiway', 50)
+             ) AS ordertable (feature, prio)
+             USING (feature)
+           ORDER BY
+@@ -1149,7 +1143,7 @@ Layer:
+       <<: *osm2pgsql
+       table: |-
+         (SELECT way, (CASE WHEN substr(feature, length(feature)-3, 4) = 'link' THEN substr(feature, 0, length(feature)-4) ELSE feature END) AS feature,
+-                horse, foot, bicycle, tracktype, int_surface, access, construction,
++                horse, foot, bicycle, tracktype, int_surface, access,
+                 service, oneway, link, layernotnull
+           FROM ( -- subselect that contains both roads and rail/aero
+             SELECT
+@@ -1168,7 +1162,6 @@ Layer:
+                   WHEN access IN ('no', 'private') THEN 'no'::text
+                   ELSE NULL
+                 END AS access,
+-                construction,
+                 CASE
+                   WHEN service IN ('parking_aisle', 'drive-through', 'driveway') THEN 'INT-minor'::text
+                   ELSE 'INT-normal'::text
+@@ -1207,7 +1200,6 @@ Layer:
+                   WHEN access IN ('no', 'private') THEN 'no'::text
+                   ELSE NULL
+                 END AS access,
+-                construction,
+                 CASE WHEN service IN ('parking_aisle', 'drive-through', 'driveway') THEN 'INT-minor'::text ELSE 'INT-normal'::text END AS service,
+                 NULL AS oneway,
+                 'no' AS link,
+@@ -1260,8 +1252,7 @@ Layer:
+               ('highway_platform', 90),
+               ('railway_platform', 90),
+               ('aeroway_runway', 60),
+-              ('aeroway_taxiway', 50),
+-              ('highway_construction', 10)
++              ('aeroway_taxiway', 50)
+             ) AS ordertable (feature, prio)
+             USING (feature)
+           ORDER BY
+@@ -1402,7 +1393,7 @@ Layer:
+       <<: *osm2pgsql
+       table: |-
+         (SELECT way, (CASE WHEN substr(feature, length(feature)-3, 4) = 'link' THEN substr(feature, 0, length(feature)-4) ELSE feature END) AS feature,
+-                horse, foot, bicycle, tracktype, int_surface, access, construction,
++                horse, foot, bicycle, tracktype, int_surface, access,
+                 service, oneway, link, layernotnull
+           FROM ( -- subselect that contains both roads and rail/aero
+             SELECT
+@@ -1421,7 +1412,6 @@ Layer:
+                   WHEN access IN ('no', 'private') THEN 'no'::text
+                   ELSE NULL
+                 END AS access,
+-                construction,
+                 CASE
+                   WHEN service IN ('parking_aisle', 'drive-through', 'driveway') THEN 'INT-minor'::text
+                   ELSE 'INT-normal'::text
+@@ -1458,7 +1448,6 @@ Layer:
+                   WHEN access IN ('no', 'private') THEN 'no'::text
+                   ELSE NULL
+                 END AS access,
+-                construction,
+                 CASE WHEN service IN ('parking_aisle', 'drive-through', 'driveway') THEN 'INT-minor'::text ELSE 'INT-normal'::text END AS service,
+                 NULL AS oneway,
+                 'no' AS link,
+@@ -1509,8 +1498,7 @@ Layer:
+               ('highway_platform', 90),
+               ('railway_platform', 90),
+               ('aeroway_runway', 60),
+-              ('aeroway_taxiway', 50),
+-              ('highway_construction', 10)
++              ('aeroway_taxiway', 50)
+             ) AS ordertable (feature, prio)
+             USING (feature)
+           ORDER BY
+@@ -2018,11 +2006,10 @@ Layer:
+         (SELECT way,
+             CASE WHEN substr(highway, length(highway)-3, 4) = 'link' THEN substr(highway, 0, length(highway)-4) ELSE highway END,
+             CASE WHEN (tunnel = 'yes' OR tunnel = 'building_passage' OR covered = 'yes') THEN 'yes' ELSE 'no' END AS tunnel,
+-            CASE WHEN construction IN ('service', 'footway', 'cycleway', 'bridleway', 'path', 'track') THEN 'yes' ELSE 'no' END AS int_construction_minor,
+             name
+           FROM planet_osm_line
+           WHERE highway IN ('motorway', 'motorway_link', 'trunk', 'trunk_link', 'primary', 'primary_link', 'secondary', 'secondary_link', 'tertiary',
+-                            'tertiary_link', 'residential', 'unclassified', 'road', 'service', 'pedestrian', 'raceway', 'living_street', 'construction')
++                            'tertiary_link', 'residential', 'unclassified', 'road', 'service', 'pedestrian', 'raceway', 'living_street')
+             AND name IS NOT NULL
+         ) AS roads_text_name
+     properties:
+Index: osm-carto/roads.mss
+===================================================================
+--- osm-carto.orig/roads.mss
++++ osm-carto/roads.mss
+@@ -1086,6 +1086,7 @@ tertiary is rendered from z10 and is not
+      * https://github.com/mapbox/carto/issues/235
+      * https://github.com/mapbox/carto/issues/237
+      */
++    /*
+     [feature = 'highway_construction'] {
+       [zoom >= 12] {
+         line-width: 2;
+@@ -1161,6 +1162,7 @@ tertiary is rendered from z10 and is not
+         }
+       }
+     }
++    */
+ 
+     [feature = 'highway_motorway'] {
+       [zoom >= 5] {
+@@ -2811,6 +2813,7 @@ tertiary is rendered from z10 and is not
+       text-size: 12;
+     }
+   }
++  /*
+   [highway = 'construction'] {
+     [int_construction_minor = 'no'][zoom >= 13],
+     [int_construction_minor = 'yes'][zoom >= 14] {
+@@ -2831,6 +2834,7 @@ tertiary is rendered from z10 and is not
+       }
+     }
+   }
++  */
+   [highway = 'residential'],
+   [highway = 'unclassified'],
+   [highway = 'road'] {

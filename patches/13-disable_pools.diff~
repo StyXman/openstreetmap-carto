@@ -1,0 +1,51 @@
+Index: osm-carto/landcover.mss
+===================================================================
+--- osm-carto.orig/landcover.mss
++++ osm-carto/landcover.mss
+@@ -74,6 +74,7 @@
+     }
+   }
+
++  /*
+   [feature = 'leisure_swimming_pool'][zoom >= 14] {
+     polygon-fill: @water-color;
+     line-color: saturate(darken(@water-color, 40%), 30%);
+@@ -81,6 +82,7 @@
+     [way_pixels >= 4]  { polygon-gamma: 0.75; }
+     [way_pixels >= 64] { polygon-gamma: 0.3;  }
+   }
++  */
+
+   [feature = 'leisure_playground'][zoom >= 13] {
+     polygon-fill: @playground;
+Index: osm-carto/project.yaml
+===================================================================
+--- osm-carto.orig/project.yaml
++++ osm-carto/project.yaml
+@@ -183,7 +183,7 @@ Layer:
+                                                     'allotments', 'forest', 'farmyard', 'farm', 'farmland', 'greenhouse_horticulture',
+                                                     'recreation_ground', 'village_green', 'retail', 'industrial', 'railway', 'commercial',
+                                                     'brownfield', 'landfill', 'construction') THEN landuse ELSE NULL END)) AS landuse,
+-              ('leisure_' || (CASE WHEN leisure IN ('swimming_pool', 'playground', 'park', 'recreation_ground', 'common', 'garden',
++              ('leisure_' || (CASE WHEN leisure IN ('playground', 'park', 'recreation_ground', 'common', 'garden',
+                                                     'golf_course', 'miniature_golf', 'picnic_table', 'sports_centre', 'stadium', 'pitch',
+                                                     'track') THEN leisure ELSE NULL END)) AS leisure,
+               ('military_' || (CASE WHEN military IN ('danger_area') THEN military ELSE NULL END)) AS military,
+@@ -2168,7 +2168,7 @@ Layer:
+                                             'sewing', 'shoe_repair', 'shopping_centre', 'solarium', 'souvenir', 'sports', 'tailor', 'tanning', 'tattoo', 'tea',
+                                             'ticket', 'tiles', 'tobacco', 'trade', 'tyres', 'vacuum_cleaner', 'video', 'video_games', 'watches', 'wholesale',
+                                             'yes') THEN 'other' ELSE NULL END,
+-              'leisure_' || CASE WHEN leisure IN ('swimming_pool', 'water_park', 'miniature_golf', 'golf_course', 'sports_centre', 'stadium', 'track',
++              'leisure_' || CASE WHEN leisure IN ('water_park', 'miniature_golf', 'golf_course', 'sports_centre', 'stadium', 'track',
+                                                   'pitch', 'playground', 'park', 'recreation_ground', 'common', 'garden', 'nature_reserve', 'marina',
+                                                   'picnic_table') THEN leisure ELSE NULL END,
+               'power_' || CASE WHEN power IN ('plant', 'station', 'generator', 'sub_station', 'substation') THEN power ELSE NULL END,
+@@ -2308,7 +2308,7 @@ Layer:
+                                                 'sewing', 'shoe_repair', 'shopping_centre', 'solarium', 'souvenir', 'sports', 'tailor', 'tanning', 'tattoo',
+                                                 'tea', 'ticket', 'tiles', 'tobacco', 'trade', 'tyres', 'vacuum_cleaner', 'video', 'video_games', 'watches',
+                                                 'wholesale', 'yes') THEN 'other' ELSE NULL END,
+-                  'leisure_' || CASE WHEN leisure IN ('swimming_pool', 'water_park', 'miniature_golf', 'golf_course', 'sports_centre', 'stadium', 'track',
++                  'leisure_' || CASE WHEN leisure IN ('water_park', 'miniature_golf', 'golf_course', 'sports_centre', 'stadium', 'track',
+                                                       'pitch','playground', 'park', 'recreation_ground', 'common', 'garden', 'nature_reserve', 'marina',
+                                                       'slipway', 'picnic_table') THEN leisure ELSE NULL END,
+                   'power_' || CASE WHEN power IN ('plant', 'station', 'generator', 'sub_station', 'substation') THEN power ELSE NULL END,

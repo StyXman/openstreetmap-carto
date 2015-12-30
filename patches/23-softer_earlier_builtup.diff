@@ -1,0 +1,27 @@
+Index: osm-carto/project.yaml
+===================================================================
+--- osm-carto.orig/project.yaml
++++ osm-carto/project.yaml
+@@ -119,7 +119,7 @@ Layer:
+       file: "data/world_boundaries/builtup_area.shp"
+       type: "shape"
+     properties:
+-      minzoom: 8
++      minzoom: 6
+       maxzoom: 9
+     advanced: {}
+   - id: "necountries"
+Index: osm-carto/shapefiles.mss
+===================================================================
+--- osm-carto.orig/shapefiles.mss
++++ osm-carto/shapefiles.mss
+@@ -41,7 +41,8 @@
+ }
+ 
+ #builtup {
+-  [zoom >= 8][zoom < 10] {
++  [zoom >= 6][zoom < 10] {
+     polygon-fill: #ddd;
++    polygon-opacity: 0.5;
+   }
+ }
