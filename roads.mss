@@ -1286,7 +1286,7 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
       [zoom >= 9] { line-width: @trunk-width-z9; }
       [zoom >= 10] { line-width: @trunk-width-z10; }
       [zoom >= 11] { line-width: @trunk-width-z11; }
-      [int_surface = 'unpaved'][zoom >= 5][zoom <12] {
+      [int_surface = 'unpaved'][zoom >= 5][zoom < 12] {
         line-dasharray: 8,2;
       }
       [zoom >= 12] {
@@ -1321,7 +1321,7 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
       [zoom >= 9] { line-width: @primary-width-z9; }
       [zoom >= 10] { line-width: @primary-width-z10; }
       [zoom >= 11] { line-width: @primary-width-z11; }
-      [int_surface = 'unpaved'][zoom >= 8][zoom <12] {
+      [int_surface = 'unpaved'][zoom >= 8][zoom < 12] {
         line-dasharray: 8,2;
       }
       [zoom >= 12] {
@@ -1358,7 +1358,7 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
         line-width: @secondary-width-z10;
       }
       [zoom >= 11] { line-width: @secondary-width-z11; }
-      [int_surface = 'unpaved'][zoom >= 9][zoom <12] {
+      [int_surface = 'unpaved'][zoom >= 9][zoom < 12] {
         line-dasharray: 8,2;
       }
       [zoom >= 12] {
