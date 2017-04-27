@@ -216,15 +216,15 @@
 @secondary-casing-width-z16:      0.7;
 @major-casing-width-z16:          0.7;
 
-@casing-width-z17:                0.8;
+@casing-width-z17:                1.5;
 @secondary-casing-width-z17:      1;
 @major-casing-width-z17:          1;
 
-@casing-width-z18:                0.8;
+@casing-width-z18:                1.5;
 @secondary-casing-width-z18:      1;
 @major-casing-width-z18:          1;
 
-@casing-width-z19:                0.8;
+@casing-width-z19:                1.5;
 @secondary-casing-width-z19:      1;
 @major-casing-width-z19:          1;
 
@@ -1395,9 +1395,6 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
       [zoom >= 10] {
         line-color: @unimportant-road;
         line-width: 0.55;
-        [int_surface = 'unpaved'] {
-          line-dasharray: 8,2;
-        }
       }
       [zoom >= 12] {
         line-color: @tertiary-fill;
