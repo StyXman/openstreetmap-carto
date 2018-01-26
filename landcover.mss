@@ -89,6 +89,7 @@
     }
   }
 
+  /*
   [feature = 'leisure_swimming_pool'][zoom >= 14] {
     polygon-fill: @water-color;
     line-color: saturate(darken(@water-color, 40%), 30%);
@@ -96,6 +97,7 @@
     [way_pixels >= 4]  { polygon-gamma: 0.75; }
     [way_pixels >= 64] { polygon-gamma: 0.3;  }
   }
+  */
 
   [feature = 'leisure_recreation_ground'][zoom >= 10],
   [feature = 'landuse_recreation_ground'][zoom >= 10],
@@ -252,6 +254,7 @@
     }
   }
 
+  /*
   [feature = 'leisure_park'],
   [feature = 'leisure_garden'] {
     [zoom >= 10] {
@@ -260,7 +263,9 @@
       [way_pixels >= 64] { polygon-gamma: 0.3;  }
     }
   }
+  */
 
+  /*
   [feature = 'leisure_dog_park'] {
     [zoom >= 10] {
       polygon-fill: @leisure;
@@ -274,6 +279,7 @@
       [way_pixels >= 64] { polygon-pattern-gamma: 0.3;  }
     }
   }
+  */
 
   [feature = 'leisure_golf_course'][zoom >= 10],
   [feature = 'leisure_miniature_golf'][zoom >= 15] {
@@ -296,6 +302,7 @@
     }
   }
 
+  /*
   [feature = 'landuse_forest'],
   [feature = 'natural_wood'] {
     [zoom >= 8] {
@@ -304,7 +311,10 @@
       [way_pixels >= 64] { polygon-gamma: 0.3;  }
     }
   }
+  */
 
+  // TODO: make them transparent
+  /*
   [feature = 'landuse_farmyard'][zoom >= 10] {
     polygon-fill: @farmyard;
       [zoom >= 16] {
@@ -317,7 +327,10 @@
     [way_pixels >= 4]  { polygon-gamma: 0.75; }
     [way_pixels >= 64] { polygon-gamma: 0.3;  }
   }
+  */
 
+  // TODO: make them transparent
+  /*
   [feature = 'landuse_farmland'],
   [feature = 'landuse_greenhouse_horticulture'] {
     [zoom >= 8] {
@@ -330,12 +343,15 @@
       [way_pixels >= 64] { polygon-gamma: 0.3;  }
     }
   }
+  */
 
   [feature = 'landuse_meadow'],
-  [feature = 'natural_grassland'],
+  [feature = 'natural_grassland'] {
+  /*
   [feature = 'landuse_grass'],
   [feature = 'landuse_village_green'],
   [feature = 'leisure_common'] {
+  */
     [zoom >= 10] {
       polygon-fill: @grass;
       [way_pixels >= 4]  { polygon-gamma: 0.75; }
@@ -343,6 +359,7 @@
     }
   }
 
+  /*
   [feature = 'landuse_retail'],
   [feature = 'amenity_marketplace'] {
     [zoom >= 8] {
@@ -360,7 +377,9 @@
       }
     }
   }
+  */
 
+  /*
   [feature = 'landuse_industrial'][zoom >= 8] {
     polygon-fill: @built-up-lower-lowzoom;
     [zoom >= 11] { polygon-fill: @built-up-upper-lowzoom; }
@@ -375,7 +394,9 @@
     [way_pixels >= 4]  { polygon-gamma: 0.75; }
     [way_pixels >= 64] { polygon-gamma: 0.3;  }
   }
+  */
 
+  /*
   [feature = 'man_made_works'][zoom >= 16] {
     line-width: .5;
     line-color: @industrial-line;
@@ -383,7 +404,9 @@
       line-width: 0.7;
     }
   }
+  */
 
+  /*
   [feature = 'landuse_railway'][zoom >= 10] {
     polygon-fill: @railway;
     [zoom >= 16][name != ''] {
@@ -393,7 +416,9 @@
     [way_pixels >= 4]  { polygon-gamma: 0.75; }
     [way_pixels >= 64] { polygon-gamma: 0.3;  }
   }
+  */
 
+  /*
   [feature = 'power_station'][zoom >= 10],
   [feature = 'power_generator'][zoom >= 10],
   [feature = 'power_sub_station'][zoom >= 13],
@@ -412,6 +437,7 @@
     [way_pixels >= 4]  { polygon-gamma: 0.75; }
     [way_pixels >= 64] { polygon-gamma: 0.3;  }
   }
+  */
 
   [feature = 'landuse_commercial'][zoom >= 8] {
     polygon-fill: @built-up-lower-lowzoom;
@@ -428,6 +454,7 @@
     [way_pixels >= 64] { polygon-gamma: 0.3;  }
   }
 
+  /*
   [feature = 'landuse_brownfield'],
   [feature = 'landuse_construction'] {
     [zoom >= 10] {
@@ -436,6 +463,7 @@
       [way_pixels >= 64] { polygon-gamma: 0.3;  }
     }
   }
+  */
 
   [feature = 'landuse_landfill'] {
     [zoom >= 10] {
@@ -478,17 +506,21 @@
     [way_pixels >= 64] { polygon-gamma: 0.3;  }
   }
 
+  /*
   [feature = 'natural_heath'][zoom >= 10] {
     polygon-fill: @heath;
     [way_pixels >= 4]  { polygon-gamma: 0.75; }
     [way_pixels >= 64] { polygon-gamma: 0.3;  }
   }
+  */
 
+  /*
   [feature = 'natural_scrub'][zoom >= 10] {
     polygon-fill: @scrub;
     [way_pixels >= 4]  { polygon-gamma: 0.75; }
     [way_pixels >= 64] { polygon-gamma: 0.3;  }
   }
+  */
 
   [feature = 'wetland_swamp'][zoom >= 8] {
     polygon-fill: @forest;
@@ -564,12 +596,14 @@
     [way_pixels >= 64] { polygon-gamma: 0.3;  }
   }
 
+  /*
   [feature = 'natural_beach'][zoom >= 10],
   [feature = 'natural_shoal'][zoom >= 10] {
     polygon-fill: @beach;
     [way_pixels >= 4]  { polygon-gamma: 0.75; }
     [way_pixels >= 64] { polygon-gamma: 0.3;  }
   }
+  */
 
   [feature = 'highway_services'],
   [feature = 'highway_rest_area'] {
