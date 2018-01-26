@@ -2435,6 +2435,7 @@
     text-placement: interior;
   }
 
+  /*
   [feature = 'natural_tree'][zoom >= 17] {
     text-name: "[name]";
     text-size: @standard-font-size;
@@ -2450,6 +2451,7 @@
     text-halo-fill: @standard-halo-fill;
     text-placement: interior;
   }
+  */
 }
 
 #amenity-line {
@@ -2465,6 +2467,7 @@
   }
 }
 
+/*
 #trees [zoom >= 16] {
   ::canopy {
     opacity: 0.3;
@@ -2523,3 +2526,4 @@
     }
   }
 }
+*/
