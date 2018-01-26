@@ -2216,6 +2216,7 @@
     text-placement: interior;
   }
 
+  /*
   [feature = 'natural_tree'][zoom >= 17] {
     text-name: "[name]";
     text-size: @standard-font-size;
@@ -2244,8 +2245,10 @@
     marker-file: url('symbols/transport_slipway.p.20.svg');
     marker-fill: @transportation-icon;
   }
+  */
 }
 
+/*
 #trees [zoom >= 16] {
   ::canopy {
     opacity: 0.3;
@@ -2304,3 +2307,4 @@
     }
   }
 }
+*/
