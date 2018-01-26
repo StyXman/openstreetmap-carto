@@ -136,25 +136,31 @@
   }
 
   [feature = 'landuse_vineyard'] {
+    /*
     [zoom >= 10] {
       polygon-fill: @orchard;
       [way_pixels >= 4]  { polygon-gamma: 0.75; }
       [way_pixels >= 64] { polygon-gamma: 0.3;  }
     }
+    */
     [zoom >= 14] {
       polygon-pattern-file: url('symbols/vineyard.png');
       polygon-pattern-alignment: global;
+      /*
       [way_pixels >= 4]  { polygon-pattern-gamma: 0.75; }
       [way_pixels >= 64] { polygon-pattern-gamma: 0.3;  }
+      */
     }
   }
 
   [feature = 'landuse_orchard'] {
+    /*
     [zoom >= 10] {
       polygon-fill: @orchard;
       [way_pixels >= 4]  { polygon-gamma: 0.75; }
       [way_pixels >= 64] { polygon-gamma: 0.3;  }
     }
+    */
     [zoom >= 14] {
       polygon-pattern-file: url('symbols/orchard.png');
       polygon-pattern-alignment: global;
@@ -164,11 +170,13 @@
   }
 
   [feature = 'landuse_plant_nursery'] {
+    /*
     [zoom >= 10] {
       polygon-fill: @orchard;
       [way_pixels >= 4]  { polygon-gamma: 0.75; }
       [way_pixels >= 64] { polygon-gamma: 0.3;  }
     }
+    */
     [zoom >= 14] {
       polygon-pattern-file: url('symbols/plant_nursery.png');
       polygon-pattern-alignment: global;
@@ -289,11 +297,13 @@
   }
 
   [feature = 'landuse_allotments'] {
+    /*
     [zoom >= 10] {
       polygon-fill: @allotments;
       [way_pixels >= 4]  { polygon-gamma: 0.75; }
       [way_pixels >= 64] { polygon-gamma: 0.3;  }
     }
+    */
     [zoom >= 14] {
       polygon-pattern-file: url('symbols/allotments.png');
       polygon-pattern-alignment: global;
@@ -353,9 +363,12 @@
   [feature = 'leisure_common'] {
   */
     [zoom >= 10] {
+      /*
       polygon-fill: @grass;
       [way_pixels >= 4]  { polygon-gamma: 0.75; }
       [way_pixels >= 64] { polygon-gamma: 0.3;  }
+      */
+      polygon-pattern-file: url('symbols/grass2.png');
     }
   }
 
@@ -474,8 +487,10 @@
   }
 
   [feature = 'natural_bare_rock'][zoom >= 8] {
+    /*
     polygon-fill: @bare_ground;
     polygon-pattern-file: url('symbols/rock_overlay.png');
+    */
     [way_pixels >= 4] {
       polygon-gamma: 0.75;
       polygon-pattern-gamma: 0.75;
@@ -489,9 +504,11 @@
   [feature = 'natural_scree'],
   [feature = 'natural_shingle'] {
     [zoom >= 9] {
+      /*
       polygon-fill: @bare_ground;
       [way_pixels >= 4]  { polygon-gamma: 0.75; }
       [way_pixels >= 64] { polygon-gamma: 0.3;  }
+      */
       [zoom >= 13] {
         polygon-pattern-file: url('symbols/scree_overlay.png');
         [way_pixels >= 4]  { polygon-pattern-gamma: 0.75; }
