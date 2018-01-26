@@ -89,6 +89,7 @@
     }
   }
 
+  /*
   [feature = 'leisure_swimming_pool'][zoom >= 14] {
     polygon-fill: @water-color;
     line-color: saturate(darken(@water-color, 40%), 30%);
@@ -96,6 +97,7 @@
     [way_pixels >= 4]  { polygon-gamma: 0.75; }
     [way_pixels >= 64] { polygon-gamma: 0.3;  }
   }
+  */
 
   [feature = 'leisure_recreation_ground'][zoom >= 10],
   [feature = 'landuse_recreation_ground'][zoom >= 10],
