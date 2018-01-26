@@ -6,57 +6,74 @@ For each zoomlevel, all borders come from a single attachment, to handle
 overlapping borders correctly.
 */
 
-#admin-low-zoom[zoom < 11],
+#admin-low-zoom/*[zoom < 11],
 #admin-mid-zoom[zoom >= 11][zoom < 13],
-#admin-high-zoom[zoom >= 13] {
+#admin-high-zoom[zoom >= 13]*/ {
   [admin_level = '2'] {
     [zoom >= 4] {
+      /*
       background/line-join: bevel;
       background/line-color: white;
       background/line-width: 1.2;
+      */
       line-join: bevel;
       line-color: @admin-boundaries;
       line-width: 1.2;
     }
     [zoom >= 5] {
+      /*
       background/line-width: 1.5;
+      */
       line-width: 1.5;
     }
     [zoom >= 6] {
+      /*
       background/line-width: 1.8;
+      */
       line-width: 1.8;
     }
     [zoom >= 7] {
+      /*
       background/line-width: 2;
+      */
       line-width: 2;
     }
     [zoom >= 10] {
+      /*
       background/line-width: 6;
+      */
       line-width: 6;
     }
   }
 
   [admin_level = '3'] {
     [zoom >= 4] {
+      /*
       background/line-join: bevel;
       background/line-color: white;
       background/line-width: 0.6;
+      */
       line-join: bevel;
       line-color: @admin-boundaries;
       line-width: 0.6;
     }
     [zoom >= 7] {
+      /*
       background/line-width: 1.2;
+      */
       line-width: 1.2;
     }
     [zoom >= 10] {
+      /*
       background/line-width: 4;
+      */
       line-width: 4;
       line-dasharray: 4,2;
       line-clip: false;
     }
   }
 
+  /*
   [admin_level = '4'] {
     [zoom >= 4] {
       background/line-join: bevel;
@@ -93,6 +110,7 @@ overlapping borders correctly.
       line-width: 3;
     }
   }
+  */
   /*
   The following code prevents admin boundaries from being rendered on top of
   each other. Comp-op works on the entire attachment, not on the individual
@@ -104,10 +122,14 @@ overlapping borders correctly.
   The SQL has `ORDER BY admin_level`, so the boundary with the lowest
   admin_level is rendered on top, and therefore the only visible boundary.
   */
-  opacity: 0.4;
+  opacity: 0.8;
+  [zoom >= 10] {
+    opacity: 0.8;
+  }
   comp-op: darken;
 }
 
+/*
 #admin-mid-zoom[zoom >= 11][zoom < 13],
 #admin-high-zoom[zoom >= 13] {
   [admin_level = '5'][zoom >= 11] {
@@ -146,7 +168,9 @@ overlapping borders correctly.
   opacity: 0.5;
   comp-op: darken;
 }
+*/
 
+/*
 #admin-high-zoom[zoom >= 13] {
   [admin_level = '9'],
   [admin_level = '10'] {
@@ -161,10 +185,12 @@ overlapping borders correctly.
       line-clip: false;
     }
   }
-  opacity: 0.5;
+  opacity: 0.7;
   comp-op: darken;
 }
+*/
 
+/*
 #admin-text[zoom >= 16] {
   text-name: "[name]";
   text-face-name: @book-fonts;
@@ -176,6 +202,7 @@ overlapping borders correctly.
   text-vertical-alignment: middle;
   text-dy: -10;
 }
+*/
 
 #nature-reserve-text[zoom >= 13][way_pixels > 192000] {
   text-name: "[name]";
