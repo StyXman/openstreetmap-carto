@@ -50,3 +50,93 @@ Map {
     raster-opacity: 0.6;
   }
 }
+
+#contour-50 {
+  [zoom >= 13] {
+    line-color: #222;
+    line-width: 0.5;
+    line-smooth: 0.8;
+    line-opacity: 0.2;
+  }
+}
+
+#contour-100 {
+  [zoom >= 11] {
+    line-color: #222;
+    line-width: 0.5;
+    line-smooth: 0.8;
+    line-opacity: 0.6;
+  }
+
+  [zoom >= 13] {
+    text-name: "[height]";
+    text-face-name: @book-fonts;
+    text-size: 12;
+    text-fill: #222;
+    text-opacity: 0.6;
+    text-halo-radius: 1;
+    text-placement: line;
+    text-spacing: 400;
+  }
+}
+
+#contour-250 {
+  [zoom = 10] {
+    line-color: #222;
+    line-width: 0.5;
+    line-smooth: 0.8;
+    line-opacity: 0.6;
+  }
+}
+
+#contour-500 {
+  [zoom >= 9] {
+    line-color: #222;
+    line-width: 0.5;
+    line-smooth: 0.8;
+    line-opacity: 0.6;
+  }
+
+  [zoom >= 11] {
+    line-width: 0.75;
+  }
+
+  [zoom >= 12] {
+    line-width: 1;
+
+    text-name: "[height]";
+    text-face-name: @book-fonts;
+    text-size: 12;
+    text-fill: #222;
+    text-opacity: 0.6;
+    text-halo-radius: 1;
+    text-placement: line;
+    text-spacing: 400;
+  }
+}
+
+#contour-1000 {
+  [zoom >= 8] {
+    line-color: #222;
+    line-width: 0.5;
+    line-smooth: 0.8;
+    line-opacity: 0.6;
+  }
+
+  [zoom >= 10] {
+    line-width: 1.0;
+  }
+
+  [zoom >= 12] {
+    // line-width: 1.5;
+
+    text-name: "[height]";
+    text-face-name: @book-fonts;
+    text-size: 12;
+    text-fill: #222;
+    text-opacity: 0.6;
+    text-halo-radius: 1;
+    text-placement: line;
+    text-spacing: 400;
+  }
+}
