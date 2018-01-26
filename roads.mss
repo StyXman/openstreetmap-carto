@@ -2059,6 +2059,23 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
       }
     }
   }
+
+  ::strip {
+    [feature = 'highway_motorway'][link = 'no'],
+    [feature = 'highway_trunk'][link = 'no'] {
+      [zoom >= 12] {
+        line-width: 1;
+        [feature = 'highway_motorway'] {
+          line-color: yellow;
+        }
+        [feature = 'highway_trunk'][link = 'no'] {
+          line-color: white;
+        }
+      }
+      [zoom >= 14] { line-width: 1.5; }
+      [zoom >= 16] { line-width: 2; }
+    }
+  }
 }
 
 #turning-circle-casing {
