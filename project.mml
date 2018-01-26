@@ -200,6 +200,16 @@ Layer:
     properties:
       minzoom: 8
       maxzoom: 11
+  - id: ocean
+    name: ocean
+    class: ocean
+    geometry: polygon
+    <<: *extents
+    Datasource:
+      file: data/water-polygons-split-3857/water_polygons.shp
+      type: shape
+    properties:
+      minzoom: 10
   - id: icesheet-poly
     geometry: polygon
     <<: *extents
@@ -2084,7 +2094,7 @@ Layer:
                   'natural_' || CASE WHEN "natural" IN ('wood', 'peak', 'volcano', 'saddle', 'cave_entrance', 'water', 'mud', 'wetland', 'marsh', 'bay', 'spring',
                                                         'scree', 'shingle', 'bare_rock', 'sand', 'heath', 'grassland', 'scrub', 'beach', 'glacier', 'tree')
                                                         THEN "natural" ELSE NULL END,
-                  'place_' || CASE WHEN place IN ('island', 'islet') THEN place ELSE NULL END,
+                  'place_' || CASE WHEN place IN ('island', 'islet', 'ocean', 'sea') THEN place ELSE NULL END,
                   'military_' || CASE WHEN military IN ('danger_area', 'bunker') THEN military ELSE NULL END,
                   'historic_' || CASE WHEN historic IN ('memorial', 'monument', 'archaeological_site', 'castle', 'fort')
                                  THEN concat_ws('_', historic, CASE WHEN tags->'memorial' IN ('plaque') THEN tags->'memorial' ELSE NULL END)
@@ -2127,7 +2137,7 @@ Layer:
                                  'retail', 'industrial', 'railway', 'commercial', 'brownfield', 'landfill', 'construction', 'military', 'plant_nursery')
                   OR man_made IN ('lighthouse', 'windmill', 'mast', 'water_tower', 'cross', 'obelisk', 'works')
                   OR "natural" IS NOT NULL
-                  OR place IN ('island', 'islet')
+                  OR place IN ('island', 'islet', 'ocean', 'sea')
                   OR military IN ('danger_area', 'bunker')
                   OR historic IN ('memorial', 'monument', 'archaeological_site', 'castle', 'fort', 'wayside_cross')
                   OR tags->'memorial' IN ('plaque')
