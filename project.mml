@@ -1066,6 +1066,25 @@ Layer:
         ) AS roads_fill
     properties:
       minzoom: 10
+  - id: "pistes"
+    name: "pistes"
+    class: ""
+    geometry: "linestring"
+    <<: *extents
+    Datasource:
+      <<: *osm2pgsql
+      table: |-
+        (SELECT way,
+          ('piste_' || "piste:type") AS feature,
+          "piste:difficulty" AS grade,
+          name
+        FROM planet_osm_line
+        WHERE
+          "piste:type" IN ('downhill')
+        ) AS pistes
+    advanced: {}
+    properties:
+      minzoom: 14
   - id: turning-circle-fill
     geometry: point
     <<: *extents

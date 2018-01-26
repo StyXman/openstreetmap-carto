@@ -140,3 +140,34 @@ Map {
     text-spacing: 400;
   }
 }
+
+#pistes {
+  [zoom >= 14] {
+    [grade = 'novice'] {
+      line-color: green;
+    }
+    [grade = 'easy'] {
+      line-color: blue;
+    }
+    [grade = 'intermediate'] {
+      line-color: red;
+    }
+    [grade = 'advanced'] {
+      line-color: black;
+    }
+
+    line-width: 2;
+    line-opacity: 0.6;
+    line-smooth: 0.4;
+  }
+
+  [zoom >= 15] {
+    line-width: 4;
+    text-name: "[name]";
+    text-size: 10;
+    text-fill: #666;
+    text-face-name: @book-fonts;
+    text-halo-radius: 1;
+    text-placement: line;
+  }
+}
