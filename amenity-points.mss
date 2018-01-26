@@ -649,6 +649,49 @@
     marker-file: url('symbols/shop/marketplace.svg');
   }
 
+  // local
+  [feature = 'historic_castle'][zoom >= @nice] {
+    marker-file: url('symbols/castle.svg');
+    marker-width: 14;
+    marker-fill: @amenity-brown;
+    marker-placement: interior;
+    marker-clip: false;
+    [castle_type = 'defensive'][zoom >= @nice] {
+      marker-file: url('symbols/castle-defensive-14.svg');
+    }
+    [castle_type = 'fortress'][zoom >= @nice] {
+      marker-file: url('symbols/castle-fortress-14.svg');
+    }
+    [castle_type = 'manor'][zoom >= @nice] {
+      marker-file: url('symbols/castle-manor-14.svg');
+    }
+    [castle_type = 'palace'][zoom >= @nice] {
+      marker-file: url('symbols/castle-palace-14.svg');
+    }
+    [castle_type = 'stately'][zoom >= @nice] {
+      marker-file: url('symbols/castle-stately-14.svg');
+    }
+    // ruins is not imported yet :(
+    /*
+    [ruins = 'yes'] {
+      marker-fill: grey;
+    }
+    */
+  }
+
+  // local
+  [feature = 'historic_fort'][zoom >= @nice] {
+    marker-file: url('symbols/fort.svg');
+    marker-width: 14;
+    marker-placement: interior;
+    // ruins is not imported yet :(
+    /*
+    [ruins = 'yes'] {
+      marker-fill: grey;
+    }
+    */
+  }
+
   [feature = 'shop'] {
     [shop != 'mall'][zoom >= 17],
     [shop = 'supermarket'][zoom >= 16],
@@ -1335,8 +1378,7 @@
   [feature = 'amenity_theatre'],
   [feature = 'amenity_cinema'],
   [feature = 'amenity_arts_centre'],
-  [feature = 'amenity_community_centre'],
-  [feature = 'historic_archaeological_site'] {
+  [feature = 'amenity_community_centre'] {
     [zoom >= 17] {
       text-name: "[name]";
       text-size: @standard-font-size;
@@ -1345,6 +1387,23 @@
       text-fill: @culture;
       text-dy: 11;
       [feature = 'amenity_community_centre'] { text-dy: 10; }
+      text-face-name: @standard-font;
+      text-halo-radius: @standard-halo-radius;
+      text-halo-fill: @standard-halo-fill;
+      text-placement: interior;
+    }
+  }
+
+  [feature = 'historic_castle'],
+  [feature = 'historic_fort'],
+  [feature = 'historic_archaeological_site'] {
+    [zoom >= @nice] {
+      text-name: "[name]";
+      text-size: @standard-font-size;
+      text-wrap-width: @standard-wrap-width;
+      text-line-spacing: @standard-line-spacing-size;
+      text-fill: @culture;
+      text-dy: 11;
       text-face-name: @standard-font;
       text-halo-radius: @standard-halo-radius;
       text-halo-fill: @standard-halo-fill;
