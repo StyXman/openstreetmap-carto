@@ -3,6 +3,8 @@ Map {
 }
 
 @water-color: #aad3df;
+@water-dark: #5a5aa1;
+@water-text: #water-dark;
 @land-color: #f2efe9;
 
 @standard-halo-radius: 1;
