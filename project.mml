@@ -54,22 +54,6 @@ Stylesheet:
   - admin.mss
   - addressing.mss
 Layer:
-  - id: world
-    geometry: polygon
-    <<: *extents
-    Datasource:
-      file: data/simplified-land-polygons-complete-3857/simplified_land_polygons.shp
-      type: shape
-    properties:
-      maxzoom: 9
-  - id: coast-poly
-    geometry: polygon
-    <<: *extents
-    Datasource:
-      file: data/land-polygons-split-3857/land_polygons.shp
-      type: shape
-    properties:
-      minzoom: 10
   - id: necountries
     geometry: linestring
     <<: *extents84
@@ -200,6 +184,24 @@ Layer:
     properties:
       minzoom: 8
       maxzoom: 11
+  - id: ocean-lz
+    class: ocean
+    geometry: polygon
+    <<: *extents
+    Datasource:
+      file: data/simplified-water-polygons-complete-3857/simplified_water_polygons.shp
+      type: shape
+    properties:
+      maxzoom: 9
+  - id: ocean
+    class: ocean
+    geometry: polygon
+    <<: *extents
+    Datasource:
+      file: data/water-polygons-split-3857/water_polygons.shp
+      type: shape
+    properties:
+      minzoom: 10
   - id: icesheet-poly
     geometry: polygon
     <<: *extents

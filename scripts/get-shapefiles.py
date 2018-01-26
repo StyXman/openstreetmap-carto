@@ -84,7 +84,24 @@ settings = {
         'type': 'zip',
         'shp_basename': ['icesheet_outlines'],
         'long_opt': '--icesheet-outlines'
-    }
+    },
+
+    7: {
+        'directory': 'simplified-water-polygons-complete-3857',
+        'url': 'http://data.openstreetmapdata.com/simplified-water-polygons-complete-3857.zip',  # noqa
+        'type': 'zip',
+        'index': ['simplified_water_polygons.shp'],
+        'long_opt': '--simplified-water'
+    },
+
+
+    8: {
+        'directory': 'water-polygons-split-3857',
+        'url': 'http://data.openstreetmapdata.com/water-polygons-split-3857.zip',  # noqa
+        'type': 'zip',
+        'index': ['water_polygons.shp'],
+        'long_opt': '--water-polygons'
+    },
 }
 
 u_prompt = True
