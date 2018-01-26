@@ -50,7 +50,7 @@
     marker-clip: false;
   }
 
-  [feature = 'amenity_atm'][zoom >= 17] {
+  [feature = 'amenity_atm'][zoom >= @useful] {
     marker-file: url('symbols/atm.svg');
     marker-fill: @amenity-brown;
     marker-placement: interior;
@@ -258,7 +258,7 @@
     marker-clip: false;
   }
 
-  [feature = 'amenity_fuel'][zoom >= 17] {
+  [feature = 'amenity_fuel'][zoom >= @useful] {
     marker-file: url('symbols/fuel.svg');
     marker-fill: @transportation-icon;
     marker-placement: interior;
@@ -272,7 +272,7 @@
     marker-clip: false;
   }
 
-  [feature = 'amenity_hospital'][zoom >= 15] {
+  [feature = 'amenity_hospital'][zoom >= @useful] {
     marker-file: url('symbols/hospital.svg');
     marker-fill: @health-color;
     marker-placement: interior;
@@ -400,7 +400,7 @@
     }
   }
 
-  [feature = 'amenity_pharmacy'][zoom >= 17] {
+  [feature = 'amenity_pharmacy'][zoom >= @useful] {
     marker-file: url('symbols/pharmacy.svg');
     marker-fill: @health-color;
     marker-placement: interior;
@@ -477,7 +477,7 @@
     marker-clip: false;
   }
 
-  [feature = 'amenity_police'][zoom >= 16] {
+  [feature = 'amenity_police'][zoom >= @useful] {
     marker-file: url('symbols/police.svg');
     marker-fill: @public-service;
     marker-placement: interior;
@@ -491,7 +491,7 @@
     marker-clip: false;
   }
 
-  [feature = 'amenity_post_office'][zoom >= 17] {
+  [feature = 'amenity_post_office'][zoom >= @useful] {
     marker-file: url('symbols/post_office.svg');
     marker-fill: @public-service;
     marker-placement: interior;
@@ -575,7 +575,7 @@
     marker-clip: false;
   }
 
-  [feature = 'amenity_toilets'][zoom >= 17] {
+  [feature = 'amenity_toilets'][zoom >= @useful] {
     marker-file: url('symbols/toilets.svg');
     marker-fill: @amenity-brown;
     marker-placement: interior;
@@ -598,7 +598,7 @@
     marker-clip: false;
   }
 
-  [feature = 'tourism_viewpoint'][zoom >= 16] {
+  [feature = 'tourism_viewpoint'][zoom >= @nice] {
     marker-file: url('symbols/viewpoint.svg');
     marker-placement: interior;
     marker-fill: @amenity-brown;
@@ -634,7 +634,7 @@
     marker-clip: false;
   }
 
-  [feature = 'historic_archaeological_site'][zoom >= 16] {
+  [feature = 'historic_archaeological_site'][zoom >= @nice] {
     marker-file: url('symbols/archaeological_site.svg');
     marker-fill: @culture;
     marker-placement: interior;
@@ -694,7 +694,7 @@
 
   [feature = 'shop'] {
     [shop != 'mall'][zoom >= 17],
-    [shop = 'supermarket'][zoom >= 16],
+    [shop = 'supermarket'][zoom >= @useful],
     [shop = 'department_store'][zoom >= 16] {
       marker-placement: interior;
       marker-clip: false;
@@ -711,7 +711,7 @@
       marker-line-width: 0;
     }
 
-    [shop = 'supermarket'][zoom >= 16] {
+    [shop = 'supermarket'][zoom >= @useful] {
       marker-file: url('symbols/shop/supermarket.svg');
     }
 
