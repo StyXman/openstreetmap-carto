@@ -54,37 +54,34 @@ Stylesheet:
   - admin.mss
   - addressing.mss
 Layer:
-  - id: "terrain-small"
-    name: "terrain-small"
-    class: "terrain"
-    geometry: "raster"
+  - id: terrain-small
+    class: terrain
+    geometry: raster
     <<: *extents
     Datasource:
-      file: "data/height/mixed-terrain-small.tif"
-      type: "gdal"
+      file: data/height/mixed-terrain-small.tif
+      type: gdal
     advanced: {}
     properties:
       maxzoom: 6
-  - id: "terrain-medium"
-    name: "terrain-medium"
-    class: "terrain"
-    geometry: "raster"
+  - id: terrain-medium
+    class: terrain
+    geometry: raster
     <<: *extents
     Datasource:
-      file: "data/height/mixed-terrain-medium.tif"
-      type: "gdal"
+      file: data/height/mixed-terrain-medium.tif
+      type: gdal
     advanced: {}
     properties:
       minzoom: 7
       maxzoom: 8
-  - id: "terrain-big"
-    name: "terrain-big"
-    class: "terrain"
-    geometry: "raster"
+  - id: terrain-big
+    class: terrain
+    geometry: raster
     <<: *extents
     Datasource:
-      file: "data/height/mixed-terrain.vrt"
-      type: "gdal"
+      file: data/height/mixed-terrain.vrt
+      type: gdal
     advanced: {}
     properties:
       minzoom: 8
@@ -188,104 +185,94 @@ Layer:
         ) AS landcover_line
     properties:
       minzoom: 14
-  - id: "hillshade-small"
-    name: "hillshade-small"
-    class: "hillshade-over"
-    geometry: "raster"
+  - id: hillshade-small
+    class: hillshade-over
+    geometry: raster
     <<: *extents
     Datasource:
-      file: "data/height/mixed-hillshade-small.tif"
-      type: "gdal"
+      file: data/height/mixed-hillshade-small.tif
+      type: gdal
     advanced: {}
     properties:
       maxzoom: 6
-  - id: "hillshade-medium-over"
-    name: "hillshade-medium-over"
-    class: "hillshade-over"
-    geometry: "raster"
+  - id: hillshade-medium-over
+    class: hillshade-over
+    geometry: raster
     <<: *extents
     Datasource:
-      file: "data/height/mixed-hillshade-medium.tif"
-      type: "gdal"
+      file: data/height/mixed-hillshade-medium.tif
+      type: gdal
     advanced: {}
     properties:
       minzoom: 7
       maxzoom: 8
-  - id: "hillshade-medium-overlay"
-    name: "hillshade-medium-overlay"
-    class: "hillshade-overlay"
-    geometry: "raster"
+  - id: hillshade-medium-overlay
+    class: hillshade-overlay
+    geometry: raster
     <<: *extents
     Datasource:
-      file: "data/height/mixed-hillshade-medium.tif"
-      type: "gdal"
+      file: data/height/mixed-hillshade-medium.tif
+      type: gdal
     advanced: {}
     properties:
       minzoom: 8
       maxzoom: 8
-  - id: "hillshade-big"
-    name: "hillshade-big"
-    class: "hillshade-overlay"
-    geometry: "raster"
+  - id: hillshade-big
+    class: hillshade-overlay
+    geometry: raster
     <<: *extents
     Datasource:
-      file: "data/height/mixed-hillshade.vrt"
-      type: "gdal"
+      file: data/height/mixed-hillshade.vrt
+      type: gdal
     advanced: {}
     properties:
       minzoom: 9
-  - id: "slopeshade-small"
-    name: "slopeshade-small"
-    class: "slopeshade-over"
-    geometry: "raster"
+  - id: slopeshade-small
+    class: slopeshade-over
+    geometry: raster
     <<: *extents
     Datasource:
-      file: "data/height/mixed-slopeshade-small.tif"
-      type: "gdal"
+      file: data/height/mixed-slopeshade-small.tif
+      type: gdal
     advanced: {}
     properties:
       maxzoom: 6
     # status: off
-  - id: "slopeshade-medium-over"
-    name: "slopeshade-medium-over"
-    class: "slopeshade-over"
-    geometry: "raster"
+  - id: slopeshade-medium-over
+    class: slopeshade-over
+    geometry: raster
     <<: *extents
     Datasource:
-      file: "data/height/mixed-slopeshade-medium.tif"
-      type: "gdal"
+      file: data/height/mixed-slopeshade-medium.tif
+      type: gdal
     advanced: {}
     properties:
       minzoom: 7
       maxzoom: 7
     # status: off
-  - id: "slopeshade-medium-overlay"
-    name: "slopeshade-medium-overlay"
-    class: "slopeshade-overlay"
-    geometry: "raster"
+  - id: slopeshade-medium-overlay
+    class: slopeshade-overlay
+    geometry: raster
     <<: *extents
     Datasource:
-      file: "data/height/mixed-slopeshade-medium.tif"
-      type: "gdal"
+      file: data/height/mixed-slopeshade-medium.tif
+      type: gdal
     advanced: {}
     properties:
       minzoom: 8
       maxzoom: 8
-  - id: "slopeshade-big"
-    name: "slopeshade-big"
-    class: "slopeshade-overlay"
-    geometry: "raster"
+  - id: slopeshade-big
+    class: slopeshade-overlay
+    geometry: raster
     <<: *extents
     Datasource:
-      file: "data/height/mixed-slopeshade.vrt"
-      type: "gdal"
+      file: data/height/mixed-slopeshade.vrt
+      type: gdal
     advanced: {}
     properties:
       minzoom: 9
-  - id: "contour-50"
-    name: "contour-50"
-    class: ""
-    geometry: "linestring"
+  - id: contour-50
+    geometry: linestring
     <<: *extents84
     Datasource:
       <<: *osm2pgsql
@@ -297,10 +284,8 @@ Layer:
     advanced: {}
     properties:
       minzoom: 13
-  - id: "contour-100"
-    name: "contour-100"
-    class: ""
-    geometry: "linestring"
+  - id: contour-100
+    geometry: linestring
     <<: *extents84
     Datasource:
       <<: *osm2pgsql
@@ -312,10 +297,8 @@ Layer:
     advanced: {}
     properties:
       minzoom: 11
-  - id: "contour-250"
-    name: "contour-250"
-    class: ""
-    geometry: "linestring"
+  - id: contour-250
+    geometry: linestring
     <<: *extents84
     Datasource:
       <<: *osm2pgsql
@@ -327,10 +310,8 @@ Layer:
     advanced: {}
     properties:
       minzoom: 10
-  - id: "contour-500"
-    name: "contour-500"
-    class: ""
-    geometry: "linestring"
+  - id: contour-500
+    geometry: linestring
     <<: *extents84
     Datasource:
       <<: *osm2pgsql
@@ -342,10 +323,8 @@ Layer:
     advanced: {}
     properties:
       minzoom: 9
-  - id: "contour-1000"
-    name: "contour-1000"
-    class: ""
-    geometry: "linestring"
+  - id: contour-1000
+    geometry: linestring
     <<: *extents84
     Datasource:
       <<: *osm2pgsql
@@ -1066,10 +1045,8 @@ Layer:
         ) AS roads_fill
     properties:
       minzoom: 10
-  - id: "pistes"
-    name: "pistes"
-    class: ""
-    geometry: "linestring"
+  - id: pistes
+    geometry: linestring
     <<: *extents
     Datasource:
       <<: *osm2pgsql
