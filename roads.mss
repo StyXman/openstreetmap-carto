@@ -3102,7 +3102,7 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
       [oneway = 'yes'],
       [oneway = '-1'] {
         marker-placement: line;
-        marker-spacing: 180;
+        marker-spacing: 50;
         marker-max-error: 0.5;
 
         marker-file: url('symbols/oneway.svg');
