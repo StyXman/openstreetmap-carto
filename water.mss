@@ -2,6 +2,28 @@
 @glacier: #ddecec;
 @glacier-line: #9cf;
 
+// local
+#water-areas::border {
+  [natural = 'lake'][way_pixels >= 4],
+  [natural = 'water'][way_pixels >= 4],
+  [landuse = 'reservoir'][way_pixels >= 4],
+  [waterway = 'riverbank'][way_pixels >= 4],
+  [landuse = 'water'][way_pixels >= 4],
+  [landuse = 'basin'][way_pixels >= 4] {
+    [zoom >= 8] {
+      line-width: 1.5;
+      line-color: @water-dark;
+    }
+  }
+
+  [waterway = 'riverbank'][way_pixels >= 64] {
+    [zoom >= 9] {
+      line-width: 1.5;
+      line-color: @water-dark;
+    }
+  }
+}
+
 #water-areas {
   [natural = 'glacier']::natural {
     [zoom >= 8] {
@@ -64,6 +86,11 @@
  * attachments can be used to reduce combinational rules
  */
 
+.ocean::border {
+  line-width: 1.5;
+  line-color: @water-dark;
+}
+
 #water-areas[waterway = 'dock'][zoom >= 9]::waterway,
 #water-areas[waterway = 'canal'][zoom >= 9]::waterway,
 #water-areas[landuse = 'basin'][zoom >= 7]::landuse,
@@ -89,7 +116,7 @@
     [int_tunnel = 'no'] {
       [zoom >= 13] {
         line-width: 2.5;
-        line-color: white;
+        line-color: @water-dark;
         [waterway = 'stream'][zoom >= 15] {
           line-width: 3.5;
         }
@@ -99,6 +126,35 @@
           line-join: round;
           line-clip: false;
         }
+      }
+    }
+  }
+
+  // local
+  [waterway = 'river'][zoom >= 6] {
+    line-color: @water-dark;
+    line-width: 0.5;
+    [zoom >= 8] { line-width: 2.2; }
+    [zoom >= 9] { line-width: 2.7; }
+    [zoom >= 10] { line-width: 3.1; }
+    [zoom >= 12] {
+      line-width: 3.5;
+      line-cap: round;
+      line-join: round;
+      [zoom >= 13] {
+        line-width: 4.5;
+      }
+      [zoom >= 14] {
+        line-width: 6.5;
+      }
+      [zoom >= 15] {
+        line-width: 7.5;
+      }
+      [zoom >= 17] {
+        line-width: 11.5;
+      }
+      [zoom >= 18] {
+        line-width: 13.5;
       }
     }
   }
@@ -112,9 +168,13 @@
       line-join: round;
       line-clip: false;
     }
-    line-color: @water-color;
+    line-color: @water-dark;
     line-width: 0.7;
-    [zoom >= 9] { line-width: 1.2; }
+    [zoom >= 8] { line-width: 1; }
+    [zoom >= 9] {
+      line-width: 1.2;
+      line-color: @water-color;
+    }
     [zoom >= 10] { line-width: 1.6; }
   }
 }

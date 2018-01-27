@@ -346,10 +346,10 @@ Layer:
             way, waterway, tags->'intermittent' as intermittent,
             CASE WHEN tunnel IN ('yes', 'culvert') THEN 'yes' ELSE 'no' END AS int_tunnel
           FROM planet_osm_line
-          WHERE waterway IN ('stream', 'drain', 'ditch')
+          WHERE waterway IN ('stream', 'drain', 'ditch', 'river')
         ) AS water_lines_casing
     properties:
-      minzoom: 13
+      minzoom: 6
   - id: water-lines-low-zoom
     geometry: linestring
     <<: *extents
