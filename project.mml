@@ -513,6 +513,24 @@ Layer:
         ) AS marinas_area
     properties:
       minzoom: 14
+  - id: nature-reserve-boundaries
+    geometry: polygon
+    <<: *extents
+    Datasource:
+      <<: *osm2pgsql
+      table: |-
+        (SELECT
+            way,
+            name,
+            boundary,
+            way_area/NULLIF(!pixel_width!::real*!pixel_height!::real,0) AS way_pixels
+          FROM planet_osm_polygon
+          WHERE (boundary = 'national_park' OR leisure = 'nature_reserve')
+            AND building IS NULL
+            AND way_area > 0.01*!pixel_width!::real*!pixel_height!::real
+        ) AS national_park_boundaries
+    properties:
+      minzoom: 7
   - id: piers-poly
     geometry: polygon
     <<: *extents
@@ -1354,24 +1372,6 @@ Layer:
         ) AS power_line
     properties:
       minzoom: 14
-  - id: nature-reserve-boundaries
-    geometry: polygon
-    <<: *extents
-    Datasource:
-      <<: *osm2pgsql
-      table: |-
-        (SELECT
-            way,
-            name,
-            boundary,
-            way_area/NULLIF(!pixel_width!::real*!pixel_height!::real,0) AS way_pixels
-          FROM planet_osm_polygon
-          WHERE (boundary = 'national_park' OR leisure = 'nature_reserve')
-            AND building IS NULL
-            AND way_area > 0.01*!pixel_width!::real*!pixel_height!::real
-        ) AS national_park_boundaries
-    properties:
-      minzoom: 8
   - id: tourism-boundary
     geometry: polygon
     <<: *extents
