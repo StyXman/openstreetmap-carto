@@ -108,6 +108,8 @@ service     13
 @helipad-fill: @aeroway-fill;
 
 
+@rail-fill: #404040;
+
 // terrain-small [0-6], terrain-medium [7-8], terrain-big [9-]
 .terrain {
   raster-scaling: lanczos;

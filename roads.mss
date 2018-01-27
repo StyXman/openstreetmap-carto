@@ -1825,13 +1825,13 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
       }
     }
 
-    [feature = 'railway_rail'][zoom >= 8],
+    [feature = 'railway_rail'][zoom >= 5],
     [feature = 'railway_INT-spur-siding-yard'][zoom >= 13] {
       [zoom < 13] {
-        line-color: #787878;
+        line-color: @rail-fill;
         line-width: 0.5;
-        [zoom >= 8] { line-width: 0.8; }
-        [zoom >= 12] { line-width: 0.9; }
+        [zoom >= 8] { line-width: 1.0; }
+        [zoom >= 12] { line-width: 2.0; }
         line-join: round;
         .roads_low_zoom[int_tunnel = 'yes'], #tunnels {
           line-dasharray: 5,2;
