@@ -736,7 +736,8 @@
         polygon-pattern-alignment: global;
       }
     }
-    [natural = 'scrub'] {
+    [natural = 'scrub'],
+    [natural = 'heath'] {
       polygon-pattern-file: url('symbols/scrub.png');
       polygon-pattern-alignment: global;
     }
