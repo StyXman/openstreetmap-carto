@@ -350,19 +350,20 @@
   }
   */
 
-  /*
   [feature = 'landuse_meadow'],
   [feature = 'natural_grassland'],
   [feature = 'landuse_grass'],
   [feature = 'landuse_village_green'],
   [feature = 'leisure_common'] {
     [zoom >= 10] {
+      /*
       polygon-fill: @grass;
       [way_pixels >= 4]  { polygon-gamma: 0.75; }
       [way_pixels >= 64] { polygon-gamma: 0.3;  }
+      */
+      polygon-pattern-file: url('symbols/grass2.png');
     }
   }
-  */
 
   /*
   [feature = 'landuse_retail'],
