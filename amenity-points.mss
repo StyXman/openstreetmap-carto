@@ -50,7 +50,7 @@
     marker-clip: false;
   }
 
-  [feature = 'amenity_atm'][zoom >= 17] {
+  [feature = 'amenity_atm'][zoom >= @useful] {
     marker-file: url('symbols/atm.svg');
     marker-fill: @amenity-brown;
     marker-placement: interior;
@@ -234,7 +234,7 @@
     marker-clip: false;
   }
 
-  [feature = 'amenity_fuel'][zoom >= 17] {
+  [feature = 'amenity_fuel'][zoom >= @useful] {
     marker-file: url('symbols/fuel.svg');
     marker-fill: @transportation-icon;
     marker-placement: interior;
@@ -248,7 +248,7 @@
     marker-clip: false;
   }
 
-  [feature = 'amenity_hospital'][zoom >= 15] {
+  [feature = 'amenity_hospital'][zoom >= @useful] {
     marker-file: url('symbols/hospital.svg');
     marker-fill: @health-color;
     marker-placement: interior;
@@ -366,7 +366,7 @@
     }
   }
 
-  [feature = 'amenity_pharmacy'][zoom >= 17] {
+  [feature = 'amenity_pharmacy'][zoom >= @useful] {
     marker-file: url('symbols/pharmacy.svg');
     marker-fill: @health-color;
     marker-placement: interior;
@@ -437,7 +437,7 @@
     marker-clip: false;
   }
 
-  [feature = 'amenity_police'][zoom >= 16] {
+  [feature = 'amenity_police'][zoom >= @useful] {
     marker-file: url('symbols/police.svg');
     marker-fill: @public-service;
     marker-placement: interior;
@@ -451,7 +451,7 @@
     marker-clip: false;
   }
 
-  [feature = 'amenity_post_office'][zoom >= 17] {
+  [feature = 'amenity_post_office'][zoom >= @useful] {
     marker-file: url('symbols/post_office.svg');
     marker-fill: @public-service;
     marker-placement: interior;
@@ -525,7 +525,7 @@
     marker-clip: false;
   }
 
-  [feature = 'amenity_toilets'][zoom >= 17] {
+  [feature = 'amenity_toilets'][zoom >= @useful] {
     marker-file: url('symbols/toilets.svg');
     marker-fill: @amenity-brown;
     marker-placement: interior;
@@ -546,7 +546,7 @@
     marker-clip: false;
   }
 
-  [feature = 'tourism_viewpoint'][zoom >= 16] {
+  [feature = 'tourism_viewpoint'][zoom >= @nice] {
     marker-file: url('symbols/viewpoint.svg');
     marker-placement: interior;
     marker-fill: @amenity-brown;
@@ -582,7 +582,7 @@
     marker-clip: false;
   }
 
-  [feature = 'historic_archaeological_site'][zoom >= 16] {
+  [feature = 'historic_archaeological_site'][zoom >= @nice] {
     marker-file: url('symbols/archaeological_site.svg');
     marker-fill: @culture;
     marker-placement: interior;
@@ -753,7 +753,7 @@
       marker-file: url('symbols/shop/car_parts.svg');
     }
 
-    [shop = 'car_repair'][zoom >= 18] {
+    [shop = 'car_repair'][zoom >= @useful] {
       marker-file: url('symbols/shop/car_repair.svg');
       marker-fill: @amenity-brown;
     }
@@ -2007,6 +2007,20 @@
   }
 
   [feature = 'shop_supermarket'],
+    [zoom >= @useful] {
+      text-name: "[name]";
+      text-size: @standard-font-size;
+      text-wrap-width: @standard-wrap-width;
+      text-line-spacing: @standard-line-spacing-size;
+      text-dy: 12;
+      text-fill: @shop-text;
+      text-face-name: @standard-font;
+      text-halo-radius: @standard-halo-radius;
+      text-halo-fill: rgba(255, 255, 255, 0.6);
+      text-placement: interior;
+    }
+  }
+
   [feature = 'shop_department_store'] {
     [zoom >= 16] {
       text-name: "[name]";
