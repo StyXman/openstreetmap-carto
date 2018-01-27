@@ -3,7 +3,7 @@
 
 .stations {
   [railway = 'subway_entrance'][zoom >= @nice] {
-    marker-file: url('symbols/entrance.10.svg');
+    marker-file: url('symbols/london-underground-18.png');
     marker-placement: interior;
     marker-fill: @transportation-icon;
     marker-clip: false;

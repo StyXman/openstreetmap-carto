@@ -235,7 +235,9 @@
   }
 
   [feature = 'amenity_fuel'][zoom >= @useful] {
-    marker-file: url('symbols/fuel.svg');
+    // too small
+    // marker-file: url('symbols/fuel.svg');
+    marker-file: url('symbols/fuel-24.png');
     marker-fill: @transportation-icon;
     marker-placement: interior;
     marker-clip: false;
@@ -350,7 +352,9 @@
   [feature = 'amenity_bicycle_parking'][way_pixels > 900],
   [feature = 'amenity_motorcycle_parking'][way_pixels > 900] {
     [feature = 'amenity_parking'] {
-      marker-file: url('symbols/parking.svg');
+      // the color is too light
+      // marker-file: url('symbols/parking.svg');
+      marker-file: url('symbols/parking-24.png');
     }
     [feature = 'amenity_bicycle_parking'] {
       marker-file: url('symbols/bicycle_parking.svg');
