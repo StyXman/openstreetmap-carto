@@ -6,9 +6,9 @@ For each zoomlevel, all borders come from a single attachment, to handle
 overlapping borders correctly.
 */
 
-#admin-low-zoom[zoom < 11],
+#admin-low-zoom/*[zoom < 11],
 #admin-mid-zoom[zoom >= 11][zoom < 13],
-#admin-high-zoom[zoom >= 13] {
+#admin-high-zoom[zoom >= 13]*/ {
   [admin_level = '2'] {
     [zoom >= 4] {
       background/line-join: bevel;
@@ -57,6 +57,7 @@ overlapping borders correctly.
     }
   }
 
+  /*
   [admin_level = '4'] {
     [zoom >= 4] {
       background/line-join: bevel;
@@ -93,6 +94,7 @@ overlapping borders correctly.
       line-width: 3;
     }
   }
+  */
   /*
   The following code prevents admin boundaries from being rendered on top of
   each other. Comp-op works on the entire attachment, not on the individual
@@ -108,6 +110,7 @@ overlapping borders correctly.
   comp-op: darken;
 }
 
+/*
 #admin-mid-zoom[zoom >= 11][zoom < 13],
 #admin-high-zoom[zoom >= 13] {
   [admin_level = '5'][zoom >= 11] {
@@ -164,6 +167,7 @@ overlapping borders correctly.
   opacity: 0.5;
   comp-op: darken;
 }
+*/
 
 #admin-text[zoom >= 16] {
   text-name: "[name]";
