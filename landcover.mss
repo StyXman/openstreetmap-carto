@@ -676,7 +676,6 @@
     [way_pixels >= 64] { polygon-gamma: 0.3;  }
   }
 }
-}
 
 /* man_made=cutline */
 #landcover-line {

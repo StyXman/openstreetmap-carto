@@ -1,5 +1,5 @@
 Map {
-  background-color: @landcolor;
+  background-color: @land-color;
 }
 
 // nice stuff is things that are not so common and that I like to see from far,
@@ -12,7 +12,7 @@ Map {
 
 @water-color: #aad3df;
 @water-dark: #5a5aa1;
-@water-text: #water-dark;
+@water-text: @water-dark;
 @land-color: #f2efe9;
 
 @standard-halo-radius: 2;

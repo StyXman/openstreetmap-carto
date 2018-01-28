@@ -155,7 +155,7 @@
     marker-clip: false;
   }
 
-  // Ford tagging on points - ford on lines is defined later 
+  // Ford tagging on points - ford on lines is defined later
   [feature = 'highway_ford'][zoom >= 16] {
     marker-file: url('symbols/ford.svg');
     marker-fill: @transportation-icon;
@@ -261,8 +261,6 @@
   }
 
   [feature = 'amenity_fuel'][zoom >= @useful] {
-    // too small
-    // marker-file: url('symbols/fuel.svg');
     marker-file: url('symbols/fuel-24.png');
     marker-fill: @transportation-icon;
     marker-placement: interior;
@@ -388,8 +386,6 @@
   [feature = 'amenity_bicycle_parking'][way_pixels > 900],
   [feature = 'amenity_motorcycle_parking'][way_pixels > 900] {
     [feature = 'amenity_parking'] {
-      // the color is too light
-      // marker-file: url('symbols/parking.svg');
       marker-file: url('symbols/parking-24.png');
     }
     [feature = 'amenity_bicycle_parking'] {
@@ -1051,7 +1047,7 @@
     marker-clip: false;
   }
 
-  // Slipway tagging on points - slipway on lines is defined later 
+  // Slipway tagging on points - slipway on lines is defined later
   [feature = 'leisure_slipway'][zoom >= 17] {
     marker-file: url('symbols/transport_slipway.p.20.svg');
     marker-width: 8;
@@ -1116,13 +1112,13 @@
     marker-placement: interior;
     marker-clip: false;
   }
-  
+
   [feature = 'military_bunker'][zoom >= 17] {
     marker-file: url('symbols/bunker.svg');
-    marker-fill: @man-made-icon;    
+    marker-fill: @man-made-icon;
     marker-placement: interior;
     marker-clip: false;
-  }  
+  }
 
   [feature = 'natural_spring'][zoom >= 14] {
     marker-file: url('symbols/spring.svg');
@@ -1271,6 +1267,8 @@
     text-halo-fill: @standard-halo-fill;
     text-placement: interior;
   }
+
+  // TODO: sea and ocean
 
   [feature = 'amenity_pub'],
   [feature = 'amenity_restaurant'],
@@ -1490,7 +1488,7 @@
     text-halo-fill: @standard-halo-fill;
     text-placement: interior;
   }
-  
+
   [feature = 'military_bunker'][zoom >= 17] {
     text-name: "[name]";
     text-size: @standard-font-size;
@@ -2137,7 +2135,7 @@
     }
   }
 
-  [feature = 'shop_supermarket'],
+  [feature = 'shop_supermarket'] {
     [zoom >= @useful] {
       text-name: "[name]";
       text-size: @standard-font-size;
@@ -2377,6 +2375,7 @@
     text-halo-fill: @standard-halo-fill;
     text-placement: interior;
   }
+  */
 }
 
 #amenity-line {
@@ -2390,7 +2389,6 @@
     marker-file: url('symbols/transport_slipway.p.20.svg');
     marker-fill: @transportation-icon;
   }
-  */
 }
 
 /*
