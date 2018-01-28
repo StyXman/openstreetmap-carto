@@ -763,19 +763,20 @@ Layer:
         ) AS line_barriers
     properties:
       minzoom: 14
-  - id: cliffs
+  - id: relief_symbols
     geometry: linestring
     <<: *extents
     Datasource:
       <<: *osm2pgsql
       table: |-
         (SELECT
-            way, "natural", man_made
+            way, "natural", man_made, name,
+            ST_Length(way)/NULLIF(SQRT(!pixel_width!::real*!pixel_width!::real),0) AS pixel_length
           FROM planet_osm_line
-          WHERE "natural" = 'cliff' OR man_made = 'embankment'
-        ) AS cliffs
+          WHERE "natural" in ('cliff', 'arete', 'ridge') OR man_made = 'embankment'
+        ) AS relief_symbols
     properties:
-      minzoom: 13
+      minzoom: 10
   - id: area-barriers
     class: barriers
     geometry: polygon
@@ -1558,7 +1559,8 @@ Layer:
               'leisure_' || CASE WHEN leisure IN ('water_park', 'playground', 'miniature_golf', 'golf_course', 'picnic_table',
                                                   'fitness_centre', 'fitness_station') THEN leisure ELSE NULL END,
               'man_made_' || CASE WHEN man_made IN ('mast', 'water_tower', 'lighthouse', 'windmill', 'obelisk') THEN man_made ELSE NULL END,
-              'natural_' || CASE WHEN "natural" IN ('spring') THEN "natural" ELSE NULL END,
+              'natural_' || CASE WHEN "natural" IN ('spring', 'valley', 'ridge', 'cliff', 'arete', 'dale', 'gorge', 'couloir', 'mountain_range',
+                                                    'massif') THEN "natural" ELSE NULL END,
               'historic_' || CASE WHEN historic IN ('memorial', 'monument', 'archaeological_site', 'castle', 'fort')
                              THEN concat_ws('_', historic, CASE WHEN tags->'memorial' IN ('plaque') THEN tags->'memorial' ELSE NULL END)
                              ELSE NULL END,
@@ -1569,6 +1571,7 @@ Layer:
             ) AS feature,
             access,
             religion,
+            name,
             tags->'denomination' as denomination,
             tags->'generator:source' as "generator:source",
             tags->'power_source' as power_source,
@@ -2229,7 +2232,8 @@ Layer:
                                                       'construction', 'military', 'plant_nursery') THEN landuse ELSE NULL END,
                   'man_made_' || CASE WHEN man_made IN ('lighthouse', 'windmill', 'mast', 'water_tower', 'obelisk', 'works') THEN man_made ELSE NULL END,
                   'natural_' || CASE WHEN "natural" IN ('wood', 'peak', 'volcano', 'saddle', 'cave_entrance', 'water', 'mud', 'wetland', 'marsh', 'bay', 'spring',
-                                                        'scree', 'shingle', 'bare_rock', 'sand', 'heath', 'grassland', 'scrub', 'beach', 'glacier', 'tree')
+                                                        'scree', 'shingle', 'bare_rock', 'sand', 'heath', 'grassland', 'scrub', 'beach', 'glacier', 'tree',
+                                                        'cliff', 'valley', 'ridge', 'arete', 'dale', 'gorge', 'couloir', 'mountain_range', 'massif')
                                                         THEN "natural" ELSE NULL END,
                   'place_' || CASE WHEN place IN ('island', 'islet') THEN place ELSE NULL END,
                   'military_' || CASE WHEN military IN ('danger_area', 'bunker') THEN military ELSE NULL END,
