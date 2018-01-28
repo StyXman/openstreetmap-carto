@@ -82,9 +82,6 @@ service     13
 @path-casing: @default-casing;
 @path-fill: black;
 
-@footway-casing: @default-casing;
-@footway-fill: salmon;
-
 @steps-casing: @default-casing;
 @steps-fill: @footway-fill;
 
@@ -102,11 +99,13 @@ service     13
 @track-grade1-fill: #b37700;
 @track-grade2-fill: #a87000;
 
+@footway-casing: @default-casing;
+@footway-fill: @track-fill;
+
 @aeroway-fill: #bbc;
 @runway-fill: @aeroway-fill;
 @taxiway-fill: @aeroway-fill;
 @helipad-fill: @aeroway-fill;
-
 
 @rail-fill: #404040;
 
