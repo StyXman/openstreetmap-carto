@@ -57,6 +57,19 @@
 @military: #f55;
 @beach: #fff1ba;
 
+// --- Reliefs --
+
+@ridge-text:          #7A2F18;
+@valley-text:         #305040;
+@mountain_range-text: #C03A01;
+@mountain_area-text:  @mountain_range-text;
+@massif-text:         #C03A01;
+@cliff-text:          #999;
+@arete-text:          #800000;
+@couloir-text:        #0080C0;
+@dale-text:           #008000;
+@gorge-text:          #800040;
+
 // --- Sports ---
 
 @pitch: #aae0cb; // also track
@@ -767,7 +780,33 @@
   }
 }
 
-#cliffs {
+#reliefsymbols {
+  [natural = 'arete'][zoom >= 12] {
+    line-pattern-smooth: 0.3;
+    /*
+    line-pattern-file: url('symbols/arete_small.png');
+    [zoom >= 15] {
+      line-pattern-file: url('symbols/arete_medium.png');
+    }
+    [zoom >= 16] {
+      line-pattern-file: url('symbols/arete_large.png');
+    }
+    */
+    line-pattern-file: url('symbols/arete.svg');
+  }
+  [natural = 'ridge'][zoom >= 12] {
+    /*
+    line-pattern-smooth: 0.3;
+    line-pattern-file: url('symbols/ridge_small.png');
+    [zoom >= 15] {
+      line-pattern-file: url('symbols/ridge_medium.png');
+    }
+    [zoom >= 16] {
+      line-pattern-file: url('symbols/ridge_large.png');
+    }
+    */
+    line-pattern-file: url('symbols/ridge.svg');
+  }
   [natural = 'cliff'][zoom >= 13] {
     line-pattern-file: url('symbols/cliff_mdione.png');
     [zoom >= 15] {
@@ -846,18 +885,214 @@
   }
 }
 
+#text-point[zoom >= 15],
 #text-line {
-  [feature = 'natural_cliff'][zoom >= 15],
+  [feature = 'natural_cliff'][zoom >= 11],
   [feature = 'man_made_embankment'][zoom >= 15] {
     text-name: "[name]";
     text-halo-radius: @standard-halo-radius;
     text-halo-fill: @standard-halo-fill;
-    text-fill: #999;
+    text-fill: @cliff-text;
     text-size: 10;
     text-face-name: @book-fonts;
-    text-placement: line;
     text-dy: 8;
     text-vertical-alignment: middle;
     text-spacing: 400;
+    #text-line {
+      text-placement: line;
+    }
+    #text-point {
+      text-placement: point;
+      text-dy: 8;
+      text-size: 10;
+    }
+  }
+  [feature = 'natural_dale'][zoom >= 13],
+  [feature = 'natural_gorge'][zoom >= 14],
+  [feature = 'natural_couloir'][zoom >= 14],
+  [feature = 'natural_ridge'][zoom >= 8]::foreground,
+  [feature = 'natural_arete'][zoom >= 8]::foreground,
+  [feature = 'natural_massif'][zoom >= 15]#text-point, // point visibility given to mappers at high zoom, to help debugging tags to be changed to polylines
+  [feature = 'natural_mountain_range'][zoom >= 15]#text-point, // point visibility given to mappers at high zoom, to help debugging tags to be changed to polylines
+  [feature = 'place_mountain_area'][zoom >= 15]#text-point, // point visibility given to mappers at high zoom, to help debugging tags to be changed to polylines
+  [feature = 'natural_valley'][zoom >= 8]::foreground {
+    [feature = 'natural_dale'] { text-fill: @dale-text; }
+    [feature = 'natural_gorge'] { text-fill: @gorge-text; }
+    [feature = 'natural_couloir'] { text-fill: @couloir-text; }
+    [feature = 'natural_ridge'] { text-fill: @ridge-text; }
+    [feature = 'natural_arete']  { text-fill: @arete-text; }
+    [feature = 'natural_valley'] { text-fill: @valley-text; }
+    [feature = 'natural_massif'] {
+      text-fill: @massif-text;
+      text-transform: uppercase;
+    }
+    [feature = 'natural_mountain_range'] {
+      text-fill: @mountain_range-text;
+      text-transform: uppercase;
+    }
+    [feature = 'place_mountain_area'] {
+      text-fill: @mountain_area-text;
+      text-transform: uppercase;
+    }
+    // general settings
+    text-halo-radius: 2;
+    text-halo-fill: rgba(255,255,255,0.6);
+    text-opacity: 1;
+    [zoom >= 10] { text-opacity: 0.7; }
+    text-dx: 8;
+    text-dy: 8;
+    text-spacing: 760;
+    text-face-name: @oblique-fonts;
+    text-wrap-width: 2;
+    text-name: "[name]";
+    // the following text-line and spacing dimensions are independent from pixel_length (which needs text-line)
+    [zoom >= 10] { text-size: 10; text-opacity: 0.5; }
+    [zoom >= 11] { text-size: 11; text-character-spacing: 4; text-opacity: 0.6; }
+    [zoom >= 12] { text-size: 13; text-character-spacing: 4; text-opacity: 0.6; }
+    [zoom >= 13] { text-size: 13; text-character-spacing: 5; text-opacity: 0.6; }
+    [zoom >= 14] { text-size: 12; text-character-spacing: 3; }
+    [zoom >= 15] {
+      text-size: 16;
+      text-dx: 15;
+      text-dy: 15;
+      text-character-spacing: 6;
+    }
+    [zoom >= 16] { text-size: 18; text-character-spacing: 12; }
+    #text-line {
+      text-max-char-angle-delta: 30;
+      text-placement: line;
+      text-placement-type: simple;
+      [zoom < 15] {
+        // text-placements: "N,S,E,W,NE,SE,NW,SW,18,16,14,12,10,9,8";
+      }
+      // the following text-line and spacing dimensions depend on pixel_length (e.g., differentiate long lines)
+      [pixel_length > 60] {
+        text-dx: 11;
+        text-dy: 11;
+        text-size: 11;
+        text-character-spacing: 3;
+        text-wrap-width: 100;
+      }
+      [zoom = 10][pixel_length > 125] {
+        text-character-spacing: 2;
+        text-size: 13;
+      }
+      [zoom = 11][pixel_length > 250] {
+        text-size: 13;
+        text-character-spacing: 6;
+        text-opacity: 0.6;
+      }
+      [zoom = 12][pixel_length > 500] {
+        text-size: 14;
+        text-character-spacing: 7;
+        text-opacity: 0.6;
+        text-transform: uppercase;
+      }
+      [zoom = 13][pixel_length > 1000] {
+        text-size: 15;
+        text-character-spacing: 10;
+        text-opacity: 0.6;
+        text-max-char-angle-delta: 10;
+        text-transform: uppercase;
+      }
+      [zoom = 14][pixel_length > 2000] {
+        text-size: 20;
+        text-character-spacing: 10;
+        text-opacity: 0.5;
+        text-max-char-angle-delta: 10;
+        text-transform: uppercase;
+        text-placement-type: dummy;
+      }
+      [zoom >= 15][pixel_length > 4000] {
+        text-size: 25;
+        text-character-spacing: 20;
+        text-opacity: 0.5;
+        text-max-char-angle-delta: 10;
+        text-transform: uppercase;
+        text-placement-type: dummy;
+      }
+      [zoom < 16][name=~'^.{14,}$'] { // improve probability for long names (>=14 characters) to be shown
+        text-max-char-angle-delta: 30;
+        text-transform: none;
+      }
+    }
+    [feature = 'natural_dale'],
+    [feature = 'natural_gorge'],
+    [feature = 'natural_couloir'],
+    [feature = 'natural_arete'],
+    [feature = 'natural_ridge'] {
+      [zoom >= 10] { text-size: 10; }
+      [zoom >= 11] { text-size: 12; }
+      [zoom >= 12] { text-size: 12; }
+      [zoom >= 13] { text-size: 12; }
+      [zoom >= 14] { text-size: 12; }
+      [zoom >= 15] { text-size: 15; }
+      [zoom >= 16] { text-size: 18; }
+    }
+    #text-point { // points are only shown for debugging purpose, with fixed rendering
+      text-placement: point;
+      text-character-spacing: 0;
+      text-size: 10;
+    }
+  }
+}
+
+#landcover-low-zoom[zoom < 10]::foreground,
+#amenity-points-poly[zoom >= 10] {
+  [feature = 'natural_dale'][zoom >= 14],
+  [feature = 'natural_gorge'][zoom >= 15],
+  [feature = 'natural_couloir'][zoom >= 15],
+  [feature = 'natural_arete'][zoom >= 15],
+  [feature = 'natural_ridge'][zoom >= 15],
+  [feature = 'natural_massif'][zoom >= 8],
+  [feature = 'natural_mountain_range'][zoom >= 8][zoom < 13],
+  [feature = 'place_mountain_area'][zoom >= 8][zoom < 13],
+  [feature = 'natural_valley'] {
+    text-halo-radius: 2.5;
+    text-halo-fill: rgba(255,255,255,0.6);
+    text-vertical-alignment: middle;
+    text-opacity: 1;
+    text-spacing: 760;
+    text-face-name: @oblique-fonts;
+    text-wrap-width: 2;
+    text-placement: interior;
+    text-placement-type: simple;
+    text-size: 8;
+    [zoom >= 9] { text-size: 9; }
+    [zoom < 11] {
+      // text-placements: "N,S,E,W,NE,SE,NW,SW,10,9,8,7";
+      text-placements: "N,S,E,W";
+    }
+    [zoom >= 10] {
+      text-size: 10;
+      text-opacity: 0.7;
+      [way_pixels > 4000] { text-size: 12; }
+      [way_pixels > 20000][zoom >= 10] { text-size: 14; }
+      [way_pixels > 60000][zoom >= 11] { text-size: 17; }
+      [way_pixels > 200000][zoom >= 12] { text-size: 21; }
+      [way_pixels > 500000][zoom >= 13] { text-size: 25; }
+    }
+    text-name: "[name]";
+    [feature = 'natural_dale'] { text-fill: @dale-text; }
+    [feature = 'natural_gorge'] { text-fill: @gorge-text; }
+    [feature = 'natural_couloir'] { text-fill: @couloir-text; }
+    [feature = 'natural_ridge'] { text-fill: @ridge-text; }
+    [feature = 'natural_arete']  { text-fill: @arete-text; }
+    [feature = 'natural_massif'] {
+      text-fill: @massif-text;
+      text-transform: uppercase;
+      [zoom>=9] { text-character-spacing: 3; }
+    }
+    [feature = 'natural_mountain_range'] {
+      text-fill: @mountain_range-text;
+      text-transform: uppercase;
+      [zoom>=9] { text-character-spacing: 3; }
+    }
+    [feature = 'place_mountain_area'] {
+      text-fill: @mountain_area-text;
+      text-transform: uppercase;
+      [zoom>=9] { text-character-spacing: 3; }
+    }
+    [feature = 'natural_valley'] { text-fill: @valley-text; }
   }
 }

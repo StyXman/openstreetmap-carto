@@ -1595,7 +1595,7 @@ Layer:
             OR shop IS NOT NULL
             OR leisure IN ('water_park', 'playground', 'miniature_golf', 'golf_course', 'picnic_table', 'fitness_centre', 'fitness_station')
             OR man_made IN ('mast', 'water_tower', 'lighthouse', 'windmill', 'obelisk')
-            OR "natural" IN ('spring')
+            OR "natural" IN ('spring', 'valley', 'ridge', 'cliff', 'arete', 'dale', 'gorge', 'couloir', 'mountain_range', 'massif')
             OR historic IN ('memorial', 'monument', 'archaeological_site', 'castle', 'fort')
             OR tags->'memorial' IN ('plaque')
             OR military IN ('bunker')
@@ -2153,12 +2153,13 @@ Layer:
             name,
             tags->'operator' as operator,
             ref,
+            ST_Length(way)/NULLIF(SQRT(!pixel_width!::real*!pixel_width!::real),0) AS pixel_length,
             NULL AS way_area,
             CASE WHEN building = 'no' OR building IS NULL THEN 'no' ELSE 'yes' END AS is_building
           FROM planet_osm_line
           WHERE (man_made IN ('pier', 'breakwater', 'groyne', 'embankment')
               OR waterway IN ('dam', 'weir')
-              OR "natural" IN ('cliff'))
+              OR "natural" IN ('cliff', 'ridge', 'valley', 'glacier', 'arete', 'dale', 'gorge', 'couloir', 'mountain_range', 'massif'))
             AND name IS NOT NULL
         ) AS text_line
     properties:
