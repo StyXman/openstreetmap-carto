@@ -210,13 +210,13 @@ overlapping borders correctly.
 }
 
 #nature-reserve-boundaries {
-  [way_pixels > 3000][zoom >= 8] {
-    [zoom < 10] {
+  [way_pixels > 3000][zoom >= 7] {
+    // [zoom < 10] {
       ::fill {
         opacity: 0.05;
         polygon-fill: green;
       }
-    }
+    // }
     a/line-width: 1;
     a/line-offset: -0.5;
     a/line-color: green;
