@@ -15,8 +15,8 @@ Map {
 @water-text: #water-dark;
 @land-color: #f2efe9;
 
-@standard-halo-radius: 1;
-@standard-halo-fill: rgba(255,255,255,0.6);
+@standard-halo-radius: 2;
+@standard-halo-fill: rgba(255,255,255,0.7);
 
 // admin
 @admin-boundaries: purple;
