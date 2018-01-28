@@ -402,6 +402,18 @@
 
 .text-low-zoom[zoom < 10],
 .text[zoom >= 10] {
+  [feature = 'place_ocean'],
+  [feature = 'place_sea'] {
+    #text-point[zoom >= 5] {
+      text-name: "[name]";
+      text-halo-radius: 1;
+      text-halo-fill: rgba(255,255,255,0.6);
+      text-fill: @water-text;
+      text-size: 12;
+      text-face-name: @oblique-fonts;
+    }
+  }
+
   [feature = 'natural_water'],
   [feature = 'landuse_reservoir'],
   [feature = 'landuse_basin'],
