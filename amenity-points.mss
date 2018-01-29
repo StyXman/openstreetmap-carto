@@ -274,6 +274,13 @@
     marker-clip: false;
   }
 
+  [feature = 'tourism_apartment'][zoom >= 18] {
+    marker-file: url('symbols/apartment.svg');
+    marker-fill: @accommodation-icon;
+    point-placement: interior;
+    marker-clip: false;
+  }
+
   [feature = 'amenity_hospital'][zoom >= @useful] {
     marker-file: url('symbols/hospital.svg');
     marker-fill: @health-color;
@@ -518,7 +525,8 @@
     marker-clip: false;
   }
 
-  [feature = 'amenity_recycling'][zoom >= 17] {
+  [feature = 'amenity_recycling'][recycling_type = 'centre'][zoom >= 17],
+  [feature = 'amenity_recycling'][zoom >= 19] {
     marker-file: url('symbols/recycling.svg');
     marker-fill: @amenity-brown;
     marker-placement: interior;
@@ -554,7 +562,7 @@
     marker-clip: false;
   }
 
-  [feature = 'emergency_phone'][zoom >= 17] {
+  [feature = 'emergency_phone'][zoom >= 19] {
     marker-file: url('symbols/emergency_phone.svg');
     marker-fill: @amenity-brown;
     marker-placement: interior;
@@ -1035,7 +1043,7 @@
 
   [feature = 'tourism_picnic_site'][zoom >= 16] {
     marker-file: url('symbols/picnic.svg');
-    marker-fill: @amenity-brown;
+    marker-fill: @leisure-green;
     marker-placement: interior;
     marker-clip: false;
   }
@@ -1046,6 +1054,13 @@
     marker-placement: interior;
     marker-clip: false;
   }
+  
+  [feature = 'leisure_firepit'][zoom >= 17] {
+    marker-file: url('symbols/firepit.svg');
+    marker-fill: @amenity-brown;
+    marker-placement: interior;
+    marker-clip: false;
+  }  
 
   // Slipway tagging on points - slipway on lines is defined later
   [feature = 'leisure_slipway'][zoom >= 17] {
@@ -1395,6 +1410,9 @@
     text-wrap-width: @standard-wrap-width;
     text-line-spacing: @standard-line-spacing-size;
     text-fill: @amenity-brown;
+    [feature = 'tourism_picnic_site'] {
+      text-fill: @leisure-green;
+    }
     text-dy: 10;
     text-face-name: @standard-font;
     text-halo-radius: @standard-halo-radius;
@@ -1895,6 +1913,7 @@
   [feature = 'tourism_hostel'][zoom >= 17],
   [feature = 'tourism_chalet'][zoom >= 17],
   [feature = 'tourism_guest_house'][zoom >= 17],
+  [feature = 'tourism_apartment'][zoom >= 18],
   [feature = 'tourism_wilderness_hut'][zoom >= 14],
   [feature = 'tourism_camp_site'][zoom >= 17],
   [feature = 'tourism_caravan_site'][zoom >= 17], {
@@ -2007,7 +2026,8 @@
     text-placement: interior;
   }
 
-  [feature = 'amenity_recycling'][zoom >= 17] {
+  [feature = 'amenity_recycling'][recycling_type = 'centre'][zoom >= 17],
+  [feature = 'amenity_recycling'][zoom >= 19] {
     text-name: "[name]";
     text-size: @standard-font-size;
     text-wrap-width: @standard-wrap-width;

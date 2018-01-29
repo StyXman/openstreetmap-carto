@@ -119,7 +119,7 @@
         [waterway = 'stream'][zoom >= 15] {
           line-width: 3.5;
         }
-        [intermittent = 'yes'] {
+        [int_intermittent = 'yes'] {
           line-dasharray: 4,3;
           line-cap: butt;
           line-join: round;
@@ -161,7 +161,7 @@
 
 #water-lines-low-zoom {
   [waterway = 'river'][zoom >= 8][zoom < 12] {
-    [intermittent = 'yes'] {
+    [int_intermittent = 'yes'] {
       line-dasharray: 8,4;
       line-cap: butt;
       line-join: round;
@@ -206,7 +206,7 @@
     water/line-cap: round;
     water/line-join: round;
 
-    [intermittent = 'yes'],
+    [int_intermittent = 'yes'],
     [waterway = 'wadi'] {
       [bridge = 'yes'][zoom >= 14] {
         bridgefill/line-color: white;
@@ -274,7 +274,7 @@
         }
       }
 
-      [intermittent = 'yes'] {
+      [int_intermittent = 'yes'] {
         water/line-dasharray: 4,3;
         water/line-cap: butt;
         water/line-join: round;
