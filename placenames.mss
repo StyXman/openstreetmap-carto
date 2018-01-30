@@ -63,6 +63,7 @@
     }
   }
 }
+*/
 
 #capital-names {
   [zoom >= 4][zoom < 8][population > 600000],
@@ -127,7 +128,6 @@
     }
   }
 }
-*/
 
 #placenames-medium::high-importance {
   [category = 1][zoom < 14] {
