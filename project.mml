@@ -1605,8 +1605,8 @@ Layer:
             tags->'denomination' as denomination,
             tags->'generator:source' as "generator:source",
             tags->'power_source' as power_source,
-            tags->'castle_type',
-            tags->'ruins',
+            tags->'castle_type' as castle_type,
+            tags->'ruins' as ruins,
             tags->'icao' as icao,
             tags->'iata' as iata,
             tags->'recycling_type' as recycling_type,
@@ -1710,8 +1710,8 @@ Layer:
             tags->'denomination' as denomination,
             tags->'generator:source' as "generator:source",
             tags->'power_source' as power_source,
-            tags->'castle_type',
-            tags->'ruins',
+            tags->'castle_type' as castle_type,
+            tags->'ruins' as ruins,
             tags->'icao' as icao,
             tags->'iata' as iata,
             tags->'recycling_type' as recycling_type,
@@ -2064,7 +2064,6 @@ Layer:
               'leisure_' || CASE WHEN leisure IN ('nature_reserve') THEN leisure ELSE NULL END
             ) AS feature,
             name,
-            castle_type,
             CASE WHEN building = 'no' OR building IS NULL THEN 'no' ELSE 'yes' END AS is_building -- always no with the where conditions
           FROM planet_osm_polygon
           WHERE (landuse IN ('forest', 'military', 'farmland')
@@ -2144,12 +2143,12 @@ Layer:
                 END
             ) AS name,
             tags->'operator' as operator,
+            tags->'ruins' as ruins,
             tags->'icao' as icao,
             tags->'iata' as iata,
             tags->'recycling_type' as recycling_type,
             ref,
             way_area,
-            castle_type,
             CASE WHEN building = 'no' OR building IS NULL THEN 'no' ELSE 'yes' END AS is_building
           FROM planet_osm_polygon
           -- The upcoming where clause is needed for performance only, as the CASE statements would end up doing the equivalent filtering
@@ -2226,12 +2225,12 @@ Layer:
               ELSE NULL
             END AS score,
             operator,
+            ruins,
             icao,
             iata,
             recycling_type,
             ref,
             way_area,
-            castle_type,
             is_building
           FROM
             (SELECT
@@ -2295,12 +2294,12 @@ Layer:
                 END AS elevation,
                 "natural",
                 tags->'operator' as operator,
+                tags->'ruins' as ruins,
                 tags->'icao' as icao,
                 tags->'iata' as iata,
                 tags->'recycling_type' as recycling_type,
                 ref,
                 NULL AS way_area,
-                castle_type,
                 CASE WHEN building = 'no' OR building IS NULL THEN 'no' ELSE 'yes' END AS is_building
               FROM planet_osm_point
               -- The upcoming where clause is needed for performance only, as the CASE statements would end up doing the equivalent filtering
