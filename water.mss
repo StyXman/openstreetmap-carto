@@ -1,4 +1,4 @@
-@water-text: #4d80b3;
+@water-text: @water-dark;
 @glacier: #adbcec;
 @glacier-line: #6cf;
 
