@@ -130,10 +130,14 @@
   }
 
   // local
+  [waterway = 'canal'][zoom >= 12],
   [waterway = 'river'][zoom >= 6] {
     line-color: @water-dark;
     line-width: 0.5;
-    [zoom >= 8] { line-width: 2.2; }
+    [waterway = 'canal'] {
+      line-color: #181818;
+    }
+    [zoom >= 8] { line-width: 1; }
     [zoom >= 9] { line-width: 2.7; }
     [zoom >= 10] { line-width: 3.1; }
     [zoom >= 12] {
