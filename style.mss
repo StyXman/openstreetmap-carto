@@ -15,6 +15,11 @@ Map {
 @water-text: @water-dark;
 @land-color: #f2efe9;
 
+@contour-op: minus;
+@contour-color: #404040;
+@contour-text: #404040;  // negated
+@contour-halo: black;
+
 @standard-halo-radius: 2.5;
 @standard-halo-fill: white;
 
@@ -156,7 +161,8 @@ service     13
 
 #contour-50 {
   [zoom >= 13] {
-    line-color: #222;
+    comp-op: @contour-op;
+    line-color: @contour-color;
     line-width: 0.5;
     line-smooth: 0.8;
     line-opacity: 0.2;
@@ -165,27 +171,18 @@ service     13
 
 #contour-100 {
   [zoom >= 11] {
-    line-color: #222;
+    comp-op: @contour-op;
+    line-color: @contour-color;
     line-width: 0.5;
     line-smooth: 0.8;
     line-opacity: 0.6;
-  }
-
-  [zoom >= 13] {
-    text-name: "[height]";
-    text-face-name: @book-fonts;
-    text-size: 12;
-    text-fill: #222;
-    text-opacity: 0.6;
-    text-halo-radius: 1;
-    text-placement: line;
-    text-spacing: 400;
   }
 }
 
 #contour-250 {
   [zoom = 10] {
-    line-color: #222;
+    comp-op: @contour-op;
+    line-color: @contour-color;
     line-width: 0.5;
     line-smooth: 0.8;
     line-opacity: 0.6;
@@ -194,7 +191,8 @@ service     13
 
 #contour-500 {
   [zoom >= 9] {
-    line-color: #222;
+    comp-op: @contour-op;
+    line-color: @contour-color;
     line-width: 0.5;
     line-smooth: 0.8;
     line-opacity: 0.6;
@@ -206,21 +204,13 @@ service     13
 
   [zoom >= 12] {
     line-width: 1;
-
-    text-name: "[height]";
-    text-face-name: @book-fonts;
-    text-size: 12;
-    text-fill: #222;
-    text-opacity: 0.6;
-    text-halo-radius: 1;
-    text-placement: line;
-    text-spacing: 400;
   }
 }
 
 #contour-1000 {
   [zoom >= 8] {
-    line-color: #222;
+    comp-op: @contour-op;
+    line-color: @contour-color;
     line-width: 0.5;
     line-smooth: 0.8;
     line-opacity: 0.6;
@@ -232,15 +222,27 @@ service     13
 
   [zoom >= 12] {
     // line-width: 1.5;
+  }
+}
+
+.contour-text {
+  #contour-1000[zoom >= 9],
+  #contour-500[zoom >= 11],
+  #contour-100[zoom >= 13],
+  {
+    // comp-op: src-over;
+    comp-op: @contour-op;
 
     text-name: "[height]";
     text-face-name: @book-fonts;
     text-size: 12;
-    text-fill: #222;
-    text-opacity: 0.6;
-    text-halo-radius: 1;
+    text-fill: @contour-text;
+    text-opacity: 0.7;
+    text-halo-radius: 2;
+    text-halo-fill: @contour-halo;
     text-placement: line;
     text-spacing: 400;
+    text-min-distance: 100;
   }
 }
 
