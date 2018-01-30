@@ -1,6 +1,6 @@
 @water-text: #4d80b3;
-@glacier: #ddecec;
-@glacier-line: #9cf;
+@glacier: #adbcec;
+@glacier-line: #6cf;
 
 // local
 #water-areas::border {
@@ -24,7 +24,25 @@
   }
 }
 
+#glacier {
+  [natural = 'glacier']::natural {
+    [zoom >= 6] {
+      line-width: 0.75;
+      line-color: @glacier-line;
+      polygon-fill: @glacier;
+      [zoom >= 8] {
+        line-width: 1;
+      }
+      [zoom >= 10] {
+        line-dasharray: 4,2;
+        line-width: 1.5;
+      }
+    }
+  }
+}
+
 #water-areas {
+  /*
   [natural = 'glacier']::natural {
     [zoom >= 8] {
       line-width: 1.0;
@@ -36,6 +54,7 @@
       }
     }
   }
+  */
 
   [waterway = 'dock'] {
     [zoom >= 9]::waterway {
