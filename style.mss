@@ -247,7 +247,10 @@ service     13
 }
 
 #pistes {
-  [zoom >= 14] {
+  [zoom >= 12] {
+    line-width: 1;
+    line-opacity: 0.6;
+    line-smooth: 0.4;
     [grade = 'novice'] {
       line-color: green;
     }
@@ -260,7 +263,10 @@ service     13
     [grade = 'advanced'] {
       line-color: black;
     }
+  }
 
+
+  [zoom >= 14] {
     line-width: 2;
     line-opacity: 0.6;
     line-smooth: 0.4;
