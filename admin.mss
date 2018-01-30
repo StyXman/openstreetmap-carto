@@ -122,7 +122,7 @@ overlapping borders correctly.
   The SQL has `ORDER BY admin_level`, so the boundary with the lowest
   admin_level is rendered on top, and therefore the only visible boundary.
   */
-  opacity: 0.4;
+  opacity: 0.8;
   comp-op: darken;
 }
 
@@ -183,7 +183,7 @@ overlapping borders correctly.
     }
   }
   opacity: 0.7;
-  // comp-op: darken;
+  comp-op: darken;
 }
 */
 
