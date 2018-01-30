@@ -18,6 +18,8 @@ Map {
 @standard-halo-radius: 2.5;
 @standard-halo-fill: white;
 
+@darken-lighten: 50%;
+
 // admin
 @admin-boundaries: purple;
 

@@ -25,8 +25,8 @@
 @access-marking-living-street: #cccccc;
 
 @default-casing: white;
-@tertiary-casing: #8f8f8f;
-@residential-casing: #bbb;
+@tertiary-casing: black;
+@residential-casing: #888;
 @road-casing: @residential-casing;
 @service-casing: @residential-casing;
 @living-street-casing: @residential-casing;
@@ -37,10 +37,27 @@
 @cycleway-casing: @default-casing;
 @bridleway-casing: @default-casing;
 @track-casing: @default-casing;
+@service-casing: #999;
+@living-street-casing: @default-casing;
+@pedestrian-casing: grey;
+@path-casing: @default-casing;
+@footway-casing: @default-casing;
+@steps-casing: @default-casing;
+@cycleway-casing: @default-casing;
+@bridleway-casing: @default-casing;
+@track-casing: @default-casing;
 
 @tertiary-shield: #3b3b3b;
 
-@unimportant-road: @residential-casing;
+/*
+minor roads for different zoom levels
+tertiary    10-12
+residential 12-13
+road        10-
+service     13
+*/
+@unimportant-road: @tertiary-casing;
+@unimportant-minor-road: #666;
 
 @residential-construction: #aaa;
 @service-construction: #aaa;
@@ -56,6 +73,13 @@
 @trunk-tunnel-fill: lighten(@trunk-fill, 10%);
 @primary-tunnel-fill: lighten(@primary-fill, 10%);
 @secondary-tunnel-fill: lighten(@secondary-fill, 5%);
+/*
+TODO:
+@motorway-tunnel-fill: lighten(@motorway-fill, @darken-lighten);
+@trunk-tunnel-fill: lighten(@trunk-fill, @darken-lighten);
+@primary-tunnel-fill: lighten(@primary-fill, @darken-lighten);
+@secondary-tunnel-fill: lighten(@secondary-fill, @darken-lighten);
+*/
 @tertiary-tunnel-fill: lighten(@tertiary-fill, 5%);
 @residential-tunnel-fill: darken(@residential-fill, 5%);
 @living-street-tunnel-fill: lighten(@living-street-fill, 10%);
@@ -195,29 +219,29 @@
 @footway-width-z19:               1.6;
 @cycleway-width-z19:              1.3;
 
-
+// TODO: document which are these
 @major-casing-width-z11:          0.3;
 
-@casing-width-z12:                0.1;
-@secondary-casing-width-z12:      0.3;
+@casing-width-z12:                0.5;
+@secondary-casing-width-z12:      0;
 @major-casing-width-z12:          0.5;
 
 @casing-width-z13:                0.5;
-@residential-casing-width-z13:    0.5;
-@secondary-casing-width-z13:      0.35;
+@residential-casing-width-z13:    0.75;
+@secondary-casing-width-z13:      0.75;
 @major-casing-width-z13:          0.5;
 
 @casing-width-z14:                0.55;
-@secondary-casing-width-z14:      0.35;
-@major-casing-width-z14:          0.6;
+@secondary-casing-width-z14:      0.75;
+@major-casing-width-z14:          1;
 
 @casing-width-z15:                0.6;
-@secondary-casing-width-z15:      0.7;
-@major-casing-width-z15:          0.7;
+@secondary-casing-width-z15:      1;
+@major-casing-width-z15:          1;
 
 @casing-width-z16:                0.6;
-@secondary-casing-width-z16:      0.7;
-@major-casing-width-z16:          0.7;
+@secondary-casing-width-z16:      1;
+@major-casing-width-z16:          1;
 
 @casing-width-z17:                0.8;
 @secondary-casing-width-z17:      1;
@@ -246,7 +270,7 @@
 @bridge-casing-width-z18:         0.8;
 @major-bridge-casing-width-z18:   1;
 @bridge-casing-width-z19:         0.8;
-@major-bridge-casing-width-z19:   1;
+@major-bridge-casing-width-z19:   1.2;
 
 @paths-background-width:          1;
 @paths-bridge-casing-width:       0.5;
@@ -374,11 +398,8 @@
     }
 
     [feature = 'highway_secondary'] {
-      [zoom >= 12] {
-        line-color: @secondary-low-zoom-casing;
-        [zoom >= 13] {
-          line-color: @secondary-casing;
-        }
+      [zoom >= 13] {
+        line-color: @secondary-casing;
         line-width: @secondary-width-z12;
         [zoom >= 13] { line-width: @secondary-width-z13; }
         [zoom >= 14] { line-width: @secondary-width-z14; }
@@ -1291,7 +1312,7 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
     [feature = 'highway_secondary'] {
       [zoom >= 9][link != 'yes'],
       [zoom >= 10] {
-        line-color: @unimportant-road;
+        line-color: @secondary-low-zoom;
         line-width: @secondary-width-z9;
         [zoom >= 10] { line-width: @secondary-width-z10; }
         [zoom >= 11] { line-width: @secondary-width-z11; }
