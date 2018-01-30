@@ -226,7 +226,7 @@
       shield-fill: @placenames;
       shield-face-name: @bold-fonts;
       shield-halo-fill: @standard-halo-fill;
-      shield-halo-radius: @standard-halo-radius * 1.5;
+      shield-halo-radius: @standard-halo-radius;
       shield-wrap-width: 30; // 3.0 em
       shield-line-spacing: -1.5; // -0.15 em
       shield-margin: 7.0; // 0.7 em
