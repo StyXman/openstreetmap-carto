@@ -28,13 +28,18 @@
       text-line-spacing: -1.0; // -0.08 em
       text-margin: 9.1; // 0.7 em
     }
-    [zoom >= 10] {
+    [zoom >= 8] {
       text-size: 14;
       text-wrap-width: 55; // 3.9 em
       text-line-spacing: -0.7; // -0.05 em
     }
+    [zoom >= 10] {
+      text-size: 15;
+      text-wrap-width: 58.5; // 3.9 em
+      text-line-spacing: -0.75; // -0.05 em
+    }
     text-fill: @country-labels;
-    text-face-name: @book-fonts;
+    text-face-name: @bold-fonts;
     text-halo-fill: @standard-halo-fill;
     text-halo-radius: @standard-halo-radius * 1.5;
     text-placement: interior;
@@ -72,7 +77,7 @@
     shield-text-dx: 6;
     shield-text-dy: 6;
     shield-name: '[name]';
-    shield-face-name: @book-fonts;
+    shield-face-name: @bold-fonts;
     shield-fill: @placenames;
     shield-size: 11;
     shield-wrap-width: 30; // 2.7 em
@@ -126,6 +131,12 @@
       text-line-spacing: -0.75; // -0.05 em
       text-margin: 10.5; // 0.7 em
     }
+    [zoom >= 16] {
+      text-size: 16;
+      text-wrap-width: 80; // 5.0 em
+      text-line-spacing: -0.80; // -0.05 em
+      text-margin: 11.2; // 0.7 em
+    }
   }
 }
 
@@ -137,7 +148,7 @@
       shield-text-dx: 4;
       shield-text-dy: 4;
       shield-name: '[name]';
-      shield-face-name: @book-fonts;
+      shield-face-name: @bold-fonts;
       shield-fill: @placenames;
       shield-size: 11;
       shield-wrap-width: 30; // 2.7 em
@@ -193,6 +204,12 @@
         text-line-spacing: -0.75; // -0.05 em
         text-margin: 10.5; // 0.7 em
       }
+      [zoom >= 16] {
+        text-size: 16;
+        text-wrap-width: 80; // 5.0 em
+        text-line-spacing: -0.80; // -0.05 em
+        text-margin: 11.2; // 0.7 em
+      }
     }
   }
 }
@@ -229,7 +246,7 @@
       text-fill: @placenames;
       text-face-name: @book-fonts;
       text-halo-fill: @standard-halo-fill;
-      text-halo-radius: @standard-halo-radius * 1.5;
+      text-halo-radius: @standard-halo-radius;
       text-wrap-width: 40; // 4.0 em
       text-line-spacing: -1.0; // -0.10 em
       text-margin: 7.0; // 0.7 em
@@ -337,7 +354,7 @@
       text-fill: @placenames;
       text-face-name: @book-fonts;
       text-halo-fill: @standard-halo-fill;
-      text-halo-radius: @standard-halo-radius * 1.5;
+      text-halo-radius: @standard-halo-radius;
       text-wrap-width: 50; // 5.0 em
       text-line-spacing: -0.50; // -0.05 em
       text-margin: 7.0; // 0.7 em
@@ -383,7 +400,7 @@
       text-fill: @placenames;
       text-face-name: @book-fonts;
       text-halo-fill: @standard-halo-fill;
-      text-halo-radius: @standard-halo-radius * 1.5;
+      text-halo-radius: @standard-halo-radius;
       text-wrap-width: 45; // 4.5 em
       text-line-spacing: -0.8; // -0.08 em
       text-margin: 7.0; // 0.7 em
