@@ -2,7 +2,7 @@
 @station-text: darken(saturate(@station-color, 15%), 10%);
 
 .stations {
-  [railway = 'subway_entrance'][zoom >= @nice] {
+  [railway = 'subway_entrance'][zoom >= @emergency] {
     marker-file: url('symbols/london-underground-18.png');
     marker-placement: interior;
     marker-fill: @transportation-icon;
