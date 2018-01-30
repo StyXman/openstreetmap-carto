@@ -230,6 +230,7 @@
       shield-wrap-width: 30; // 3.0 em
       shield-line-spacing: -1.5; // -0.15 em
       shield-margin: 7.0; // 0.7 em
+      shield-spacing: 75;
       shield-placement-type: simple;
       shield-placements: 'S,N,E,W';
       [dir = 1] {
