@@ -294,7 +294,7 @@ Layer:
       minzoom: 9
   - id: contour-50
     geometry: linestring
-    <<: *extents84
+    <<: *extents
     Datasource:
       <<: *osm2pgsql
       table: |-
@@ -307,7 +307,7 @@ Layer:
       minzoom: 13
   - id: contour-100
     geometry: linestring
-    <<: *extents84
+    <<: *extents
     Datasource:
       <<: *osm2pgsql
       table: |-
@@ -320,7 +320,7 @@ Layer:
       minzoom: 11
   - id: contour-250
     geometry: linestring
-    <<: *extents84
+    <<: *extents
     Datasource:
       <<: *osm2pgsql
       table: |-
@@ -333,7 +333,7 @@ Layer:
       minzoom: 10
   - id: contour-500
     geometry: linestring
-    <<: *extents84
+    <<: *extents
     Datasource:
       <<: *osm2pgsql
       table: |-
@@ -346,7 +346,7 @@ Layer:
       minzoom: 9
   - id: contour-1000
     geometry: linestring
-    <<: *extents84
+    <<: *extents
     Datasource:
       <<: *osm2pgsql
       table: |-
