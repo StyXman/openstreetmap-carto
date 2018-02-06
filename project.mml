@@ -1142,6 +1142,7 @@ Layer:
     advanced: {}
     properties:
       minzoom: 14
+    status: off
   - id: turning-circle-fill
     geometry: point
     <<: *extents
