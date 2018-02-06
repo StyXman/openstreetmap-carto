@@ -657,6 +657,43 @@
     marker-clip: false;
   }
 
+  // local
+  [feature = 'historic_castle'][zoom >= @nice] {
+    marker-file: url('symbols/castle.svg');
+    marker-width: 14;
+    marker-fill: @amenity-brown;
+    marker-placement: interior;
+    marker-clip: false;
+    [castle_type = 'defensive'][zoom >= @nice] {
+      marker-file: url('symbols/castle-defensive-14.svg');
+    }
+    [castle_type = 'fortress'][zoom >= @nice] {
+      marker-file: url('symbols/castle-fortress-14.svg');
+    }
+    [castle_type = 'manor'][zoom >= @nice] {
+      marker-file: url('symbols/castle-manor-14.svg');
+    }
+    [castle_type = 'palace'][zoom >= @nice] {
+      marker-file: url('symbols/castle-palace-14.svg');
+    }
+    [castle_type = 'stately'][zoom >= @nice] {
+      marker-file: url('symbols/castle-stately-14.svg');
+    }
+    [ruins = 'yes'] {
+      marker-fill: grey;
+    }
+  }
+
+  // local
+  [feature = 'historic_fort'][zoom >= @nice] {
+    marker-file: url('symbols/fort.svg');
+    marker-width: 14;
+    marker-placement: interior;
+    [ruins = 'yes'] {
+      marker-fill: grey;
+    }
+  }
+
   [feature = 'amenity_marketplace'][zoom >= 16][way_pixels > 3000],
   [feature = 'amenity_marketplace'][zoom >= 17] {
     marker-placement: interior;
