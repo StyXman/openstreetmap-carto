@@ -125,7 +125,7 @@ service     13
   }
 }
 
-// slopeshade-small [0-6], slopeshade-medium [7]
+// slopeshade-small [0-6], slopeshade-medium [7-8]
 .slopeshade-over {
   comp-op: multiply;
   raster-scaling: lanczos;
@@ -136,7 +136,7 @@ service     13
 .slopeshade-overlay {
   raster-scaling: lanczos;
   comp-op: overlay;
-  // raster-opacity: 0.8;
+  // raster-opacity: 0.5;
 }
 
 // hillshade-small [0-6], hillshade-big [7-8]
