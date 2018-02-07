@@ -25,12 +25,12 @@
 @access-marking-living-street: #cccccc;
 
 @default-casing: white;
-@tertiary-casing: black;
-@residential-casing: #888;
+@tertiary-casing: #444;
+@residential-casing: #444;
 @road-casing: @residential-casing;
-@service-casing: @residential-casing;
+@service-casing: #999;
 @living-street-casing: @residential-casing;
-@pedestrian-casing: #999;
+@pedestrian-casing: gray;
 @path-casing: @default-casing;
 @footway-casing: @default-casing;
 @steps-casing: @default-casing;
@@ -69,19 +69,12 @@ service     13
 @tunnel-casing: grey;
 @bridge-casing: black;
 
-@motorway-tunnel-fill: lighten(@motorway-fill, 10%);
-@trunk-tunnel-fill: lighten(@trunk-fill, 10%);
-@primary-tunnel-fill: lighten(@primary-fill, 10%);
-@secondary-tunnel-fill: lighten(@secondary-fill, 5%);
-/*
-TODO:
 @motorway-tunnel-fill: lighten(@motorway-fill, @darken-lighten);
 @trunk-tunnel-fill: lighten(@trunk-fill, @darken-lighten);
 @primary-tunnel-fill: lighten(@primary-fill, @darken-lighten);
 @secondary-tunnel-fill: lighten(@secondary-fill, @darken-lighten);
-*/
 @tertiary-tunnel-fill: lighten(@tertiary-fill, 5%);
-@residential-tunnel-fill: darken(@residential-fill, 5%);
+@residential-tunnel-fill: darken(@residential-fill, 10%);
 @living-street-tunnel-fill: lighten(@living-street-fill, 10%);
 
 @motorway-width-z6:               0.5;
