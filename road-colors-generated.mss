@@ -6,13 +6,13 @@
 /*                                                                   */
 @motorway-low-zoom: #cf3030;
 @trunk-low-zoom: #cf6868;
-@primary-low-zoom: #885f00;
+@primary-low-zoom: #8a5c00;
 @secondary-low-zoom: #2f6f2f;
 
 @motorway-fill: @motorway-low-zoom;
 @trunk-fill: @motorway-fill;
-@primary-fill: #af7f00;
-@secondary-fill: #7fbf7f;
+@primary-fill: @primary-low-zoom;
+@secondary-fill: @secondary-low-zoom;
 
 @motorway-casing: darken(@motorway-fill, @darken-lighten);
 @trunk-casing: darken(@trunk-fill, @darken-lighten);
