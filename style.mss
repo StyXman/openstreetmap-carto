@@ -25,9 +25,6 @@ Map {
 
 @darken-lighten: 50%;
 
-// admin
-@admin-boundaries: purple;
-
 // amenities
 @attraction: #f2caea;
 @barracks: #ff8f8f;
