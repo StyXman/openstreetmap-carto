@@ -112,6 +112,7 @@
   }
   */
 
+  /*
   [feature = 'leisure_recreation_ground'][zoom >= 10],
   [feature = 'landuse_recreation_ground'][zoom >= 10],
   [feature = 'leisure_playground'][zoom >= 13],
@@ -122,7 +123,9 @@
     [way_pixels >= 4]  { polygon-gamma: 0.75; }
     [way_pixels >= 64] { polygon-gamma: 0.3;  }
   }
+  */
 
+  /*
   [feature = 'tourism_camp_site'],
   [feature = 'tourism_caravan_site'],
   [feature = 'tourism_picnic_site'] {
@@ -136,6 +139,7 @@
       [way_pixels >= 64] { polygon-gamma: 0.3;  }
     }
   }
+  */
 
   [feature = 'landuse_quarry'][zoom >= 10] {
     polygon-fill: @quarry;
@@ -676,6 +680,88 @@
     }
     [way_pixels >= 4]  { polygon-gamma: 0.75; }
     [way_pixels >= 64] { polygon-gamma: 0.3;  }
+  }
+}
+
+#landcover-flat[zoom >= 10] {
+  [feature = 'leisure_playground'][zoom >= 13] {
+    polygon-fill: @leisure;
+    line-color: darken(@leisure, 60%);
+    line-width: 0.3;
+    [way_pixels >= 4]  { polygon-gamma: 0.75; }
+    [way_pixels >= 64] { polygon-gamma: 0.3;  }
+  }
+
+  [feature = 'leisure_park'],
+  [feature = 'leisure_recreation_ground'] {
+    [zoom >= 10] {
+      polygon-fill: @park;
+      [way_pixels >= 4]  { polygon-gamma: 0.75; }
+      [way_pixels >= 64] { polygon-gamma: 0.3;  }
+    }
+  }
+
+  [feature = 'leisure_dog_park'] {
+    [zoom >= 10] {
+      polygon-fill: @leisure;
+      [way_pixels >= 4]  { polygon-gamma: 0.75; }
+      [way_pixels >= 64] { polygon-gamma: 0.3;  }
+    }
+    [zoom >= 16] {
+      polygon-pattern-file: url('symbols/dog_park.png');
+      polygon-pattern-alignment: global;
+      [way_pixels >= 4]  { polygon-pattern-gamma: 0.75; }
+      [way_pixels >= 64] { polygon-pattern-gamma: 0.3;  }
+    }
+  }
+
+  [feature = 'landuse_recreation_ground'],
+  [feature = 'landuse_village_green'],
+  [feature = 'leisure_common'],
+  [feature = 'leisure_garden'] {
+    [zoom >= 13] {
+      polygon-fill: @grass;
+      [way_pixels >= 4]  { polygon-gamma: 0.75; }
+      [way_pixels >= 64] { polygon-gamma: 0.3;  }
+      polygon-pattern-file: url('symbols/grass2.png');
+    }
+  }
+
+  [feature = 'natural_beach'][zoom >= 10],
+  [feature = 'natural_shoal'][zoom >= 10] {
+    polygon-fill: @beach;
+    polygon-pattern-file: url('symbols/beach.png');
+    [way_pixels >= 4]  { polygon-gamma: 0.75; }
+    [way_pixels >= 64] { polygon-gamma: 0.3;  }
+  }
+
+  [feature = 'leisure_sports_centre'],
+  [feature = 'leisure_stadium'] {
+    [zoom >= 10] {
+      polygon-fill: @stadium;
+      [way_pixels >= 4]  { polygon-gamma: 0.75; }
+      [way_pixels >= 64] { polygon-gamma: 0.3;  }
+    }
+  }
+
+  [feature = 'landuse_cemetery'],
+  [feature = 'amenity_grave_yard'] {
+    [zoom >= 10] {
+      polygon-fill: @cemetery;
+      [way_pixels >= 4]  { polygon-gamma: 0.75; }
+      [way_pixels >= 64] { polygon-gamma: 0.3;  }
+    }
+    [zoom >= 14] {
+      [religion = 'jewish'] { polygon-pattern-file: url('symbols/grave_yard_jewish.svg'); }
+      [religion = 'christian'] { polygon-pattern-file: url('symbols/grave_yard_christian.svg'); }
+      [religion = 'INT-generic'] { polygon-pattern-file: url('symbols/grave_yard_generic.svg'); }
+      [religion = 'jewish'],
+      [religion = 'christian'],
+      [religion = 'INT-generic'] {
+        [way_pixels >= 4]  { polygon-pattern-gamma: 0.75; }
+        [way_pixels >= 64] { polygon-pattern-gamma: 0.3;  }
+      }
+    }
   }
 }
 
