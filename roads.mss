@@ -57,7 +57,7 @@ road        10-
 service     13
 */
 @unimportant-road: @tertiary-casing;
-@unimportant-minor-road: #666;
+@unimportant-minor-road: #bbb;
 
 @residential-construction: #aaa;
 @service-construction: #aaa;
