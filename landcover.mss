@@ -867,7 +867,7 @@
   }
 }
 
-#reliefsymbols {
+#relief-symbols {
   [natural = 'arete'][zoom >= 12] {
     line-pattern-smooth: 0.3;
     /*

@@ -824,7 +824,7 @@ Layer:
         ) AS line_barriers
     properties:
       minzoom: 14
-  - id: relief_symbols
+  - id: relief-symbols
     geometry: linestring
     <<: *extents
     Datasource:
