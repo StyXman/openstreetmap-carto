@@ -1197,6 +1197,9 @@
     marker-placement: interior;
     marker-fill: @man-made-icon;
     marker-clip: false;
+    [ruins = 'yes'] {
+      marker-fill: grey;
+    }
   }
 
   [feature = 'amenity_hunting_stand'][zoom >= 16] {
