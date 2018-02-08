@@ -1660,6 +1660,7 @@ Layer:
             tags->'icao' as icao,
             tags->'iata' as iata,
             tags->'recycling_type' as recycling_type,
+            tags->'information' as information,
             CASE WHEN shop IN ('supermarket', 'bag', 'bakery', 'beauty', 'books', 'butcher', 'clothes', 'computer',
                                'confectionery', 'fashion', 'convenience', 'department_store', 'doityourself', 'hardware', 'fishmonger', 'florist',
                                'garden_centre', 'hairdresser', 'hifi', 'ice_cream', 'car', 'car_repair', 'bicycle', 'mall', 'pet',
@@ -1765,6 +1766,7 @@ Layer:
             tags->'icao' as icao,
             tags->'iata' as iata,
             tags->'recycling_type' as recycling_type,
+            tags->'information' as information,
             CASE WHEN shop IN ('supermarket', 'bag', 'bakery', 'beauty', 'books', 'butcher', 'clothes', 'computer',
                                'confectionery', 'fashion', 'convenience', 'department_store', 'doityourself', 'hardware', 'fishmonger', 'florist',
                                'garden_centre', 'hairdresser', 'hifi', 'ice_cream', 'car', 'car_repair', 'bicycle', 'mall', 'pet',
@@ -2197,6 +2199,7 @@ Layer:
             tags->'icao' as icao,
             tags->'iata' as iata,
             tags->'recycling_type' as recycling_type,
+            tags->'information' as information,
             ref,
             way_area,
             CASE WHEN building = 'no' OR building IS NULL THEN 'no' ELSE 'yes' END AS is_building
@@ -2279,6 +2282,7 @@ Layer:
             icao,
             iata,
             recycling_type,
+            information,
             ref,
             way_area,
             is_building
@@ -2348,6 +2352,7 @@ Layer:
                 tags->'icao' as icao,
                 tags->'iata' as iata,
                 tags->'recycling_type' as recycling_type,
+                tags->'information' as information,
                 ref,
                 NULL AS way_area,
                 CASE WHEN building = 'no' OR building IS NULL THEN 'no' ELSE 'yes' END AS is_building

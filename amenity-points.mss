@@ -316,10 +316,14 @@
     marker-clip: false;
   }
 
-  [feature = 'tourism_information'][zoom >= 17] {
+  // local
+  [feature = 'tourism_information'][zoom >= @emergency] {
     marker-file: url('symbols/information.12.svg');
     marker-placement: interior;
     marker-fill: @amenity-brown;
+    [information = 'guidepost'] {
+      marker-file: url('symbols/guidepost-14.svg');
+    }
     marker-clip: false;
   }
 
@@ -1541,6 +1545,21 @@
     text-halo-radius: @standard-halo-radius;
     text-halo-fill: @standard-halo-fill;
     text-placement: interior;
+  }
+
+  // local
+  [feature = 'tourism_information'][zoom >= @emergency] {
+    [information = 'guidepost'] {
+      text-name: "[ref]";
+      text-size: @standard-font-size;
+      text-wrap-width: @standard-wrap-width;
+      text-line-spacing: @standard-line-spacing-size;
+      text-fill: @amenity-brown;
+      text-face-name: @standard-font;
+      text-halo-radius: @standard-halo-radius;
+      text-halo-fill: @standard-halo-fill;
+      text-placement: interior;
+    }
   }
 
   [feature = 'tourism_artwork'][zoom >= 17],
