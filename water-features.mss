@@ -62,6 +62,17 @@
       marker-ignore-placement: true;
     }
   }
+
+  // local
+  [waterway = 'waterfall'],
+  [natural  = 'waterfall'] {
+    #water-barriers-point[zoom >= @nice] {
+      marker-file: url('symbols/waterfall-14.svg');
+      marker-fill: @water-dark;
+      marker-placement: interior;
+      marker-clip: false;
+    }
+  }
 }
 
 #piers-poly, #piers-line {

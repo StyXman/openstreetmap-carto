@@ -540,9 +540,11 @@ Layer:
         (SELECT
             way,
             waterway,
+            "natural",
             name
           FROM planet_osm_line
-          WHERE waterway IN ('dam', 'weir', 'lock_gate')
+          WHERE waterway IN ('dam', 'weir', 'lock_gate', 'waterfall')
+             OR "natural" = 'waterfall'
         ) AS water_barriers_line
     properties:
       minzoom: 13
@@ -625,12 +627,16 @@ Layer:
       <<: *osm2pgsql
       table: |-
         (SELECT
-            way, waterway
+            way,
+            waterway,
+            "natural",
+            name
           FROM planet_osm_point
-          WHERE waterway IN ('dam', 'weir', 'lock_gate')
+          WHERE waterway IN ('dam', 'weir', 'lock_gate', 'waterfall')
+             OR "natural" = 'waterfall'
         ) AS water_barriers_points
     properties:
-      minzoom: 17
+      minzoom: 13
   - id: bridge
     geometry: polygon
     <<: *extents
