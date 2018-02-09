@@ -1222,7 +1222,8 @@
   }
 
   [feature = 'natural_spring'][zoom >= 14] {
-    marker-file: url('symbols/spring.svg');
+    marker-file: url('symbols/spring-14.svg');
+    marker-fill: @water-dark;
     marker-placement: interior;
     marker-clip: false;
   }
