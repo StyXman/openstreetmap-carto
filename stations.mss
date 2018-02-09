@@ -1,17 +1,17 @@
-@station-color: #7981b0;
-@station-text: darken(saturate(@station-color, 15%), 10%);
+@station-color: @transportation-icon;
+@station-text: @transportation-text;
 
 .stations {
   [railway = 'subway_entrance'][zoom >= @emergency] {
     marker-file: url('symbols/london-underground-18.png');
     marker-placement: interior;
-    marker-fill: @transportation-icon;
+    marker-fill: @station-color;
     marker-clip: false;
     [zoom >= 19] {
       text-name: [ref];
       text-face-name: @book-fonts;
       text-size: 10;
-      text-fill: @transportation-icon;
+      text-fill: @station-text;
       text-dy: 10;
       text-halo-radius: @standard-halo-radius * 1.5;
       text-halo-fill: @standard-halo-fill;

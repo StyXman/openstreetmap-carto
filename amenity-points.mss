@@ -2,10 +2,10 @@
 @wetland-text: darken(#4aa5fa, 25%); /* Also for marsh and mud */
 @shop-icon: #ac39ac;
 @shop-text: #939;
-@transportation-icon: #0092da;
-@transportation-text: #0066ff;
-@accommodation-icon: @transportation-icon;
-@accommodation-text: @transportation-text;
+@transportation-icon: red;
+@transportation-text: darken(saturate(@transportation-icon, 15%), 10%);
+@accommodation-icon: @water-dark;
+@accommodation-text: @water-dark;
 @airtransport: #8461C4; //also ferry_terminal
 @health-color: #da0092;
 @amenity-brown: #734a08;
