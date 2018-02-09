@@ -2,8 +2,8 @@
 @wetland-text: darken(#4aa5fa, 25%); /* Also for marsh and mud */
 @shop-icon: #ac39ac;
 @shop-text: #939;
-@transportation-icon: red;
-@transportation-text: darken(saturate(@transportation-icon, 15%), 10%);
+@transportation-icon: #c00000;
+@transportation-text: #800000;
 @accommodation-icon: @water-dark;
 @accommodation-text: @water-dark;
 @airtransport: #8461C4; //also ferry_terminal
@@ -94,7 +94,7 @@
     }
     [zoom >= 17] {
       marker-file: url('symbols/bus_stop.12.svg');
-      marker-width: 12;
+      marker-width: 14;
     }
   }
 

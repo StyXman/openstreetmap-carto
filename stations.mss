@@ -23,7 +23,7 @@
   [railway = 'station'][zoom >= 12] {
     marker-file: url('symbols/square.svg');
     marker-placement: interior;
-    marker-fill: @station-color;
+    marker-fill: @station-text;
     marker-width: 4;
     marker-clip: false;
     [zoom >= 13] {
@@ -31,11 +31,11 @@
     }
     [zoom >= 14] {
       text-name: "[name]";
-      text-face-name: @bold-fonts;
+      text-face-name: @book-fonts;
       text-size: 10;
       text-fill: @station-text;
       text-dy: 9;
-      text-halo-radius: @standard-halo-radius * 1.5;
+      text-halo-radius: @standard-halo-radius;
       text-halo-fill: @standard-halo-fill;
       text-wrap-width: 30; // 3 em
       text-line-spacing: -1.5; // -0.15 em
@@ -43,10 +43,14 @@
     }
     [zoom >= 15] {
       marker-width: 9;
+      marker-fill: @station-color;
+
+      text-face-name: @bold-fonts;
       text-size: 11;
       text-wrap-width: 33; // 3 em
       text-line-spacing: -1.65; // -0.15 em
       text-dy: 10;
+      text-halo-radius: @standard-halo-radius * 1.5;
     }
   }
 
