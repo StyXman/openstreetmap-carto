@@ -1416,6 +1416,7 @@ Layer:
     properties:
       minzoom: 11
       maxzoom: 12
+    staus: off
   - id: admin-high-zoom
     geometry: linestring
     <<: *extents
@@ -1433,6 +1434,7 @@ Layer:
         ) AS admin_high_zoom
     properties:
       minzoom: 13
+    staus: off
   - id: power-minorline
     geometry: linestring
     <<: *extents
