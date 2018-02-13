@@ -1221,12 +1221,14 @@
     marker-clip: false;
   }
 
+  /*
   [feature = 'natural_spring'][zoom >= 14] {
     marker-file: url('symbols/spring-14.svg');
     marker-fill: @water-dark;
     marker-placement: interior;
     marker-clip: false;
   }
+  */
 
   [feature = 'power_generator']['generator:source' = 'wind'],
   [feature = 'power_generator'][power_source = 'wind'] {

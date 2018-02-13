@@ -386,6 +386,21 @@ Layer:
         ) AS features
     properties:
       minzoom: 10
+  - id: springs-casing
+    geometry: point
+    <<: *extents
+    Datasource:
+      <<: *osm2pgsql
+      table: |-
+        (SELECT
+            way,
+            "natural"
+          FROM planet_osm_point
+          WHERE "natural" = 'spring'
+        ) AS springs_casing
+    properties:
+      minzoom: 14
+    # status: 'off'
   - id: water-lines-casing
     geometry: linestring
     <<: *extents
@@ -508,6 +523,20 @@ Layer:
       type: shape
     properties:
       minzoom: 8
+  - id: springs
+    geometry: point
+    <<: *extents
+    Datasource:
+      <<: *osm2pgsql
+      table: |-
+        (SELECT
+            way,
+            "natural"
+          FROM planet_osm_point
+          WHERE "natural" = 'spring'
+        ) AS springs
+    properties:
+      minzoom: 14
   - id: water-lines
     class: water-lines
     geometry: linestring

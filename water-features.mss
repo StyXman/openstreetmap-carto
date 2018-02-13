@@ -5,6 +5,30 @@
 @lock-gate: #aaa;
 @lock-gate-line: #aaa;
 
+#springs-casing {
+  [natural = 'spring'] {
+    marker-width: 6;
+    [zoom >= 17] {
+      marker-width: 6.5;
+    }
+    marker-fill: @water-dark;
+    marker-line-width: 0;
+    marker-allow-overlap: true;
+  }
+}
+
+#springs {
+  [natural = 'spring'] {
+    marker-width: 4;
+    [zoom >= 17] {
+      marker-width: 4.5;
+    }
+    marker-fill: @water-color;
+    marker-line-width: 0;
+    marker-allow-overlap: true;
+  }
+}
+
 #water-barriers-point, #water-barriers-line, #water-barriers-poly {
   [waterway = 'dam'] {
     #water-barriers-poly[zoom >= 13] {
