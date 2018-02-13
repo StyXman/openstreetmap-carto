@@ -90,6 +90,12 @@
   // local
   [waterway = 'waterfall'],
   [natural  = 'waterfall'] {
+    #water-barriers-line[zoom >= 13] {
+      // line-pattern-file: url('symbols/big_waterfall.svg');
+      line-color: orange;
+      line-width: 2;
+    }
+
     #water-barriers-point[zoom >= @nice] {
       marker-file: url('symbols/waterfall-14.svg');
       marker-fill: @water-dark;
