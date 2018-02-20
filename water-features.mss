@@ -91,14 +91,15 @@
   [waterway = 'waterfall'],
   [natural  = 'waterfall'] {
     #water-barriers-line[zoom >= 13] {
-      // line-pattern-file: url('symbols/big_waterfall.svg');
-      line-color: orange;
-      line-width: 2;
+      line-pattern-file: url('symbols/big_waterfall.svg');
     }
 
     #water-barriers-point[zoom >= @nice] {
       marker-file: url('symbols/waterfall-14.svg');
-      marker-fill: @water-dark;
+      // marker-line-color: @water-dark;
+      marker-fill: @amenity-brown;
+      marker-width: 16;
+      marker-height: 16;
       marker-placement: interior;
       marker-clip: false;
     }
