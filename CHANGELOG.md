@@ -1,12 +1,41 @@
-## [Unreleased](https://github.com/gravitystorm/openstreetmap-carto/compare/v4.7.1...master)
+## [Unreleased](https://github.com/gravitystorm/openstreetmap-carto/compare/v4.9.0...master)
+
+## [v4.9.0](https://github.com/gravitystorm/openstreetmap-carto/compare/v4.8.0...v4.9.0) - 2018-03-23
+### Major changes
+- A bug where closed ways with natural=cliff or natural=tree_row were not rendering has been fixed. This required fixing a transform bug. The fix will apply to all objects when they are created in OSM, but there is no migration for existing databases. Deployments will have to decide if the effects are serious enough to require them to reload the database.
+
+### Changes
+- Adding place=square name rendering
+- Adding rendering for different types of towers and masts
+- Making gardens to use grass color with plant nursery pattern
+- Adding rendering for intermittent water bodies
+- Give oceans outline and simplify shapefiles on z0-7
+- Simplify (generalize) admin borders
+- Move natural=grassland and landuse=meadow earlier
+- Start rendering aerialway name
+- Adding icons for amenity=bbq, amenity=shower, leisure=sauna and advertising=column
+- Adding special icons for shop=dairy, shop=medical_supply and shop=music
+- Move amenity=toilets to higher zoom levels
+- Fixing some SVG icons artifacts
+- Make military=danger_area font dark pink and slanted
+- Changing rendering for construction=steps to distinguish it from roads
+- Changing label colour of private parking
+- Small documentation and code fixes
+
+## [v4.8.0](https://github.com/gravitystorm/openstreetmap-carto/compare/v4.7.0...v4.8.0) - 2018-02-23
 ### Changes
 - Made military area rendering less prominent
+- Adding rendering for historic=wayside_shrine
 - Adding rendering for historic=fort
 - Adding rendering for amenity=public_bath
-- Rendering barrier=log like block
+- Adding rendering for shop=chocolate
+- Adding rendering for barrier=toll_booth (nodes)
+- Adding rendering barrier=log
 - Adding rendering for amenity=waste_disposal
 - Moving tourism-boundary under barrier layer
 - Docker: run osm2pgsql in slim mode
+- Fix operator precedence for hstore queries
+- Small documentation fixes
 
 ## [v4.7.1](https://github.com/gravitystorm/openstreetmap-carto/compare/v4.7.0...v4.7.1) - 2018-01-31
 ### Changes
