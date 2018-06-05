@@ -124,6 +124,7 @@ overlapping borders correctly.
   comp-op: darken;
 }
 
+/*
 #admin-mid-zoom[zoom >= 11][zoom < 13],
 #admin-high-zoom[zoom >= 13] {
   [admin_level = '5'][zoom >= 11] {

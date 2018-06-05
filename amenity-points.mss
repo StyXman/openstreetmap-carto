@@ -2489,6 +2489,7 @@
     text-placement: interior;
   }
 
+  /*
   [feature = 'amenity_hunting_stand'][zoom >= 17] {
     text-name: "[name]";
     text-size: @standard-font-size;
