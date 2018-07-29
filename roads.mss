@@ -1409,6 +1409,9 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
         [zoom >= 11] {
           line-width: @tertiary-width-z11;
         }
+        [int_surface = 'unpaved'][zoom >= 10][zoom < 12] {
+          line-dasharray: 8,2;
+        }
         [zoom >= 12] {
           line-color: @tertiary-fill;
           line-width: @tertiary-width-z12 - 2 * @casing-width-z12;
