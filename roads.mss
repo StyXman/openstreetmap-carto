@@ -376,9 +376,17 @@ service     13
         [zoom >= 17] { line-width: @primary-width-z17; }
         [zoom >= 18] { line-width: @primary-width-z18; }
         [zoom >= 19] { line-width: @primary-width-z19; }
-        #roads {
+        #roads-casing {
           line-join: round;
           line-cap: round;
+          [int_surface = 'unpaved'] {
+            line-dasharray: @primary-width-z12*2,@primary-width-z12;
+            [zoom >= 13] { line-dasharray: @primary-width-z13*2,@primary-width-z13; }
+            [zoom >= 15] { line-dasharray: @primary-width-z15*2,@primary-width-z15; }
+            [zoom >= 17] { line-dasharray: @primary-width-z17*2,@primary-width-z17; }
+            [zoom >= 18] { line-dasharray: @primary-width-z18*2,@primary-width-z18; }
+            [zoom >= 19] { line-dasharray: @primary-width-z19*2,@primary-width-z19; }
+          }
         }
         #tunnels {
           line-dasharray: 4,2;
