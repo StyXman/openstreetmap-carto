@@ -607,6 +607,14 @@ service     13
         #roads-casing {
           line-cap: round;
           line-join: round;
+          [int_surface = 'unpaved'] {
+            line-dasharray: @living-street-width-z13*2,@living-street-width-z13;
+            [zoom >= 13] { line-dasharray: @living-street-width-z14*2,@living-street-width-z14; }
+            [zoom >= 15] { line-dasharray: @living-street-width-z15*2,@living-street-width-z15; }
+            [zoom >= 17] { line-dasharray: @living-street-width-z17*2,@living-street-width-z17; }
+            [zoom >= 18] { line-dasharray: @living-street-width-z18*2,@living-street-width-z18; }
+            [zoom >= 19] { line-dasharray: @living-street-width-z19*2,@living-street-width-z19; }
+          }
         }
         #tunnels {
           line-dasharray: 4,2;
