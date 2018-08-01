@@ -1086,7 +1086,8 @@ Layer:
             construction,
             service,
             link,
-            layernotnull
+            layernotnull,
+            sac_scale
           FROM ( -- begin "features" subselect that contains both roads and rail/aero
             SELECT
                 way,
@@ -1115,6 +1116,7 @@ Layer:
                   ELSE 'no'
                 END AS link,
                 COALESCE(layer,0) AS layernotnull,
+                tags->'sac_scale' as sac_scale,
                 z_order
               FROM planet_osm_line
               WHERE (tunnel IS NULL OR NOT tunnel IN ('yes', 'building_passage'))
@@ -1139,10 +1141,11 @@ Layer:
                   ELSE NULL
                 END AS access,
                 construction,
-                CASE WHEN service IN ('parking_aisle', 'drive-through', 'driveway') OR leisure IN ('slipway') THEN 'INT-minor'::text 
+                CASE WHEN service IN ('parking_aisle', 'drive-through', 'driveway') OR leisure IN ('slipway') THEN 'INT-minor'::text
                   ELSE 'INT-normal'::text END AS service,
                 'no' AS link,
                 COALESCE(layer,0) AS layernotnull,
+                NULL as sac_scale,
                 z_order
               FROM planet_osm_line
               WHERE (tunnel IS NULL OR NOT tunnel IN ('yes', 'building_passage'))
