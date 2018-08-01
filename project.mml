@@ -1170,17 +1170,16 @@ Layer:
       <<: *osm2pgsql
       table: |-
         (SELECT way,
-          ('piste_' || "piste:type") AS feature,
-          "piste:difficulty" AS grade,
+          tags->'piste:difficulty' AS grade,
           name
         FROM planet_osm_line
         WHERE
-          "piste:type" IN ('downhill')
+          tags->'piste:type' IN ('downhill')
         ) AS pistes
     advanced: {}
     properties:
       minzoom: 14
-    status: off
+    # status: off
   - id: turning-circle-fill
     geometry: point
     <<: *extents
