@@ -15,7 +15,8 @@ Map {
 @land-color: #f2efe9;
 
 @contour-op: minus;
-@contour-color: #404040;
+@contour-color-light: #404040;
+@contour-color-dark:  #606060;
 @contour-text: #404040;  // negated
 @contour-halo: black;
 
@@ -79,27 +80,43 @@ Map {
 #contour-50 {
   [zoom >= 13] {
     comp-op: @contour-op;
-    line-color: @contour-color;
+    line-color: @contour-color-light;
     line-width: 0.5;
     line-smooth: 0.8;
-    line-opacity: 0.2;
+    line-opacity: 0.6;
+  }
+
+  [zoom >= 14] {
+    line-color: @contour-color-dark;
   }
 }
 
 #contour-100 {
   [zoom >= 11] {
     comp-op: @contour-op;
-    line-color: @contour-color;
+    line-color: @contour-color-light;
     line-width: 0.5;
     line-smooth: 0.8;
     line-opacity: 0.6;
+  }
+
+  [zoom >= 12] {
+    line-opacity: 0.8;
+  }
+
+  [zoom >= 13] {
+    line-opacity: 1.0;
+  }
+
+  [zoom >= 14] {
+    line-color: @contour-color-dark;
   }
 }
 
 #contour-250 {
   [zoom = 10] {
     comp-op: @contour-op;
-    line-color: @contour-color;
+    line-color: @contour-color-light;
     line-width: 0.5;
     line-smooth: 0.8;
     line-opacity: 0.6;
@@ -109,7 +126,7 @@ Map {
 #contour-500 {
   [zoom >= 9] {
     comp-op: @contour-op;
-    line-color: @contour-color;
+    line-color: @contour-color-light;
     line-width: 0.5;
     line-smooth: 0.8;
     line-opacity: 0.6;
@@ -121,13 +138,22 @@ Map {
 
   [zoom >= 12] {
     line-width: 1;
+    line-opacity: 0.8;
+  }
+
+  [zoom >= 13] {
+    line-opacity: 1.0;
+  }
+
+  [zoom >= 14] {
+    line-color: @contour-color-dark;
   }
 }
 
 #contour-1000 {
   [zoom >= 8] {
     comp-op: @contour-op;
-    line-color: @contour-color;
+    line-color: @contour-color-light;
     line-width: 0.5;
     line-smooth: 0.8;
     line-opacity: 0.6;
@@ -139,6 +165,15 @@ Map {
 
   [zoom >= 12] {
     // line-width: 1.5;
+    line-opacity: 0.8;
+  }
+
+  [zoom >= 13] {
+    line-opacity: 1.0;
+  }
+
+  [zoom >= 14] {
+    line-color: @contour-color-dark;
   }
 }
 
