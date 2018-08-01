@@ -871,13 +871,15 @@
     }
     marker-placement: interior;
     marker-clip: false;
-    [castle_type = 'palace'],
-    [castle_type = 'stately'] {
-      marker-file: url('symbols/palace.svg');
-    }
-    [castle_type = 'manor'],
-    [feature = 'historic_manor'] {
-      marker-file: url('symbols/manor.svg');
+    [zoom >= 15] {
+      [castle_type = 'palace'],
+      [castle_type = 'stately'] {
+        marker-file: url('symbols/palace.svg');
+      }
+      [castle_type = 'manor'],
+      [feature = 'historic_manor'] {
+        marker-file: url('symbols/manor.svg');
+      }
     }
     [castle_type = 'fortress'],
     [castle_type = 'defensive'],
