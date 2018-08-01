@@ -13,6 +13,7 @@
 @memorials: @amenity-brown;
 @culture: @amenity-brown;
 @public-service: @amenity-brown;
+@ruin: #9f8762;
 @man-made-icon: #555;
 @landform-color: #d08f55;
 @leisure-green: darken(@park, 60%);
@@ -693,7 +694,7 @@
       marker-file: url('symbols/castle-stately-14.svg');
     }
     [ruins = 'yes'] {
-      marker-fill: grey;
+      marker-fill: @ruin;
     }
   }
 
@@ -703,7 +704,7 @@
     marker-width: 14;
     marker-placement: interior;
     [ruins = 'yes'] {
-      marker-fill: grey;
+      marker-fill: @ruin;
     }
   }
 
@@ -1246,7 +1247,7 @@
     marker-fill: @man-made-icon;
     marker-clip: false;
     [ruins = 'yes'] {
-      marker-fill: grey;
+      marker-fill: @ruin;
     }
   }
 
