@@ -3004,18 +3004,21 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
       text-name: "[name]";
       text-size: 10;
       text-fill: black;
+      [tunnel = 'yes'] {
+        text-fill: gray;
+      }
       text-spacing: 300;
       text-clip: false;
       text-placement: line;
       text-face-name: @book-fonts;
+      /*
       [tunnel = 'no'] {
-        /*
         text-halo-radius: @standard-halo-radius;
         [highway = 'motorway'] { text-halo-fill: @motorway-fill; }
         [highway = 'trunk'] { text-halo-fill: @trunk-fill; }
         [highway = 'primary'] { text-halo-fill: @primary-fill; }
-        */
       }
+      */
       text-halo-radius: @standard-halo-radius;
       text-halo-fill: white;
     }
