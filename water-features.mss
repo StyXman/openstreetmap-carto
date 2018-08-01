@@ -17,17 +17,7 @@
   }
 }
 
-#springs {
-  [natural = 'spring'] {
-    marker-width: 4;
-    [zoom >= 17] {
-      marker-width: 4.5;
-    }
-    marker-fill: @water-color;
-    marker-line-width: 0;
-    marker-allow-overlap: true;
-  }
-}
+
 
 #water-barriers-point, #water-barriers-line, #water-barriers-poly {
   [waterway = 'dam'] {
@@ -86,23 +76,14 @@
       marker-ignore-placement: true;
     }
   }
+}
 
-  // local
+// local
+// see amenity-points.mss for the point symbol
+#water-barriers-line[zoom >= 13] {
   [waterway = 'waterfall'],
   [natural  = 'waterfall'] {
-    #water-barriers-line[zoom >= 13] {
-      line-pattern-file: url('symbols/big_waterfall.svg');
-    }
-
-    #water-barriers-point[zoom >= @nice] {
-      marker-file: url('symbols/waterfall-14.svg');
-      // marker-line-color: @water-dark;
-      marker-fill: @amenity-brown;
-      marker-width: 16;
-      marker-height: 16;
-      marker-placement: interior;
-      marker-clip: false;
-    }
+    line-pattern-file: url('symbols/big_waterfall.svg');
   }
 }
 
@@ -112,10 +93,12 @@
       polygon-fill: @land-color;
     }
     #piers-line {
-      line-width: 1.5;
+      line-width: 0.5;
       line-color: @land-color;
-      [zoom >= 13] { line-width: 3; }
-      [zoom >= 16] { line-width: 7; }
+      line-cap: square;
+      [zoom >= 13] { line-width: 1; }
+      [zoom >= 15] { line-width: 2; }
+      [zoom >= 17] { line-width: 4; }
     }
   }
 
@@ -203,5 +186,22 @@
         text-spacing: 400;
       }
     }
+  }
+}
+
+#springs {
+  [natural = 'spring'][zoom >= 14] {
+    /*
+    marker-file: url('symbols/spring.svg');
+    marker-placement: interior;
+    marker-clip: false;
+    */
+    marker-width: 4;
+    [zoom >= 17] {
+      marker-width: 4.5;
+    }
+    marker-fill: @water-color;
+    marker-line-width: 0;
+    marker-allow-overlap: true;
   }
 }

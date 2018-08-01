@@ -1,38 +1,40 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
 <svg
    xmlns:dc="http://purl.org/dc/elements/1.1/"
    xmlns:cc="http://creativecommons.org/ns#"
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
    xmlns:svg="http://www.w3.org/2000/svg"
    xmlns="http://www.w3.org/2000/svg"
-   id="svg8"
    version="1.1"
-   viewBox="0 0 32 32"
-   height="32"
-   width="32">
-  <defs
-     id="defs2" />
+   width="100%"
+   height="100%"
+   viewBox="0 0 14 14"
+   id="svg2">
   <metadata
-     id="metadata5">
+     id="metadata8">
     <rdf:RDF>
       <cc:Work
          rdf:about="">
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
+        <dc:title></dc:title>
       </cc:Work>
     </rdf:RDF>
   </metadata>
+  <defs
+     id="defs6" />
   <rect
-     width="32"
-     height="32"
+     width="14"
+     height="14"
      x="0"
      y="0"
      id="canvas"
-     style="visibility:hidden;fill:none;stroke:none" />
+     style="fill:none;stroke:none;visibility:hidden" />
   <path
-     d="m 13,13 2.5,3 -2.5,3 h 2 L 16.5,17.199206 18,19 h 2 L 17.5,16 20,13 H 18 L 16.5,14.800794 15,13 Z"
-     style="opacity:1;fill:#f9e4e6;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:0.99999988;stroke-opacity:1"
-     id="path4" />
+     d="M 0,1 0,4 14,4 14,1 12,1 12,3 10,3 10,1 8,1 8,3 6,3 6,1 4,1 4,3 2,3 2,1 0,1 z m 0,4 0,8 2.5,0 C 2.5,10 3.487647,6.5 7,6.5 10.404489,6.473034 11.5,10 11.5,13 L 14,13 14,5 0,5 z M 7,8 C 5,8 4,10 4,13 l 6,0 C 10,10 9,8 7,8 z"
+     id="city-gate"
+     style="fill:#000000;fill-opacity:1;stroke:none" />
 </svg>

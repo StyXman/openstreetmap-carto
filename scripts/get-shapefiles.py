@@ -37,7 +37,7 @@ settings = {
     # ordering. Use > 0 to allow processing.
     1: {
         'directory': 'world_boundaries',
-        'url': 'http://planet.openstreetmap.org/historical-shapefiles/world_boundaries-spherical.tgz',  # noqa
+        'url': 'https://planet.openstreetmap.org/historical-shapefiles/world_boundaries-spherical.tgz',  # noqa
         'type': 'tgz',
         'shp_basename': [
             'world_bnd_m',
@@ -141,13 +141,13 @@ def download_file(
             sys.stdout.flush()
             if os.path.exists(file_name) and not option_force_update:
                 if subprocess.call(
-                    ["curl", "-z", file_name, "-L", "-o", file_name, url],
+                    ["curl", "-R", "-z", file_name, "-L", "-o", file_name, url],
                         stderr=subprocess.STDOUT) != 0:
                     sys.exit("\n\n   'curl' error: download failed.\n")
                 curl_used = 2
             else:
                 if subprocess.call(
-                    ["curl", "-L", "-o", file_name, url],
+                    ["curl", "-R", "-L", "-o", file_name, url],
                         stderr=subprocess.STDOUT) != 0:
                     sys.exit("\n\n   'curl' error: download failed.\n")
             sys.stdout.flush()
