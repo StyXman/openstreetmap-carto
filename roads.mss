@@ -24,6 +24,7 @@
 @access-marking: #eaeaea;
 @access-marking-living-street: #cccccc;
 
+// TODO: dupes!
 @default-casing: white;
 @tertiary-casing: #444;
 @residential-casing: #444;
@@ -50,11 +51,18 @@
 @tertiary-shield: #3b3b3b;
 
 /*
+               line-casing
+Mayor roads
+motorway
+trunk
+primary         8-12
+secondary       9-12
 minor roads for different zoom levels
-tertiary    10-12
-residential 12-13
-road        10-
-service     13
+tertiary       10-12
+road           10-14  # also unclassified
+residential    12-13
+service        13-14
+living_street    -13
 */
 @unimportant-road: @tertiary-casing;
 @unimportant-minor-road: #bbb;
@@ -212,7 +220,7 @@ service     13
 @footway-width-z19:               1.6;
 @cycleway-width-z19:              1.3;
 
-// TODO: document which are these
+// major: motorway, trunk, primary, secondary for bridges, aeroways!
 @major-casing-width-z11:          0.3;
 
 @casing-width-z12:                0.5;
@@ -1131,8 +1139,8 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
       line-width: 2.2;
       line-opacity: 0.3;
       line-join: round;
-      //Missing line-cap: round; is intentional. It would cause rendering glow multiple times in some places - what as result of partial transparency would cause differences in rendering
-      //Also, bridges - including bridge casings are rendered on top of roads. Enabling line-cap: round would result in glow from bridges rendered on top of road around bridges.
+      // Missing line-cap: round; is intentional. It would cause rendering glow multiple times in some places - what as result of partial transparency would cause differences in rendering
+      // Also, bridges - including bridge casings are rendered on top of roads. Enabling line-cap: round would result in glow from bridges rendered on top of road around bridges.
     }
     [feature = 'highway_motorway'][link != 'yes'][zoom >= 8][zoom < 12],
     [feature = 'highway_motorway'][link = 'yes'][zoom >= 10][zoom < 12],

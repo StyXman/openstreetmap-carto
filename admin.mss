@@ -109,6 +109,7 @@ overlapping borders correctly.
       line-width: 3;
     }
   }
+
   /*
   The following code prevents admin boundaries from being rendered on top of
   each other. Comp-op works on the entire attachment, not on the individual
