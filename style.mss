@@ -26,6 +26,13 @@ Map {
 
 @rail-fill: #404040;
 
+@hiking: yellow;
+@mountain_hiking: red;
+@demanding_mountain_hiking: violet;
+@alpine_hiking: blue;
+@demanding_alpine_hiking: gray;
+@difficult_alpine_hiking: black;
+
 // terrain-small [0-6], terrain-medium [7-8], terrain-big [9-]
 .terrain {
   raster-scaling: lanczos;
