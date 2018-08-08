@@ -1514,7 +1514,9 @@
     marker-clip: false;
   }
 
-  [feature = 'natural_cave_entrance'][zoom >= @nice] {
+  // TODO: make it work :)
+  [feature = 'natural_cave_entrance'][name != ''][zoom >= @nice],
+  [feature = 'natural_cave_entrance'][zoom >= 15] {
     marker-file: url('symbols/cave.svg');
     marker-placement: interior;
     marker-clip: false;
