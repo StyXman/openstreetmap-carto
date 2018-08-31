@@ -82,10 +82,15 @@ living_street    -13
 @primary-tunnel-fill: lighten(@primary-fill, @darken-lighten);
 @secondary-tunnel-fill: lighten(@secondary-fill, @darken-lighten);
 @tertiary-tunnel-fill: lighten(@tertiary-fill, 5%);
+/*
+local
 @residential-tunnel-fill: darken(@residential-fill, 10%);
 @living-street-tunnel-fill: lighten(@living-street-fill, 10%);
+*/
+@residential-tunnel-fill: darken(@residential-fill, 5%);
+@living-street-tunnel-fill: lighten(@living-street-fill, 3%);
 
-@motorway-width-z6:               0.5;
+@motorway-width-z6:               0.4;
 @trunk-width-z6:                  0.4;
 
 @motorway-width-z7:               0.8;
@@ -306,9 +311,12 @@ living_street    -13
 @shield-size-z18: 12;
 @shield-line-spacing-z18: -1.80; // -0.15 em
 @shield-spacing: 760;
-@shield-min-distance: 40;
+@shield-repeat-distance: 400;
+@shield-margin: 40;
 @shield-font: @book-fonts;
 @shield-clip: false;
+
+@railway-text-repeat-distance: 200;
 
 #roads-casing, #bridges, #tunnels {
   ::casing {
@@ -1142,20 +1150,24 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
       // Missing line-cap: round; is intentional. It would cause rendering glow multiple times in some places - what as result of partial transparency would cause differences in rendering
       // Also, bridges - including bridge casings are rendered on top of roads. Enabling line-cap: round would result in glow from bridges rendered on top of road around bridges.
     }
-    [feature = 'highway_motorway'][link != 'yes'][zoom >= 8][zoom < 12],
+    [feature = 'highway_motorway'][link != 'yes'][zoom >= 6][zoom < 12],
     [feature = 'highway_motorway'][link = 'yes'][zoom >= 10][zoom < 12],
-    [feature = 'highway_trunk'][link != 'yes'][zoom >= 8][zoom < 12],
+    [feature = 'highway_trunk'][link != 'yes'][zoom >= 6][zoom < 12],
     [feature = 'highway_trunk'][link = 'yes'][zoom >= 10][zoom < 12],
     [feature = 'highway_primary'][link != 'yes'][zoom >= 8][zoom < 12],
     [feature = 'highway_primary'][link = 'yes'][zoom >= 10][zoom < 12],
     [feature = 'highway_secondary'][zoom >= 11][zoom < 12] {
       [feature = 'highway_motorway'] {
+        [zoom >= 6] { line-width: @motorway-width-z6 + 2 * @lowzoom-halo-width; }
+        [zoom >= 7] { line-width: @motorway-width-z7 + 2 * @lowzoom-halo-width; }
         [zoom >= 8] { line-width: @motorway-width-z8 + 2 * @lowzoom-halo-width; }
         [zoom >= 9] { line-width: @motorway-width-z9 + 2 * @lowzoom-halo-width; }
         [zoom >= 10] { line-width: @motorway-width-z10 + 2 * @lowzoom-halo-width; }
         [zoom >= 11] { line-width: @motorway-width-z11 + 2 * @lowzoom-halo-width; }
       }
       [feature = 'highway_trunk'] {
+        [zoom >= 6] { line-width: @trunk-width-z6 + 2 * @lowzoom-halo-width; }
+        [zoom >= 7] { line-width: @trunk-width-z7 + 2 * @lowzoom-halo-width; }
         [zoom >= 8] { line-width: @trunk-width-z8 + 2 * @lowzoom-halo-width; }
         [zoom >= 9] { line-width: @trunk-width-z9 + 2 * @lowzoom-halo-width; }
         [zoom >= 10] { line-width: @trunk-width-z10 + 2 * @lowzoom-halo-width; }
@@ -1245,7 +1257,8 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
         [construction = 'cycleway'],
         [construction = 'bridleway'],
         [construction = 'path'],
-        [construction = 'track'] {
+        [construction = 'track'],
+        [construction = 'steps']{
           [zoom < 14] {
             line-width: 0;
             b/line-width: 0;
@@ -2622,7 +2635,7 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
         /* Offset name on traffic_signals on zoomlevels where they are displayed
         in order not to hide the text */
         [highway = 'traffic_signals'] {
-          text-dy: 14;
+          text-dy: 9;
         }
       }
     }
@@ -2851,7 +2864,8 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
     shield-line-spacing: @shield-line-spacing;
     shield-placement: line;
     shield-spacing: @shield-spacing;
-    shield-min-distance: @shield-min-distance;
+    shield-repeat-distance: @shield-repeat-distance;
+    shield-margin: @shield-margin;
     shield-face-name: @shield-font;
     shield-clip: @shield-clip;
 
@@ -2899,7 +2913,8 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
 
       shield-placement: line;
       shield-spacing: @shield-spacing;
-      shield-min-distance: @shield-min-distance;
+      shield-repeat-distance: @shield-repeat-distance;
+      shield-margin: @shield-margin;
       shield-face-name: @shield-font;
       shield-clip: @shield-clip;
 
@@ -3372,10 +3387,10 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
       text-spacing: 900;
       text-clip: false;
       text-placement: line;
-      text-min-distance: 18;
       text-face-name: @book-fonts;
       text-halo-radius: @standard-halo-radius;
       text-halo-fill: @standard-halo-fill;
+      text-repeat-distance: @railway-text-repeat-distance;
     }
     [zoom >= 19] {
       text-size: 11;
@@ -3394,10 +3409,10 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
         text-spacing: 300;
         text-clip: false;
         text-placement: line;
-        text-min-distance: 18;
         text-face-name: @book-fonts;
         text-halo-radius: @standard-halo-radius;
         text-halo-fill: @standard-halo-fill;
+        text-repeat-distance: @railway-text-repeat-distance;
       }
       [zoom >= 13] {
         text-dy: 6;
@@ -3423,10 +3438,10 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
         text-spacing: 300;
         text-clip: false;
         text-placement: line;
-        text-min-distance: 18;
         text-face-name: @book-fonts;
         text-halo-radius: @standard-halo-radius;
         text-halo-fill: @standard-halo-fill;
+        text-repeat-distance: @railway-text-repeat-distance;
       }
       [zoom >= 17] {
         text-spacing: 600;
@@ -3453,10 +3468,10 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
       text-spacing: 900;
       text-clip: false;
       text-placement: line;
-      text-min-distance: 18;
       text-face-name: @book-fonts;
       text-halo-radius: @standard-halo-radius;
       text-halo-fill: @standard-halo-fill;
+      text-repeat-distance: @railway-text-repeat-distance;
     }
     [zoom >= 19] {
       text-size: 11;

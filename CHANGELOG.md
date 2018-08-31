@@ -1,4 +1,127 @@
-## [Unreleased](https://github.com/gravitystorm/openstreetmap-carto/compare/v4.7.0...master)
+## [Unreleased](https://github.com/gravitystorm/openstreetmap-carto/compare/v4.13.0...master)
+## Changes
+- Added text-repeat-distance for waterways
+- Added text-repeat-distance for railways
+- Added icon for leisure=bowling_alley
+- Added icon for leisure=outdoor_seating
+- Added icon for shop=video
+- Added icon for shop=paint
+- Added icon for shop=massage
+- Increased casing width of tertiary road on z12
+- Updated Docker definitions
+- Standard text halo for fitness_centre and fitness_station
+
+## [v4.13.0](https://github.com/gravitystorm/openstreetmap-carto/compare/v4.12.0...v4.13.0) - 2018-07-23
+## Changes
+- Increased shield distances on roads
+- Added icon for shop=ticket
+- Added icon for shop=houseware
+- Added icon for shop=charity 
+- Added icon for shop=second_hand
+- Added icon for shop=interior_decoration
+- Added icon for amenity=bureau_de_change
+- Added icon for amenity=casino
+- Added icon for amenity=boat_rental
+- Updated shop=department_store icon 
+- Small documentation and code fixes
+
+## [v4.12.1](https://github.com/gravitystorm/openstreetmap-carto/compare/v4.12.0...v4.12.1) - 2018-06-29
+## Changes
+- Stop rendering "surface" tag, which was causing breaking performance issues
+
+## [v4.12.0](https://github.com/gravitystorm/openstreetmap-carto/compare/v4.11.0...v4.12.0) - 2018-06-22
+### Major changes
+- Dropped subpixel accuracy for areas, which includes tuning some database indexes. When deployed, it might speed up reading data.
+
+### Changes
+- Added rendering “surface” tag on roads with a pattern
+- More vertical objects rendering and tuning (man_made=tower types, man_made=chimney, man_made=communications_tower) 
+- tourism=information types rendering and tuning (information=audioguide, board, guidepost, map, office, tactile_map, tactile_model and terminal)
+- Added rendering for place=quarter
+- Added rendering of historic=city_gate
+- Added rendering of lock_name
+- Ditch and drain name labels are rendered with some offset
+- Pixel aligned ford icon
+- Made amenity=shelter icon brown
+- Finer man_made=pier width rendering
+- Rendering living street tunnels different from residential
+- Added rendering of overground power=cable like power=line
+- Small documentation and code fixes
+
+## [v4.11.0](https://github.com/gravitystorm/openstreetmap-carto/compare/v4.10.0...v4.11.0) - 2018-05-11
+### Changes
+- Fixed office/amenity conflict
+- Brightened built-up areas on z12
+- Refurbished natural=spring icon
+- Added rendering for amenity=police and amenity=fire_station areas
+- Added rendering of amenity=nursing_home
+- Added rendering of amenity=childcare
+- Added rendering of amenity=driving_school
+- Added area rendering for amenity=bus_station
+- Added area rendering of amenity=taxi
+- Made highway=traffic_signals icon less obtrusive
+- Moved barriers to higher zoom level
+- Hiding railway=platform with location=underground, tunnels and covered=yes
+- Small documentation and code fixes
+
+## [v4.10.0](https://github.com/gravitystorm/openstreetmap-carto/compare/v4.9.0...v4.10.0) - 2018-04-20
+### Changes
+- Adding rendering for historic=castle and historic=manor
+- Adding rendering office=* as dots + names
+- Adding rendering for waterway=waterfall
+- Adding place=square name rendering for nodes
+- Adding rendering for big natural=bay
+- Adding rendering for leisure=beach_resort
+- Adding rendering for amenity=parking_space
+- Adding rendering of aerialway=zip_line
+- Adding rendering for shop=bed
+- Adding rendering for shop=video_games
+- Adding halo to roads on z6 and z7
+- Extending intermittent waterbody rendering to landuse=basin
+- Moving highway=mini_roundabout rendering to higher zoom level
+- Dropping waterway=derelict_canal rendering
+- Small documentation and code fixes
+
+## [v4.9.0](https://github.com/gravitystorm/openstreetmap-carto/compare/v4.8.0...v4.9.0) - 2018-03-23
+### Major changes
+- A bug where closed ways with natural=cliff or natural=tree_row were not rendering has been fixed. This required fixing a transform bug. The fix will apply to all objects when they are created in OSM, but there is no migration for existing databases. Deployments will have to decide if the effects are serious enough to require them to reload the database.
+
+### Changes
+- Adding place=square name rendering
+- Adding rendering for different types of towers and masts
+- Making gardens to use grass color with plant nursery pattern
+- Adding rendering for intermittent water bodies
+- Give oceans outline and simplify shapefiles on z0-7
+- Simplify (generalize) admin borders
+- Move natural=grassland and landuse=meadow earlier
+- Start rendering aerialway name
+- Adding icons for amenity=bbq, amenity=shower, leisure=sauna and advertising=column
+- Adding special icons for shop=dairy, shop=medical_supply and shop=music
+- Move amenity=toilets to higher zoom levels
+- Fixing some SVG icons artifacts
+- Make military=danger_area font dark pink and slanted
+- Changing rendering for construction=steps to distinguish it from roads
+- Changing label colour of private parking
+- Small documentation and code fixes
+
+## [v4.8.0](https://github.com/gravitystorm/openstreetmap-carto/compare/v4.7.0...v4.8.0) - 2018-02-23
+### Changes
+- Made military area rendering less prominent
+- Adding rendering for historic=wayside_shrine
+- Adding rendering for historic=fort
+- Adding rendering for amenity=public_bath
+- Adding rendering for shop=chocolate
+- Adding rendering for barrier=toll_booth (nodes)
+- Adding rendering barrier=log
+- Adding rendering for amenity=waste_disposal
+- Moving tourism-boundary under barrier layer
+- Docker: run osm2pgsql in slim mode
+- Fix operator precedence for hstore queries
+- Small documentation fixes
+
+## [v4.7.1](https://github.com/gravitystorm/openstreetmap-carto/compare/v4.7.0...v4.7.1) - 2018-01-31
+### Changes
+- Fix rendering bug (#3043) with access=yes|permissive tags
 
 ## [v4.7.0](https://github.com/gravitystorm/openstreetmap-carto/compare/v4.6.0...v4.7.0) - 2018-01-26
 ### Changes
