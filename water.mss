@@ -26,10 +26,11 @@
   }
 }
 
+// renamed water-areas to glacier
 #glacier {
   [natural = 'glacier']::natural {
-    [zoom >= 6] {
-      line-width: 0.75;
+    [zoom >= 5] {
+      line-width: 1.0;
       line-color: @glacier-line;
       polygon-fill: @glacier;
       [zoom >= 8] {
@@ -142,7 +143,8 @@
   [waterway = 'ditch'],
   [waterway = 'drain'] {
     [int_tunnel = 'no'] {
-      [zoom >= 13] {
+      [int_intermittent != 'yes'][zoom >= 14],
+      [zoom >= 15] {
         line-width: 2.5;
         line-color: @water-dark;
         [waterway = 'stream'][zoom >= 15] {
@@ -285,7 +287,8 @@
   [waterway = 'stream'],
   [waterway = 'ditch'],
   [waterway = 'drain'] {
-    [zoom >= 13] {
+    [int_intermittent != 'yes'][zoom >= 14],
+    [zoom >= 15] {
       // the additional line of land color is used to provide a background for dashed casings
       [int_tunnel = 'yes'] {
         background/line-width: 2;
@@ -295,16 +298,14 @@
       water/line-color: @water-color;
 
       [bridge = 'yes'] {
-        [zoom >= 14] {
-          bridgecasing/line-color: black;
-          bridgecasing/line-join: round;
-          bridgecasing/line-width: 4;
-          [waterway = 'stream'][zoom >= 15] { bridgecasing/line-width: 4; }
-          bridgeglow/line-color: white;
-          bridgeglow/line-join: round;
-          bridgeglow/line-width: 3;
-          [waterway = 'stream'][zoom >= 15] { bridgeglow/line-width: 3; }
-        }
+        bridgecasing/line-color: black;
+        bridgecasing/line-join: round;
+        bridgecasing/line-width: 4;
+        [waterway = 'stream'][zoom >= 15] { bridgecasing/line-width: 4; }
+        bridgeglow/line-color: white;
+        bridgeglow/line-join: round;
+        bridgeglow/line-width: 3;
+        [waterway = 'stream'][zoom >= 15] { bridgeglow/line-width: 3; }
       }
 
       [int_intermittent = 'yes'] {
@@ -347,7 +348,7 @@
       text-spacing: 400;
       text-size: 10;
       text-halo-radius: @standard-halo-radius;
-      text-halo-fill: @standard-halo-fill; 
+      text-halo-fill: @standard-halo-fill;
   }
 
   [lock != 'yes'][int_tunnel != 'yes'] {
@@ -424,6 +425,7 @@
 
   [feature = 'natural_water'],
   [feature = 'natural_bay'],
+  [feature = 'natural_strait'],
   [feature = 'landuse_reservoir'],
   [feature = 'landuse_basin'],
   [feature = 'waterway_dock'] {
