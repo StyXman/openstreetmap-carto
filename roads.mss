@@ -3106,7 +3106,7 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
     [zoom >= 13] {
       text-name: "[name]";
       text-size: 10;
-      text-fill: black;
+      text-fill: white;
       [tunnel = 'yes'] {
         text-fill: gray;
       }
@@ -3146,7 +3146,7 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
     [zoom >= 13] {
       text-name: "[name]";
       text-size: 10;
-      text-fill: black;
+      text-fill: white;
       text-spacing: 300;
       text-clip: false;
       text-placement: line;
