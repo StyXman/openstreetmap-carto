@@ -868,7 +868,8 @@ local
       }
     }
 
-    [feature = 'railway_subway'] {
+    [feature = 'railway_subway'],
+    [feature = 'railway_construction']['construction' = 'subway'] {
       #bridges {
         [zoom >= 14] {
           line-width: 5.5;
@@ -913,7 +914,7 @@ local
     }
 
     [feature = 'railway_disused'][zoom >= 15],
-    [feature = 'railway_construction'],
+    [feature = 'railway_construction']['construction' != 'subway'],
     [feature = 'railway_miniature'][zoom >= 15],
     [feature = 'railway_INT-preserved-ssy'][zoom >= 14] {
       #bridges {
@@ -1106,7 +1107,7 @@ local
     }
 
     [feature = 'railway_disused'][zoom >= 15],
-    [feature = 'railway_construction'],
+    [feature = 'railway_construction']['construction' != 'subway'],
     [feature = 'railway_miniature'][zoom >= 15],
     [feature = 'railway_INT-preserved-ssy'][zoom >= 14] {
       #bridges {
@@ -1131,7 +1132,8 @@ local
       }
     }
 
-    [feature = 'railway_subway'] {
+    [feature = 'railway_subway'],
+    [feature = 'railway_construction']['construction' = 'subway'] {
       #bridges {
         [zoom >= 14] {
           line-width: 4;
@@ -2107,16 +2109,20 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
           line-dasharray: 5,2;
         }
       }
-      [zoom >= 13] {
+      [zoom >= 12] {
         #roads-fill, #bridges {
           dark/line-join: round;
           light/line-color: white;
           light/line-join: round;
           [feature = 'railway_rail'] {
             dark/line-color: #707070;
-            dark/line-width: 3;
-            light/line-width: 1;
+            dark/line-width: 2;
+            light/line-width: 0.75;
             light/line-dasharray: 8,8;
+            [zoom >= 13] {
+              dark/line-width: 3;
+              light/line-width: 1;
+            }
             [zoom >= 15] {
               light/line-dasharray: 0,8,8,1;
             }
