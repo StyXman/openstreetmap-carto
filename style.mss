@@ -74,6 +74,9 @@ Map {
     */
     comp-op: hard-light;
     raster-opacity: 0.6;
+    [zoom >= 11] {
+      raster-opacity: 0.3;
+    }
   }
 }
 
