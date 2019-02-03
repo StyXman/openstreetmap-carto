@@ -38,9 +38,6 @@ Map {
 .terrain {
   raster-scaling: lanczos;
   raster-opacity: 0.7;
-  [zoom >= 9] {
-    raster-opacity: 0.9;
-  }
 }
 
 // slopeshade-small [0-6], slopeshade-medium [7-8]
