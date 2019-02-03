@@ -149,6 +149,7 @@ Layer:
                                                  -- 'swimming_pool is not rendered
                                                  --                  'playground', 'park', 'recreation_ground', 'common', 'garden' gone to landcover-flat
                                                  --                                                   'stadium', 'pitch' gone to landcover-flat
+              ('leisure_' || (CASE WHEN leisure IN ('golf_course', 'miniature_golf', 'sports_centre',
                                                  -- 'track', 'dog_park' gone to landcover-flat
                                                     'fitness_station') THEN leisure ELSE NULL END)) AS leisure,
               ('man_made_' || (CASE WHEN man_made IN ('works', 'wastewater_plant', 'water_works') THEN man_made ELSE NULL END)) AS man_made,
