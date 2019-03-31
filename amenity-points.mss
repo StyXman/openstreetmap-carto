@@ -21,6 +21,7 @@
 @barrier-icon: #3f3f3f;
 @landform-color: #d08f55;
 @leisure-green: darken(@park, 60%);
+@aboriginal: #82643a;
 @religious-icon: #000000;
 
 @landcover-font-size: 10;
@@ -2561,6 +2562,7 @@
   [feature = 'landuse_forest'],
   [feature = 'boundary_national_park'],
   [feature = 'leisure_nature_reserve'],
+  [feature = 'boundary_aboriginal_lands'],
   [feature = 'boundary_protected_area'] {
     [zoom >= 8][way_pixels > 3000][is_building = 'no'],
     [zoom >= 17] {
@@ -2584,6 +2586,9 @@
       text-placement: interior;
       [feature = 'landuse_military'] {
         text-fill: darken(@military, 40%);
+      }
+      [feature = 'boundary_aboriginal_lands'] {
+        text-fill: @aboriginal;
       }
       [feature = 'natural_wood'],
       [feature = 'landuse_forest'] {
@@ -2654,7 +2659,6 @@
   [feature = 'leisure_recreation_ground'],
   [feature = 'landuse_recreation_ground'],
   [feature = 'landuse_village_green'],
-  [feature = 'leisure_common'],
   [feature = 'leisure_garden'],
   [feature = 'landuse_quarry'],
   [feature = 'landuse_vineyard'],
@@ -2733,7 +2737,6 @@
       [feature = 'leisure_recreation_ground'],
       [feature = 'landuse_recreation_ground'],
       [feature = 'landuse_village_green'],
-      [feature = 'leisure_common'],
       [feature = 'leisure_garden'] {
         text-fill: @leisure-green;
       }
