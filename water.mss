@@ -6,20 +6,15 @@
 
 // local
 #water-areas::border {
-  [natural = 'lake'][way_pixels >= 4],
-  [natural = 'water'][way_pixels >= 4],
-  [landuse = 'reservoir'][way_pixels >= 4],
-  [waterway = 'riverbank'][way_pixels >= 4],
-  [landuse = 'water'][way_pixels >= 4],
-  [landuse = 'basin'][way_pixels >= 4] {
+  // this is a copy of #water-areas below, keep in sync
+  [natural = 'water']::natural,
+  [landuse = 'basin']::landuse,
+  [landuse = 'reservoir']::landuse,
+  [waterway = 'riverbank']::waterway {
+    [zoom >= 0][zoom < 1][way_pixels >= 4],
+    [zoom >= 1][zoom < 2][way_pixels >= 16],
+    [zoom >= 2][zoom < 8][way_pixels >= 32],
     [zoom >= 8] {
-      line-width: 1.5;
-      line-color: @water-dark;
-    }
-  }
-
-  [waterway = 'riverbank'][way_pixels >= 64] {
-    [zoom >= 9] {
       line-width: 1.5;
       line-color: @water-dark;
     }
@@ -51,6 +46,8 @@
       [way_pixels >= 4] {
         polygon-gamma: 0.75;
       }
+      // Turn down polygon-gamma even more for bigger areas
+      // This completely eliminates white lines where large areas join
       [way_pixels >= 64] {
         polygon-gamma: 0.6;
       }
@@ -65,6 +62,8 @@
         [way_pixels >= 4] {
           polygon-gamma: 0.75;
         }
+        // Turn down polygon-gamma even more for bigger areas
+        // This completely eliminates white lines where large areas join
         [way_pixels >= 64] {
           polygon-gamma: 0.6;
         }
@@ -74,6 +73,8 @@
         [way_pixels >= 4] {
           polygon-pattern-gamma: 0.75;
         }
+        // Turn down polygon-gamma even more for bigger areas
+        // This completely eliminates white lines where large areas join
         [way_pixels >= 64] {
           polygon-pattern-gamma: 0.6;
         }
@@ -110,11 +111,13 @@
   }
 }
 
+// it seems al this is local, and of no use
 /*
  * Water areas, of all types. Because they are rendered all the same,
  * attachments can be used to reduce combinational rules
  */
 
+/*
 .ocean::border {
   line-width: 1.5;
   line-color: @water-dark;
@@ -137,6 +140,7 @@
     polygon-gamma: 0.6;
   }
 }
+*/
 
 #water-lines-casing {
   [waterway = 'stream'],
@@ -441,6 +445,7 @@
     }
   }
 
+  // this is for areas, points are in amenity-points
   [feature = 'natural_water'],
   [feature = 'natural_bay'],
   [feature = 'natural_strait'],
@@ -450,16 +455,16 @@
     [zoom >= 0][way_pixels > 3000][way_pixels <= 768000],
     [zoom >= 17] {
       text-name: "[name]";
-      text-size: 10;
+      text-size: 13;
       text-wrap-width: 25; // 2.5 em
       text-line-spacing: -1.5; // -0.15 em
       [way_pixels > 12000] {
-        text-size: 12;
+        text-size: 15;
         text-wrap-width: 37; // 3.1 em
         text-line-spacing: -1.6; // -0.13 em
       }
       [way_pixels > 48000] {
-        text-size: 15;
+        text-size: 17;
         text-wrap-width: 59; // 3.9 em
         text-line-spacing: -1.5; // -0.10 em
       }
@@ -471,7 +476,7 @@
       text-fill: @water-text;
       text-face-name: @oblique-fonts;
       text-halo-radius: @standard-halo-radius;
-      text-halo-fill: @standard-halo-fill;
+      text-halo-fill: @water-color;
       text-placement: interior;
     }
   }

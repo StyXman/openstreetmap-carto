@@ -34,6 +34,15 @@ Map {
 @demanding_alpine_hiking: gray;
 @difficult_alpine_hiking: black;
 
+// TODO
+@motorway-oneway-arrow-color: white;
+@trunk-oneway-arrow-color: white;
+@primary-oneway-arrow-color: white;
+@secondary-oneway-arrow-color: white;
+
+// size of icons so they can be seen while driving
+@car-gps-icon-size: 24;
+
 // terrain-small [0-6], terrain-medium [7-8], terrain-big [9-]
 .terrain {
   raster-scaling: lanczos;

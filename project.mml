@@ -80,7 +80,7 @@ Layer:
     advanced: {}
     properties:
       minzoom: 7
-      maxzoom: 8
+      maxzoom: 7
   - id: terrain-big
     class: terrain
     geometry: raster
@@ -107,10 +107,11 @@ Layer:
       <<: *osm2pgsql
       table: |-
         (SELECT
-            way, way_pixels,
+            way, way_pixels, name,
             COALESCE(wetland, landuse, "natural") AS feature
           FROM (SELECT
               way,
+              name,
               ('landuse_' || (CASE WHEN landuse IN ('forest', 'farmland', 'residential', 'commercial', 'retail', 'industrial',
                                                     'meadow', 'grass', 'village_green', 'vineyard', 'orchard') THEN landuse ELSE NULL END)) AS landuse,
               ('natural_' || (CASE WHEN "natural" IN ('wood', 'sand', 'scree', 'shingle', 'bare_rock', 'heath', 'grassland', 'scrub') THEN "natural" ELSE NULL END)) AS "natural",
@@ -1223,8 +1224,7 @@ Layer:
         ) AS pistes
     advanced: {}
     properties:
-      minzoom: 14
-    # status: off
+      minzoom: 12
   - id: turning-circle-fill
     geometry: point
     <<: *extents
@@ -1557,14 +1557,16 @@ Layer:
       <<: *osm2pgsql
       table: |-
         (SELECT
-            way, "natural"
+            way, "natural", name
           FROM planet_osm_point
           WHERE "natural" = 'tree'
+            AND name IS NOT NULL
         UNION ALL
         SELECT
-            way, "natural"
+            way, "natural", name
           FROM planet_osm_line
           WHERE "natural" = 'tree_row'
+            AND name IS NOT NULL
         ) AS trees
     properties:
       minzoom: 16
@@ -1597,7 +1599,7 @@ Layer:
       table: |-
         (SELECT
             way,
-            name,
+            upper(name) as name,
             CASE
               WHEN (tags->'population' ~ '^[0-9]{1,8}$') THEN (tags->'population')::INTEGER ELSE 0
             END as population,
@@ -1632,6 +1634,7 @@ Layer:
         ) AS state_names
     properties:
       minzoom: 4
+    status: off
   - id: placenames-medium
     geometry: point
     <<: *extents
@@ -1874,6 +1877,7 @@ Layer:
                 ELSE NULL
               END AS "telescope:diameter",
               tags->'castle_type' as castle_type,
+            -- local
               tags->'ruins' as ruins,
               tags->'sport' as sport,
               tags->'information' as information,
