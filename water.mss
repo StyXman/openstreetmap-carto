@@ -407,10 +407,28 @@
       }
     }
   }
+  [natural = 'strait'][zoom >= 14] {
+    text-name: "[name]";
+    text-size: 10;
+    text-face-name: @oblique-fonts;
+    text-fill: @water-text;
+    text-halo-radius: @standard-halo-radius;
+    text-halo-fill: @standard-halo-fill;
+    text-max-char-angle-delta: 15;
+    text-spacing: 400;
+    text-placement: line;
+    [zoom >= 15] {
+      text-size: 12;
+    }
+  }
 }
 
+
 .text-low-zoom[zoom < 10],
+#text-point[zoom >= 10],
+// TODO Paul Norman <penorman@mac.com>  2019-03-10 23:13:25
 .text[zoom >= 10] {
+  // local
   [feature = 'place_ocean'],
   [feature = 'place_sea'] {
     #text-point[zoom >= 5] {
@@ -429,7 +447,7 @@
   [feature = 'landuse_reservoir'],
   [feature = 'landuse_basin'],
   [feature = 'waterway_dock'] {
-    [zoom >= 0][way_pixels > 3000],
+    [zoom >= 0][way_pixels > 3000][way_pixels <= 768000],
     [zoom >= 17] {
       text-name: "[name]";
       text-size: 10;
@@ -455,6 +473,25 @@
       text-halo-radius: @standard-halo-radius;
       text-halo-fill: @standard-halo-fill;
       text-placement: interior;
+    }
+  }
+}
+
+#text-point[zoom >= 14] {
+  [feature = 'natural_strait'] {
+    text-name: "[name]";
+    text-size: 10;
+    text-wrap-width: 25; // 2.5 em
+    text-line-spacing: -1.5; // -0.15 em
+    text-fill: @water-text;
+    text-face-name: @oblique-fonts;
+    text-halo-radius: @standard-halo-radius;
+    text-halo-fill: @standard-halo-fill;
+    text-placement: point;
+    [zoom >= 15] {
+      text-size: 12;
+      text-wrap-width: 37; // 3.1 em
+      text-line-spacing: -1.6; // -0.13 em
     }
   }
 }

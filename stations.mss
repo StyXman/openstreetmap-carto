@@ -1,7 +1,8 @@
 @station-color: @transportation-icon;
 @station-text: @transportation-text;
 
-.stations {
+#stations {
+  // changed locally for lower ZL and another icon
   [railway = 'subway_entrance'][zoom >= @emergency] {
     marker-file: url('symbols/london-underground-18.png');
     marker-placement: interior;

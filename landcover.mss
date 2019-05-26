@@ -95,17 +95,6 @@
   ::upper-mid-zoom[zoom >= 12][zoom < 13],
   ::high-zoom[zoom >= 13] {
 
-  ::first {
-    [feature = 'wetland_mud'],
-    [feature = 'wetland_tidalflat'] {
-      [zoom >= 5] {
-        polygon-fill: @mud;
-        [way_pixels >= 4]  { polygon-gamma: 0.75; }
-        [way_pixels >= 64] { polygon-gamma: 0.3;  }
-      }
-    }
-  }
-
   /*
   [feature = 'leisure_swimming_pool'][zoom >= 14] {
     polygon-fill: @water-color;
@@ -118,6 +107,7 @@
   }
   */
 
+  // TODO: reactivate these
   /*
   [feature = 'leisure_recreation_ground'][zoom >= 10],
   [feature = 'landuse_recreation_ground'][zoom >= 10],
@@ -133,6 +123,7 @@
   }
   */
 
+  // TODO: reactivate these
   /*
   [feature = 'tourism_camp_site'],
   [feature = 'tourism_caravan_site'],
@@ -394,11 +385,10 @@
 
   [feature = 'natural_grassland'][zoom >= 5],
   [feature = 'landuse_meadow'][zoom >= 5],
-  [feature = 'landuse_grass'][zoom >= 10],
-  [feature = 'landuse_village_green'][zoom >= 10] {
+  [feature = 'landuse_grass'][zoom >= 5],
+  [feature = 'landuse_village_green'][zoom >= 5] {
+    // disabled fill
     /*
-  [feature = 'landuse_village_green'][zoom >= 10],
-  [feature = 'leisure_common'][zoom >= 10] {
     polygon-fill: @grass;
     [way_pixels >= 4]  { polygon-gamma: 0.75; }
     [way_pixels >= 64] { polygon-gamma: 0.3;  }
@@ -406,6 +396,7 @@
     polygon-pattern-file: url('symbols/grass2.png');
   }
 
+  // TODO: enable this with same bg as urban?
   /*
   [feature = 'landuse_retail'],
   [feature = 'amenity_marketplace'] {
@@ -427,6 +418,7 @@
   }
   */
 
+  // TODO: enable this with same bg as urban?
   /*
   [feature = 'landuse_industrial'][zoom >= 8] {
     polygon-fill: @built-up-lowzoom;
@@ -864,6 +856,18 @@
 }
 
 #landcover-area-symbols {
+
+  ::first {
+    [natural = 'mud'],
+    [int_wetland = 'tidalflat'] {
+      [zoom >= 9] {
+        polygon-fill: @mud;
+        [way_pixels >= 4]  { polygon-gamma: 0.75; }
+        [way_pixels >= 64] { polygon-gamma: 0.3;  }
+      }
+    }
+  }
+
   [natural = 'sand'][zoom >= 5] {
     polygon-pattern-file: url('symbols/beach.png');
     polygon-pattern-alignment: global;
