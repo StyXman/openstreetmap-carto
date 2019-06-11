@@ -26,8 +26,8 @@
 
 // TODO: dupes!
 @default-casing: white;
-@tertiary-casing: #444;
-@residential-casing: #444;
+@tertiary-casing: black;
+@residential-casing: black;
 @road-casing: @residential-casing;
 @service-casing: #999;
 @living-street-casing: @residential-casing;
