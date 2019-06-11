@@ -92,15 +92,15 @@ overlapping borders correctly.
     }
   }
 
+  // provinces, regions, states. in France, it includes coastlines, which I don't want
+  /*
   [admin_level = '4'] {
     [zoom >= 4] {
-      /*
       background/line-join: bevel;
       background/line-color: white;
       background/line-width: 0.4;
       background/line-simplify: @admin-simplify;
       background/line-simplify-algorithm: @admin-simplify-algorithm;
-      */
       line-color: @admin-boundaries;
       line-join: bevel;
       line-width: 0.4;
@@ -109,43 +109,32 @@ overlapping borders correctly.
       line-clip: false;
     }
     [zoom >= 5] {
-      /*
       background/line-width: 0.5;
       line-width: 0.5;
-      */
     }
     [zoom >= 6] {
-      /*
       background/line-width: 0.6;
-      */
       line-width: 0.6;
     }
     [zoom >= 7] {
-      /*
       background/line-width: 1;
-      */
       line-dasharray: 4,3;
       line-width: 1;
     }
     [zoom >= 9] {
-      /*
       background/line-width: 1.8;
-      */
       line-width: 1.8;
     }
     [zoom >= 10] {
-      /*
       background/line-width: 2.5;
-      */
       line-width: 2.5;
     }
     [zoom >= 12] {
-      /*
       background/line-width: 3;
-      */
       line-width: 3;
     }
   }
+  */
 
   /*
   The following code prevents admin boundaries from being rendered on top of
