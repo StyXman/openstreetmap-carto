@@ -64,7 +64,8 @@ residential    12-13
 service        13-14
 living_street    -13
 */
-@unimportant-road: @tertiary-casing;
+// unlink from tertiary-casing so we can render those darker without impacting these
+@unimportant-road: #444;
 @unimportant-minor-road: #bbb;
 
 @minor-construction: #aaa;
