@@ -312,8 +312,8 @@ local
 
 @motorway-oneway-arrow-color:     darken(@motorway-casing, 25%);
 @trunk-oneway-arrow-color:        darken(@trunk-casing, 25%);
-@primary-oneway-arrow-color:      darken(@primary-casing, 15%);
-@secondary-oneway-arrow-color:    darken(@secondary-casing, 10%);
+@primary-oneway-arrow-color:      white;
+@secondary-oneway-arrow-color:    white;
 @tertiary-oneway-arrow-color:     darken(@tertiary-casing, 30%);
 @residential-oneway-arrow-color:  darken(@residential-casing, 40%);
 @living-street-oneway-arrow-color: darken(@residential-casing, 30%);
