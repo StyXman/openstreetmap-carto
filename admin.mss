@@ -12,6 +12,7 @@ overlapping borders correctly.
 #admin-low-zoom[zoom < 11],
 #admin-mid-zoom[zoom >= 11][zoom < 13],
 #admin-high-zoom[zoom >= 13] {
+  // country
   [admin_level = '2'] {
     [zoom >= 4] {
       /*
@@ -61,6 +62,7 @@ overlapping borders correctly.
     }
   }
 
+  // subcountry (whales, scotland, etc)
   [admin_level = '3'] {
     [zoom >= 4] {
       /*
