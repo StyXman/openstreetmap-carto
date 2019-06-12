@@ -118,18 +118,12 @@
  */
 
 /*
-.ocean::border {
-  line-width: 1.5;
-  line-color: @water-dark;
-}
-
 #water-areas[waterway = 'dock'][zoom >= 9]::waterway,
 #water-areas[waterway = 'canal'][zoom >= 9]::waterway,
 #water-areas[landuse = 'basin'][zoom >= 7]::landuse,
 #water-areas[natural = 'water'][zoom >= 6]::natural,
 #water-areas[landuse = 'reservoir'][zoom >= 6]::landuse,
 #water-areas[waterway = 'riverbank'][zoom >= 6]::waterway,
-.ocean {
   polygon-fill: @water-color;
 
   // Only the SQL layers have way_pixels

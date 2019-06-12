@@ -11,6 +11,11 @@
   }
 }
 
+.ocean::border {
+  line-width: 1.5;
+  line-color: @water-dark;
+}
+
 .ocean {
   polygon-fill: @water-color;
 }
