@@ -381,10 +381,11 @@ Layer:
       table: |-
         (SELECT
             way, name, religion, way_pixels,
-            COALESCE(landuse, leisure, "natural") AS feature
+            COALESCE(amenity, landuse, leisure, "natural") AS feature
           FROM (SELECT
               way, COALESCE(name, '') AS name,
-              ('amenity_' || (CASE WHEN amenity IN ('grave_yard') THEN amenity ELSE NULL END)) AS amenity,
+              ('amenity_' || (CASE WHEN amenity IN ('grave_yard', 'parking', 'bicycle_parking', 'motorcycle_parking')
+                                     OR amenity IN ('parking') AND (tags->'parking' NOT IN ('underground') OR (tags->'parking') IS NULL) THEN amenity ELSE NULL END)) AS amenity,
               ('landuse_' || (CASE WHEN landuse IN ('cemetery', 'recreation_ground', 'village_green') THEN landuse ELSE NULL END)) AS landuse,
               ('leisure_' || (CASE WHEN leisure IN ('playground', 'park', 'recreation_ground', 'common', 'garden',
                                                     'sports_centre', 'stadium', 'pitch', 'track', 'dog_park') THEN leisure ELSE NULL END)) AS leisure,
@@ -393,6 +394,7 @@ Layer:
               way_area/NULLIF(!pixel_width!::real*!pixel_height!::real,0) AS way_pixels
             FROM planet_osm_polygon
             WHERE (landuse IS NOT NULL
+              OR amenity IN ('parking', 'bicycle_parking', 'motorcycle_parking', 'grave_yard')
               OR leisure IS NOT NULL
               OR "natural" IN ('beach', 'shoal'))
               AND way_area > 0.01*!pixel_width!::real*!pixel_height!::real

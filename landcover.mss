@@ -31,7 +31,7 @@
 @transportation-area: #e9e7e2;
 @apron: #dadae0;
 @garages: #dfddce;
-@parking: #eeeeee;
+@parking: #aaaaaa;
 @parking-outline: saturate(darken(@parking, 40%), 20%);
 @railway: @industrial;
 @railway-line: @industrial-line;
