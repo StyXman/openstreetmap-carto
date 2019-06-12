@@ -84,19 +84,24 @@
 
 #landcover-low-zoom[zoom < 10],
 #landcover[zoom >= 10] {
+  /*
   ::low-zoom[zoom < 10]                   { image-filters: scale-hsla(0,1,0,1,0.6,0.95,0,1); }
   ::lower-mid-zoom[zoom >= 10][zoom < 11] { image-filters: scale-hsla(0,1,0,1,0.6,0.95,0,1); }
   ::mid-zoom[zoom >= 11][zoom < 12]       { image-filters: scale-hsla(0,1,0,1,0.5,0.96,0,1); }
   ::upper-mid-zoom[zoom >= 12][zoom < 13] { image-filters: scale-hsla(0,1,0,1,0.4,0.97,0,1); }
+  */
   ::high-zoom[zoom >= 13]                 { image-filters: scale-hsla(0,1,0,1,0,  1,   0,1); }
 
+  /*
   ::low-zoom[zoom < 10],
   ::lower-mid-zoom[zoom >= 10][zoom < 11],
   ::mid-zoom[zoom >= 11][zoom < 12],
   ::upper-mid-zoom[zoom >= 12][zoom < 13],
+  */
   ::high-zoom[zoom >= 13] {
 
-  /*
+  // TODO: above certain size/(semi) public access=yes
+  /* not insterested
   [feature = 'leisure_swimming_pool'][zoom >= 14] {
     polygon-fill: @water-color;
     [zoom >= 17] {
@@ -293,8 +298,7 @@
     }
   }
 
-  /*
-  TODO:
+  /* TODO: not interested in the difference, except if there is no landcover?
   [feature = 'landuse_forest'],
   [feature = 'natural_wood'] {
     [zoom >= 5] {
@@ -628,10 +632,12 @@
   [feature = 'amenity_taxi'] {
   */
 
+  /* not interested
   [feature = 'amenity_parking_space'][zoom >= 18] {
     line-width: 0.3;
     line-color: mix(@parking-outline, @parking, 50%);
   }
+  */
 
   [feature = 'aeroway_apron'][zoom >= 10] {
     polygon-fill: @apron;
