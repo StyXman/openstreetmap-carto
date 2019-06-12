@@ -915,10 +915,11 @@
 
   //Also landuse = forest, converted in the SQL
   [natural = 'wood'][zoom >= 13]::wood {
-    polygon-pattern-file: url('symbols/leaftype_unknown.svg'); // Lch(55,30,135)
-    [leaf_type = "broadleaved"] { polygon-pattern-file: url('symbols/forest-broad.png'); }
-    [leaf_type = "needleleaved"] { polygon-pattern-file: url('symbols/forest-needle.png'); }
-    [leaf_type = "mixed"] { polygon-pattern-file: url('symbols/forest-mixed.png'); }
+    polygon-pattern-file: url('symbols/local/forest-mixed.png'); // Lch(55,30,135)
+    [leaf_type = "broadleaved"] { polygon-pattern-file: url('symbols/local/forest-broad.png'); }
+    [leaf_type = "needleleaved"] { polygon-pattern-file: url('symbols/local/forest-needle.png'); }
+    [leaf_type = "mixed"] { polygon-pattern-file: url('symbols/local/forest-mixed.png'); }
+    // TODO:
     [leaf_type = "leafless"] { polygon-pattern-file: url('symbols/leaftype_leafless.svg'); }
     polygon-pattern-alignment: global;
     opacity: 0.4; // The entire layer has opacity to handle overlapping forests
