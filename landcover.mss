@@ -42,6 +42,7 @@
 @bare_ground: #eee5dc;
 @campsite: #def6c0; // also caravan_site, picnic_site
 @cemetery: #aacbaf; // also grave_yard
+@green: @cemetery;
 @construction: #c7c7b4; // also brownfield
 @heath: #d6d99f;
 @mud: rgba(203,177,154,0.3); // produces #e6dcd1 over @land
@@ -107,20 +108,11 @@
   }
   */
 
-  // TODO: reactivate these
-  /*
+  /* gone to lc-flat
   [feature = 'leisure_recreation_ground'][zoom >= 10],
   [feature = 'landuse_recreation_ground'][zoom >= 10],
   [feature = 'leisure_playground'][zoom >= 13],
   [feature = 'leisure_fitness_station'][zoom >= 13] {
-    polygon-fill: @leisure;
-    [zoom >= 15] {
-      line-color: darken(@leisure, 60%);
-      line-width: 0.3;
-    }
-    [way_pixels >= 4]  { polygon-gamma: 0.75; }
-    [way_pixels >= 64] { polygon-gamma: 0.3;  }
-  }
   */
 
   // TODO: reactivate these
@@ -214,27 +206,7 @@
     }
   }
 
-  [feature = 'landuse_cemetery'],
-  [feature = 'amenity_grave_yard'] {
-    [zoom >= 10] {
-      polygon-fill: @cemetery;
-      [way_pixels >= 4]  { polygon-gamma: 0.75; }
-      [way_pixels >= 64] { polygon-gamma: 0.3;  }
-    }
-    [zoom >= 13] {
-      [religion = 'jewish'] { polygon-pattern-file: url('symbols/grave_yard_jewish.svg'); }
-      [religion = 'christian'] { polygon-pattern-file: url('symbols/grave_yard_christian.svg'); }
-      [religion = 'muslim'] { polygon-pattern-file: url('symbols/grave_yard_muslim.svg'); }
-      [religion = 'INT-generic'] { polygon-pattern-file: url('symbols/grave_yard_generic.svg'); }
-      [religion = 'jewish'],
-      [religion = 'christian'],
-      [religion = 'muslim'],
-      [religion = 'INT-generic'] {
-        [way_pixels >= 4]  { polygon-pattern-gamma: 0.75; }
-        [way_pixels >= 64] { polygon-pattern-gamma: 0.3;  }
-      }
-    }
-  }
+  // cemetery et al moved to lc-flat
 
   [feature = 'amenity_place_of_worship'][zoom >= 13],
   [feature = 'landuse_religious'][zoom >= 13] {
@@ -277,13 +249,7 @@
     [way_pixels >= 64] { polygon-gamma: 0.3;  }
   }
 
-  [feature = 'leisure_park'] {
-    [zoom >= 10] {
-      polygon-fill: @park;
-      [way_pixels >= 4]  { polygon-gamma: 0.75; }
-      [way_pixels >= 64] { polygon-gamma: 0.3;  }
-    }
-  }
+  // leisure_park gone to lc-flat
 
   [feature = 'leisure_ice_rink'][is_building = 'no'] {
     [zoom >= 10] {
@@ -295,19 +261,7 @@
     }
   }
 
-  [feature = 'leisure_dog_park'] {
-    [zoom >= 10] {
-      polygon-fill: @leisure;
-      [way_pixels >= 4]  { polygon-gamma: 0.75; }
-      [way_pixels >= 64] { polygon-gamma: 0.3;  }
-    }
-    [zoom >= 16] {
-      polygon-pattern-file: url('symbols/dog_park.png');
-      polygon-pattern-alignment: global;
-      [way_pixels >= 4]  { polygon-pattern-gamma: 0.75; }
-      [way_pixels >= 64] { polygon-pattern-gamma: 0.3;  }
-    }
-  }
+  // leisure_dog_park gone to lc-flat
 
   [feature = 'leisure_golf_course'][zoom >= 10],
   [feature = 'leisure_miniature_golf'][zoom >= 15] {
@@ -667,20 +621,12 @@
     }
   }
 
+  /* gone to lc-flat
   [feature = 'amenity_parking'],
   [feature = 'amenity_bicycle_parking'],
   [feature = 'amenity_motorcycle_parking'],
   [feature = 'amenity_taxi'] {
-    [zoom >= 14] {
-      polygon-fill: @parking;
-      [zoom >= 15] {
-        line-width: 0.3;
-        line-color: @parking-outline;
-      }
-      [way_pixels >= 4]  { polygon-gamma: 0.75; }
-      [way_pixels >= 64] { polygon-gamma: 0.3;  }
-    }
-  }
+  */
 
   [feature = 'amenity_parking_space'][zoom >= 18] {
     line-width: 0.3;
@@ -703,12 +649,10 @@
     [way_pixels >= 64] { polygon-gamma: 0.3;  }
   }
 
+  /* gone to lc-flat
   [feature = 'natural_beach'][zoom >= 10],
   [feature = 'natural_shoal'][zoom >= 10] {
-    polygon-fill: @beach;
-    [way_pixels >= 4]  { polygon-gamma: 0.75; }
-    [way_pixels >= 64] { polygon-gamma: 0.3;  }
-  }
+  */
 
   [feature = 'highway_services'],
   [feature = 'highway_rest_area'] {
@@ -723,63 +667,51 @@
     polygon-fill: @railway;
   }
 
+  /* gone to lc-flat
   [feature = 'leisure_sports_centre'],
   [feature = 'leisure_stadium'] {
-    [zoom >= 10] {
-      polygon-fill: @stadium;
-      [way_pixels >= 4]  { polygon-gamma: 0.75; }
-      [way_pixels >= 64] { polygon-gamma: 0.3;  }
-      [zoom >= 13] {
-        line-width: 0.3;
-        line-color: darken(@stadium, 35%);
-      }
-    }
-  }
+  */
 
-  [feature = 'leisure_track'][zoom >= 10] {
-    polygon-fill: @track;
-    [zoom >= 15] {
-      line-width: 0.5;
-      line-color: desaturate(darken(@track, 20%), 10%);
-    }
-    [way_pixels >= 4]  { polygon-gamma: 0.75; }
-    [way_pixels >= 64] { polygon-gamma: 0.3;  }
-  }
+  // track and pitch gone to lc-flat
 
-  [feature = 'leisure_pitch'][zoom >= 10] {
-    polygon-fill: @pitch;
-    [zoom >= 15] {
-      line-width: 0.5;
-      line-color: desaturate(darken(@pitch, 20%), 10%);
-    }
-    [way_pixels >= 4]  { polygon-gamma: 0.75; }
-    [way_pixels >= 64] { polygon-gamma: 0.3;  }
   }
 }
 
 #landcover-flat[zoom >= 10] {
-  [feature = 'leisure_playground'][zoom >= 13] {
-    polygon-fill: @leisure;
-    line-color: darken(@leisure, 60%);
-    line-width: 0.3;
-    [way_pixels >= 4]  { polygon-gamma: 0.75; }
-    [way_pixels >= 64] { polygon-gamma: 0.3;  }
-  }
-
-  [feature = 'leisure_park'],
-  [feature = 'leisure_recreation_ground'] {
-    [zoom >= 10] {
-      polygon-fill: @park;
+  // the ::fill attachment is not needed, except that carto does not support
+  // polygon-fill-opacity, and opacity applies to the whole layer
+  [feature = 'leisure_recreation_ground'][zoom >= 13],
+  [feature = 'landuse_recreation_ground'][zoom >= 13],
+  [feature = 'leisure_playground'][zoom >= 13],
+  [feature = 'leisure_fitness_station'][zoom >= 13] {
+    ::fill {
+      polygon-fill: @green;
+      opacity: 0.5;
       [way_pixels >= 4]  { polygon-gamma: 0.75; }
       [way_pixels >= 64] { polygon-gamma: 0.3;  }
+    }
+    line-color: darken(@leisure, 60%);
+    line-width: 0.3;
+  }
+
+  [feature = 'leisure_park'] {
+    [zoom >= 10] {
+      ::fill {
+        polygon-fill: @green;
+        opacity: 0.7;
+        [way_pixels >= 4]  { polygon-gamma: 0.75; }
+        [way_pixels >= 64] { polygon-gamma: 0.3;  }
+      }
     }
   }
 
   [feature = 'leisure_dog_park'] {
-    [zoom >= 10] {
-      polygon-fill: @leisure;
-      [way_pixels >= 4]  { polygon-gamma: 0.75; }
-      [way_pixels >= 64] { polygon-gamma: 0.3;  }
+    [zoom >= 13] {
+      ::fill {
+        polygon-fill: @green;
+        [way_pixels >= 4]  { polygon-gamma: 0.75; }
+        [way_pixels >= 64] { polygon-gamma: 0.3;  }
+      }
     }
     [zoom >= 16] {
       polygon-pattern-file: url('symbols/dog_park.png');
@@ -794,15 +726,33 @@
   [feature = 'leisure_common'],
   [feature = 'leisure_garden'] {
     [zoom >= 13] {
-      polygon-fill: @grass;
+      ::fill {
+        polygon-fill: @grass;
+        opacity: 0.5;
+        [way_pixels >= 4]  { polygon-gamma: 0.75; }
+        [way_pixels >= 64] { polygon-gamma: 0.3;  }
+      }
+      polygon-pattern-file: url('symbols/grass2.png');
+    }
+  }
+
+  [feature = 'amenity_parking'],
+  [feature = 'amenity_bicycle_parking'],
+  [feature = 'amenity_motorcycle_parking'] {
+    [zoom >= 14] {
+      polygon-fill: @parking;
+      [zoom >= 15] {
+        line-width: 0.3;
+        line-color: @parking-outline;
+      }
       [way_pixels >= 4]  { polygon-gamma: 0.75; }
       [way_pixels >= 64] { polygon-gamma: 0.3;  }
-      polygon-pattern-file: url('symbols/grass2.png');
     }
   }
 
   [feature = 'natural_beach'][zoom >= 10],
   [feature = 'natural_shoal'][zoom >= 10] {
+    // beaches are flat enough
     polygon-fill: @beach;
     polygon-pattern-file: url('symbols/beach.png');
     [way_pixels >= 4]  { polygon-gamma: 0.75; }
@@ -811,31 +761,63 @@
 
   [feature = 'leisure_sports_centre'],
   [feature = 'leisure_stadium'] {
+    // they're usually flatenned
     [zoom >= 10] {
       polygon-fill: @stadium;
       [way_pixels >= 4]  { polygon-gamma: 0.75; }
       [way_pixels >= 64] { polygon-gamma: 0.3;  }
+      [zoom >= 13] {
+        line-width: 0.3;
+        line-color: darken(@stadium, 35%);
+      }
     }
   }
 
   [feature = 'landuse_cemetery'],
   [feature = 'amenity_grave_yard'] {
     [zoom >= 10] {
-      polygon-fill: @cemetery;
-      [way_pixels >= 4]  { polygon-gamma: 0.75; }
-      [way_pixels >= 64] { polygon-gamma: 0.3;  }
+      ::fill {
+        polygon-fill: @cemetery;
+        opacity: 0.3;
+        [way_pixels >= 4]  { polygon-gamma: 0.75; }
+        [way_pixels >= 64] { polygon-gamma: 0.3;  }
+      }
     }
-    [zoom >= 14] {
+    [zoom >= 13] {
       [religion = 'jewish'] { polygon-pattern-file: url('symbols/grave_yard_jewish.svg'); }
       [religion = 'christian'] { polygon-pattern-file: url('symbols/grave_yard_christian.svg'); }
+      [religion = 'muslim'] { polygon-pattern-file: url('symbols/grave_yard_muslim.svg'); }
       [religion = 'INT-generic'] { polygon-pattern-file: url('symbols/grave_yard_generic.svg'); }
       [religion = 'jewish'],
       [religion = 'christian'],
+      [religion = 'muslim'],
       [religion = 'INT-generic'] {
         [way_pixels >= 4]  { polygon-pattern-gamma: 0.75; }
         [way_pixels >= 64] { polygon-pattern-gamma: 0.3;  }
       }
     }
+  }
+
+  [feature = 'leisure_track'][zoom >= 10] {
+    // they're usually flatenned
+    polygon-fill: @track;
+    [zoom >= 15] {
+      line-width: 0.5;
+      line-color: desaturate(darken(@track, 20%), 10%);
+    }
+    [way_pixels >= 4]  { polygon-gamma: 0.75; }
+    [way_pixels >= 64] { polygon-gamma: 0.3;  }
+  }
+
+  [feature = 'leisure_pitch'][zoom >= 10] {
+    // they're usually flatenned
+    polygon-fill: @pitch;
+    [zoom >= 15] {
+      line-width: 0.5;
+      line-color: desaturate(darken(@pitch, 20%), 10%);
+    }
+    [way_pixels >= 4]  { polygon-gamma: 0.75; }
+    [way_pixels >= 64] { polygon-gamma: 0.3;  }
   }
 }
 

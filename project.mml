@@ -141,16 +141,19 @@ Layer:
           FROM (SELECT
               way, COALESCE(name, '') AS name,
               ('aeroway_' || (CASE WHEN aeroway IN ('apron', 'aerodrome') THEN aeroway ELSE NULL END)) AS aeroway,
-              ('amenity_' || (CASE WHEN amenity IN ('parking', 'bicycle_parking', 'motorcycle_parking', 'university', 'college', 'school', 'taxi',
+                                                 -- 'bicycle_parking', 'motorcycle_parking', gone to lc-flat ---------------------------> 'taxi' too
+              ('amenity_' || (CASE WHEN amenity IN (                                                    'university', 'college', 'school',
                                                     -- grave_yard gone to landcover-flat
                                                     'hospital', 'kindergarten', 'prison', 'place_of_worship', 'clinic', 'ferry_terminal',
                                                     'marketplace', 'community_centre', 'social_facility', 'arts_centre', 'parking_space', 'bus_station',
                                                     'fire_station', 'police')
-                              OR amenity IN ('parking') AND (tags->'parking' NOT IN ('underground') OR (tags->'parking') IS NULL) THEN amenity ELSE NULL END)) AS amenity,
+                           -- OR amenity IN ('parking') AND (tags->'parking' NOT IN ('underground') OR (tags->'parking') IS NULL)
+                                                                                                                                  THEN amenity ELSE NULL END)) AS amenity,
                                                                                   -- 'cemetery' gone to landcover-flat
               ('landuse_' || (CASE WHEN landuse IN ('quarry', 'vineyard', 'orchard',             'residential', 'garages', 'meadow', 'grass',
                                                     'allotments', 'forest', 'farmyard', 'farmland', 'greenhouse_horticulture',
-                                                    'recreation_ground', 'village_green', 'retail', 'industrial', 'railway', 'commercial',
+                                                 -- 'recreation_ground', 'village_green', are gone to lc-flat
+                                                                                          'retail', 'industrial', 'railway', 'commercial',
                                                     'brownfield', 'landfill', 'construction', 'plant_nursery', 'religious') THEN landuse ELSE NULL END)) AS landuse,
                                                  -- 'swimming_pool is not rendered
                                                  --                  'playground', 'park', 'recreation_ground', 'common', 'garden' gone to landcover-flat
@@ -173,8 +176,10 @@ Layer:
             WHERE (landuse IS NOT NULL
               OR leisure IS NOT NULL
               OR aeroway IN ('apron', 'aerodrome')
-              OR amenity IN ('parking', 'bicycle_parking', 'motorcycle_parking', 'taxi', 'university', 'college', 'school', 'hospital', 'kindergarten',
-                             'grave_yard', 'place_of_worship', 'prison', 'clinic', 'ferry_terminal', 'marketplace', 'community_centre', 'social_facility',
+                          -- 'parking', 'bicycle_parking', 'motorcycle_parking', gone to lc-flat, 'taxi', gone
+              OR amenity IN (                                                            'university', 'college', 'school', 'hospital', 'kindergarten',
+                          -- 'grave_yard', gone to lc-flat
+                                           'place_of_worship', 'prison', 'clinic', 'ferry_terminal', 'marketplace', 'community_centre', 'social_facility',
                              'arts_centre', 'parking_space', 'bus_station', 'fire_station', 'police')
               OR man_made IN ('works', 'wastewater_plant','water_works')
               OR "natural" IN ('beach', 'shoal', 'heath', 'mud', 'marsh', 'wetland', 'grassland', 'wood', 'sand', 'scree', 'shingle', 'bare_rock', 'scrub')
