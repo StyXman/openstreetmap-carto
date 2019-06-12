@@ -196,8 +196,8 @@
       polygon-fill: @orchard;
       [way_pixels >= 4]  { polygon-gamma: 0.75; }
       [way_pixels >= 64] { polygon-gamma: 0.3;  }
-    */
     }
+    */
     [zoom >= 13] {
       polygon-pattern-file: url('symbols/plant_nursery.png');
       polygon-pattern-alignment: global;
@@ -674,6 +674,8 @@
 
   // track and pitch gone to lc-flat
 
+  // when they introduced low zoom landcover, they didn't reindent all this block
+  // so please leave this 'extra' } here
   }
 }
 
