@@ -346,6 +346,7 @@ local
 @major-highway-text-repeat-distance: 50;
 @minor-highway-text-repeat-distance: 10;
 
+@rail-fill: #404040;
 @railway-text-repeat-distance: 200;
 
 /* NOTE NOTE NOTE
@@ -2260,7 +2261,7 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
           light/line-color: white;
           light/line-join: round;
           [feature = 'railway_rail'] {
-            dark/line-color: #707070;
+            dark/line-color: @rail-fill;
             dark/line-width: 2;
             light/line-width: 0.75;
             light/line-dasharray: 8,8;
@@ -2288,7 +2289,7 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
           }
         }
         #tunnels {
-          line-color: #787878;
+          line-color: @rail-fill;
           line-width: 2.8;
           line-dasharray: 6,4;
           line-clip: false;
