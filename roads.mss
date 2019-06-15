@@ -929,7 +929,7 @@ local
 
     [feature = 'railway_INT-spur-siding-yard'] {
       #bridges {
-        [zoom >= 13] {
+        [zoom >= 14] {
           line-width: 5.7;
           line-color: @bridge-casing;
           line-join: round;
@@ -1122,7 +1122,7 @@ local
 
     [feature = 'railway_INT-spur-siding-yard'] {
       #bridges {
-        [zoom >= 13] {
+        [zoom >= 14] {
           line-width: 4;
           line-color: white;
           line-join: round;
@@ -2244,7 +2244,7 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
     }
 
     [feature = 'railway_rail'][zoom >= 5],
-    [feature = 'railway_INT-spur-siding-yard'][zoom >= 13] {
+    [feature = 'railway_INT-spur-siding-yard'][zoom >= 14] {
       [zoom < 13] {
         line-color: @rail-fill;
         line-width: 0.5;
@@ -2277,6 +2277,7 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
               light/line-width: 2;
             }
           }
+          // TODO: render this from ZL14
           [feature = 'railway_INT-spur-siding-yard'] {
             dark/line-width: 2;
             dark/line-color: #aaa;
@@ -2293,6 +2294,7 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
           line-width: 2.8;
           line-dasharray: 6,4;
           line-clip: false;
+          // TODO: render this from ZL14
           [feature = 'railway_INT-spur-siding-yard'] {
             line-color: #aaa;
             line-width: 1.9;
