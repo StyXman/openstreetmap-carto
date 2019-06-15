@@ -74,10 +74,10 @@ Map {
 .hillshade-overlay {
   [zoom >= 9] {
     raster-scaling: lanczos;
-    /* this has its beauty too
+    // this has its beauty too
     // comp-op: overlay;
-    raster-opacity: 0.5;
-    */
+    // raster-opacity: 0.7;
+    // comp-op: soft-light;
     comp-op: hard-light;
     raster-opacity: 0.6;
     [zoom >= 11] {
@@ -186,6 +186,7 @@ Map {
   }
 }
 
+// TODO: fix
 .contour-text {
   #contour-1000[zoom >= 9],
   #contour-500[zoom >= 11],

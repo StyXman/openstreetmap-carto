@@ -534,7 +534,7 @@
     }
   }
 
-  /*
+  /* TODO: like beach?
   [feature = 'natural_sand'][zoom >= 5] {
     polygon-fill: @sand;
     [way_pixels >= 4]  { polygon-gamma: 0.75; }
@@ -542,7 +542,7 @@
   }
   */
 
-  /*
+  /* TODO:
   [feature = 'natural_heath'][zoom >= 5] {
     polygon-fill: @heath;
     [way_pixels >= 4]  { polygon-gamma: 0.75; }
@@ -550,7 +550,7 @@
   }
   */
 
-  /*
+  /* TODO:
   [feature = 'natural_scrub'][zoom >= 5] {
     polygon-fill: @scrub;
     [way_pixels >= 4]  { polygon-gamma: 0.75; }
@@ -558,12 +558,15 @@
   }
   */
 
+  /* TODO:
   [feature = 'wetland_swamp'][zoom >= 5] {
     polygon-fill: @forest;
     [way_pixels >= 4]  { polygon-gamma: 0.75; }
     [way_pixels >= 64] { polygon-gamma: 0.3;  }
   }
+  */
 
+  /* TODO:
   [feature = 'wetland_bog'],
   [feature = 'wetland_string_bog'] {
     [zoom >= 5] {
@@ -572,7 +575,9 @@
       [way_pixels >= 64] { polygon-gamma: 0.3;  }
     }
   }
+  */
 
+  /* TODO:
   [feature = 'wetland_wet_meadow'],
   [feature = 'wetland_fen'],
   [feature = 'wetland_marsh'] {
@@ -582,6 +587,7 @@
       [way_pixels >= 64] { polygon-gamma: 0.3;  }
     }
   }
+  */
 
   [feature = 'amenity_hospital'],
   [feature = 'amenity_clinic'],

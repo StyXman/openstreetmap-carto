@@ -17,8 +17,6 @@
   }
 }
 
-
-
 #water-barriers-point, #water-barriers-line, #water-barriers-poly {
   [waterway = 'dam'] {
     #water-barriers-poly[zoom >= 13] {

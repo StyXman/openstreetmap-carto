@@ -30,7 +30,7 @@ _parts:
     srs: "+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs"
   osm2pgsql: &osm2pgsql
     type: "postgis"
-    dbname: "fr"
+    dbname: "gis"
     key_field: ""
     geometry_field: "way"
     extent: "-20037508,-20037508,20037508,20037508"
@@ -278,7 +278,6 @@ Layer:
     advanced: {}
     properties:
       maxzoom: 6
-    # status: off
   - id: slopeshade-medium-over
     class: slopeshade-over
     geometry: raster
@@ -290,7 +289,6 @@ Layer:
     properties:
       minzoom: 7
       maxzoom: 7
-    # status: off
   - id: slopeshade-medium-overlay
     class: slopeshade-overlay
     geometry: raster
@@ -430,7 +428,8 @@ Layer:
         ) AS springs_casing
     properties:
       minzoom: 14
-    # status: 'off'
+    # TODO
+    status: 'off'
   - id: water-lines-casing
     geometry: linestring
     <<: *extents
@@ -666,6 +665,7 @@ Layer:
         ) AS protected_areas
     properties:
       minzoom: 8
+    status: off
   - id: piers-poly
     geometry: polygon
     <<: *extents

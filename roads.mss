@@ -1255,7 +1255,8 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
 
   ::fill {
     /*
-     * The highway_construction rules below are quite sensitive to re-ordering, since the instances end up swapping round
+     * The highway_construction rules below are quite sensitive to re-ordering,
+     * since the instances end up swapping round
      * (and then the dashes appear below the fills). See:
      * https://github.com/gravitystorm/openstreetmap-carto/issues/23
      * https://github.com/mapbox/carto/issues/235
