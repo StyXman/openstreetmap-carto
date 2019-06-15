@@ -1,6 +1,8 @@
 /* For the main linear features, such as roads and railways. */
 
-@tertiary-fill: #ffffff;
+// at ZL12 residentials are rendered as darkish lines.
+// tertiaries don't stand out so much
+@tertiary-fill: #aaaaaa;
 @residential-fill: #ffffff;
 @service-fill: @residential-fill;
 @living-street-fill: #ededed;
@@ -255,7 +257,9 @@ local
 @secondary-casing-width-z12:      0;
 @major-casing-width-z12:          0.5;
 
+// make them stand out slightly more
 @casing-width-z13:                0.6;
+// casing is too dark, so to make them stand out less, make them thinner
 @residential-casing-width-z13:    0.4;
 @secondary-casing-width-z13:      0.75;
 @major-casing-width-z13:          0.5;
@@ -343,6 +347,10 @@ local
 @minor-highway-text-repeat-distance: 10;
 
 @railway-text-repeat-distance: 200;
+
+/* NOTE NOTE NOTE
+   LOW ZOOM DEFINITIONS ARE BELOW!!!
+   NOTE NOTE NOTE */
 
 #roads-casing, #bridges, #tunnels {
   ::casing {
