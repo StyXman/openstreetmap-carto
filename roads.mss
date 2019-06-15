@@ -255,7 +255,7 @@ local
 @secondary-casing-width-z12:      0;
 @major-casing-width-z12:          0.5;
 
-@casing-width-z13:                0.5;
+@casing-width-z13:                0.6;
 @residential-casing-width-z13:    0.4;
 @secondary-casing-width-z13:      0.75;
 @major-casing-width-z13:          0.5;
