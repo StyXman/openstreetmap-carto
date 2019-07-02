@@ -1675,15 +1675,6 @@
     marker-clip: false;
   }
 
-  /*
-  [feature = 'natural_spring'][zoom >= 14] {
-    marker-file: url('symbols/spring-14.svg');
-    marker-fill: @water-dark;
-    marker-placement: interior;
-    marker-clip: false;
-  }
-  */
-
   [feature = 'waterway_waterfall'] {
     [zoom >= @nice][height > 20],
     [zoom >= @nice][height > 10],
@@ -1697,14 +1688,26 @@
     }
   }
 
-  /*
   [feature = 'natural_spring'][zoom >= 14] {
-    marker-file: url('symbols/spring-14.svg');
-    marker-fill: @water-dark;
+    marker-fill: @water-color;
     marker-placement: interior;
-    marker-clip: false;
+    marker-line-width: 0;
+    marker-allow-overlap: true;
+    marker-width: 8;
+    [zoom >= 17] {
+      marker-width: 10;
+    }
+    ::dot {
+      marker-fill: @water-dark;
+      marker-placement: interior;
+      marker-line-width: 0;
+      marker-allow-overlap: true;
+      marker-width: 4;
+      [zoom >= 17] {
+        marker-width: 5;
+      }
+    }
   }
-  */
 
   [feature = 'military_bunker'][zoom >= @nice] {
     marker-file: url('symbols/bunker.svg');
@@ -2703,7 +2706,7 @@
 
   // this is for points, areas are in water
   [feature = 'natural_bay'][zoom >= 14],
-  [feature = 'natural_spring'][zoom >= 16] {
+  [feature = 'natural_spring'][zoom >= 14] {
     text-name: "[name]";
     text-size: 13;
     text-wrap-width: @standard-wrap-width;
