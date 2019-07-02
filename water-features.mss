@@ -7,9 +7,9 @@
 
 #springs-casing {
   [natural = 'spring'] {
-    marker-width: 6;
+    marker-width: 12;
     [zoom >= 17] {
-      marker-width: 6.5;
+      marker-width: 14;
     }
     marker-fill: @water-dark;
     marker-line-width: 0;
