@@ -398,11 +398,8 @@
   }
 }
 
-
 .text-low-zoom[zoom < 10],
-#text-point[zoom >= 10],
-// TODO Paul Norman <penorman@mac.com>  2019-03-10 23:13:25
-.text[zoom >= 10] {
+#text-point[zoom >= 10] {
   // local
   [feature = 'place_ocean'],
   [feature = 'place_sea'] {
