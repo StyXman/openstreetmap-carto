@@ -428,8 +428,6 @@ Layer:
         ) AS springs_casing
     properties:
       minzoom: 14
-    # TODO
-    status: 'off'
   - id: water-lines-casing
     geometry: linestring
     <<: *extents
