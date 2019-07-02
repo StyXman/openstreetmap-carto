@@ -352,7 +352,7 @@
   [lock != 'yes'][int_tunnel != 'yes'] {
     [waterway = 'river'][zoom >= 13] {
       text-name: "[name]";
-      text-size: 10;
+      text-size: 13;
       text-face-name: @oblique-fonts;
       text-fill: @water-text;
       text-halo-radius: @standard-halo-radius;
@@ -434,7 +434,7 @@
       text-halo-radius: 1;
       text-halo-fill: rgba(255,255,255,0.6);
       text-fill: @water-text;
-      text-size: 12;
+      text-size: 13;
       text-face-name: @oblique-fonts;
     }
   }
@@ -479,7 +479,7 @@
 #text-point[zoom >= 14] {
   [feature = 'natural_strait'] {
     text-name: "[name]";
-    text-size: 10;
+    text-size: 13;
     text-wrap-width: 25; // 2.5 em
     text-line-spacing: -1.5; // -0.15 em
     text-fill: @water-text;
@@ -488,7 +488,7 @@
     text-halo-fill: @standard-halo-fill;
     text-placement: point;
     [zoom >= 15] {
-      text-size: 12;
+      text-size: 14;
       text-wrap-width: 37; // 3.1 em
       text-line-spacing: -1.6; // -0.13 em
     }
