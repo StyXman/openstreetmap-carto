@@ -2,7 +2,8 @@
 
 // at ZL12 residentials are rendered as darkish lines.
 // tertiaries don't stand out so much
-@tertiary-fill: #aaaaaa;
+@tertiary-fill-z12: #aaaaaa;
+@tertiary-fill: #ffffff;
 @residential-fill: #ffffff;
 @service-fill: @residential-fill;
 @living-street-fill: #ededed;
