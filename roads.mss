@@ -1681,9 +1681,12 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
           line-dasharray: 8,2;
         }
         [zoom >= 12] {
-          line-color: @tertiary-fill;
+          line-color: @tertiary-fill-z12;
           line-width: @tertiary-width-z12 - 2 * @casing-width-z12;
-          [zoom >= 13] { line-width: @tertiary-width-z13 - 2 * @casing-width-z13; }
+          [zoom >= 13] {
+            line-color: @tertiary-fill;
+            line-width: @tertiary-width-z13 - 2 * @casing-width-z13;
+          }
           [zoom >= 14] { line-width: @tertiary-width-z14 - 2 * @casing-width-z14; }
           [zoom >= 15] { line-width: @tertiary-width-z15 - 2 * @casing-width-z15; }
           [zoom >= 16] { line-width: @tertiary-width-z16 - 2 * @casing-width-z16; }
