@@ -25,8 +25,6 @@ Map {
 
 @darken-lighten: 15%;
 
-@rail-fill: #404040;
-
 @hiking: yellow;
 @mountain_hiking: red;
 @demanding_mountain_hiking: violet;

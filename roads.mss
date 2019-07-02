@@ -349,6 +349,8 @@ local
 
 @rail-fill: #404040;
 @railway-text-repeat-distance: 200;
+@tram: #6E6E6E;
+@subway: @rail-fill;
 
 /* NOTE NOTE NOTE
    LOW ZOOM DEFINITIONS ARE BELOW!!!
@@ -2344,7 +2346,7 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
     [feature = 'railway_tram'],
     [feature = 'railway_tram-service'][zoom >= 15] {
       [zoom >= 12] {
-        line-color: #6E6E6E;
+        line-color: @tram;
         line-width: 0.75;
         [zoom >= 14] {
           line-width: 1;
@@ -2380,7 +2382,7 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
     [feature = 'railway_subway'] {
       [zoom >= 12] {
         line-width: 2;
-        line-color: #999;
+        line-color: @subway;
         #tunnels {
           line-dasharray: 5,3;
         }
@@ -2388,7 +2390,7 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
       #bridges {
         [zoom >= 14] {
           line-width: 2;
-          line-color: #999;
+          line-color: @subway;
         }
       }
     }
