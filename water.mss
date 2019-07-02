@@ -69,7 +69,7 @@
         }
       }
       [int_intermittent = 'yes'] {
-        polygon-pattern-file: url('symbols/intermittent_water.png');
+        polygon-pattern-file: url('symbols/water_intermittent.png');
         [way_pixels >= 4] {
           polygon-pattern-gamma: 0.75;
         }
@@ -99,7 +99,7 @@
         }
       }
       [int_intermittent = 'yes'] {
-        polygon-pattern-file: url('symbols/intermittent_water.png');
+        polygon-pattern-file: url('symbols/water_intermittent.png');
         [way_pixels >= 4] {
           polygon-pattern-gamma: 0.75;
         }
@@ -116,7 +116,8 @@
   [waterway = 'ditch'],
   [waterway = 'drain'] {
     [int_tunnel = 'no'] {
-      [int_intermittent != 'yes'][zoom >= 14],
+      // I'm used to this from ZL 13
+      [int_intermittent != 'yes'][zoom >= 13],
       [zoom >= 15] {
         line-width: 2.5;
         line-color: @water-dark;
@@ -260,7 +261,8 @@
   [waterway = 'stream'],
   [waterway = 'ditch'],
   [waterway = 'drain'] {
-    [int_intermittent != 'yes'][zoom >= 14],
+    // I'm used to this from ZL 13
+    [int_intermittent != 'yes'][zoom >= 13],
     [zoom >= 15] {
       // the additional line of land color is used to provide a background for dashed casings
       [int_tunnel = 'yes'] {
