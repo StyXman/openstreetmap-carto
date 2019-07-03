@@ -100,17 +100,8 @@
   */
   ::high-zoom[zoom >= 13] {
 
-  // TODO: above certain size/(semi) public access=yes
-  /* not insterested
-  [feature = 'leisure_swimming_pool'][zoom >= 14] {
-    polygon-fill: @water-color;
-    [zoom >= 17] {
-      line-width: 0.5;
-      line-color: saturate(darken(@water-color, 20%), 20%);
-    }
-    [way_pixels >= 4]  { polygon-gamma: 0.75; }
-    [way_pixels >= 64] { polygon-gamma: 0.3;  }
-  }
+  /* gone to lc-flat
+  [feature = 'leisure_swimming_pool'][zoom >= 14][access = 'yes'] {
   */
 
   /* gone to lc-flat
@@ -694,6 +685,17 @@
 }
 
 #landcover-flat[zoom >= 10] {
+  // TODO: above certain size/(semi) public access=yes
+  [feature = 'leisure_swimming_pool'][zoom >= 14][access = 'yes'] {
+    polygon-fill: @water-color;
+    [zoom >= 17] {
+      line-width: 0.5;
+      line-color: saturate(darken(@water-color, 20%), 20%);
+    }
+    [way_pixels >= 4]  { polygon-gamma: 0.75; }
+    [way_pixels >= 64] { polygon-gamma: 0.3;  }
+  }
+
   // the ::fill attachment is not needed, except that carto does not support
   // polygon-fill-opacity, and opacity applies to the whole layer
   [feature = 'leisure_recreation_ground'][zoom >= 13],

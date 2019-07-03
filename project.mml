@@ -155,8 +155,7 @@ Layer:
                                                  -- 'recreation_ground', 'village_green', are gone to lc-flat
                                                                                           'retail', 'industrial', 'railway', 'commercial',
                                                     'brownfield', 'landfill', 'construction', 'plant_nursery', 'religious') THEN landuse ELSE NULL END)) AS landuse,
-                                                 -- 'swimming_pool is not rendered
-                                                 --                  'playground', 'park', 'recreation_ground', 'common', 'garden' gone to landcover-flat
+                                                 -- 'swimming_pool', 'playground', 'park', 'recreation_ground', 'common', 'garden' gone to landcover-flat
                                                  --                                                   'stadium', 'pitch', 'ice-rink' gone to landcover-flat
               ('leisure_' || (CASE WHEN leisure IN ('golf_course', 'miniature_golf', 'sports_centre',
                                                  -- 'track', 'dog_park' gone to landcover-flat
@@ -383,14 +382,14 @@ Layer:
       <<: *osm2pgsql
       table: |-
         (SELECT
-            way, name, religion, way_pixels,
+            way, name, religion, way_pixels, access,
             COALESCE(amenity, landuse, leisure, "natural") AS feature
           FROM (SELECT
-              way, COALESCE(name, '') AS name,
+              way, COALESCE(name, '') AS name, access,
               ('amenity_' || (CASE WHEN amenity IN ('grave_yard', 'parking', 'bicycle_parking', 'motorcycle_parking')
                                      OR amenity IN ('parking') AND (tags->'parking' NOT IN ('underground') OR (tags->'parking') IS NULL) THEN amenity ELSE NULL END)) AS amenity,
               ('landuse_' || (CASE WHEN landuse IN ('cemetery', 'recreation_ground', 'village_green') THEN landuse ELSE NULL END)) AS landuse,
-              ('leisure_' || (CASE WHEN leisure IN ('playground', 'park', 'recreation_ground', 'common', 'garden',
+              ('leisure_' || (CASE WHEN leisure IN ('swimming_pool', 'playground', 'park', 'recreation_ground', 'common', 'garden',
                                                     'sports_centre', 'stadium', 'pitch', 'track', 'dog_park') THEN leisure ELSE NULL END)) AS leisure,
               ('natural_' || (CASE WHEN "natural" IN ('beach', 'shoal') THEN "natural" ELSE NULL END)) AS "natural",
               CASE WHEN religion IN ('christian', 'jewish') THEN religion ELSE 'INT-generic'::text END AS religion,
