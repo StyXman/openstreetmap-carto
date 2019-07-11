@@ -452,7 +452,7 @@
     }
     [information = 'guidepost'] {
       // marker-file: url('symbols/tourism/guidepost.svg');
-      marker-file: url('symbols/guidepost-14.svg');
+      marker-file: url('symbols/local/guidepost-14.svg');
     }
     [information = 'office'] {
       marker-file: url('symbols/tourism/office.svg');
@@ -981,7 +981,7 @@
   }
 
   [feature = 'historic_fort'][zoom >= @nice] {
-    marker-file: url('symbols/historic/fort.svg');
+    marker-file: url('symbols/local/fort.svg');
     marker-width: 14;
     marker-placement: interior;
     [ruins = 'yes'] {

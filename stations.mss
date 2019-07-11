@@ -4,7 +4,7 @@
 #stations {
   // changed locally for lower ZL and another icon
   [railway = 'subway_entrance'][zoom >= @emergency] {
-    marker-file: url('symbols/london-underground-18.png');
+    marker-file: url('symbols/maki-0.5/london-underground-18.png');
     marker-placement: interior;
     marker-fill: @station-color;
     marker-clip: false;

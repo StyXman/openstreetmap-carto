@@ -81,7 +81,7 @@
 #water-barriers-line[zoom >= 13] {
   [waterway = 'waterfall'],
   [natural  = 'waterfall'] {
-    line-pattern-file: url('symbols/big_waterfall.svg');
+    line-pattern-file: url('symbols/local/big_waterfall.svg');
   }
 }
 

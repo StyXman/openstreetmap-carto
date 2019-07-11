@@ -344,7 +344,7 @@
     [way_pixels >= 4]  { polygon-gamma: 0.75; }
     [way_pixels >= 64] { polygon-gamma: 0.3;  }
     */
-    polygon-pattern-file: url('symbols/grass2.png');
+    polygon-pattern-file: url('symbols/local/grass2.png');
   }
 
   // TODO: enable this with same bg as urban?
@@ -750,7 +750,7 @@
         [way_pixels >= 4]  { polygon-gamma: 0.75; }
         [way_pixels >= 64] { polygon-gamma: 0.3;  }
       }
-      polygon-pattern-file: url('symbols/grass2.png');
+      polygon-pattern-file: url('symbols/local/grass2.png');
     }
   }
 
@@ -975,7 +975,7 @@
       line-pattern-file: url('symbols/arete_large.png');
     }
     */
-    line-pattern-file: url('symbols/arete.svg');
+    line-pattern-file: url('symbols/local/arete.svg');
   }
   [natural = 'ridge'][zoom >= 12] {
     /*
@@ -988,12 +988,12 @@
       line-pattern-file: url('symbols/ridge_large.png');
     }
     */
-    line-pattern-file: url('symbols/ridge.svg');
+    line-pattern-file: url('symbols/local/ridge.svg');
   }
   [natural = 'cliff'][zoom >= 13] {
-    line-pattern-file: url('symbols/cliff_mdione.png');
+    line-pattern-file: url('symbols/local/cliff_mdione.png');
     [zoom >= 15] {
-      line-pattern-file: url('symbols/cliff2_mdione.png');
+      line-pattern-file: url('symbols/local/cliff2_mdione.png');
     }
   }
   [man_made = 'embankment'][zoom >= 15]::man_made {

@@ -69,7 +69,7 @@
         }
       }
       [int_intermittent = 'yes'] {
-        polygon-pattern-file: url('symbols/water_intermittent.png');
+        polygon-pattern-file: url('symbols/jeisenbe/water_intermittent.png');
         [way_pixels >= 4] {
           polygon-pattern-gamma: 0.75;
         }
@@ -99,7 +99,7 @@
         }
       }
       [int_intermittent = 'yes'] {
-        polygon-pattern-file: url('symbols/water_intermittent.png');
+        polygon-pattern-file: url('symbols/jeisenbe/water_intermittent.png');
         [way_pixels >= 4] {
           polygon-pattern-gamma: 0.75;
         }
