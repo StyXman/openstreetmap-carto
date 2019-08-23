@@ -795,14 +795,12 @@
     marker-clip: false;
   }
 
-  /*
-//   [feature = 'historic_wayside_shrine'][zoom >= 17] {
+  [feature = 'historic_wayside_shrine'][zoom >= 17] {
     marker-file: url('symbols/historic/shrine.svg');
     marker-fill: @man-made-icon;
     marker-placement: interior;
     marker-clip: false;
   }
-  */
 
   [feature = 'amenity_police'][zoom >= @useful] {
     marker-file: url('symbols/amenity/police.svg');
