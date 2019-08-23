@@ -111,21 +111,10 @@
   [feature = 'leisure_fitness_station'][zoom >= 13] {
   */
 
-  // TODO: reactivate these
-  /*
+  /* gone to lc-flat
   [feature = 'tourism_camp_site'],
   [feature = 'tourism_caravan_site'],
   [feature = 'tourism_picnic_site'] {
-    [zoom >= 10] {
-      polygon-fill: @campsite;
-      [zoom >= 13] {
-        line-color: saturate(darken(@campsite, 60%), 30%);
-        line-width: 0.3;
-      }
-      [way_pixels >= 4]  { polygon-gamma: 0.75; }
-      [way_pixels >= 64] { polygon-gamma: 0.3;  }
-    }
-  }
   */
 
   [feature = 'landuse_quarry'][zoom >= 10] {
@@ -751,6 +740,20 @@
         [way_pixels >= 64] { polygon-gamma: 0.3;  }
       }
       polygon-pattern-file: url('symbols/local/grass2.png');
+    }
+  }
+
+  [feature = 'tourism_camp_site'],
+  [feature = 'tourism_caravan_site'],
+  [feature = 'tourism_picnic_site'] {
+    [zoom >= 10] {
+      polygon-fill: @campsite;
+      [zoom >= 13] {
+        line-color: saturate(darken(@campsite, 60%), 30%);
+        line-width: 0.3;
+      }
+      [way_pixels >= 4]  { polygon-gamma: 0.75; }
+      [way_pixels >= 64] { polygon-gamma: 0.3;  }
     }
   }
 
