@@ -137,7 +137,8 @@ Layer:
       table: |-
         (SELECT
             way, name, religion, way_pixels, is_building,
-            COALESCE(aeroway, amenity, wetland, power, landuse, leisure, man_made, "natural", tourism, highway, railway) AS feature
+            --                                                                                tourism, gone to lc-flat
+            COALESCE(aeroway, amenity, wetland, power, landuse, leisure, man_made, "natural",          highway, railway) AS feature
           FROM (SELECT
               way, COALESCE(name, '') AS name,
               ('aeroway_' || (CASE WHEN aeroway IN ('apron', 'aerodrome') THEN aeroway ELSE NULL END)) AS aeroway,
@@ -165,7 +166,7 @@ Layer:
               ('natural_' || (CASE WHEN "natural" IN ('beach', 'shoal', 'heath', 'grassland', 'wood', 'sand', 'scree', 'shingle', 'bare_rock', 'scrub') THEN "natural" ELSE NULL END)) AS "natural",
               ('wetland_' || (CASE WHEN "natural" IN ('wetland', 'marsh', 'mud') THEN (CASE WHEN "natural" IN ('marsh', 'mud') THEN "natural" ELSE tags->'wetland' END) ELSE NULL END)) AS wetland,
               ('power_' || (CASE WHEN power IN ('station', 'sub_station', 'substation', 'generator') THEN power ELSE NULL END)) AS power,
-              ('tourism_' || (CASE WHEN tourism IN ('camp_site', 'caravan_site', 'picnic_site') THEN tourism ELSE NULL END)) AS tourism,
+              -- tourism gone to lc-flat
               ('highway_' || (CASE WHEN highway IN ('services', 'rest_area') THEN highway ELSE NULL END)) AS highway,
               ('railway_' || (CASE WHEN railway = 'station' THEN railway ELSE NULL END)) AS railway,
               CASE WHEN religion IN ('christian', 'jewish', 'muslim') THEN religion ELSE 'INT-generic'::text END AS religion,
@@ -384,7 +385,7 @@ Layer:
       table: |-
         (SELECT
             way, name, religion, way_pixels, access,
-            COALESCE(amenity, landuse, leisure, "natural") AS feature
+            COALESCE(amenity, landuse, leisure, tourism, "natural") AS feature
           FROM (SELECT
               way, COALESCE(name, '') AS name, access,
               ('amenity_' || (CASE WHEN amenity IN ('grave_yard', 'parking', 'bicycle_parking', 'motorcycle_parking')
@@ -392,6 +393,7 @@ Layer:
               ('landuse_' || (CASE WHEN landuse IN ('cemetery', 'recreation_ground', 'village_green') THEN landuse ELSE NULL END)) AS landuse,
               ('leisure_' || (CASE WHEN leisure IN ('swimming_pool', 'playground', 'park', 'recreation_ground', 'common', 'garden',
                                                     'sports_centre', 'stadium', 'pitch', 'track', 'dog_park') THEN leisure ELSE NULL END)) AS leisure,
+              ('tourism_' || (CASE WHEN tourism IN ('camp_site', 'caravan_site', 'picnic_site') THEN tourism ELSE NULL END)) AS tourism,
               ('natural_' || (CASE WHEN "natural" IN ('beach', 'shoal') THEN "natural" ELSE NULL END)) AS "natural",
               CASE WHEN religion IN ('christian', 'jewish') THEN religion ELSE 'INT-generic'::text END AS religion,
               way_area/NULLIF(!pixel_width!::real*!pixel_height!::real,0) AS way_pixels
