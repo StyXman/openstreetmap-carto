@@ -668,8 +668,9 @@
   }
 }
 
-#landcover-flat[zoom >= 10] {
-  // TODO: above certain size/(semi) public access=yes
+// all lc from ZL13
+#landcover-flat[zoom >= 13] {
+  // TODO: above certain size?
   [feature = 'leisure_swimming_pool'][zoom >= 14][access = 'yes'] {
     polygon-fill: @water-color;
     [zoom >= 17] {
