@@ -70,7 +70,7 @@
     marker-clip: false;
   }
 
-  [feature = 'amenity_bureau_de_change'][zoom >= 17] {
+  [feature = 'amenity_bureau_de_change'][zoom >= @useful] {
     marker-file: url('symbols/amenity/bureau_de_change.svg');
     marker-fill: @amenity-brown;
     marker-placement: interior;
@@ -124,7 +124,7 @@
     }
   }
 
-  [feature = 'amenity_internet_cafe'][zoom >= 17] {
+  [feature = 'amenity_internet_cafe'][zoom >= @useful] {
     marker-file: url('symbols/amenity/internet_cafe.svg');
     marker-fill: @amenity-brown;
     marker-placement: interior;
@@ -150,7 +150,7 @@
     marker-clip: false;
   }
 
-  [feature = 'amenity_bicycle_rental'][zoom >= 17] {
+  [feature = 'amenity_bicycle_rental'][zoom >= @useful] {
     marker-file: url('symbols/amenity/rental_bicycle.svg');
     /*
     marker-width: 10;
@@ -353,7 +353,7 @@
     }
   }
 
-  [feature = 'amenity_charging_station'][zoom >= 17] {
+  [feature = 'amenity_charging_station'][zoom >= @useful] {
     marker-file: url('symbols/amenity/charging_station.svg');
     marker-width: 10;
     marker-fill: @transportation-icon;
@@ -880,7 +880,7 @@
     }
   }
 
-  [feature = 'amenity_drinking_water'][zoom >= 17] {
+  [feature = 'amenity_drinking_water'][zoom >= @useful] {
     marker-file: url('symbols/amenity/drinking_water.svg');
     marker-fill: @amenity-brown;
     marker-placement: interior;
