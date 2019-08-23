@@ -1,0 +1,3 @@
+needle leaved: http://www.imagico.de/map/jsdotpattern.php#x,1024,jdp4483;g,20,64,64;rx,25,2,64,64;rx,25,2,64,64;rx,25,2,64,64;rd,1,0,0,tree,1,4,11,0,jdp26615,6b8d5e,add19e;
+broad leaved:  http://www.imagico.de/map/jsdotpattern.php#x,1024,jdp4483;g,20,64,64;rx,25,2,64,64;rx,25,2,64,64;rx,25,2,64,64;rd,1,0,0,tree2,1,4,11,0,jdp41370,6b8d5e,add19e;
+grass2:        http://www.imagico.de/map/jsdotpattern.php#x,1024,jdp35665;g,15,64,64;rx,25,2,64,64;rx,25,2,64,64;rx,25,2,64,64;rd,1,0,0,grass,1,4,11,0,jdp7043,6b8d5e,add19e;
