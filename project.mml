@@ -350,6 +350,7 @@ Layer:
     advanced: {}
     properties:
       minzoom: 10
+      maxzoom: 10
   - id: contour-500
     geometry: linestring
     <<: *extents
