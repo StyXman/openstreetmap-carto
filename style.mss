@@ -38,6 +38,10 @@ Map {
 @primary-oneway-arrow-color: white;
 @secondary-oneway-arrow-color: white;
 
+// quarry
+@retail: #c5c3c3;
+@commercial: #c5c3c3;
+
 // size of icons so they can be seen while driving
 @car-gps-icon-size: 24;
 
