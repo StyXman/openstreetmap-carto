@@ -128,14 +128,13 @@
     [way_pixels >= 64] { polygon-pattern-gamma: 0.3;  }
   }
 
+  /*
   [feature = 'landuse_vineyard'] {
-    /*
     [zoom >= 5] {
       polygon-fill: @orchard;
       [way_pixels >= 4]  { polygon-gamma: 0.75; }
       [way_pixels >= 64] { polygon-gamma: 0.3;  }
     }
-    */
     [zoom >= 13] {
       polygon-pattern-file: url('symbols/vineyard.png');
       polygon-pattern-alignment: global;
@@ -143,15 +142,15 @@
       [way_pixels >= 64] { polygon-pattern-gamma: 0.3;  }
     }
   }
+  */
 
+  /*
   [feature = 'landuse_orchard'] {
-    /*
     [zoom >= 5] {
       polygon-fill: @orchard;
       [way_pixels >= 4]  { polygon-gamma: 0.75; }
       [way_pixels >= 64] { polygon-gamma: 0.3;  }
     }
-    */
     [zoom >= 13] {
       polygon-pattern-file: url('symbols/orchard.png');
       polygon-pattern-alignment: global;
@@ -159,6 +158,7 @@
       [way_pixels >= 64] { polygon-pattern-gamma: 0.3;  }
     }
   }
+  */
 
   [feature = 'leisure_garden'] {
     /*
@@ -858,8 +858,9 @@
   }
 }
 
+// this is for symbols on top of inundated/sea areas
+// but I'm hijacking it for any landcover/landuse symbol
 #landcover-area-symbols {
-
   ::first {
     [natural = 'mud'],
     [int_wetland = 'tidalflat'] {
@@ -932,7 +933,7 @@
     }
   }
 
-  //Also landuse = forest, converted in the SQL
+  // Also landuse = forest, converted in the SQL
   [natural = 'wood'][zoom >= 13]::wood {
     polygon-pattern-file: url('symbols/local/forest-mixed.png'); // Lch(55,30,135)
     [leaf_type = "broadleaved"] { polygon-pattern-file: url('symbols/local/forest-broad.png'); }
@@ -942,6 +943,20 @@
     [leaf_type = "leafless"] { polygon-pattern-file: url('symbols/leaftype_leafless.svg'); }
     polygon-pattern-alignment: global;
     opacity: 0.4; // The entire layer has opacity to handle overlapping forests
+  }
+
+  [landuse = 'vineyard'][zoom >= 13] {
+    polygon-pattern-file: url('symbols/vineyard.png');
+    polygon-pattern-alignment: global;
+    [way_pixels >= 4]  { polygon-pattern-gamma: 0.75; }
+    [way_pixels >= 64] { polygon-pattern-gamma: 0.3;  }
+  }
+
+  [landuse = 'orchard'][zoom >= 13] {
+    polygon-pattern-file: url('symbols/orchard.png');
+    polygon-pattern-alignment: global;
+    [way_pixels >= 4]  { polygon-pattern-gamma: 0.75; }
+    [way_pixels >= 64] { polygon-pattern-gamma: 0.3;  }
   }
 }
 

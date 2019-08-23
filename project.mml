@@ -150,7 +150,8 @@ Layer:
                            -- OR amenity IN ('parking') AND (tags->'parking' NOT IN ('underground') OR (tags->'parking') IS NULL)
                                                                                                                                   THEN amenity ELSE NULL END)) AS amenity,
                                                                                   -- 'cemetery' gone to landcover-flat
-              ('landuse_' || (CASE WHEN landuse IN ('quarry', 'vineyard', 'orchard',             'residential', 'garages', 'meadow', 'grass',
+                                                           -- 'vineyard', 'orchard',                                       'meadow', 'grass', gone to lc-area-symbols
+              ('landuse_' || (CASE WHEN landuse IN ('quarry',                                    'residential', 'garages',
                                                     'allotments', 'forest', 'farmyard', 'farmland', 'greenhouse_horticulture',
                                                  -- 'recreation_ground', 'village_green', are gone to lc-flat
                                                                                           'retail', 'industrial', 'railway', 'commercial',
@@ -540,7 +541,10 @@ Layer:
       table: |-
         (SELECT
             way, surface,
+            -- this converts landuse='forest' into natural='forest'
+            -- this is not the string 'natural' but the field "natural" -----vvvvvvvvv
             COALESCE(CASE WHEN landuse = 'forest' THEN 'wood' ELSE NULL END, "natural") AS "natural",
+            CASE WHEN landuse IN ('vineyard', 'orchard', 'meadow', 'grass') THEN landuse ELSE NULL END AS landuse,
             CASE WHEN "natural" IN ('marsh', 'mud')
                 THEN "natural"
                 ELSE CASE WHEN ("natural" = 'wetland' AND NOT tags ? 'wetland')
@@ -554,7 +558,8 @@ Layer:
             tags->'leaf_type' AS leaf_type,
             way_area/NULLIF(POW(!scale_denominator!*0.001*0.28,2),0) AS way_pixels
           FROM planet_osm_polygon
-          WHERE ("natural" IN ('marsh', 'mud', 'wetland', 'wood', 'beach', 'shoal', 'reef', 'scrub', 'sand') OR landuse = 'forest')
+          WHERE ("natural" IN ('marsh', 'mud', 'wetland', 'wood', 'beach', 'shoal', 'reef', 'scrub', 'sand')
+                  OR landuse IN ('forest', 'vineyard', 'orchard', 'meadow', 'grass'))
             AND building IS NULL
             AND way_area > 1*!pixel_width!::real*!pixel_height!::real
           ORDER BY COALESCE(layer,0), way_area DESC
