@@ -160,8 +160,8 @@ Layer:
                                                  -- 'swimming_pool', 'playground', 'park', 'recreation_ground', 'common', 'garden' gone to landcover-flat
                                                  --                                                   'stadium', 'pitch', 'ice-rink' gone to landcover-flat
               ('leisure_' || (CASE WHEN leisure IN ('golf_course', 'miniature_golf', 'sports_centre',
-                                                 -- 'track', 'dog_park' gone to landcover-flat
-                                                    'fitness_station') THEN leisure ELSE NULL END)) AS leisure,
+                                                 -- 'track', 'dog_park', gone to landcover-flat
+                                                                         'fitness_station') THEN leisure ELSE NULL END)) AS leisure,
               ('man_made_' || (CASE WHEN man_made IN ('works', 'wastewater_plant', 'water_works') THEN man_made ELSE NULL END)) AS man_made,
               ('natural_' || (CASE WHEN "natural" IN ('beach', 'shoal', 'heath', 'grassland', 'wood', 'sand', 'scree', 'shingle', 'bare_rock', 'scrub') THEN "natural" ELSE NULL END)) AS "natural",
               ('wetland_' || (CASE WHEN "natural" IN ('wetland', 'marsh', 'mud') THEN (CASE WHEN "natural" IN ('marsh', 'mud') THEN "natural" ELSE tags->'wetland' END) ELSE NULL END)) AS wetland,
