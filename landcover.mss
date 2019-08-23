@@ -949,7 +949,7 @@
   }
 
   [landuse = 'orchard'][zoom >= 13] {
-    polygon-pattern-file: url('symbols/orchard.png');
+    polygon-pattern-file: url('symbols/local/orchard.png');
     polygon-pattern-alignment: global;
     [way_pixels >= 4]  { polygon-pattern-gamma: 0.75; }
     [way_pixels >= 64] { polygon-pattern-gamma: 0.3;  }
