@@ -239,7 +239,8 @@
   // leisure_park gone to lc-flat
 
   [feature = 'leisure_ice_rink'][is_building = 'no'] {
-    [zoom >= 10] {
+    // what size does an ice rink have to be to be visible from ZL10
+    [zoom >= 14] {
       polygon-fill: @glacier;
       line-width: 0.5;
       line-color: saturate(darken(@pitch, 30%), 20%);
