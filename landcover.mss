@@ -337,8 +337,6 @@
     polygon-pattern-file: url('symbols/local/grass2.png');
   }
 
-  // TODO: enable this with same bg as urban?
-  /*
   [feature = 'landuse_retail'],
   [feature = 'amenity_marketplace'] {
     [zoom >= 8] {
@@ -357,10 +355,7 @@
       }
     }
   }
-  */
 
-  // TODO: enable this with same bg as urban?
-  /*
   [feature = 'landuse_industrial'][zoom >= 8] {
     polygon-fill: @built-up-lowzoom;
     [zoom >= 11] { polygon-fill: @built-up-z11; }
@@ -376,7 +371,6 @@
     [way_pixels >= 4]  { polygon-gamma: 0.75; }
     [way_pixels >= 64] { polygon-gamma: 0.3;  }
   }
-  */
 
   [feature = 'man_made_works'][zoom >= 16] {
     line-width: .5;
