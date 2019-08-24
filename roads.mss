@@ -2504,6 +2504,12 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
       [zoom >= 16] { line-width: 2; }
     }
   }
+
+  ::ice {
+    [ice_road = 'yes'][zoom >= 15] {
+      line-color: black;
+    }
+  }
 }
 
 #turning-circle-casing {

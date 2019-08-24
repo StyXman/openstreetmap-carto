@@ -775,6 +775,7 @@ Layer:
             construction,
             service,
             link,
+            'no' AS ice_road,
             layernotnull
           FROM ( -- subselect that contains both roads and rail
             SELECT
@@ -1145,6 +1146,7 @@ Layer:
             service,
             link,
             layernotnull,
+            ice_road,
             sac_scale
           FROM ( -- begin "features" subselect that contains both roads and rail/aero
             SELECT
@@ -1176,6 +1178,10 @@ Layer:
                 COALESCE(layer,0) AS layernotnull,
                 tags->'sac_scale' as sac_scale,
                 osm_id,
+                CASE
+                  WHEN tags->'ice_road' = 'yes' THEN 'yes'
+                  ELSE 'no'
+                END AS ice_road,
                 z_order
               FROM planet_osm_line
               WHERE (tunnel IS NULL OR NOT tunnel IN ('yes', 'building_passage'))
@@ -1206,6 +1212,7 @@ Layer:
                 COALESCE(layer,0) AS layernotnull,
                 NULL as sac_scale,
                 osm_id,
+                'no' AS ice_road,
                 z_order
               FROM planet_osm_line
               WHERE (tunnel IS NULL OR NOT tunnel IN ('yes', 'building_passage'))
@@ -1291,6 +1298,7 @@ Layer:
       table: |-
         (SELECT
             way,
+            'no' AS ice_road,
             COALESCE(
               ('highway_' || (CASE WHEN highway IN ('motorway_link', 'trunk_link', 'primary_link', 'secondary_link', 'tertiary_link')
                                      THEN substr(highway, 0, length(highway)-4) ELSE highway end)),
@@ -1357,6 +1365,7 @@ Layer:
             construction,
             service,
             link,
+            'no' AS ice_road,
             layernotnull
           FROM ( -- subselect that contains both roads and rail/aero
             SELECT
