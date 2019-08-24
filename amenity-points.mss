@@ -4,8 +4,10 @@
 @shop-text: #939;
 @transportation-icon: #c00000;
 @transportation-text: #800000;
-@accommodation-icon: @water-dark;
-@accommodation-text: @water-dark;
+// ex water-dark
+@accommodation-icon: #5a5aa1;
+@accommodation-text: #5a5aa1;
+@water-amenity: #5a5aa1;
 @airtransport: #8461C4; //also ferry_terminal
 @health-color: #BF0000;
 @amenity-brown: #734a08;
@@ -261,7 +263,7 @@
   // Ford tagging on points - ford on lines is defined later
   [feature = 'highway_ford'][zoom >= 16] {
     marker-file: url('symbols/natural/saddle.svg');
-    marker-fill: @water-dark;
+    marker-fill: @water-amenity;
     marker-placement: interior;
     marker-clip: false;
   }
@@ -1598,14 +1600,14 @@
     // marker-file: url('symbols/transport_slipway.p.20.svg');
     marker-file: url('symbols/leisure/slipway.svg');
     marker-width: 8;
-    marker-fill: @water-dark;
+    marker-fill: @water-amenity;
     marker-placement: interior;
     marker-clip: false;
   }
 
   [feature = 'amenity_boat_rental'][zoom >= 17] {
     marker-file: url('symbols/amenity/boat_rental.svg');
-    marker-fill: @water-dark;
+    marker-fill: @water-amenity;
     marker-placement: interior;
     marker-clip: false;
   }
@@ -1636,7 +1638,7 @@
     marker-file: url('symbols/man_made/lighthouse.svg');
     marker-placement: interior;
     marker-clip: false;
-    marker-fill: @water-dark;
+    marker-fill: @water-amenity;
   }
 
   [feature = 'natural_peak'][zoom >= 11] {
@@ -1696,7 +1698,7 @@
       marker-width: 10;
     }
     ::dot {
-      marker-fill: @water-dark;
+      marker-fill: @water-amenity;
       marker-placement: interior;
       marker-line-width: 0;
       marker-allow-overlap: true;
@@ -3352,12 +3354,13 @@
   // Ford tagging on ways
   [feature = 'highway_ford'][zoom >= 16] {
     marker-file: url('symbols/natural/saddle.svg');
-    marker-fill: @water-dark;
+    marker-fill: @water-amenity;
   }
+
   // Slipway tagging on ways
   [feature = 'leisure_slipway'][zoom >= 17] {
     marker-file: url('symbols/leisure/slipway.svg');
-    marker-fill: @water-dark;
+    marker-fill: @water-amenity;
   }
 
   [feature = 'leisure_track'] {
