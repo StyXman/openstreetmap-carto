@@ -51,8 +51,8 @@
     [feature = 'tourism_alpine_hut'] {
       marker-file: url('symbols/tourism/alpinehut.svg');
     }
-    marker-width: 10;
     [feature = 'amenity_shelter'] {
+      marker-width: 10;
       marker-fill: @man-made-icon;
     }
     marker-fill: @accommodation-icon;
