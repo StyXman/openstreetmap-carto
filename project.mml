@@ -325,6 +325,7 @@ Layer:
     properties:
       minzoom: 13
   - id: contour-100
+    class: contour-text
     geometry: linestring
     <<: *extents
     Datasource:
@@ -352,6 +353,7 @@ Layer:
       minzoom: 10
       maxzoom: 10
   - id: contour-500
+    class: contour-text
     geometry: linestring
     <<: *extents
     Datasource:
@@ -365,6 +367,7 @@ Layer:
     properties:
       minzoom: 9
   - id: contour-1000
+    class: contour-text
     geometry: linestring
     <<: *extents
     Datasource:
