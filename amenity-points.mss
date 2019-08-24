@@ -1684,7 +1684,7 @@
       marker-width: 16;
       marker-placement: interior;
       marker-clip: false;
-      marker-fill: @amenity-brown;
+      marker-fill: @water-amenity;
     }
   }
 
@@ -2218,7 +2218,7 @@
       text-size: @standard-font-size;
       text-wrap-width: @standard-wrap-width;
       text-line-spacing: @standard-line-spacing-size;
-      text-fill: @water-text;
+      text-fill: @water-amenity;
       text-dy: 10;
       text-face-name: @standard-font;
       text-halo-radius: @standard-halo-radius;
