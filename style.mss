@@ -11,7 +11,8 @@ Map {
 @useful: 16;
 
 @water-color: #aad3df;
-@water-dark: #5a5aa1;
+// from https://github.com/gravitystorm/openstreetmap-carto/pull/3065
+@water-dark: darken(@water-color,20%);
 @land-color: #f2efe9;
 
 @contour-op: minus;
