@@ -17,6 +17,9 @@
     [zoom >= 8] {
       line-width: 1.5;
       line-color: @water-dark;
+      [int_intermittent = 'yes'] {
+        line-dasharray: 4,4;
+      }
     }
   }
 }
