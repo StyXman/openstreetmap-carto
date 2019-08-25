@@ -7,8 +7,9 @@
 // local
 #water-areas::border {
   // this is a copy of #water-areas below, keep in sync
-  [natural = 'water']::natural,
+  [waterway = 'dock'],
   [landuse = 'basin']::landuse,
+  [natural = 'water']::natural,
   [landuse = 'reservoir']::landuse,
   [waterway = 'riverbank']::waterway {
     [zoom >= 0][zoom < 1][way_pixels >= 4],
