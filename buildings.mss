@@ -56,8 +56,16 @@
       marker-opacity: 1.0;
       marker-file: url('symbols/square.svg');
     }
+    text-placement: interior;
+    text-face-name: @book-fonts;
+    text-fill: @address-color;
+    text-halo-radius: @standard-halo-radius;
+    text-halo-fill: @standard-halo-fill;
+    text-size: 8;
+    text-name: [name];
   }
-  [zoom >= 19]["entrance" != null] {
+  // all entrances from ZL18, as I don't render ZL19
+  [zoom >= 18]["entrance" != null] {
     ["entrance" = "yes"],
     ["entrance" = "main"],
     ["entrance" = "home"],

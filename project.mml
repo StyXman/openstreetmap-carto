@@ -1448,6 +1448,7 @@ Layer:
       table: |-
         (SELECT
             way,
+            name,
             tags->'entrance' AS entrance,
             access
           FROM planet_osm_point
@@ -2460,6 +2461,18 @@ Layer:
             NULL AS way_pixels
           FROM planet_osm_point
           WHERE ("addr:housenumber" IS NOT NULL) OR ("addr:housename" IS NOT NULL) OR ((tags->'addr:unit') IS NOT NULL)
+        UNION ALL
+        SELECT
+            way,
+            name as addr_housenumber,
+            NULL as addr_housename,
+            NULL as addr_unit,
+            NULL as way_pixels
+          FROM planet_osm_point
+          WHERE (tags->'entrance') IS NOT NULL AND
+              (tags->'indoor' = 'no'
+              OR (tags->'indoor') IS NULL) AND
+              name IS NOT NULL
           ORDER BY way_pixels DESC NULLS LAST
         ) AS addresses
     properties:
