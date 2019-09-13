@@ -16,6 +16,8 @@ interactivity: false
 minzoom: 0
 maxzoom: 22
 srs: "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over"
+
+
 # Various parts to be included later on
 _parts:
   # Extents are used for tilemill, and don't actually make it to the generated XML
@@ -39,6 +41,8 @@ _parts:
     key_field: ""
     geometry_field: "way"
     extent: "-20037508,-20037508,20037508,20037508"
+
+
 Stylesheet:
   - style.mss
   - fonts.mss
@@ -68,6 +72,8 @@ Layer:
     advanced: {}
     properties:
       maxzoom: 6
+
+
   - id: terrain-medium
     class: terrain
     geometry: raster
@@ -79,6 +85,8 @@ Layer:
     properties:
       minzoom: 7
       maxzoom: 7
+
+
   - id: terrain-big
     class: terrain
     geometry: raster
@@ -89,6 +97,8 @@ Layer:
     advanced: {}
     properties:
       minzoom: 8
+
+
   - id: necountries
     geometry: linestring
     <<: *extents84
@@ -98,6 +108,8 @@ Layer:
     properties:
       minzoom: 1
       maxzoom: 3
+
+
   - id: landcover-low-zoom
     geometry: polygon
     <<: *extents
@@ -128,6 +140,8 @@ Layer:
       cache-features: true
       minzoom: 5
       maxzoom: 9
+
+
   - id: landcover
     geometry: polygon
     <<: *extents
@@ -196,6 +210,8 @@ Layer:
     properties:
       cache-features: true
       minzoom: 10
+
+
   - id: landcover-line
     geometry: linestring
     <<: *extents
@@ -209,6 +225,8 @@ Layer:
         ) AS landcover_line
     properties:
       minzoom: 14
+
+
   - id: glacier
     geometry: polygon
     <<: *extents
@@ -229,6 +247,8 @@ Layer:
         ) AS water_areas
     properties:
       minzoom: 4
+
+
   - id: hillshade-small
     class: hillshade-over
     geometry: raster
@@ -239,6 +259,8 @@ Layer:
     advanced: {}
     properties:
       maxzoom: 6
+
+
   - id: hillshade-medium-over
     class: hillshade-over
     geometry: raster
@@ -250,6 +272,8 @@ Layer:
     properties:
       minzoom: 7
       maxzoom: 8
+
+
   - id: hillshade-medium-overlay
     class: hillshade-overlay
     geometry: raster
@@ -261,6 +285,8 @@ Layer:
     properties:
       minzoom: 8
       maxzoom: 8
+
+
   - id: hillshade-big
     class: hillshade-overlay
     geometry: raster
@@ -271,6 +297,8 @@ Layer:
     advanced: {}
     properties:
       minzoom: 9
+
+
   - id: slopeshade-small
     class: slopeshade-over
     geometry: raster
@@ -281,6 +309,8 @@ Layer:
     advanced: {}
     properties:
       maxzoom: 6
+
+
   - id: slopeshade-medium-over
     class: slopeshade-over
     geometry: raster
@@ -292,6 +322,8 @@ Layer:
     properties:
       minzoom: 7
       maxzoom: 7
+
+
   - id: slopeshade-medium-overlay
     class: slopeshade-overlay
     geometry: raster
@@ -303,6 +335,8 @@ Layer:
     properties:
       minzoom: 8
       maxzoom: 8
+
+
   - id: slopeshade-big
     class: slopeshade-overlay
     geometry: raster
@@ -313,6 +347,8 @@ Layer:
     advanced: {}
     properties:
       minzoom: 9
+
+
   - id: contour-50
     geometry: linestring
     <<: *extents
@@ -326,6 +362,8 @@ Layer:
     advanced: {}
     properties:
       minzoom: 13
+
+
   - id: contour-100
     class: contour-text
     geometry: linestring
@@ -340,6 +378,8 @@ Layer:
     advanced: {}
     properties:
       minzoom: 11
+
+
   - id: contour-250
     geometry: linestring
     <<: *extents
@@ -354,6 +394,8 @@ Layer:
     properties:
       minzoom: 10
       maxzoom: 10
+
+
   - id: contour-500
     class: contour-text
     geometry: linestring
@@ -368,6 +410,8 @@ Layer:
     advanced: {}
     properties:
       minzoom: 9
+
+
   - id: contour-1000
     class: contour-text
     geometry: linestring
@@ -382,6 +426,8 @@ Layer:
     advanced: {}
     properties:
       minzoom: 8
+
+
   - id: landcover-flat
     class: landcover-flat
     geometry: polygon
@@ -414,6 +460,8 @@ Layer:
         ) AS features
     properties:
       minzoom: 10
+
+
   - id: icesheet-poly
     geometry: polygon
     <<: *extents
@@ -422,6 +470,8 @@ Layer:
       type: shape
     properties:
       minzoom: 5
+
+
   - id: springs-casing
     geometry: point
     <<: *extents
@@ -436,6 +486,8 @@ Layer:
         ) AS springs_casing
     properties:
       minzoom: 14
+
+
   - id: water-lines-casing
     geometry: linestring
     <<: *extents
@@ -454,6 +506,8 @@ Layer:
         ) AS water_lines_casing
     properties:
       minzoom: 6
+
+
   - id: water-lines-low-zoom
     geometry: linestring
     <<: *extents
@@ -472,6 +526,8 @@ Layer:
     properties:
       minzoom: 8
       maxzoom: 11
+
+
   - id: water-lines
     class: water-lines
     geometry: linestring
@@ -495,6 +551,8 @@ Layer:
         ) AS water_lines
     properties:
       minzoom: 12
+
+
   - id: water-areas
     geometry: polygon
     <<: *extents
@@ -524,6 +582,8 @@ Layer:
     properties:
       cache-features: true
       minzoom: 0
+
+
   - id: ocean-lz
     geometry: polygon
     class: ocean
@@ -533,6 +593,8 @@ Layer:
       type: shape
     properties:
       maxzoom: 9
+
+
   - id: ocean
     geometry: polygon
     class: ocean
@@ -542,6 +604,8 @@ Layer:
       type: shape
     properties:
       minzoom: 10
+
+
   - id: landcover-area-symbols
     geometry: polygon
     <<: *extents
@@ -576,6 +640,8 @@ Layer:
     properties:
       cache-features: true
       minzoom: 5
+
+
   - id: icesheet-outlines
     geometry: linestring
     <<: *extents
@@ -584,6 +650,8 @@ Layer:
       type: shape
     properties:
       minzoom: 5
+
+
   - id: marinas-area
     geometry: polygon
     <<: *extents
@@ -597,6 +665,8 @@ Layer:
         ) AS marinas_area
     properties:
       minzoom: 14
+
+
   - id: water-barriers-line
     geometry: linestring
     <<: *extents
@@ -614,6 +684,8 @@ Layer:
         ) AS water_barriers_line
     properties:
       minzoom: 13
+
+
   - id: water-barriers-poly
     geometry: polygon
     <<: *extents
@@ -629,6 +701,8 @@ Layer:
         ) AS water_barriers_poly
     properties:
       minzoom: 13
+
+
   - id: springs
     geometry: point
     <<: *extents
@@ -656,6 +730,8 @@ Layer:
     properties:
       minzoom: 14
   # moved here
+
+
   - id: protected-areas
     geometry: polygon
     <<: *extents
@@ -679,6 +755,8 @@ Layer:
       cache-features: true
       minzoom: 8
     status: off
+
+
   - id: piers-poly
     geometry: polygon
     <<: *extents
@@ -692,6 +770,8 @@ Layer:
         ) AS piers_poly
     properties:
       minzoom: 12
+
+
   - id: piers-line
     geometry: linestring
     <<: *extents
@@ -705,6 +785,8 @@ Layer:
         ) AS piers_line
     properties:
       minzoom: 12
+
+
   - id: water-barriers-point
     geometry: point
     <<: *extents
@@ -722,6 +804,8 @@ Layer:
         ) AS water_barriers_points
     properties:
       minzoom: 13
+
+
   - id: bridge
     geometry: polygon
     <<: *extents
@@ -738,6 +822,8 @@ Layer:
         ) AS bridge
     properties:
       minzoom: 12
+
+
   - id: buildings
     geometry: polygon
     <<: *extents
@@ -759,6 +845,8 @@ Layer:
         ) AS buildings
     properties:
       minzoom: 14
+
+
   - id: tunnels
     class: access
     geometry: linestring
@@ -851,6 +939,8 @@ Layer:
       cache-features: true
       group-by: layernotnull
       minzoom: 10
+
+
   - id: landuse-overlay
     geometry: polygon
     <<: *extents
@@ -869,6 +959,8 @@ Layer:
         ) AS landuse_overlay
     properties:
       minzoom: 8
+
+
   - id: tourism-boundary
     geometry: polygon
     <<: *extents
@@ -886,6 +978,8 @@ Layer:
         ) AS tourism_boundary
     properties:
       minzoom: 10
+
+
   - id: line-barriers
     class: barriers
     geometry: linestring
@@ -908,6 +1002,8 @@ Layer:
         ) AS line_barriers
     properties:
       minzoom: 14
+
+
   - id: relief-symbols
     geometry: linestring
     <<: *extents
@@ -924,6 +1020,8 @@ Layer:
       cache-features: true
       # original: 13
       minzoom: 10
+
+
   - id: area-barriers
     class: barriers
     geometry: polygon
@@ -946,6 +1044,8 @@ Layer:
         ) AS area_barriers
     properties:
       minzoom: 16
+
+
   - id: ferry-routes
     geometry: linestring
     <<: *extents
@@ -960,6 +1060,8 @@ Layer:
         ) AS ferry_routes
     properties:
       minzoom: 8
+
+
   - id: turning-circle-casing
     geometry: point
     <<: *extents
@@ -990,6 +1092,8 @@ Layer:
         ) AS turning_circle_sql
     properties:
       minzoom: 15
+
+
   - id: highway-area-casing
     geometry: polygon
     <<: *extents
@@ -1016,6 +1120,8 @@ Layer:
         ) AS highway_area_casing
     properties:
       minzoom: 14
+
+
   - id: roads-casing
     geometry: linestring
     <<: *extents
@@ -1118,6 +1224,8 @@ Layer:
     properties:
       cache-features: true
       minzoom: 10
+
+
   - id: highway-area-fill
     # FIXME: No geometry?
     <<: *extents
@@ -1147,6 +1255,8 @@ Layer:
         ) AS highway_area_fill
     properties:
       minzoom: 14
+
+
   - id: roads-fill
     class: access
     geometry: linestring
@@ -1157,6 +1267,8 @@ Layer:
     properties:
       cache-features: true
       minzoom: 10
+
+
   - id: pistes
     geometry: linestring
     <<: *extents
@@ -1173,6 +1285,8 @@ Layer:
     advanced: {}
     properties:
       minzoom: 12
+
+
   - id: turning-circle-fill
     geometry: point
     <<: *extents
@@ -1181,6 +1295,8 @@ Layer:
       table: *turning-circle_sql
     properties:
       minzoom: 15
+
+
   - id: aerialways
     geometry: linestring
     <<: *extents
@@ -1196,6 +1312,8 @@ Layer:
         ) AS aerialways
     properties:
       minzoom: 12
+
+
   - id: roads-low-zoom
     geometry: linestring
     <<: *extents
@@ -1229,6 +1347,8 @@ Layer:
       cache-features: true
       minzoom: 6
       maxzoom: 9
+
+
   - id: waterway-bridges
     class: water-lines
     geometry: linestring
@@ -1252,6 +1372,8 @@ Layer:
         ) AS waterway_bridges
     properties:
       minzoom: 12
+
+
   - id: bridges
     class: access
     geometry: linestring
@@ -1342,6 +1464,8 @@ Layer:
       cache-features: true
       group-by: layernotnull
       minzoom: 10
+
+
   - id: guideways
     geometry: linestring
     <<: *extents
@@ -1355,6 +1479,8 @@ Layer:
         ) AS guideways
     properties:
       minzoom: 11
+
+
   - id: entrances
     geometry: point
     <<: *extents
@@ -1373,6 +1499,8 @@ Layer:
         AS entrances
     properties:
       minzoom: 18
+
+
   - id: aeroways
     geometry: linestring
     <<: *extents
@@ -1391,6 +1519,8 @@ Layer:
     properties:
       cache-features: true
       minzoom: 11
+
+
   - id: necountries
     geometry: linestring
     <<: *extents84
@@ -1400,6 +1530,8 @@ Layer:
     properties:
       minzoom: 1
       maxzoom: 3
+
+
   - id: admin-low-zoom
     geometry: linestring
     <<: *extents
@@ -1417,6 +1549,8 @@ Layer:
         ) AS admin_low_zoom
     properties:
       minzoom: 4
+
+
   - id: admin-mid-zoom
     geometry: linestring
     <<: *extents
@@ -1436,6 +1570,8 @@ Layer:
       minzoom: 11
       maxzoom: 12
     staus: off
+
+
   - id: admin-high-zoom
     geometry: linestring
     <<: *extents
@@ -1454,6 +1590,8 @@ Layer:
     properties:
       minzoom: 13
     staus: off
+
+
   - id: power-minorline
     geometry: linestring
     <<: *extents
@@ -1467,6 +1605,8 @@ Layer:
         ) AS power_minorline
     properties:
       minzoom: 16
+
+
   - id: power-line
     geometry: linestring
     <<: *extents
@@ -1483,6 +1623,8 @@ Layer:
       minzoom: 14
   # moved to line ~600
   # - id: protected-areas
+
+
   - id: trees
     geometry: polygon
     <<: *extents
@@ -1505,6 +1647,8 @@ Layer:
       cache-features: true
       minzoom: 16
     status: off
+
+
   - id: country-names
     class: country
     geometry: point
@@ -1526,6 +1670,8 @@ Layer:
         ) AS country_names
     properties:
       minzoom: 2
+
+
   - id: capital-names
     geometry: point
     <<: *extents
@@ -1548,6 +1694,8 @@ Layer:
     properties:
       minzoom: 3
       maxzoom: 15
+
+
   - id: state-names
     class: state
     geometry: point
@@ -1571,6 +1719,8 @@ Layer:
     properties:
       minzoom: 4
     status: off
+
+
   - id: placenames-medium
     geometry: point
     <<: *extents
@@ -1616,6 +1766,8 @@ Layer:
       cache-features: true
       minzoom: 4
       maxzoom: 15
+
+
   - id: placenames-small
     geometry: point
     <<: *extents
@@ -1649,6 +1801,8 @@ Layer:
     properties:
       cache-features: true
       minzoom: 12
+
+
   - id: stations
     geometry: point
     <<: *extents
@@ -1699,6 +1853,8 @@ Layer:
     properties:
       cache-features: true
       minzoom: 12
+
+
   - id: amenity-points
     class: points
     geometry: point
@@ -1918,6 +2074,8 @@ Layer:
     properties:
       cache-features: true
       minzoom: 10
+
+
   - id: amenity-line
     geometry: linestring
     <<: *extents
@@ -1942,6 +2100,8 @@ Layer:
         ) AS amenity_line
     properties:
       minzoom: 16
+
+
   - id: power-towers
     geometry: point
     <<: *extents
@@ -1962,6 +2122,8 @@ Layer:
         ) AS power_towers
     properties:
       minzoom: 14
+
+
   - id: roads-text-ref-low-zoom
     geometry: linestring
     <<: *extents
@@ -2009,6 +2171,8 @@ Layer:
     properties:
       minzoom: 10
       maxzoom: 12
+
+
   - id: junctions
     geometry: point
     <<: *extents
@@ -2038,6 +2202,8 @@ Layer:
         ) AS junctions
     properties:
       minzoom: 11
+
+
   - id: bridge-text
     geometry: polygon
     <<: *extents
@@ -2055,6 +2221,8 @@ Layer:
         ) AS bridge_text
     properties:
       minzoom: 11
+
+
   - id: roads-text-ref
     geometry: linestring
     <<: *extents
@@ -2110,6 +2278,8 @@ Layer:
         ) AS roads_text_ref
     properties:
       minzoom: 13
+
+
   - id: roads-area-text-name
     geometry: polygon
     <<: *extents
@@ -2136,6 +2306,8 @@ Layer:
         ) AS roads_area_text_name
     properties:
       minzoom: 15
+
+
   - id: roads-text-name
     class: directions
     geometry: linestring
@@ -2192,6 +2364,8 @@ Layer:
     properties:
       cache-features: true
       minzoom: 13
+
+
   - id: paths-text-name
     class: directions
     geometry: linestring
@@ -2220,6 +2394,8 @@ Layer:
     properties:
       cache-features: true
       minzoom: 15
+
+
   - id: railways-text-name
     geometry: linestring
     <<: *extents
@@ -2251,6 +2427,8 @@ Layer:
         ) AS railways_text_name
     properties:
       minzoom: 11
+
+
   - id: text-poly-low-zoom
     class: text-low-zoom
     geometry: polygon
@@ -2290,6 +2468,8 @@ Layer:
     properties:
       minzoom: 0
       maxzoom: 9
+
+
   - id: text-line
     geometry: linestring
     <<: *extents
@@ -2315,6 +2495,8 @@ Layer:
         ) AS text_line
     properties:
       minzoom: 10
+
+
   - id: text-point
     geometry: point
     <<: *extents
@@ -2325,6 +2507,8 @@ Layer:
       table: *amenity_points_sql
     properties:
       minzoom: 10
+
+
   - id: building-text
     geometry: polygon
     <<: *extents
@@ -2344,6 +2528,8 @@ Layer:
         ) AS building_text
     properties:
       minzoom: 14
+
+
   - id: interpolation
     geometry: linestring
     <<: *extents
@@ -2357,6 +2543,8 @@ Layer:
         ) AS interpolation
     properties:
       minzoom: 17
+
+
   - id: addresses
     geometry: point
     <<: *extents
@@ -2397,6 +2585,8 @@ Layer:
         ) AS addresses
     properties:
       minzoom: 17
+
+
   - id: water-lines-text
     geometry: linestring
     <<: *extents
@@ -2423,6 +2613,8 @@ Layer:
         ) AS water_lines_text
     properties:
       minzoom: 13
+
+
   - id: ferry-routes-text
     geometry: linestring
     <<: *extents
@@ -2439,6 +2631,8 @@ Layer:
         ) AS ferry_routes_text
     properties:
       minzoom: 13
+
+
   - id: admin-text
     geometry: linestring
     <<: *extents
@@ -2459,6 +2653,8 @@ Layer:
         ) AS admin_text
     properties:
       minzoom: 11
+
+
   - id: protected-areas-text
     geometry: linestring
     <<: *extents
@@ -2479,6 +2675,8 @@ Layer:
         ) AS protected_areas_text
     properties:
       minzoom: 13
+
+
   - id: amenity-low-priority
     class: amenity-low-priority
     geometry: point
@@ -2512,6 +2710,8 @@ Layer:
     properties:
       cache-features: true
       minzoom: 14
+
+
   - id: amenity-low-priority-poly
     class: amenity-low-priority
     geometry: polygon
