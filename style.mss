@@ -16,8 +16,8 @@ Map {
 @land-color: #f2efe9;
 
 @contour-op: minus;
-@contour-color-light: #404040;
-@contour-color-dark:  #606060;
+@contour-color-light: #808080;
+@contour-color-dark: #5f5f5f;
 @contour-text: #404040;  // negated
 @contour-halo: black;
 
@@ -93,7 +93,7 @@ Map {
   [zoom >= 13] {
     comp-op: @contour-op;
     line-color: @contour-color-light;
-    line-width: 0.5;
+    line-width: 1;
     line-smooth: 0.8;
     line-opacity: 0.6;
   }
@@ -107,17 +107,18 @@ Map {
   [zoom >= 11] {
     comp-op: @contour-op;
     line-color: @contour-color-light;
-    line-width: 0.5;
+    line-width: 1;
     line-smooth: 0.8;
     line-opacity: 0.6;
   }
 
   [zoom >= 12] {
-    line-opacity: 0.8;
+    line-width: 1.5;
+    // line-opacity: 0.8;
   }
 
   [zoom >= 13] {
-    line-opacity: 1.0;
+    // line-opacity: 1.0;
   }
 
   [zoom >= 14] {
@@ -129,7 +130,7 @@ Map {
   [zoom = 10] {
     comp-op: @contour-op;
     line-color: @contour-color-light;
-    line-width: 0.5;
+    line-width: 1;
     line-smooth: 0.8;
     line-opacity: 0.6;
   }
@@ -139,22 +140,22 @@ Map {
   [zoom >= 9] {
     comp-op: @contour-op;
     line-color: @contour-color-light;
-    line-width: 0.5;
+    line-width: 1;
     line-smooth: 0.8;
     line-opacity: 0.6;
   }
 
   [zoom >= 11] {
-    line-width: 0.75;
+    line-width: 1.5;
   }
 
   [zoom >= 12] {
-    line-width: 1;
-    line-opacity: 0.8;
+    line-width: 2;
+    // line-opacity: 0.8;
   }
 
   [zoom >= 13] {
-    line-opacity: 1.0;
+    // line-opacity: 1.0;
   }
 
   [zoom >= 14] {
@@ -163,8 +164,40 @@ Map {
 }
 
 #contour-1000 {
+  // ::saturation{
   [zoom >= 8] {
     comp-op: @contour-op;
+    // comp-op: saturation;
+    line-color: @contour-color-light;
+    line-width: 1;
+    line-smooth: 1;
+    line-opacity: 0.6;
+  }
+
+  [zoom >= 10] {
+    // line-width: 1.0;
+    line-width: 1.5;
+  }
+
+  [zoom >= 12] {
+    line-width: 2;
+    line-opacity: 0.8;
+  }
+
+  /*
+  [zoom >= 13] {
+    line-opacity: 1.0;
+  }
+  */
+
+  [zoom >= 14] {
+    line-color: @contour-color-dark;
+  }
+  // }
+  /*
+  ::value{
+  [zoom >= 8] {
+    comp-op: value;
     line-color: @contour-color-light;
     line-width: 0.5;
     line-smooth: 0.8;
@@ -187,6 +220,8 @@ Map {
   [zoom >= 14] {
     line-color: @contour-color-dark;
   }
+  }
+  */
 }
 
 // TODO: fix
@@ -202,7 +237,7 @@ Map {
     text-face-name: @book-fonts;
     text-size: 12;
     text-fill: @contour-text;
-    text-opacity: 0.7;
+    // text-opacity: 0.7;
     text-halo-radius: 2;
     text-halo-fill: @contour-halo;
     text-placement: line;
