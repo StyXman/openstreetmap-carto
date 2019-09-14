@@ -26,7 +26,8 @@ Map {
 
 @darken-lighten: 15%;
 
-@hiking: yellow;
+// @hiking: yellow;
+@hiking: orange;  // instead of yellow because it fades into the bg in some places
 @mountain_hiking: red;
 @demanding_mountain_hiking: violet;
 @alpine_hiking: blue;
