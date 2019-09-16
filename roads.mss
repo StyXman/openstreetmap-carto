@@ -1992,7 +1992,7 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
 
     [feature = 'highway_footway'],
     [feature = 'highway_path'][bicycle != 'designated'][horse != 'designated'] {
-      [zoom >= 14][access != 'no'],
+      [zoom >= 13][access != 'no'],
       [zoom >= 15] {
         #roads-fill[zoom >= 13] {
           background/line-color: @footway-casing;
@@ -2180,7 +2180,7 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
       [zoom >= 13][access != 'no'],
       [zoom >= 15] {
         /* The white casing that you mainly see against forests and other dark features */
-        #roads-fill[zoom >= 15] {
+        #roads-fill[zoom >= 13] {
           background/line-opacity: 0.4;
           background/line-color: @track-casing;
           [sac_scale = 'hiking'] {
