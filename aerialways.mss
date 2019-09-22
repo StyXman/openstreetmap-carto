@@ -46,21 +46,25 @@
       dash/line-color: #707070;
       dash/line-dasharray: 6,25;
       dash/line-clip: false;
-      [zoom >= 17] {
+      // was 17
+      [zoom >= 14] {
         text-name: "[name]";
         text-fill: #666666;
-        text-size: 10;
+        // was 10
+        text-size: 12;
         text-dy: 4;
         text-spacing: 900;
         text-clip: false;
         text-placement: line;
         text-min-distance: 18;
-        text-face-name: @book-fonts;
+        // was book-fonts
+        text-face-name: @bold-fonts;
         text-halo-radius: @standard-halo-radius;
         text-halo-fill: @standard-halo-fill;
       }
       [zoom >= 19] {
-        text-size: 11;
+        // was 11
+        text-size: 13;
         text-dy: 5;
       }
     }
@@ -84,21 +88,25 @@
       dash/line-color: black;
       dash/line-dasharray: 1,30;
       dash/line-clip: false;
-      [zoom >= 17] {
+      // was 17
+      [zoom >= 14] {
         text-name: "[name]";
         text-fill: #666666;
-        text-size: 10;
+        // was 10
+        text-size: 12;
         text-dy: 4;
         text-spacing: 900;
         text-clip: false;
         text-placement: line;
         text-min-distance: 18;
-        text-face-name: @book-fonts;
+        // was book-fonts
+        text-face-name: @bold-fonts;
         text-halo-radius: @standard-halo-radius;
         text-halo-fill: @standard-halo-fill;
       }
       [zoom >= 19] {
-        text-size: 11;
+        // was 11
+        text-size: 13;
         text-dy: 5;
       }
     }
