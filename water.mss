@@ -17,7 +17,10 @@
     [zoom >= 2][zoom < 8][way_pixels >= 32],
     [zoom >= 8] {
       line-width: 1.5;
-      line-color: @water-dark;
+      line-color: @water-dark-low-zoom;
+      [zoom >= 8] {
+        line-color: @water-dark;
+      }
       [int_intermittent = 'yes'] {
         line-dasharray: 4,4;
       }
@@ -25,17 +28,23 @@
   }
 }
 
-// renamed water-areas to glacier
+// moved from water-areas so it stays below slope/hillshade
 #glacier {
   [natural = 'glacier']::natural {
     [zoom >= 5] {
-      line-width: 1.0;
-      line-color: @glacier-line;
       polygon-fill: @glacier;
-      [zoom >= 8] {
+      [zoom >= 9] {
+        polygon-opacity: 0.4;
+        line-width: 0.5;
+        line-color: @water-dark-low-zoom;
+      }
+      [zoom >= 11] {
+        line-width: 0.75;
+      }
+      [zoom >= 12] {
         line-width: 1;
       }
-      [zoom >= 10] {
+      [zoom >= 13] {
         line-dasharray: 4,2;
         line-width: 1.5;
       }
@@ -141,12 +150,15 @@
   // local
   [waterway = 'canal'][zoom >= 12],
   [waterway = 'river'][zoom >= 6] {
-    line-color: @water-dark;
+    line-color: @water-dark-low-zoom;
     line-width: 0.5;
     [waterway = 'canal'] {
       line-color: #181818;
     }
-    [zoom >= 8] { line-width: 1; }
+    [zoom >= 8] {
+      line-color: @water-dark;
+      line-width: 1;
+    }
     [zoom >= 9] { line-width: 2.7; }
     [zoom >= 10] { line-width: 3.1; }
     [zoom >= 12] {

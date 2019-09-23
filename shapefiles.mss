@@ -14,6 +14,9 @@
 .ocean::border {
   line-width: 1.5;
   line-color: @water-dark;
+  [zoom < 8] {
+    line-color: @water-dark-low-zoom;
+  }
 }
 
 .ocean {
