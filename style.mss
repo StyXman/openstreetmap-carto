@@ -241,10 +241,10 @@ Map {
   [zoom >= 15] {
     line-width: 4;
     text-name: "[name]";
-    text-size: 10;
+    text-size: 12;
     text-fill: #666;
-    text-face-name: @book-fonts;
-    text-halo-radius: 1;
+    text-face-name: @bold-fonts;
+    text-halo-radius: 1.5;
     text-placement: line;
   }
 }
