@@ -521,7 +521,9 @@
   }
   */
 
-  /* TODO:
+  // NOTE: heath and scrub have the same symbol
+  // no fill
+  /*
   [feature = 'natural_heath'][zoom >= 5] {
     polygon-fill: @heath;
     [way_pixels >= 4]  { polygon-gamma: 0.75; }
@@ -529,7 +531,8 @@
   }
   */
 
-  /* TODO:
+  // no fill
+  /*
   [feature = 'natural_scrub'][zoom >= 5] {
     polygon-fill: @scrub;
     [way_pixels >= 4]  { polygon-gamma: 0.75; }
@@ -537,7 +540,8 @@
   }
   */
 
-  /* TODO:
+  // no fill
+  /*
   [feature = 'wetland_swamp'][zoom >= 5] {
     polygon-fill: @forest;
     [way_pixels >= 4]  { polygon-gamma: 0.75; }
@@ -545,7 +549,8 @@
   }
   */
 
-  /* TODO:
+  // no fill
+  /*
   [feature = 'wetland_mangrove'][zoom >= 5] {
     polygon-fill: @scrub;
     [way_pixels >= 4]  { polygon-gamma: 0.75; }
@@ -553,7 +558,8 @@
   }
   */
 
-  /* TODO:
+  // no fill
+  /*
   [feature = 'wetland_reedbed'][zoom >= 5] {
     polygon-fill: @grass;
     [way_pixels >= 4]  { polygon-gamma: 0.75; }
@@ -561,7 +567,8 @@
   }
   */
 
-  /* TODO:
+  // no fill
+  /*
   [feature = 'wetland_bog'],
   [feature = 'wetland_string_bog'] {
     [zoom >= 5] {
@@ -572,7 +579,8 @@
   }
   */
 
-  /* TODO:
+  // no fill
+  /*
   [feature = 'wetland_wet_meadow'],
   [feature = 'wetland_fen'],
   [feature = 'wetland_saltmarsh'],
