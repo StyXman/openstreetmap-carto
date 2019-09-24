@@ -11,6 +11,7 @@
   [landuse = 'basin']::landuse,
   [natural = 'water']::natural,
   [landuse = 'reservoir']::landuse,
+  [landuse = 'salt_pond']::landuse,
   [waterway = 'riverbank']::waterway {
     [zoom >= 0][zoom < 1][way_pixels >= 4],
     [zoom >= 1][zoom < 2][way_pixels >= 16],
@@ -123,6 +124,18 @@
           polygon-pattern-gamma: 0.6;
         }
       }
+    }
+  }
+
+  [landuse = 'salt_pond'] {
+    [zoom >= 13] {
+      polygon-fill: @water-salt;
+      [way_pixels >= 4]  { polygon-gamma: 0.75; }
+      [way_pixels >= 64] { polygon-gamma: 0.3;  }
+      polygon-pattern-file: url('symbols/salt-dots-2.png');
+      polygon-pattern-alignment: global;
+      [way_pixels >= 4]  { polygon-pattern-gamma: 0.75; }
+      [way_pixels >= 64] { polygon-pattern-gamma: 0.3;  }
     }
   }
 }
