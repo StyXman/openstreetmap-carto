@@ -14,6 +14,7 @@ Map {
 // from https://github.com/gravitystorm/openstreetmap-carto/pull/3065
 @water-dark-low-zoom: #5a5aa1;
 @water-dark: darken(@water-color,20%);
+@water-salt: #f1dddf;
 @land-color: #f2efe9;
 
 @contour-op: minus;

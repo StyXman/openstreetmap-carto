@@ -104,6 +104,9 @@
     [zoom >= 8] {
       [int_intermittent = 'no'] {
         polygon-fill: @water-color;
+        [natural = 'water'][int_salt = 'yes'] {
+          polygon-fill: @water-salt;
+        }
         [way_pixels >= 4] {
           polygon-gamma: 0.75;
         }
@@ -462,6 +465,7 @@
       text-face-name: @oblique-fonts;
       text-halo-radius: @standard-halo-radius;
       text-halo-fill: @water-color;
+      [int_salt = 'yes'] { text-halo-fill: @water-salt; }
       text-placement: interior;
     }
   }
