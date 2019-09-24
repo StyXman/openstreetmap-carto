@@ -3254,7 +3254,24 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
       }
     }
   }
+  [highway = 'runway'],
+  [highway = 'taxiway'] {
+    [zoom >= 15] {
+      text-name: "[refs]";
+      text-size: 10;
+      text-fill: #333;
+      text-spacing: 750;
+      text-clip: false;
+      text-placement: line;
+      text-face-name: @oblique-fonts;
+      text-halo-radius: @standard-halo-radius;
+      text-halo-fill: @standard-halo-fill;
+      text-repeat-distance: @minor-highway-text-repeat-distance;
+    }
+  }
+}
 
+#roads-text-ref-minor {
   [highway = 'unclassified'],
   [highway = 'residential'] {
     [zoom >= 15] {
@@ -3264,15 +3281,16 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
       [zoom >= 16] {
         text-size: 9;
       }
-      [zoom >= 18] {
-        text-size: 10;
+      [zoom >= 17] {
+        text-size: 11;
       }
 
       text-fill: #000;
+      // was @oblique-fonts
       text-face-name: @bold-fonts;
       text-placement: line;
       text-repeat-distance: @major-highway-text-repeat-distance;
-      text-halo-radius: 2;
+      text-halo-radius: @standard-halo-radius;
       text-halo-fill: @standard-halo-fill;
       text-spacing: 760;
       text-clip: false;
@@ -3296,7 +3314,7 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
 
       text-clip: false;
       text-fill: #222;
-      text-face-name: @book-fonts;
+      text-face-name: @oblique-fonts;
       text-halo-radius: @standard-halo-radius;
       text-halo-fill: @standard-halo-fill;
       text-margin: 10;
@@ -3304,22 +3322,6 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
       text-spacing: 760;
       text-repeat-distance: @major-highway-text-repeat-distance;
       text-vertical-alignment: middle;
-    }
-  }
-
-  [highway = 'runway'],
-  [highway = 'taxiway'] {
-    [zoom >= 15] {
-      text-name: "[refs]";
-      text-size: 10;
-      text-fill: #333;
-      text-spacing: 750;
-      text-clip: false;
-      text-placement: line;
-      text-face-name: @book-fonts;
-      text-halo-radius: @standard-halo-radius;
-      text-halo-fill: @standard-halo-fill;
-      text-repeat-distance: @minor-highway-text-repeat-distance;
     }
   }
 }
