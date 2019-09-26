@@ -57,6 +57,9 @@
   [waterway = 'dock'] {
     [zoom >= 9]::waterway {
       polygon-fill: @water-color;
+      [int_salt = 'yes'] {
+        polygon-fill: @water-salt;
+      }
       [way_pixels >= 4] {
         polygon-gamma: 0.75;
       }
@@ -73,6 +76,9 @@
     [zoom >= 8] {
       [int_intermittent = 'no'] {
         polygon-fill: @water-color;
+        [int_salt = 'yes'] {
+          polygon-fill: @water-salt;
+        }
         [way_pixels >= 4] {
           polygon-gamma: 0.75;
         }
@@ -83,7 +89,10 @@
         }
       }
       [int_intermittent = 'yes'] {
-        polygon-pattern-file: url('symbols/jeisenbe/water_intermittent.png');
+        polygon-pattern-file: url('symbols/local/water_intermittent_bg.png');
+        [int_salt = 'yes'] {
+          polygon-pattern-file: url('symbols/local/water_intermittent_salt_bg.png');
+        }
         [way_pixels >= 4] {
           polygon-pattern-gamma: 0.75;
         }
@@ -105,7 +114,7 @@
     [zoom >= 8] {
       [int_intermittent = 'no'] {
         polygon-fill: @water-color;
-        [natural = 'water'][int_salt = 'yes'] {
+        [int_salt = 'yes'] {
           polygon-fill: @water-salt;
         }
         [way_pixels >= 4] {
@@ -116,7 +125,10 @@
         }
       }
       [int_intermittent = 'yes'] {
-        polygon-pattern-file: url('symbols/jeisenbe/water_intermittent.png');
+        polygon-pattern-file: url('symbols/local/water_intermittent_bg.png');
+        [int_salt = 'yes'] {
+          polygon-pattern-file: url('symbols/local/water_intermittent_salt_bg.png');
+        }
         [way_pixels >= 4] {
           polygon-pattern-gamma: 0.75;
         }
