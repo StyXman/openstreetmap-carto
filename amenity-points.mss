@@ -1422,6 +1422,14 @@
     marker-clip: false;
   }
 
+  [feature = 'sport_climbing'][zoom >= @nice] {
+    marker-file: url('symbols/local/climbing.svg');
+    marker-width: 16;
+    marker-placement: interior;
+    marker-fill: @climbing;
+    marker-clip: false;
+  }
+
   [feature = 'leisure_fitness_centre'][zoom >= 17],
   [feature = 'leisure_fitness_station'][zoom >= 17] {
     marker-file: url('symbols/leisure/fitness.svg');
@@ -2324,6 +2332,21 @@
       text-line-spacing: @standard-line-spacing-size;
       text-fill: @leisure-green;
       text-dy: 11;
+      text-face-name: @standard-font;
+      text-halo-radius: @standard-halo-radius;
+      text-halo-fill: @standard-halo-fill;
+      text-placement: interior;
+    }
+  }
+
+  [feature = 'sport_climbing'] {
+    [zoom >= @nice] {
+      text-name: "[name]";
+      text-size: @standard-font-size;
+      text-wrap-width: @standard-wrap-width;
+      text-line-spacing: @standard-line-spacing-size;
+      text-fill: @climbing;
+      text-dy: 10;
       text-face-name: @standard-font;
       text-halo-radius: @standard-halo-radius;
       text-halo-fill: @standard-halo-fill;
@@ -3429,6 +3452,21 @@
         text-dy: 8;
       }
     }
+  }
+
+  [feature = 'sport_climbing'][zoom >= @nice] {
+    marker-file: url('symbols/local/climbing.svg');
+    marker-width: 16;
+    marker-fill: @climbing;
+    text-name: "[name]";
+    text-size: 10;
+    text-face-name: @oblique-fonts;
+    text-fill: @climbing;
+    text-halo-radius: @standard-halo-radius;
+    text-halo-fill: @standard-halo-fill;
+    text-placement: line;
+    text-vertical-alignment: middle;
+    text-dy: 10;
   }
 }
 
