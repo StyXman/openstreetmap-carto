@@ -2225,7 +2225,7 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
           line/line-color: @track-fill;
         }
         [access = 'no'] { line/line-color: @track-fill-noaccess; }
-        line/line-dasharray: 8,3;
+        line/line-dasharray: 5,4,2,4;
         line/line-cap: round;
         line/line-join: round;
         line/line-opacity: 0.8;
@@ -2234,19 +2234,20 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
         line/line-width: @track-width-z13;
 
         [tracktype = 'grade1'] {
-          line/line-dasharray: 8,3,2,3;
+          // solid line, but we can't remove the dasharray attr
+          line/line-dasharray: 100,0;
         }
         [tracktype = 'grade2'] {
-          line/line-dasharray: 8,3,2,3,2,3;
+          line/line-dasharray: 8.8,3.2;
         }
         [tracktype = 'grade3'] {
-          line/line-dasharray: 8,3,2,3,2,3,2,3;
+          line/line-dasharray: 5.6,4.0;
         }
         [tracktype = 'grade4'] {
-          line/line-dasharray: 8,3,2,3,2,3,2,3,2,3;
+          line/line-dasharray: 3.2,4.8;
         }
         [tracktype = 'grade5'] {
-          line/line-dasharray: 8,3,2,3,2,3,2,3,2,3,2,3;
+          line/line-dasharray: 1.6,6.4;
         }
 
         [zoom >= 15] {
