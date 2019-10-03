@@ -61,6 +61,8 @@ Stylesheet:
   - aerialways.mss
   - admin.mss
   - addressing.mss
+
+
 Layer:
   - id: terrain-small
     class: terrain
@@ -1980,7 +1982,7 @@ Layer:
                 ELSE NULL
               END AS "telescope:diameter",
               tags->'castle_type' as castle_type,
-            -- local
+              -- local
               tags->'ruins' as ruins,
               tags->'sport' as sport,
               tags->'information' as information,
@@ -2000,6 +2002,7 @@ Layer:
                                 ELSE 'other' END AS shop,
               CASE WHEN building = 'no' OR building IS NULL THEN 'no' ELSE 'yes' END AS is_building,
               tags -> 'operator' AS operator,
+              -- local
               CASE WHEN tags->'salt' IN ('yes') THEN 'yes' ELSE 'no' END AS int_salt,
               ref,
               way_area,
@@ -2518,7 +2521,7 @@ Layer:
       <<: *osm2pgsql
       table: |-
         (SELECT
-          way,
+            way,
             NULL as way_pixels,
             COALESCE('man_made_' || man_made, 'waterway_' || waterway, 'natural_' || "natural") AS feature,
             access,
