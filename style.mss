@@ -34,6 +34,7 @@ Map {
 @alpine_hiking: blue;
 @demanding_alpine_hiking: gray;
 @difficult_alpine_hiking: black;
+@climbing: @transportation-icon;
 
 // TODO
 @motorway-oneway-arrow-color: white;

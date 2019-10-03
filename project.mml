@@ -2099,7 +2099,8 @@ Layer:
           ORDER BY COALESCE(layer,0)
         ) AS amenity_line
     properties:
-      minzoom: 16
+      # was 16, lowered to 13 so I can render climbing crags
+      minzoom: 13
 
 
   - id: power-towers

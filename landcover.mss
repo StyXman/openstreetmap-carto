@@ -1042,6 +1042,7 @@
     [zoom >= 15] {
       line-pattern-file: url('symbols/local/cliff2_mdione.png');
     }
+    // TODO: climbing color for climbing crags
   }
   [man_made = 'embankment'][zoom >= 15]::man_made {
     line-pattern-file: url('symbols/embankment.svg');
@@ -1146,6 +1147,7 @@
     text-halo-radius: @standard-halo-radius;
     text-halo-fill: @standard-halo-fill;
     text-fill: @cliff-text;
+    // TODO: text for climbing crags
     text-size: 10;
     text-face-name: @book-fonts;
     text-dy: 8;
