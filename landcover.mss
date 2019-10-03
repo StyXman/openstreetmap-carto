@@ -1158,8 +1158,6 @@
     }
     #text-point {
       text-placement: point;
-      text-dy: 8;
-      text-size: 10;
     }
   }
   [feature = 'natural_dale'][zoom >= 13],

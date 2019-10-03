@@ -1554,7 +1554,6 @@
 
   // Slipway tagging on points - slipway on lines is defined later
   [feature = 'leisure_slipway'][zoom >= 17] {
-    // marker-file: url('symbols/transport_slipway.p.20.svg');
     marker-file: url('symbols/leisure/slipway.svg');
     marker-width: 8;
     marker-fill: @water-amenity;
@@ -3371,7 +3370,7 @@
     text-line-spacing: @standard-line-spacing-size;
     text-fill: darken(@man-made-icon, 20%);
     text-dy: 6;
-      [feature = 'historic_wayside_shrine'] { text-dy: 10; }
+    [feature = 'historic_wayside_shrine'] { text-dy: 10; }
     text-face-name: @standard-font;
     text-halo-radius: @standard-halo-radius;
     text-halo-fill: @standard-halo-fill;
@@ -3513,7 +3512,7 @@
       trunk/marker-allow-overlap: true;
       trunk/marker-line-width: 0;
       trunk/marker-width: 2;
-      trunk/      trunk/marker-ignore-placement: true;
+      trunk/marker-ignore-placement: true;
     }
     [zoom >= 19] {
       trunk/marker-width: 3;
