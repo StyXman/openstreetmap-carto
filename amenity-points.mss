@@ -2338,19 +2338,18 @@
     }
   }
 
-  [feature = 'sport_climbing'] {
-    [zoom >= 13] {
-      text-name: "[name]";
-      text-size: 10;
-      text-wrap-width: @standard-wrap-width;
-      text-line-spacing: @standard-line-spacing-size;
-      text-fill: @climbing;
-      text-dy: 8;
-      text-face-name: @standard-font;
-      text-halo-radius: @standard-halo-radius;
-      text-halo-fill: @standard-halo-fill;
-      text-placement: interior;
-    }
+  [feature = 'sport_climbing'][zoom >= 13] {
+    text-name: "[name]";
+    text-size: 10;
+    text-wrap-width: @standard-wrap-width;
+    text-line-spacing: @standard-line-spacing-size;
+    text-fill: @climbing;
+    text-dy: 12;
+    text-face-name: @standard-font;
+    text-halo-radius: @standard-halo-radius;
+    text-halo-fill: @standard-halo-fill;
+    text-placement: interior;
+    text-wrap-width: @standard-wrap-width;
   }
 
   [feature = 'leisure_swimming_pool'][is_building = 'no'] {
@@ -3459,13 +3458,18 @@
     marker-file: url('symbols/local/climbing.svg');
     marker-width: 16;
     marker-clip: false;
+
     text-name: "[name]";
     text-size: 10;
     text-face-name: @standard-font;
     text-fill: @climbing;
     text-halo-radius: @standard-halo-radius;
     text-halo-fill: @standard-halo-fill;
-    text-dy: 10;
+    text-placement: interior;
+    // text-vertical-alignment: middle;
+    text-dy: 12;
+    text-wrap-width: @standard-wrap-width;
+    text-line-spacing: @standard-line-spacing-size;
   }
 }
 
