@@ -1608,6 +1608,9 @@
     marker-width: 16;
     marker-file: url('symbols/local/climbing.svg');
     marker-clip: false;
+    [zoom >= 15] {
+      marker-allow-overlap: true;
+    }
   }
 
   [feature = 'natural_peak'][zoom >= 11] {
@@ -3458,6 +3461,9 @@
     marker-file: url('symbols/local/climbing.svg');
     marker-width: 16;
     marker-clip: false;
+    [zoom >= 15] {
+      marker-allow-overlap: true;
+    }
 
     text-name: "[name]";
     text-size: 10;
