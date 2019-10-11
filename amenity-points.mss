@@ -1715,7 +1715,7 @@
   }
 
   // waste_disposal tagging on ways - tagging on nodes is defined later
-  [feature = 'amenity_waste_disposal'][zoom >= 19] {
+  [feature = 'amenity_waste_disposal'][zoom >= 18] {
     [access = null],
     [access = 'permissive'],
     [access = 'yes'] {
@@ -1865,7 +1865,7 @@
     }
   }
 
-  [feature = 'amenity_waste_basket'][zoom >= 19]::amenity {
+  [feature = 'amenity_waste_basket'][zoom >= 18]::amenity {
     marker-file: url('symbols/amenity/waste_basket.svg');
     marker-fill: @man-made-icon;
     marker-placement: interior;
