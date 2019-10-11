@@ -1412,6 +1412,18 @@
     marker-fill: @office;
   }
 
+  [feature = 'sport_climbing'][zoom >= 13],
+  [feature = 'leisure_sports_centre'][sport = 'climbing'][zoom >= 13] {
+    marker-placement: interior;
+    marker-fill: @climbing;
+    marker-width: 16;
+    marker-file: url('symbols/local/climbing.svg');
+    marker-clip: false;
+    [zoom >= 15] {
+      marker-allow-overlap: true;
+    }
+  }
+
   [feature = 'leisure_water_park'][zoom >= 17],
   [feature = 'leisure_sports_centre'][sport = 'swimming'][zoom >= 17],
   [feature = 'leisure_swimming_area'][zoom >= 17] {
@@ -1600,17 +1612,6 @@
     marker-placement: interior;
     marker-clip: false;
     marker-fill: @water-amenity;
-  }
-
-  [feature = 'sport_climbing'][zoom >= 13] {
-    marker-placement: interior;
-    marker-fill: @climbing;
-    marker-width: 16;
-    marker-file: url('symbols/local/climbing.svg');
-    marker-clip: false;
-    [zoom >= 15] {
-      marker-allow-overlap: true;
-    }
   }
 
   [feature = 'natural_peak'][zoom >= 11] {
@@ -2341,7 +2342,8 @@
     }
   }
 
-  [feature = 'sport_climbing'][zoom >= 13] {
+  [feature = 'sport_climbing'][zoom >= 13],
+  [feature = 'leisure_sports_centre'][sport = 'climbing'][zoom >= 13] {
     text-name: "[name]";
     text-size: 10;
     text-wrap-width: @standard-wrap-width;
