@@ -33,7 +33,6 @@
 @residential-casing: black;
 @road-casing: @residential-casing;
 @service-casing: #999;
-@living-street-casing: @residential-casing;
 @pedestrian-casing: gray;
 @path-casing: @default-casing;
 @footway-casing: @default-casing;
@@ -42,7 +41,7 @@
 @bridleway-casing: @default-casing;
 @track-casing: @default-casing;
 @service-casing: #999;
-@living-street-casing: @default-casing;
+@living-street-casing: @residential-casing;
 @pedestrian-casing: grey;
 @path-casing: @default-casing;
 @footway-casing: @default-casing;
