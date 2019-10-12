@@ -1941,6 +1941,7 @@ Layer:
               ) AS feature,
               access,
               CASE
+                WHEN tags->'sport' IN ('climbing') THEN 10000 -- higher than any peak
                 WHEN "natural" IN ('peak', 'volcano', 'saddle') THEN
                   CASE
                     WHEN tags->'ele' ~ '^-?\d{1,4}(\.\d+)?$' THEN (tags->'ele')::NUMERIC
