@@ -1412,8 +1412,8 @@
     marker-fill: @office;
   }
 
-  [feature = 'sport_climbing'][zoom >= 13],
-  [feature = 'leisure_sports_centre'][sport = 'climbing'][zoom >= 13] {
+  [feature = 'sport_climbing'][zoom >= @nice],
+  [feature = 'leisure_sports_centre'][sport = 'climbing'][zoom >= @nice] {
     marker-placement: interior;
     marker-fill: @climbing;
     marker-width: 16;
@@ -2342,8 +2342,8 @@
     }
   }
 
-  [feature = 'sport_climbing'][zoom >= 13],
-  [feature = 'leisure_sports_centre'][sport = 'climbing'][zoom >= 13] {
+  [feature = 'sport_climbing'][zoom >= @nice],
+  [feature = 'leisure_sports_centre'][sport = 'climbing'][zoom >= @nice] {
     text-name: "[name]";
     text-size: 10;
     text-wrap-width: @standard-wrap-width;
@@ -3457,7 +3457,7 @@
     }
   }
 
-  [feature = 'sport_climbing'][zoom >= 13] {
+  [feature = 'sport_climbing'][zoom >= @nice] {
     marker-placement: interior;
     marker-fill: @climbing;
     marker-file: url('symbols/local/climbing.svg');
