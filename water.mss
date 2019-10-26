@@ -203,6 +203,12 @@
   [waterway = 'river'][zoom >= 6] {
     line-color: @water-dark-low-zoom;
     line-width: 0.5;
+    [waterway = 'river'][int_intermittent = 'yes'] {
+      line-dasharray: 4,3;
+      line-cap: butt;
+      line-join: round;
+      line-clip: false;
+    }
     [waterway = 'canal'] {
       line-color: #181818;
     }
