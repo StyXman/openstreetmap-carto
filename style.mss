@@ -10,12 +10,17 @@ Map {
 // things that are useful and common enough to see in the near range
 @useful: 16;
 
+@land-color: #f2efe9;
+
 @water-color: #aad3df;
 // from https://github.com/gravitystorm/openstreetmap-carto/pull/3065
 @water-dark-low-zoom: #5a5aa1;
 @water-dark: darken(@water-color,20%);
 @water-salt: #f1dddf;
-@land-color: #f2efe9;
+@river-color: #8fcadd;     // Lch(78,21,227)
+
+@standard-halo-radius: 1;
+@standard-halo-fill: rgba(255,255,255,0.6);
 
 @contour-op: minus;
 @contour-color-light: #404040;

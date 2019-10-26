@@ -112,28 +112,51 @@
     [zoom >= 1][zoom < 2][way_pixels >= 16],
     [zoom >= 2][zoom < 8][way_pixels >= 32],
     [zoom >= 8] {
-      [int_intermittent = 'no'] {
-        polygon-fill: @water-color;
-        [int_salt = 'yes'] {
-          polygon-fill: @water-salt;
+      [water != 'river'][water != 'canal'][waterway != 'riverbank'] {
+        [int_intermittent = 'no'] {
+          polygon-fill: @water-color;
+          [int_salt = 'yes'] {
+            polygon-fill: @water-salt;
+          }
+          [way_pixels >= 4] {
+            polygon-gamma: 0.75;
+          }
+          [way_pixels >= 64] {
+            polygon-gamma: 0.6;
+          }
         }
-        [way_pixels >= 4] {
-          polygon-gamma: 0.75;
-        }
-        [way_pixels >= 64] {
-          polygon-gamma: 0.6;
+        [int_intermittent = 'yes'] {
+          polygon-pattern-file: url('symbols/local/water_intermittent_bg.png');
+          [int_salt = 'yes'] {
+            polygon-pattern-file: url('symbols/local/water_intermittent_salt_bg.png');
+          }
+          polygon-pattern-alignment: global;
+          [way_pixels >= 4] {
+            polygon-pattern-gamma: 0.75;
+          }
+          [way_pixels >= 64] {
+            polygon-pattern-gamma: 0.6;
+          }
         }
       }
-      [int_intermittent = 'yes'] {
-        polygon-pattern-file: url('symbols/local/water_intermittent_bg.png');
-        [int_salt = 'yes'] {
-          polygon-pattern-file: url('symbols/local/water_intermittent_salt_bg.png');
+      [natural = 'water'][water = 'river'],
+      [natural = 'water'][water = 'canal'],
+      [waterway = 'riverbank'] {
+        [int_intermittent = 'no'] {
+          polygon-fill: @water-color;
+          [int_salt = 'yes'] {
+            polygon-fill: @water-salt;
+          }
+          [way_pixels >= 4] { polygon-gamma: 0.75; }
+          [way_pixels >= 64] { polygon-gamma: 0.6; }
         }
-        [way_pixels >= 4] {
-          polygon-pattern-gamma: 0.75;
-        }
-        [way_pixels >= 64] {
-          polygon-pattern-gamma: 0.6;
+        [int_intermittent  = 'yes'] {
+          [zoom >= 15] {
+            polygon-pattern-file: url('symbols/intermittent_river.png');
+            polygon-pattern-alignment: global;
+            [way_pixels >= 4]  { polygon-pattern-gamma: 0.75; }
+            [way_pixels >= 64] { polygon-pattern-gamma: 0.6;  }
+          }
         }
       }
     }
@@ -231,10 +254,10 @@
   }
 }
 
-.water-lines {
+#water-lines,
+#waterway-bridges {
   [waterway = 'canal'][zoom >= 12],
-  [waterway = 'river'][zoom >= 12],
-  [waterway = 'wadi'][zoom >= 13] {
+  [waterway = 'river'][zoom >= 12] {
     // the additional line of land color is used to provide a background for dashed casings
     [int_tunnel = 'yes'] {
       background/line-color: @land-color;
@@ -254,13 +277,12 @@
       }
     }
 
-    water/line-color: @water-color;
+    water/line-color: @river-color;
     water/line-width: 2;
     water/line-cap: round;
     water/line-join: round;
 
-    [int_intermittent = 'yes'],
-    [waterway = 'wadi'] {
+    [int_intermittent = 'yes'] {
       [bridge = 'yes'][zoom >= 14] {
         bridgefill/line-color: white;
         bridgefill/line-join: round;
@@ -314,7 +336,7 @@
         background/line-color: @land-color;
       }
       water/line-width: 2;
-      water/line-color: @water-color;
+      water/line-color: @river-color;
 
       [bridge = 'yes'] {
         bridgecasing/line-color: black;
@@ -443,7 +465,7 @@
   }
 }
 
-.text-low-zoom[zoom < 10],
+#text-poly-low-zoom[zoom < 10],
 #text-point[zoom >= 10] {
   // local
   [feature = 'place_ocean'],
@@ -466,12 +488,16 @@
   [feature = 'landuse_basin'],
   [feature = 'waterway_dock'] {
     [zoom >= 0][way_pixels > 3000][way_pixels <= 768000],
-    [zoom >= 17] {
+    [zoom >= 14][way_pixels <= 768000][feature = 'natural_bay'],
+    [zoom >= 14][way_pixels <= 768000][feature = 'natural_strait'],
+    [zoom >= 17][way_pixels <= 768000] {
       text-name: "[name]";
       text-size: 13;
       text-wrap-width: 25; // 2.5 em
       text-line-spacing: -1.5; // -0.15 em
-      [way_pixels > 12000] {
+      [way_pixels > 12000],
+      [zoom >= 15][feature = 'natural_strait'] {
+        // was 12
         text-size: 15;
         text-wrap-width: 37; // 3.1 em
         text-line-spacing: -1.6; // -0.13 em
@@ -492,25 +518,6 @@
       text-halo-fill: @water-color;
       [int_salt = 'yes'] { text-halo-fill: @water-salt; }
       text-placement: interior;
-    }
-  }
-}
-
-#text-point[zoom >= 14] {
-  [feature = 'natural_strait'] {
-    text-name: "[name]";
-    text-size: 13;
-    text-wrap-width: 25; // 2.5 em
-    text-line-spacing: -1.5; // -0.15 em
-    text-fill: @water-text;
-    text-face-name: @oblique-fonts;
-    text-halo-radius: @standard-halo-radius;
-    text-halo-fill: @standard-halo-fill;
-    text-placement: point;
-    [zoom >= 15] {
-      text-size: 14;
-      text-wrap-width: 37; // 3.1 em
-      text-line-spacing: -1.6; // -0.13 em
     }
   }
 }
