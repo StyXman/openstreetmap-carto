@@ -117,47 +117,30 @@
     [zoom >= 1][zoom < 2][way_pixels >= 16],
     [zoom >= 2][zoom < 8][way_pixels >= 32],
     [zoom >= 8] {
-      [water != 'river'][water != 'canal'][waterway != 'riverbank'] {
-        [int_intermittent = 'no'] {
-          polygon-fill: @water-color;
-          // local
-          [int_salt = 'yes'] {
-            polygon-fill: @water-salt;
-          }
-          [way_pixels >= 4] {
-            polygon-gamma: 0.75;
-          }
-          [way_pixels >= 64] {
-            polygon-gamma: 0.6;
-          }
+      [int_intermittent = 'no'] {
+        polygon-fill: @water-color;
+        // local
+        [int_salt = 'yes'] {
+          polygon-fill: @water-salt;
         }
-
-        [int_intermittent = 'yes'] {
-          // was something else, I like this pattern better
-          polygon-pattern-file: url('symbols/local/water_intermittent_bg.png');
-          // local
-          [int_salt = 'yes'] {
-            polygon-pattern-file: url('symbols/local/water_intermittent_salt_bg.png');
-          }
-          polygon-pattern-alignment: global;
-          [way_pixels >= 4] {
-            polygon-pattern-gamma: 0.75;
-          }
-          [way_pixels >= 64] {
-            polygon-pattern-gamma: 0.6;
-          }
+        [way_pixels >= 4] {
+          polygon-gamma: 0.75;
+        }
+        [way_pixels >= 64] {
+          polygon-gamma: 0.6;
         }
       }
-      [natural = 'water'][water = 'river'],
-      [natural = 'water'][water = 'canal'],
-      [waterway = 'riverbank'] {
-        [int_intermittent = 'no'] {
-          polygon-fill: @water-color;
-          [int_salt = 'yes'] {
-            polygon-fill: @water-salt;
-          }
-          [way_pixels >= 4] { polygon-gamma: 0.75; }
-          [way_pixels >= 64] { polygon-gamma: 0.6; }
+
+      [int_intermittent = 'yes'] {
+        // was something else, I like this pattern better
+        polygon-pattern-file: url('symbols/local/water_intermittent_bg.png');
+        // local
+        [int_salt = 'yes'] {
+          polygon-pattern-file: url('symbols/local/water_intermittent_salt_bg.png');
+        }
+        polygon-pattern-alignment: global;
+        [way_pixels >= 4] {
+          polygon-pattern-gamma: 0.75;
         }
         [way_pixels >= 64] {
           polygon-pattern-gamma: 0.6;
