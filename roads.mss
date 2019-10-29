@@ -41,6 +41,7 @@
 @bridleway-casing: @default-casing;
 @track-casing: @default-casing;
 @service-casing: #999;
+// was @default-casing
 @living-street-casing: @residential-casing;
 @pedestrian-casing: grey;
 @path-casing: @default-casing;

@@ -11,6 +11,7 @@
   [landuse = 'basin']::landuse,
   [natural = 'water']::natural,
   [landuse = 'reservoir']::landuse,
+  // local
   [landuse = 'salt_pond']::landuse,
   [waterway = 'riverbank']::waterway {
     [zoom >= 0][zoom < 1][way_pixels >= 4],
@@ -57,6 +58,7 @@
   [waterway = 'dock'] {
     [zoom >= 9]::waterway {
       polygon-fill: @water-color;
+      // local
       [int_salt = 'yes'] {
         polygon-fill: @water-salt;
       }
@@ -76,6 +78,7 @@
     [zoom >= 8] {
       [int_intermittent = 'no'] {
         polygon-fill: @water-color;
+        // local
         [int_salt = 'yes'] {
           polygon-fill: @water-salt;
         }
@@ -89,7 +92,9 @@
         }
       }
       [int_intermittent = 'yes'] {
+        // was something else, I like this pattern better
         polygon-pattern-file: url('symbols/local/water_intermittent_bg.png');
+        // local
         [int_salt = 'yes'] {
           polygon-pattern-file: url('symbols/local/water_intermittent_salt_bg.png');
         }
@@ -115,6 +120,7 @@
       [water != 'river'][water != 'canal'][waterway != 'riverbank'] {
         [int_intermittent = 'no'] {
           polygon-fill: @water-color;
+          // local
           [int_salt = 'yes'] {
             polygon-fill: @water-salt;
           }
@@ -125,8 +131,11 @@
             polygon-gamma: 0.6;
           }
         }
+
         [int_intermittent = 'yes'] {
+          // was something else, I like this pattern better
           polygon-pattern-file: url('symbols/local/water_intermittent_bg.png');
+          // local
           [int_salt = 'yes'] {
             polygon-pattern-file: url('symbols/local/water_intermittent_salt_bg.png');
           }
@@ -157,6 +166,7 @@
     }
   }
 
+  // local
   [landuse = 'salt_pond'] {
     [zoom >= 13] {
       polygon-fill: @water-salt;

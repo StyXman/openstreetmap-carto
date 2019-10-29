@@ -1341,6 +1341,7 @@
     marker-fill: @office;
   }
 
+  // local
   [feature = 'sport_climbing'][zoom >= @nice],
   [feature = 'leisure_sports_centre'][sport = 'climbing'][zoom >= @nice] {
     marker-placement: interior;
@@ -1616,6 +1617,7 @@
   }
 
   // waste_disposal tagging on ways - tagging on nodes is defined later
+  // was 19, but 18 is my limit currently
   [feature = 'amenity_waste_disposal'][zoom >= 18] {
     [access = null],
     [access = 'permissive'],
@@ -1750,6 +1752,7 @@
     }
   }
 
+  // was 19, but 18 is my limit currently
   [feature = 'amenity_waste_basket'][zoom >= 18]::amenity {
     marker-file: url('symbols/amenity/waste_basket.svg');
     marker-fill: @man-made-icon;
@@ -2202,6 +2205,7 @@
     }
   }
 
+  // local
   [feature = 'sport_climbing'][zoom >= @nice],
   [feature = 'leisure_sports_centre'][sport = 'climbing'][zoom >= @nice] {
     text-name: "[name]";
@@ -3279,6 +3283,7 @@
     }
   }
 
+  // local
   [feature = 'sport_climbing'][zoom >= @nice] {
     marker-placement: interior;
     marker-fill: @climbing;

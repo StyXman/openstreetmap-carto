@@ -570,10 +570,12 @@ Layer:
               OR tags->'seasonal' IN ('yes', 'spring', 'summer', 'autumn', 'winter', 'wet_season', 'dry_season')
               OR tags->'basin' IN ('detention', 'infiltration')
               THEN 'yes' ELSE 'no' END AS int_intermittent,
+            -- local
             CASE WHEN tags->'salt' IN ('yes') THEN 'yes' ELSE 'no' END AS int_salt
           FROM planet_osm_polygon
           WHERE
             (waterway IN ('dock', 'riverbank')
+              --                                   'salt_pond' is local
               OR landuse IN ('reservoir', 'basin', 'salt_pond')
               --                      , 'glacier' moved to glacier
               OR "natural" IN ('water'))
@@ -1985,11 +1987,13 @@ Layer:
                                         AND way_area IS NULL
                                    THEN amenity ELSE NULL END,
                 'tourism_' || CASE WHEN tourism IN ('viewpoint', 'attraction') THEN tourism ELSE NULL END,
+                -- local
                 'sport_' || CASE WHEN tags @> 'sport=>climbing' THEN 'climbing' ELSE NULL END,
                 'place_' || CASE WHEN place IN ('locality') AND way_area IS NULL THEN place ELSE NULL END
               ) AS feature,
               access,
               CASE
+                -- local
                 WHEN tags->'sport' IN ('climbing') THEN 10000 -- higher than any peak
                 WHEN "natural" IN ('peak', 'volcano', 'saddle') THEN
                   CASE
@@ -2138,6 +2142,7 @@ Layer:
            'highway_' || CASE WHEN tags @> 'ford=>yes' OR tags @> 'ford=>stepping_stones' THEN 'ford' ELSE NULL END,
            'leisure_' || CASE WHEN leisure IN ('slipway', 'track') THEN leisure ELSE NULL END,
            'attraction_' || CASE WHEN tags @> 'attraction=>water_slide' THEN 'water_slide' ELSE NULL END,
+           -- local
            'sport_' || CASE WHEN tags @> 'sport=>climbing' THEN 'climbing' ELSE NULL END
             ) AS feature
           FROM planet_osm_line
