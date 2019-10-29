@@ -1,5 +1,5 @@
 @marina-text: #576ddf; // also swimming_pool
-@wetland-text: darken(#4aa5fa, 25%); /* Also for marsh and mud */
+@wetland-text: darken(#4aa5fa, 25%); /* Also for mud */
 @shop-icon: #ac39ac;
 @shop-text: #939;
 @transportation-icon: #0092da;
@@ -1434,6 +1434,23 @@
       marker-fill: @man-made-icon;
     }
   }
+
+  [feature = 'amenity_parking'],
+  [feature = 'amenity_bicycle_parking'],
+  [feature = 'amenity_motorcycle_parking'],
+  [feature = 'amenity_parking_entrance'] {
+    [zoom >= 14][way_pixels > 750],
+    [zoom >= 17][feature = 'amenity_parking'],
+    [zoom >= 18] {
+      [feature = 'amenity_parking'] { marker-file: url('symbols/amenity/parking.svg'); }
+      [feature = 'amenity_bicycle_parking'] { marker-file: url('symbols/amenity/bicycle_parking.svg'); }
+      [feature = 'amenity_motorcycle_parking'] { marker-file: url('symbols/amenity/motorcycle_parking.svg'); }
+      [feature = 'amenity_parking_entrance'] { marker-file: url('symbols/amenity/parking_entrance.svg'); }
+      marker-clip: false;
+      marker-fill: @transportation-icon;
+      [access != ''][access != 'permissive'][access != 'yes'] { marker-opacity: 0.33; }
+    }
+  }
 }
 
 #amenity-low-priority {
@@ -1448,23 +1465,6 @@
     marker-file: url('symbols/historic/shrine.svg');
     marker-fill: @man-made-icon;
     marker-clip: false;
-  }
-
-  [feature = 'amenity_parking'],
-  [feature = 'amenity_bicycle_parking'],
-  [feature = 'amenity_motorcycle_parking'],
-  [feature = 'amenity_parking_entrance'] {
-    [zoom >= 14][way_pixels > 900],
-    [zoom >= 17][feature = 'amenity_parking'],
-    [zoom >= 18] {
-      [feature = 'amenity_parking'] { marker-file: url('symbols/amenity/parking.svg'); }
-      [feature = 'amenity_bicycle_parking'] { marker-file: url('symbols/amenity/bicycle_parking.svg'); }
-      [feature = 'amenity_motorcycle_parking'] { marker-file: url('symbols/amenity/motorcycle_parking.svg'); }
-      [feature = 'amenity_parking_entrance'] { marker-file: url('symbols/amenity/parking_entrance.svg'); }
-      marker-clip: false;
-      marker-fill: @transportation-icon;
-      [access != ''][access != 'permissive'][access != 'yes'] { marker-opacity: 0.33; }
-    }
   }
 
   [feature = 'railway_level_crossing'][zoom >= 14]::railway,
@@ -1573,7 +1573,7 @@
 }
 
 /* Note that these layers are also used in water.mss */
-.text-low-zoom[zoom < 10],
+#text-poly-low-zoom[zoom < 10],
 #text-point[zoom >= 10] {
   [feature = 'place_island'][zoom >= 4][way_pixels > 3000][way_pixels <= 768000],
   [feature = 'place_island'][zoom >= 16][way_pixels <= 768000],
@@ -2125,7 +2125,6 @@
   }
 
   [feature = 'natural_wetland'],
-  [feature = 'natural_marsh'],
   [feature = 'natural_mud'],
   [feature = 'leisure_park'],
   [feature = 'leisure_recreation_ground'],
@@ -2200,7 +2199,6 @@
       text-halo-fill: @standard-halo-fill;
       [feature = 'natural_reef'],
       [feature = 'natural_wetland'],
-      [feature = 'natural_marsh'],
       [feature = 'natural_mud'] {
         text-fill: @wetland-text;
       }
@@ -2317,7 +2315,6 @@
     }
   }
 
-  [feature = 'natural_bay'][zoom >= 14],
   [feature = 'natural_spring'][zoom >= 16] {
     text-name: "[name]";
     text-size: 10;
@@ -2327,9 +2324,7 @@
     text-face-name: @standard-font;
     text-halo-radius: @standard-halo-radius;
     text-halo-fill: @standard-halo-fill;
-    [feature = 'natural_spring'] {
-      text-dy: 6;
-    }
+    text-dy: 6;
   }
 
   [feature = 'amenity_atm'][zoom >= 19],
@@ -2924,14 +2919,12 @@
     text-halo-fill: @standard-halo-fill;
     text-face-name: @standard-font;
   }
-}
 
-#text-low-priority {
   [feature = 'amenity_parking'],
   [feature = 'amenity_bicycle_parking'],
   [feature = 'amenity_motorcycle_parking'],
   [feature = 'amenity_parking_entrance'] {
-    [zoom >= 10][way_pixels > 900],
+    [zoom >= 14][way_pixels > 3000],
     [zoom >= 18] {
       text-name: "[name]";
       text-size: @standard-font-size;
@@ -2950,7 +2943,9 @@
       [feature = 'amenity_motorcycle_parking'] { text-dy: 12; }
     }
   }
+}
 
+#text-low-priority {
   [feature = 'man_made_cross'][zoom >= 17],
   [feature = 'historic_wayside_cross'][zoom >= 17],
   [feature = 'historic_wayside_shrine'][zoom >= 17] {
