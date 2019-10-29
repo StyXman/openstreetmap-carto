@@ -17,7 +17,7 @@ Map {
 @water-dark-low-zoom: #5a5aa1;
 @water-dark: darken(@water-color,20%);
 @water-salt: #f1dddf;
-@river-color: #8fcadd;     // Lch(78,21,227)
+@land-color: #f2efe9;
 
 @standard-halo-radius: 1;
 @standard-halo-fill: rgba(255,255,255,0.6);

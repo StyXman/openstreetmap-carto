@@ -150,13 +150,8 @@
           [way_pixels >= 4] { polygon-gamma: 0.75; }
           [way_pixels >= 64] { polygon-gamma: 0.6; }
         }
-        [int_intermittent  = 'yes'] {
-          [zoom >= 15] {
-            polygon-pattern-file: url('symbols/intermittent_river.png');
-            polygon-pattern-alignment: global;
-            [way_pixels >= 4]  { polygon-pattern-gamma: 0.75; }
-            [way_pixels >= 64] { polygon-pattern-gamma: 0.6;  }
-          }
+        [way_pixels >= 64] {
+          polygon-pattern-gamma: 0.6;
         }
       }
     }
@@ -249,6 +244,7 @@
       line-join: round;
       line-clip: false;
     }
+    // was @water-color;
     line-color: @water-dark;
     line-width: 0.7;
     [zoom >= 8] { line-width: 1; }
@@ -283,7 +279,7 @@
       }
     }
 
-    water/line-color: @river-color;
+    water/line-color: @water-color;
     water/line-width: 2;
     water/line-cap: round;
     water/line-join: round;
@@ -342,7 +338,7 @@
         background/line-color: @land-color;
       }
       water/line-width: 2;
-      water/line-color: @river-color;
+      water/line-color: @water-color;
 
       [bridge = 'yes'] {
         bridgecasing/line-color: black;
