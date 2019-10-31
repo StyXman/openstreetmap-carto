@@ -103,31 +103,37 @@
   [feature = 'amenity_restaurant'][zoom >= 17] {
     marker-clip: false;
     marker-fill: @gastronomy-icon;
+    /*
     [feature != 'amenity_food_court'][zoom = 17] {
       marker-width: @tiny;
       marker-line-width: 0;
     }
-    [feature = 'amenity_bar'][zoom >= 18] {
+    */
+    [feature = 'amenity_bar']/* [zoom >= 18] */ {
       marker-file: url('symbols/amenity/bar.svg');
     }
-    [feature = 'amenity_biergarten'][zoom >= 18] {
+    [feature = 'amenity_biergarten']/* [zoom >= 18] */ {
       marker-file: url('symbols/amenity/biergarten.svg');
     }
-    [feature = 'amenity_cafe'][zoom >= 18] {
+    [feature = 'amenity_cafe']/* [zoom >= 18] */ {
       marker-file: url('symbols/amenity/cafe.svg');
     }
-    [feature = 'amenity_fast_food'][zoom >= 18] {
-      marker-width: @medium;
-      marker-file: url('symbols/amenity/fast_food.svg');
+    [feature = 'amenity_fast_food']/* [zoom >= 18] */ {
+      marker-width: @tiny;
+      marker-line-width: 0;
+      [zoom >= 18] {
+        marker-width: @medium;
+        marker-file: url('symbols/amenity/fast_food.svg');
+      }
     }
     [feature = 'amenity_food_court'][zoom >= 17],
-    [feature = 'amenity_restaurant'][zoom >= 18] {
+    [feature = 'amenity_restaurant']/* [zoom >= 18] */ {
       marker-file: url('symbols/amenity/restaurant.svg');
     }
-    [feature = 'amenity_ice_cream'][zoom >= 18] {
+    [feature = 'amenity_ice_cream']/* [zoom >= 18] */ {
       marker-file: url('symbols/shop/ice_cream.svg');
     }
-    [feature = 'amenity_pub'][zoom >= 18] {
+    [feature = 'amenity_pub']/* [zoom >= 18] */ {
       marker-file: url('symbols/amenity/pub.svg');
     }
   }
@@ -148,7 +154,8 @@
     }
   }
 
-  [feature = 'amenity_public_bookcase'][zoom >= 19] {
+  // was 19, but 18 is my limit
+  [feature = 'amenity_public_bookcase'][zoom >= 18] {
     marker-file: url('symbols/amenity/public_bookcase.svg');
     marker-width: @medium;
     marker-fill: @amenity-brown;
@@ -195,7 +202,8 @@
     marker-clip: false;
   }
 
-  [feature = 'amenity_vending_machine'][zoom >= 19] {
+  // was 19, but 18 is my limit
+  [feature = 'amenity_vending_machine'][zoom >= 18] {
     /*
     [vending = 'excrement_bags'] {
       marker-file: url('symbols/amenity/excrement_bags.svg');
@@ -308,8 +316,12 @@
   }
 
   [feature = 'amenity_nightclub'][zoom >= 17] {
-    marker-file: url('symbols/amenity/nightclub.svg');
-    marker-width: @small;
+    marker-width: @tiny;
+    marker-line-width: 0;
+    [zoom >= 18] {
+      marker-file: url('symbols/amenity/nightclub.svg');
+      marker-width: @small;
+    }
     marker-fill: @amenity-brown;
     marker-clip: false;
   }
@@ -377,7 +389,8 @@
     marker-clip: false;
   }
 
-  [feature = 'amenity_bicycle_repair_station'][zoom >= 19] {
+  // was 19, but 18 is my limit
+  [feature = 'amenity_bicycle_repair_station'][zoom >= 18] {
     marker-file: url('symbols/amenity/bicycle_repair_station.svg');
     marker-width: @medium;
     marker-fill: @amenity-brown;
@@ -402,8 +415,12 @@
   }
 
   [feature = 'tourism_gallery'][zoom >= 17] {
-    marker-file: url('symbols/shop/art.svg');
-    marker-width: @medium;
+    marker-width: @tiny;
+    marker-line-width: 0;
+    [zoom >= 18] {
+      marker-file: url('symbols/shop/art.svg');
+      marker-width: @medium;
+    }
     marker-clip: false;
     marker-fill: @amenity-brown;
   }
@@ -426,7 +443,8 @@
     marker-fill: @accommodation-icon;
   }
 
-  [feature = 'tourism_information'][zoom >= 19], // TODO: see if I want emergency here too
+  // was 19, but 18 is my limit
+  [feature = 'tourism_information'][zoom >= 18], // TODO: see if I want emergency here too
   [feature = 'tourism_information']["information"='office'][zoom >= @emergency] {
     marker-file: url('symbols/tourism/information.svg');
     [information = 'audioguide'] {
@@ -671,8 +689,12 @@
   }
 
   [feature = 'amenity_veterinary'][zoom >= 17] {
-    marker-file: url('symbols/amenity/veterinary.svg');
-    marker-width: @small;
+    marker-width: @tiny;
+    marker-line-width: 0;
+    [zoom >= 18] {
+      marker-file: url('symbols/amenity/veterinary.svg');
+      marker-width: @small;
+    }
     marker-fill: @health-color;
     marker-clip: false;
   }
@@ -732,7 +754,8 @@
     marker-clip: false;
   }
 
-  [feature = 'amenity_post_box'][zoom >= 19] {
+  // was 19, but 18 is my limit
+  [feature = 'amenity_post_box'][zoom >= 18] {
     marker-file: url('symbols/amenity/post_box.svg');
     marker-fill: @amenity-brown;
     marker-clip: false;
@@ -745,7 +768,8 @@
   }
 
   [feature = 'amenity_recycling'][recycling_type = 'centre'][zoom >= 17],
-  [feature = 'amenity_recycling'][zoom >= 19] {
+  // was 19, but 18 is my limit
+  [feature = 'amenity_recycling'][zoom >= 18] {
     marker-file: url('symbols/amenity/recycling.svg');
     marker-fill: @amenity-brown;
     marker-clip: false;
@@ -760,10 +784,11 @@
     marker-clip: false;
   }
 
-  // TODO:
-  [feature = 'emergency_phone'][zoom >= 19] {
+  // was 19
+  [feature = 'emergency_phone'][zoom >= 15] {
     marker-file: url('symbols/amenity/emergency_phone.svg');
-    marker-fill: @amenity-brown;
+    // was @amenity-brown, darker so they stand out against motorways
+    marker-fill: black;
     marker-clip: false;
   }
 
@@ -1090,6 +1115,7 @@
     [shop = 'dry_cleaning'],
     [shop = 'laundry'] {
       [zoom >= 18] {
+        marker-file: url('symbols/shop/laundry.svg');
         marker-width: @medium;
       }
     }
@@ -1479,7 +1505,8 @@
    }
 
   // food courts with free seating
-  [feature = 'leisure_outdoor_seating'][zoom >= 19] {
+  // was 19, but 18 is my limit
+  [feature = 'leisure_outdoor_seating'][zoom >= 18] {
      marker-file: url('symbols/leisure/outdoor_seating.svg');
      marker-fill: @leisure-green;
      marker-clip: false;
@@ -1494,11 +1521,15 @@
   */
 
   [feature = 'leisure_amusement_arcade'][zoom >= 17] {
-     marker-file: url('symbols/leisure/amusement_arcade.svg');
-     marker-width: @small;
-     marker-fill: @leisure-green;
-     marker-clip: false;
-   }
+    marker-width: @tiny;
+    marker-line-width: 0;
+    [zoom >= 18] {
+      marker-file: url('symbols/leisure/amusement_arcade.svg');
+      marker-width: @small;
+    }
+    marker-fill: @leisure-green;
+    marker-clip: false;
+  }
 
   [feature = 'leisure_fishing'][zoom >= 17] {
      marker-file: url('symbols/leisure/fishing.svg');
@@ -1776,7 +1807,8 @@
     }
   }
 
-  [feature = 'amenity_bench'][zoom >= 19]::amenity {
+  // was 19, but 18 is my limit
+  [feature = 'amenity_bench'][zoom >= 18]::amenity {
     marker-file: url('symbols/amenity/bench.svg');
     marker-fill: @man-made-icon;
     [access != ''][access != 'permissive'][access != 'yes'] {
@@ -1784,7 +1816,7 @@
     }
   }
 
-  // was 19, but 18 is my limit currently
+  // was 19, but 18 is my limit
   [feature = 'amenity_waste_basket'][zoom >= 18]::amenity {
     marker-file: url('symbols/amenity/waste_basket.svg');
     marker-fill: @man-made-icon;
@@ -1794,7 +1826,8 @@
   }
 
   // waste_disposal tagging on nodes - tagging on ways is defined earlier
-  [feature = 'amenity_waste_disposal'][zoom >= 19]::amenity {
+  // was 19, but 18 is my limit
+  [feature = 'amenity_waste_disposal'][zoom >= 18]::amenity {
     [access = null],
     [access = 'permissive'],
     [access = 'yes'] {
