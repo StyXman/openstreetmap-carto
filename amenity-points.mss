@@ -807,7 +807,7 @@
   }
 
   [feature = 'amenity_toilets'] {
-    [access = 'yes'][zoom >= @useful],
+    [access = 'yes'][zoom >= @emergency],
     [zoom >= 19] {
       marker-file: url('symbols/amenity/toilets.svg');
       marker-width: @big;
@@ -819,7 +819,7 @@
     }
   }
 
-  [feature = 'amenity_drinking_water'][zoom >= @useful] {
+  [feature = 'amenity_drinking_water'][zoom >= @emergency] {
     marker-file: url('symbols/amenity/drinking_water.svg');
     // was @amenity-brown;
     marker-fill: @water-amenity;
