@@ -1479,6 +1479,26 @@ Layer:
       minzoom: 11
 
 
+  - id: routes
+    geometry: linestring
+    <<: *extents
+    Datasource:
+      <<: *osm2pgsql
+      table: |-
+        (SELECT way,
+          -- TODO: colour based on route type
+          COALESCE(tags->'colour', 'red') as color,
+          COALESCE(route, tags->'line') as route
+        FROM planet_osm_line
+        WHERE route IN ('subway', 'bus', 'tram', 'trolleybus', 'bus')
+           OR tags->'line' IN ('subway', 'bus', 'tram', 'trolleybus', 'bus')
+        ORDER BY ref
+        ) AS routes
+    properties:
+      cache-features: true
+      minzoom: 10
+
+
   - id: entrances
     geometry: point
     <<: *extents

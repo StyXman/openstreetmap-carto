@@ -3090,6 +3090,41 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
   }
 }
 
+#routes {
+  [route = 'subway'][zoom >= 13] {
+    line-width: 3;
+    line-color: [color];
+    line-join: round;
+    line-opacity: 0.75;
+    [zoom >= 14] {
+      line-width: 4;
+      line-opacity: 0.5;
+    }
+    [zoom >= 17] {
+      line-width: 5;
+    }
+  }
+
+  [route = 'bus'][zoom >= 14] {
+    bg/line-width: 1;
+    bg/line-color: white;
+    bg/line-join: round;
+
+    line-width: 1;
+    line-color: @transportation-icon;
+    line-join: round;
+    line-dasharray: 4,4;
+    // line-opacity: 0.5;
+    [zoom >= 17] {
+      bg/line-width: 2;
+
+      line-color: [color];
+      line-dasharray: 4,2;
+      line-width: 2;
+    }
+  }
+}
+
 #aeroways {
   [aeroway = 'runway'] {
     [zoom >= 11] {
