@@ -9,7 +9,10 @@ For each zoomlevel, all borders come from a single attachment, to handle
 overlapping borders correctly.
 */
 
-#admin-low-zoom[zoom < 11],
+// removed zoom restriction on admin-low-zoom
+// these three layers/styles successively include the one before, but with more data
+// I just want to render ALs 2 and 3, so admin-low-zoom is enough for me
+#admin-low-zoom,
 #admin-mid-zoom[zoom >= 11][zoom < 13],
 #admin-high-zoom[zoom >= 13] {
   // country
