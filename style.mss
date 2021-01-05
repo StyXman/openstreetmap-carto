@@ -97,6 +97,16 @@ Map {
   }
 }
 
+#contour-10 {
+  [zoom >= 15] {
+    comp-op: @contour-op;
+    line-color: @contour-color-dark;
+    line-width: 0.25;
+    line-smooth: 0.8;
+    line-opacity: 0.6;
+  }
+}
+
 #contour-50 {
   [zoom >= 13] {
     comp-op: @contour-op;
