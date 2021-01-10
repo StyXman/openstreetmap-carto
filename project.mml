@@ -2534,7 +2534,8 @@ Layer:
               'leisure_' || CASE WHEN leisure IN ('nature_reserve') THEN leisure ELSE NULL END
             ) AS feature,
             name,
-            CASE WHEN building = 'no' OR building IS NULL THEN 'no' ELSE 'yes' END AS is_building -- always no with the where conditions
+            CASE WHEN building = 'no' OR building IS NULL THEN 'no' ELSE 'yes' END AS is_building, -- always no with the where conditions
+            CASE WHEN tags->'salt' IN ('yes') THEN 'yes' ELSE 'no' END AS int_salt
           FROM planet_osm_polygon
           WHERE (landuse IN ('forest', 'military', 'farmland')
               OR military IN ('danger_area')
