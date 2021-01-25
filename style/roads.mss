@@ -283,6 +283,8 @@
 @paths-bridge-casing-width:       0.5;
 @paths-tunnel-casing-width:       1;
 
+@mini-roundabout-width:           4;
+
 @junction-text-color:             #960000;
 @halo-color-for-minor-road:       white;
 @lowzoom-halo-color:              white;
@@ -1522,42 +1524,40 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
           line-width: @secondary-width-z12 - 2 * @secondary-casing-width-z12;
           line-cap: round;
           line-join: round;
-          [zoom >= 13] {
-            [zoom >= 13] { line-width: @secondary-width-z13 - 2 * @secondary-casing-width-z13; }
-            [zoom >= 14] { line-width: @secondary-width-z14 - 2 * @secondary-casing-width-z14; }
-            [zoom >= 15] { line-width: @secondary-width-z15 - 2 * @secondary-casing-width-z15; }
-            [zoom >= 16] { line-width: @secondary-width-z16 - 2 * @secondary-casing-width-z16; }
-            [zoom >= 17] { line-width: @secondary-width-z17 - 2 * @secondary-casing-width-z17; }
-            [zoom >= 18] { line-width: @secondary-width-z18 - 2 * @secondary-casing-width-z18; }
-            [zoom >= 19] { line-width: @secondary-width-z19 - 2 * @secondary-casing-width-z19; }
+          [zoom >= 13] { line-width: @secondary-width-z13 - 2 * @secondary-casing-width-z13; }
+          [zoom >= 14] { line-width: @secondary-width-z14 - 2 * @secondary-casing-width-z14; }
+          [zoom >= 15] { line-width: @secondary-width-z15 - 2 * @secondary-casing-width-z15; }
+          [zoom >= 16] { line-width: @secondary-width-z16 - 2 * @secondary-casing-width-z16; }
+          [zoom >= 17] { line-width: @secondary-width-z17 - 2 * @secondary-casing-width-z17; }
+          [zoom >= 18] { line-width: @secondary-width-z18 - 2 * @secondary-casing-width-z18; }
+          [zoom >= 19] { line-width: @secondary-width-z19 - 2 * @secondary-casing-width-z19; }
+          [link = 'yes'] {
+            line-width: @secondary-link-width-z12 - 2 * @casing-width-z12;
+            [zoom >= 13] { line-width: @secondary-link-width-z13 - 2 * @casing-width-z13; }
+            [zoom >= 15] { line-width: @secondary-link-width-z15 - 2 * @casing-width-z15; }
+            [zoom >= 17] { line-width: @secondary-link-width-z17 - 2 * @casing-width-z17; }
+            [zoom >= 18] { line-width: @secondary-link-width-z18 - 2 * @casing-width-z18; }
+            [zoom >= 19] { line-width: @secondary-link-width-z19 - 2 * @casing-width-z19; }
+          }
+          #tunnels {
+            line-color: @secondary-tunnel-fill;
+          }
+          #bridges {
+            line-width: @secondary-width-z12 - 2 * @bridge-casing-width-z12;
+            [zoom >= 13] { line-width: @secondary-width-z13 - 2 * @major-bridge-casing-width-z13; }
+            [zoom >= 14] { line-width: @secondary-width-z14 - 2 * @major-bridge-casing-width-z14; }
+            [zoom >= 15] { line-width: @secondary-width-z15 - 2 * @major-bridge-casing-width-z15; }
+            [zoom >= 16] { line-width: @secondary-width-z16 - 2 * @major-bridge-casing-width-z16; }
+            [zoom >= 17] { line-width: @secondary-width-z17 - 2 * @major-bridge-casing-width-z17; }
+            [zoom >= 18] { line-width: @secondary-width-z18 - 2 * @major-bridge-casing-width-z18; }
+            [zoom >= 19] { line-width: @secondary-width-z19 - 2 * @major-bridge-casing-width-z19; }
             [link = 'yes'] {
-              line-width: @secondary-link-width-z12 - 2 * @casing-width-z12;
-              [zoom >= 13] { line-width: @secondary-link-width-z13 - 2 * @casing-width-z13; }
-              [zoom >= 15] { line-width: @secondary-link-width-z15 - 2 * @casing-width-z15; }
-              [zoom >= 17] { line-width: @secondary-link-width-z17 - 2 * @casing-width-z17; }
-              [zoom >= 18] { line-width: @secondary-link-width-z18 - 2 * @casing-width-z18; }
-              [zoom >= 19] { line-width: @secondary-link-width-z19 - 2 * @casing-width-z19; }
-            }
-            #tunnels {
-              line-color: @secondary-tunnel-fill;
-            }
-            #bridges {
-              line-width: @secondary-width-z12 - 2 * @bridge-casing-width-z12;
-              [zoom >= 13] { line-width: @secondary-width-z13 - 2 * @major-bridge-casing-width-z13; }
-              [zoom >= 14] { line-width: @secondary-width-z14 - 2 * @major-bridge-casing-width-z14; }
-              [zoom >= 15] { line-width: @secondary-width-z15 - 2 * @major-bridge-casing-width-z15; }
-              [zoom >= 16] { line-width: @secondary-width-z16 - 2 * @major-bridge-casing-width-z16; }
-              [zoom >= 17] { line-width: @secondary-width-z17 - 2 * @major-bridge-casing-width-z17; }
-              [zoom >= 18] { line-width: @secondary-width-z18 - 2 * @major-bridge-casing-width-z18; }
-              [zoom >= 19] { line-width: @secondary-width-z19 - 2 * @major-bridge-casing-width-z19; }
-              [link = 'yes'] {
-                line-width: @secondary-link-width-z12 - 2 * @bridge-casing-width-z12;
-                [zoom >= 13] { line-width: @secondary-link-width-z13 - 2 * @bridge-casing-width-z13; }
-                [zoom >= 15] { line-width: @secondary-link-width-z15 - 2 * @bridge-casing-width-z15; }
-                [zoom >= 17] { line-width: @secondary-link-width-z17 - 2 * @bridge-casing-width-z17; }
-                [zoom >= 18] { line-width: @secondary-link-width-z18 - 2 * @bridge-casing-width-z18; }
-                [zoom >= 19] { line-width: @secondary-link-width-z19 - 2 * @bridge-casing-width-z19; }
-              }
+              line-width: @secondary-link-width-z12 - 2 * @bridge-casing-width-z12;
+              [zoom >= 13] { line-width: @secondary-link-width-z13 - 2 * @bridge-casing-width-z13; }
+              [zoom >= 15] { line-width: @secondary-link-width-z15 - 2 * @bridge-casing-width-z15; }
+              [zoom >= 17] { line-width: @secondary-link-width-z17 - 2 * @bridge-casing-width-z17; }
+              [zoom >= 18] { line-width: @secondary-link-width-z18 - 2 * @bridge-casing-width-z18; }
+              [zoom >= 19] { line-width: @secondary-link-width-z19 - 2 * @bridge-casing-width-z19; }
             }
           }
         }
@@ -2315,6 +2315,52 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
 }
 
 #turning-circle-casing {
+  [int_tc_type = 'primary'][zoom >= 15] {
+    marker-fill: @primary-casing;
+    marker-width: @primary-width-z15 * 1.6 + 2 * @casing-width-z15;
+    marker-height: @primary-width-z15 * 1.6 + 2 * @casing-width-z15;
+    [zoom >= 17] {
+      marker-width: @primary-width-z17 * 1.6 + 2 * @casing-width-z17;
+      marker-height: @primary-width-z17 * 1.6 + 2 * @casing-width-z17;
+    }
+    [zoom >= 18] {
+      marker-width: @primary-width-z18 * 1.6 + 2 * @casing-width-z18;
+      marker-height: @primary-width-z18 * 1.6 + 2 * @casing-width-z18;
+    }
+    [zoom >= 19] {
+      marker-width: @primary-width-z19 * 1.6 + 2 * @casing-width-z19;
+      marker-height: @primary-width-z19 * 1.6 + 2 * @casing-width-z19;
+    }
+    marker-allow-overlap: true;
+    marker-ignore-placement: true;
+    marker-line-width: 0;
+  }
+
+  [int_tc_type = 'secondary'][zoom >= 15] {
+    marker-fill: @secondary-casing;
+    marker-width: @secondary-width-z15 * 1.6 + 2 * @casing-width-z15;
+    marker-height: @secondary-width-z15 * 1.6 + 2 * @casing-width-z15;
+    [zoom >= 16] {
+      marker-width: @secondary-width-z16 * 1.6 + 2 * @casing-width-z16;
+      marker-height: @secondary-width-z16 * 1.6 + 2 * @casing-width-z16;
+    }
+    [zoom >= 17] {
+      marker-width: @secondary-width-z17 * 1.6 + 2 * @casing-width-z17;
+      marker-height: @secondary-width-z17 * 1.6 + 2 * @casing-width-z17;
+    }
+    [zoom >= 18] {
+      marker-width: @secondary-width-z18 * 1.6 + 2 * @casing-width-z18;
+      marker-height: @secondary-width-z18 * 1.6 + 2 * @casing-width-z18;
+    }
+    [zoom >= 19] {
+      marker-width: @secondary-width-z19 * 1.6 + 2 * @casing-width-z19;
+      marker-height: @secondary-width-z19 * 1.6 + 2 * @casing-width-z19;
+    }
+    marker-allow-overlap: true;
+    marker-ignore-placement: true;
+    marker-line-width: 0;
+  }
+
   [int_tc_type = 'tertiary'][zoom >= 15] {
     marker-fill: @tertiary-casing;
     marker-width: @tertiary-width-z15 * 1.6 + 2 * @casing-width-z15;
@@ -2435,6 +2481,52 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
 }
 
 #turning-circle-fill {
+  [int_tc_type = 'primary'][zoom >= 15] {
+    marker-fill: @primary-fill;
+    marker-width: @primary-width-z15 * 1.6;
+    marker-height: @primary-width-z15 * 1.6;
+    [zoom >= 17] {
+      marker-width: @primary-width-z17 * 1.6;
+      marker-height: @primary-width-z17 * 1.6;
+    }
+    [zoom >= 18] {
+      marker-width: @primary-width-z18 * 1.6;
+      marker-height: @primary-width-z18 * 1.6;
+    }
+    [zoom >= 19] {
+      marker-width: @primary-width-z19 * 1.6;
+      marker-height: @primary-width-z19 * 1.6;
+    }
+    marker-allow-overlap: true;
+    marker-ignore-placement: true;
+    marker-line-width: 0;
+  }
+
+  [int_tc_type = 'secondary'][zoom >= 15] {
+    marker-fill: @secondary-fill;
+    marker-width: @secondary-width-z15 * 1.6;
+    marker-height: @secondary-width-z15 * 1.6;
+    [zoom >= 16] {
+      marker-width: @secondary-width-z16 * 1.6;
+      marker-height: @secondary-width-z16 * 1.6;
+    }
+    [zoom >= 17] {
+      marker-width: @secondary-width-z17 * 1.6;
+      marker-height: @secondary-width-z17 * 1.6;
+    }
+    [zoom >= 18] {
+      marker-width: @secondary-width-z18 * 1.6;
+      marker-height: @secondary-width-z18 * 1.6;
+    }
+    [zoom >= 19] {
+      marker-width: @secondary-width-z19 * 1.6;
+      marker-height: @secondary-width-z19 * 1.6;
+    }
+    marker-allow-overlap: true;
+    marker-ignore-placement: true;
+    marker-line-width: 0;
+  }
+
   [int_tc_type = 'tertiary'][zoom >= 15] {
     marker-fill: @tertiary-fill;
     marker-width: @tertiary-width-z15 * 1.6;
@@ -2567,11 +2659,24 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
     marker-ignore-placement: true;
     marker-line-width: 0;
   }
+
+  [type = 'mini_roundabout']::circle {
+    marker-width: @mini-roundabout-width;
+    marker-allow-overlap: true;
+    marker-ignore-placement: true;
+    marker-line-width: 0;
+
+    [int_tc_type = 'primary'] { marker-fill: @primary-casing; }
+    [int_tc_type = 'secondary'] { marker-fill: @secondary-casing; }
+    [int_tc_type = 'tertiary'] { marker-fill: @primary-casing; }
+    [int_tc_type = 'residential'] { marker-fill: @residential-casing; }
+    [int_tc_type = 'living_street'] { marker-fill: @living-street-casing; }
+    [int_tc_type = 'service'] { marker-fill: @service-casing; }
+    [int_tc_type = 'track'] { marker-fill: @track-casing; }
+  }
 }
 
 #highway-area-casing {
-  [feature = 'highway_residential'],
-  [feature = 'highway_unclassified'],
   [feature = 'highway_service'] {
     [zoom >= 14] {
       line-color: #999;
@@ -2579,22 +2684,12 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
     }
   }
 
-  [feature = 'highway_pedestrian'],
   [feature = 'highway_footway'],
-  [feature = 'highway_cycleway'],
-  [feature = 'highway_path'] {
+  [feature = 'highway_pedestrian'] {
     [zoom >= 15] {
       line-color: grey;
       line-width: 1;
     }
-  }
-
-  [feature = 'highway_track'][zoom >= 15] {
-    line-color: @track-fill;
-    line-width: 1;
-    line-dasharray: 5,4,2,4;
-    line-cap: round;
-    line-join: round;
   }
 
   [feature = 'highway_platform'],
@@ -2613,25 +2708,17 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
     polygon-fill: @living-street-fill;
   }
 
-  [feature = 'highway_residential'],
-  [feature = 'highway_unclassified'],
   [feature = 'highway_service'] {
     [zoom >= 14] {
       polygon-fill: #fff;
     }
   }
 
-  [feature = 'highway_pedestrian'],
   [feature = 'highway_footway'],
-  [feature = 'highway_cycleway'],
-  [feature = 'highway_path'] {
+  [feature = 'highway_pedestrian'] {
     [zoom >= 15] {
       polygon-fill: @pedestrian-fill;
     }
-  }
-
-  [feature = 'highway_track'][zoom >= 15] {
-    polygon-fill: #cdbea0;
   }
 
   [feature = 'highway_platform'],
@@ -2709,7 +2796,7 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
 
 #bridge-text  {
   [man_made = 'bridge'] {
-    [zoom >= 12][way_pixels > 62.5][way_pixels <= 64000] {
+    [zoom >= 12][way_pixels > 125][way_pixels <= 768000] {
       text-name: "[name]";
       text-size: 10;
       text-wrap-width: 30; // 3 em
@@ -2720,7 +2807,6 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
       text-halo-fill: @standard-halo-fill;
       text-margin: 3; // 0.3 em
       text-wrap-width: 30;
-      text-placement: interior;
       [way_pixels > 250] {
         text-size: 11;
         text-margin: 3.3; // 0.3 em
@@ -3311,7 +3397,6 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
     text-name: "[name]";
     text-size: 11;
     text-face-name: @book-fonts;
-    text-placement: interior;
     text-wrap-width: 30; // 2.7 em
     text-line-spacing: -1.7; // -0.15 em
   }

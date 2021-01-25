@@ -27,6 +27,25 @@ assert(z_order({foo="bar"}) == nil, "test failed: other tags")
 assert(z_order({highway="motorway"}) == 380 , "test failed: motorway")
 assert(z_order({highway="motorway", railway="rail"}) == 440 , "test failed: motorway + rail")
 
+assert(z_order({highway="motorway"}) > z_order({highway="motorway_link"}) , "test failed: motorway_link")
+assert(z_order({highway="trunk"}) > z_order({highway="trunk_link"}) , "test failed: trunk_link")
+assert(z_order({highway="primary"}) > z_order({highway="primary_link"}) , "test failed: primary_link")
+assert(z_order({highway="secondary"}) > z_order({highway="secondary_link"}) , "test failed: secondary_link")
+assert(z_order({highway="tertiary"}) > z_order({highway="tertiary_link"}) , "test failed: tertiary_link")
+
+assert(z_order({highway="motorway"}) > z_order({highway="trunk"}) , "test failed: motorway > trunk")
+assert(z_order({highway="trunk"}) > z_order({highway="primary"}) , "test failed: trunk > primary")
+assert(z_order({highway="primary"}) > z_order({highway="secondary"}) , "test failed: primary > secondary")
+assert(z_order({highway="secondary"}) > z_order({highway="tertiary"}) , "test failed: secondary > tertiary")
+
+assert(z_order({highway="construction"}) == 33 , "test failed: highway=construction")
+assert(z_order({highway="construction", construction="motorway"}) == 38 , "test failed: highway=construction construction=motorway")
+assert(z_order({highway="construction", construction="motorway", railway="rail"}) == 440, "test failed: construction motorway + rail")
+assert(z_order({highway="construction", construction="service"}) == 15 , "test failed: highway=construction construction=service")
+
+assert(z_order({highway="construction", construction="foo"}) == 33 , "test failed: highway=construction construction=foo")
+assert(z_order({highway="motorway", construction="service"}) == 380 , "test failed: highway=construction + construction=service")
+
 print("TESTING: roads")
 assert(roads({}) == 0, "test failed: no tags")
 assert(roads({foo="bar"}) == 0, "test failed: other tags")
@@ -50,6 +69,9 @@ assert(isarea({waterway = "river"}) == 0, "test failed: river")
 assert(isarea({waterway = "riverbank"}) == 1, "test failed: river")
 assert(isarea({highway = "services"}) == 1, "test failed: river")
 assert(isarea({natural="cliff"}) == 0, "test failed: cliff") -- issue #3084
+assert(isarea({building = "no"}) == 0, "test failed: building=no")
+assert(isarea({building = "no", area = "yes"}) == 1, "test failed: building=no with area tag")
+assert(isarea({building = "no", landuse = "forest"}) == 1, "test failed: building=no with other area tag")
 
 print("TESTING: filter_tags_generic")
 assert(({filter_tags_generic({})})[1] == 1, "Untagged filter")
