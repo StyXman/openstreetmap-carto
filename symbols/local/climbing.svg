@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="543.70203"
+   height="543.7594"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.92.4 (5da689c313, 2019-01-14)"
+   sodipodi:docname="climbing.svg">
+  <defs
+     id="defs17" />
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1504"
+     inkscape:window-height="873"
+     id="namedview15"
+     showgrid="false"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0"
+     inkscape:zoom="0.99965584"
+     inkscape:cx="-11.49171"
+     inkscape:cy="370.69003"
+     inkscape:window-x="30"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg2" />
+  <metadata
+     id="metadata12390">image/svg+xmlOther map symbolsMohamed IbrahimPublic Domainclker.comother map symbols<rdf:RDF>
+  <cc:Work
+     rdf:about="">
+    <dc:format>image/svg+xml</dc:format>
+    <dc:type
+       rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+  </cc:Work>
+</rdf:RDF>
+</metadata>
+  <g
+     id="g914">
+    <path
+       id="path5040"
+       d="m 272.73633,352.87307 c -4.81658,1.77753 -10.2066,2.80966 -15.71127,2.80966 -5.90607,0 -11.75479,-0.68808 -17.1448,-2.23626 l -60.89554,139.96802 c -5.56201,12.90161 -20.87192,17.25946 -34.23224,9.74786 -13.30298,-7.5116 -19.61043,-23.96832 -13.87639,-36.8699 l 74.65726,-171.21854 h 95.18513 v -15.99799 l 48.16596,-22.42013 c 12.6149,-6.13541 29.01425,4.35788 32.34002,17.7182 l 23.62424,94.72641 c 3.38309,13.41766 -4.81659,27.00735 -18.23425,30.3331 -13.47501,3.38309 -27.12204,-4.81659 -30.44776,-18.23425 l -15.02322,-60.37949 z"
+       inkscape:connector-curvature="0"
+       style="fill:#231f20;fill-rule:nonzero" />
+    <path
+       id="path5042"
+       d="M 316.60178,254.76358 C 420.90403,203.04249 461.32905,25.860542 461.32905,11.066703 H 446.99393 C 441.60392,47.993957 396.82105,195.87493 316.60178,238.76559 Z"
+       inkscape:connector-curvature="0"
+       style="fill:#231f20;fill-rule:nonzero" />
+    <path
+       id="path5044"
+       d="m 124.16726,216.00143 c 5.44734,8.54373 16.45671,12.32819 26.20457,8.31436 l 55.16152,-21.61734 v 76.49216 h 95.18513 V 190.59962 L 386.04105,54.072037 c 6.25009,-9.977234 3.38309,-23.165535 -6.70883,-29.587662 -9.97723,-6.250111 -23.16553,-3.325737 -28.78491,6.422127 l -72.4783,115.999698 -43.63608,0.11469 c -2.80969,0 -5.61936,0.45872 -8.42905,1.5482 l -75.40268,29.58764 -38.87681,-58.88862 c -6.3648,-9.86255 -19.61043,-12.78691 -29.58767,-6.42214 -9.97723,6.42214 -12.84426,19.72512 -6.47947,29.70237 z"
+       inkscape:connector-curvature="0"
+       style="fill:#231f20;fill-rule:nonzero" />
+    <path
+       id="path5046"
+       d="m 246.58909,139.16525 c 20.9866,0 38.01672,-16.91544 38.01672,-37.8447 0,-20.929246 -17.03012,-37.95936 -38.01672,-37.95936 -20.92926,0 -37.95935,17.030114 -37.95935,37.95936 0,20.92926 17.03009,37.8447 37.95935,37.8447"
+       inkscape:connector-curvature="0"
+       style="fill:#231f20;fill-rule:nonzero" />
+    <path
+       id="path5048"
+       d="M 300.71848,526.44256 V 355.68274 l -15.99798,7.45425 v 163.30557 z"
+       inkscape:connector-curvature="0"
+       style="fill:#231f20;fill-rule:nonzero" />
+  </g>
+</svg>
