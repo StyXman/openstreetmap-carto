@@ -55,61 +55,15 @@
 }
 
 #water-areas {
-  [waterway = 'dock'] {
-    [zoom >= 9]::waterway {
-      polygon-fill: @water-color;
-      // local
-      [int_salt = 'yes'] {
-        polygon-fill: @water-salt;
-      }
-      [way_pixels >= 4] {
-        polygon-gamma: 0.75;
-      }
-      // Turn down polygon-gamma even more for bigger areas
-      // This completely eliminates white lines where large areas join
-      [way_pixels >= 64] {
-        polygon-gamma: 0.6;
-      }
-    }
-  }
-
+  [waterway = 'dock'],
+  [landuse = 'basin'],
+  [natural = 'water'],
+  [landuse = 'reservoir'],
+  [waterway = 'riverbank'] {
+  /*
   [landuse = 'basin']::landuse {
     [zoom >= 7][way_pixels >= 32],
     [zoom >= 8] {
-      [int_intermittent = 'no'] {
-        polygon-fill: @water-color;
-        // local
-        [int_salt = 'yes'] {
-          polygon-fill: @water-salt;
-        }
-        [way_pixels >= 4] {
-          polygon-gamma: 0.75;
-        }
-        // Turn down polygon-gamma even more for bigger areas
-        // This completely eliminates white lines where large areas join
-        [way_pixels >= 64] {
-          polygon-gamma: 0.6;
-        }
-      }
-      [int_intermittent = 'yes'] {
-        // was something else, I like this pattern better
-        polygon-pattern-file: url('symbols/local/water_intermittent_bg.png');
-        // local
-        [int_salt = 'yes'] {
-          polygon-pattern-file: url('symbols/local/water_intermittent_salt_bg.png');
-        }
-        [way_pixels >= 4] {
-          polygon-pattern-gamma: 0.75;
-        }
-        // Turn down polygon-gamma even more for bigger areas
-        // This completely eliminates white lines where large areas join
-        [way_pixels >= 64] {
-          polygon-pattern-gamma: 0.6;
-        }
-      }
-    }
-  }
-
   [natural = 'water']::natural,
   [landuse = 'reservoir']::landuse,
   [waterway = 'riverbank']::waterway {
@@ -117,35 +71,30 @@
     [zoom >= 1][zoom < 2][way_pixels >= 16],
     [zoom >= 2][zoom < 8][way_pixels >= 32],
     [zoom >= 8] {
-      [int_intermittent = 'no'] {
-        polygon-fill: @water-color;
-        // local
-        [int_salt = 'yes'] {
-          polygon-fill: @water-salt;
-        }
-        [way_pixels >= 4] {
-          polygon-gamma: 0.75;
-        }
-        [way_pixels >= 64] {
-          polygon-gamma: 0.6;
-        }
+  */
+    [int_intermittent = 'no'] {
+      polygon-fill: @water-color;
+    }
+    [int_intermittent = 'yes'] {
+      // was something else, I like this pattern better
+      polygon-pattern-file: url('symbols/local/water_intermittent_bg.png');
+      // local
+      [int_salt = 'yes'] {
+        polygon-pattern-file: url('symbols/local/water_intermittent_salt_bg.png');
       }
+      polygon-pattern-alignment: global;
+    }
 
-      [int_intermittent = 'yes'] {
-        // was something else, I like this pattern better
-        polygon-pattern-file: url('symbols/local/water_intermittent_bg.png');
-        // local
-        [int_salt = 'yes'] {
-          polygon-pattern-file: url('symbols/local/water_intermittent_salt_bg.png');
-        }
-        polygon-pattern-alignment: global;
-        [way_pixels >= 4] {
-          polygon-pattern-gamma: 0.75;
-        }
-        [way_pixels >= 64] {
-          polygon-pattern-gamma: 0.6;
-        }
-      }
+    // factored
+    [way_pixels >= 4] { polygon-gamma: 0.75; }
+    // comment brought back from old commits
+    // Turn down polygon-gamma even more for bigger areas
+    // This completely eliminates white lines where large areas join
+    [way_pixels >= 64] { polygon-gamma: 0.6; }
+
+    // local
+    [int_salt = 'yes'] {
+      polygon-fill: @water-salt;
     }
   }
 
