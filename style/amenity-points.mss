@@ -447,6 +447,9 @@
 
   // was 19, but 18 is my limit
   [feature = 'tourism_information'][zoom >= 18], // TODO: see if I want emergency here too
+  // local
+  [feature = 'tourism_information']["information"='guidepost'][zoom >= @emergency],
+  // was 17
   [feature = 'tourism_information']["information"='office'][zoom >= @emergency] {
     marker-file: url('symbols/tourism/information.svg');
     [information = 'audioguide'] {
@@ -458,6 +461,7 @@
     [information = 'guidepost'] {
       // marker-file: url('symbols/tourism/guidepost.svg');
       marker-file: url('symbols/local/guidepost-14.svg');
+      marker-fill: @amenity-brown;
     }
     [information = 'office'] {
       marker-file: url('symbols/tourism/office.svg');
@@ -2133,14 +2137,17 @@
     text-halo-fill: @standard-halo-fill;
   }
 
-  [feature = 'tourism_information'][zoom >= 19],
+  // was 19, but 18 is my limit
+  [feature = 'tourism_information'][zoom >= 18],
+  // local
+  [feature = 'tourism_information']["information"='guidepost'][zoom >= @emergency],
   [feature = 'tourism_information']["information"='office'][zoom >= 17] {
       text-name: "[name]";
       text-size: @standard-font-size;
       text-wrap-width: @standard-wrap-width;
       text-line-spacing: @standard-line-spacing-size;
       text-fill: darken(black, 30%);
-      [information = 'office'] { text-fill: @amenity-brown; }
+      [information = 'office'],["information"='guidepost'] { text-fill: @amenity-brown; }
       text-face-name: @standard-font;
       text-halo-radius: @standard-halo-radius;
       text-halo-fill: @standard-halo-fill;
@@ -2206,21 +2213,6 @@
     text-face-name: @standard-font;
     text-halo-radius: @standard-halo-radius;
     text-halo-fill: @standard-halo-fill;
-  }
-
-  // local
-  [feature = 'tourism_information'][zoom >= @emergency] {
-    [information = 'guidepost'] {
-      text-name: "[ref]";
-      text-size: @standard-font-size;
-      text-wrap-width: @standard-wrap-width;
-      text-line-spacing: @standard-line-spacing-size;
-      text-fill: @amenity-brown;
-      text-face-name: @standard-font;
-      text-halo-radius: @standard-halo-radius;
-      text-halo-fill: @standard-halo-fill;
-      text-placement: interior;
-    }
   }
 
   [feature = 'tourism_artwork'][zoom >= 17],
