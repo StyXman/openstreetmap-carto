@@ -47,6 +47,8 @@ _parts:
 
 Stylesheet:
   - style/style.mss
+  # local
+  - style/elevation.mss
   - style/fonts.mss
   - style/shapefiles.mss
   - style/landcover.mss
