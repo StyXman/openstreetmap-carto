@@ -171,11 +171,14 @@
   }
 
   [feature = 'highway_bus_stop'] {
-    [zoom >= 16] {
+    [zoom >= 15] {
       marker-file: url('symbols/square.svg');
       marker-fill: @transportation-icon;
-      marker-width: @dot;
+      marker-width: @tiny;
       marker-clip: false;
+    }
+    [zoom >= 16] {
+      marker-width: @dot;
     }
     [zoom >= 17] {
       marker-file: url('symbols/highway/bus_stop.12.svg');
