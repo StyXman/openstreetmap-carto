@@ -2299,7 +2299,7 @@
     text-face-name: @standard-font;
     text-halo-radius: @standard-halo-radius;
     text-halo-fill: @standard-halo-fill;
-    text-placement: interior;
+    // text-placement: interior;
     text-wrap-width: @standard-wrap-width;
   }
 
@@ -3360,7 +3360,7 @@
   // local
   [feature = 'sport_climbing'][zoom >= @nice] {
     // why is this here?
-    marker-placement: interior;
+    // marker-placement: interior;
     marker-fill: @climbing;
     marker-file: url('symbols/local/climbing.svg');
     marker-width: @big;
@@ -3376,7 +3376,7 @@
     text-fill: @climbing;
     text-halo-radius: @standard-halo-radius;
     text-halo-fill: @standard-halo-fill;
-    text-placement: interior;
+    // text-placement: interior;
     // text-vertical-alignment: middle;
     text-dy: 12;
     text-wrap-width: @standard-wrap-width;
