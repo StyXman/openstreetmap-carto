@@ -2402,6 +2402,7 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
       }
     }
 
+    /*
     [feature = 'railway_subway'] {
       [zoom >= 12] {
         line-width: 2;
@@ -2417,6 +2418,7 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
         }
       }
     }
+    */
 
     [feature = 'railway_preserved'] {
       [zoom >= 12] {
@@ -3071,16 +3073,12 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
 
 #routes {
   [route = 'subway'][zoom >= 13] {
-    line-width: 3;
+    line-width: 5;
     line-color: [color];
     line-join: round;
     line-opacity: 0.75;
     [zoom >= 14] {
-      line-width: 4;
       line-opacity: 0.5;
-    }
-    [zoom >= 17] {
-      line-width: 5;
     }
   }
 
