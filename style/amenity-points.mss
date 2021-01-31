@@ -3208,6 +3208,7 @@
     text-halo-radius: @standard-halo-radius;
     text-halo-fill: @standard-halo-fill;
   }
+  */
 
   [feature = 'natural_tree'][zoom >= 17] {
     text-name: "[name]";
@@ -3223,7 +3224,6 @@
     text-halo-radius: @standard-halo-radius;
     text-halo-fill: @standard-halo-fill;
   }
-  */
 
   [feature = 'amenity_casino'][zoom >= 17] {
     text-name: "[name]";
