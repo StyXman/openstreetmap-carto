@@ -282,7 +282,8 @@
     marker-file: url('symbols/tourism/caravan_park.svg');
     marker-width: @medium;
     marker-clip: false;
-    marker-fill: @accommodation-icon;
+    // was: @accommodation-icon;
+    marker-fill: @leisure-green;
   }
 
   [feature = 'amenity_car_rental'][zoom >= 17] {
@@ -2578,7 +2579,8 @@
         text-fill: darken(@construction, 50%);
       }
       [feature = 'tourism_caravan_site'] {
-        text-fill: darken(@campsite, 50%);
+        // was: darken(@campsite, 50%);
+        text-fill: darken(@leisure-green, 50%);
         text-dy: 15;
       }
       [feature = 'tourism_theme_park'],
@@ -2705,6 +2707,7 @@
       text-fill: @leisure-green;
     }
     [feature = 'tourism_caravan_site'] {
+      text-fill: @leisure-green;
       text-dy: 15;
     }
     [feature = 'leisure_picnic_table'][zoom >= 17],
