@@ -6,17 +6,11 @@
 // things that are useful and common enough to see in the near range
 @useful: 16;
 
-@land-color: #f2efe9;
-
-@water-color: #aad3df;
 // from https://github.com/gravitystorm/openstreetmap-carto/pull/3065
 @water-dark-low-zoom: #5a5aa1;
 @water-dark: darken(@water-color,20%);
 @water-salt: #f1dddf;
 @land-color: #f2efe9;
-
-@standard-halo-radius: 1;
-@standard-halo-fill: rgba(255,255,255,0.6);
 
 /*
 @contour-op: minus;
@@ -43,37 +37,6 @@
 @demanding_alpine_hiking: gray;
 @difficult_alpine_hiking: black;
 @climbing: @transportation-icon;
-
-@motorway-low-zoom: #cf3030;
-@trunk-low-zoom: #cf6868;
-@primary-low-zoom: #8a5c00;
-@secondary-low-zoom: #2f6f2f;
-
-@motorway-fill: @motorway-low-zoom;
-@trunk-fill: @motorway-fill;
-@primary-fill: @primary-low-zoom;
-@secondary-fill: @secondary-low-zoom;
-
-@motorway-casing: darken(@motorway-fill, @darken-lighten);
-@trunk-casing: darken(@trunk-fill, @darken-lighten);
-@primary-casing: darken(@primary-fill, @darken-lighten);
-@secondary-casing: darken(@secondary-fill, @darken-lighten);
-
-@motorway-low-zoom-casing: #c24e6b;
-@trunk-low-zoom-casing: #cf6649;
-@primary-low-zoom-casing: #c38a27;
-@secondary-low-zoom-casing: #9eae23;
-
-@motorway-shield: #620728;
-@trunk-shield: #5d1b0b;
-@primary-shield: #4c2e00;
-@secondary-shield: #323b00;
-
-// TODO
-@motorway-oneway-arrow-color: white;
-@trunk-oneway-arrow-color: white;
-@primary-oneway-arrow-color: white;
-@secondary-oneway-arrow-color: white;
 
 // quarry
 @retail: #c5c3c3;
