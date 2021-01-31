@@ -3088,12 +3088,19 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
     bg/line-width: 1;
     bg/line-color: white;
     bg/line-join: round;
+    bg/line-opacity: 0.5;
 
     line-width: 1;
     line-color: @transportation-icon;
     line-join: round;
     line-dasharray: 4,4;
-    // line-opacity: 0.5;
+    line-opacity: 0.5;
+
+    [zoom >= 15] {
+        bg/line-opacity: 1;
+        line-opacity: 1;
+    }
+
     [zoom >= 17] {
       bg/line-width: 2;
 
