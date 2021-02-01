@@ -96,29 +96,28 @@
     marker-clip: false;
   }
 
-  [feature = 'amenity_bar'][zoom >= 17],
-  [feature = 'amenity_biergarten'][zoom >= 17],
-  [feature = 'amenity_cafe'][zoom >= 17],
-  [feature = 'amenity_fast_food'][zoom >= 17],
-  [feature = 'amenity_food_court'][zoom >= 17],
-  [feature = 'amenity_ice_cream'][zoom >= 17],
-  [feature = 'amenity_pub'][zoom >= 17],
-  [feature = 'amenity_restaurant'][zoom >= 17] {
+  [feature = 'amenity_bar'][zoom >= 16],
+  [feature = 'amenity_biergarten'][zoom >= 16],
+  [feature = 'amenity_cafe'][zoom >= 16],
+  [feature = 'amenity_fast_food'][zoom >= 16],
+  [feature = 'amenity_food_court'][zoom >= 16],
+  [feature = 'amenity_ice_cream'][zoom >= 16],
+  [feature = 'amenity_pub'][zoom >= 16],
+  [feature = 'amenity_restaurant'][zoom >= 16] {
     marker-clip: false;
     marker-fill: @gastronomy-icon;
-    /*
-    [feature != 'amenity_food_court'][zoom = 17] {
+    [feature != 'amenity_food_court'][zoom = 16] {
       marker-width: @tiny;
       marker-line-width: 0;
     }
-    */
-    [feature = 'amenity_bar']/* [zoom >= 18] */ {
+    // was: 17
+    [feature = 'amenity_bar'][zoom >= 17] {
       marker-file: url('symbols/amenity/bar.svg');
     }
-    [feature = 'amenity_biergarten']/* [zoom >= 18] */ {
+    [feature = 'amenity_biergarten'][zoom >= 17] {
       marker-file: url('symbols/amenity/biergarten.svg');
     }
-    [feature = 'amenity_cafe']/* [zoom >= 18] */ {
+    [feature = 'amenity_cafe'][zoom >= 17] {
       marker-file: url('symbols/amenity/cafe.svg');
     }
     [feature = 'amenity_fast_food']/* [zoom >= 18] */ {
@@ -130,13 +129,13 @@
       }
     }
     [feature = 'amenity_food_court'][zoom >= 17],
-    [feature = 'amenity_restaurant']/* [zoom >= 18] */ {
+    [feature = 'amenity_restaurant'][zoom >= 17] {
       marker-file: url('symbols/amenity/restaurant.svg');
     }
-    [feature = 'amenity_ice_cream']/* [zoom >= 18] */ {
+    [feature = 'amenity_ice_cream'][zoom >= 17] {
       marker-file: url('symbols/amenity/ice_cream.svg');
     }
-    [feature = 'amenity_pub']/* [zoom >= 18] */ {
+    [feature = 'amenity_pub'][zoom >= 17] {
       marker-file: url('symbols/amenity/pub.svg');
     }
   }
