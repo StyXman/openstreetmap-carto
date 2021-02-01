@@ -55,6 +55,8 @@ Stylesheet:
   - style/water.mss
   - style/water-features.mss
   - style/road-colors-generated.mss
+  # local
+  - style/elevation-roads.mss
   - style/roads.mss
   - style/power.mss
   - style/placenames.mss
@@ -65,6 +67,7 @@ Stylesheet:
   - style/aerialways.mss
   - style/admin.mss
   - style/addressing.mss
+
 
 Layer:
   - id: terrain-small
