@@ -465,6 +465,7 @@
     [information = 'guidepost'] {
       // marker-file: url('symbols/tourism/guidepost.svg');
       marker-file: url('symbols/local/guidepost-14.svg');
+      marker-width: 18;
       marker-fill: @amenity-brown;
     }
     [information = 'office'] {
