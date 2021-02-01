@@ -89,7 +89,8 @@
     marker-clip: false;
   }
 
-  [feature = 'amenity_bank'][zoom >= 17] {
+  // was: 17
+  [feature = 'amenity_bank'][zoom >= 16] {
     marker-file: url('symbols/amenity/bank.svg');
     marker-fill: @public-service;
     marker-clip: false;
