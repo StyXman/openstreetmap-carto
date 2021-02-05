@@ -12,19 +12,6 @@
 @water-salt: #f1dddf;
 @land-color: #f2efe9;
 
-/*
-@contour-op: minus;
-@contour-color-light: #404040;
-@contour-color-dark:  #606060;
-*/
-
-@contour-op: multiply;
-@contour-color-light: #aaa;
-@contour-color-dark:  @contour-color-light;
-
-@contour-text: #404040;  // negated
-@contour-halo: black;
-
 @standard-halo-radius: 2.5;
 @standard-halo-fill: white;
 
@@ -88,138 +75,86 @@
   }
 }
 
-#contour-10 {
-  [zoom >= 15] {
-    comp-op: @contour-op;
-    line-color: @contour-color-dark;
-    line-width: 0.25;
-    line-smooth: 0.8;
-    line-opacity: 0.6;
-  }
-}
+// @contour-text: #404040;  // negated
+// @contour-halo: black;
 
-#contour-50 {
-  [zoom >= 13] {
-    comp-op: @contour-op;
-    line-color: @contour-color-light;
-    line-width: 0.5;
-    line-smooth: 0.8;
-    line-opacity: 0.6;
-  }
-
-  [zoom >= 14] {
-    line-color: @contour-color-dark;
-  }
-}
-
-#contour-100 {
-  [zoom >= 11] {
-    comp-op: @contour-op;
-    line-color: @contour-color-light;
-    line-width: 0.5;
-    line-smooth: 0.8;
-    line-opacity: 0.6;
-  }
-
-  [zoom >= 12] {
-    line-opacity: 0.8;
-  }
-
-  [zoom >= 13] {
-    line-opacity: 1.0;
-  }
-
-  [zoom >= 14] {
-    line-color: @contour-color-dark;
-  }
-}
-
-#contour-250 {
-  [zoom = 10] {
-    comp-op: @contour-op;
-    line-color: @contour-color-light;
-    line-width: 0.5;
-    line-smooth: 0.8;
-    line-opacity: 0.6;
-  }
-}
-
-#contour-500 {
-  [zoom >= 9] {
-    comp-op: @contour-op;
-    line-color: @contour-color-light;
-    line-width: 0.5;
-    line-smooth: 0.8;
-    line-opacity: 0.4;
-  }
-
-  [zoom >= 10] {
-    line-opacity: 0.6;
-  }
-
-  [zoom >= 11] {
-    line-width: 0.75;
-  }
-
-  [zoom >= 12] {
-    line-width: 1;
-    line-opacity: 0.8;
-  }
-
-  [zoom >= 13] {
-    line-opacity: 1.0;
-  }
-
-  [zoom >= 14] {
-    line-color: @contour-color-dark;
-  }
-}
-
+#contour-10,
+#contour-50,
+#contour-100,
+#contour-250,
+#contour-500,
 #contour-1000 {
-  [zoom >= 8] {
-    comp-op: @contour-op;
-    line-color: @contour-color-light;
-    line-width: 0.5;
-    line-smooth: 0.8;
-    line-opacity: 0.4;
+  /*
+  all hsvc ops look ugly because the operate at pixel level regardless of underlying data,
+  and 'value' seems even broken
+  // comp-op: value;
+  line-comp-op: value;
+  line-color: hsl(270, 100%, 75%);
+  // line-opacity: 0.5;
+  line-opacity: 1.0;
+  */
+
+  /*
+  close, but no cigar: we can't see contours in flat regions
+  comp-op: overlay;
+  line-color: black;
+  */
+
+  // multiply makes it gray
+
+  /*
+  this is the default fallback, but it seem we found a friend in color-burn :)
+  comp-op: minus;
+  line-color: #404040;
+  */
+
+  comp-op: color-burn;
+  line-color: #181818;
+  line-smooth: 0.8;
+
+  #contour-1000 {
+    [zoom >=  8] { line-width: 0.2; }
+    [zoom >= 10] { line-width: 0.5; }
+    [zoom >= 11] { line-width: 0.75; }
+    [zoom >= 13] { line-width: 1.0; }
   }
 
-  [zoom >= 10] {
-    line-opacity: 0.6;
-    line-width: 1.0;
+  #contour-500 {
+    [zoom >=  9] { line-width: 0.2; }
+    [zoom >= 11] { line-width: 0.5; }
+    [zoom >= 13] { line-width: 0.75; }
   }
 
-  [zoom >= 12] {
-    // line-width: 1.5;
-    line-opacity: 0.8;
+  #contour-250 {
+    [zoom >= 10] { line-width: 0.2; }
   }
 
-  [zoom >= 13] {
-    line-opacity: 1.0;
+  #contour-100 {
+    [zoom >= 11] { line-width: 0.2; }
+    [zoom >= 13] { line-width: 0.5; }
   }
 
-  [zoom >= 14] {
-    line-color: @contour-color-dark;
+  #contour-50 {
+    [zoom >= 13] { line-width: 0.2; }
   }
-}
 
-// TODO: fix
-.contour-text {
-  #contour-1000[zoom >= 9],
-  #contour-500[zoom >= 11],
-  #contour-100[zoom >= 13],
+  #contour-10 {
+    [zoom >= 15] { line-width: 0.1; }
+  }
+
+  #contour-1000[zoom >= 11],
+   #contour-500[zoom >= 12],
+   #contour-100[zoom >= 13],
   {
-    // comp-op: src-over;
-    // comp-op: @contour-op;
-    comp-op: minus;
-
+    // text-comp-op: minus;
     text-name: "[height]";
     text-face-name: @book-fonts;
     text-size: 12;
-    text-fill: @contour-text;
-    text-opacity: 0.7;
+    // text-fill: #404040;
+    text-fill: #404040;
+    // text-opacity: 0.1;
     text-halo-radius: 2;
-    text-halo-fill: @contour-halo;
+    text-halo-fill: white;
     text-placement: line;
     text-spacing: 400;
     text-min-distance: 100;
