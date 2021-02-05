@@ -158,6 +158,7 @@ Layer:
       table: |-
         (SELECT
             way, name, religion, way_pixels, is_building,
+            parking_space,
             -- see -->                                                                              tourism, gone to lc-flat
             COALESCE(aeroway, amenity, wetland, power, landuse, leisure, man_made, "natural", shop,          highway, railway) AS feature
           FROM (SELECT
@@ -200,6 +201,7 @@ Layer:
               CASE WHEN religion IN ('christian', 'jewish', 'muslim') THEN religion ELSE 'INT-generic'::text END AS religion,
               way_area/NULLIF(POW(!scale_denominator!*0.001*0.28,2),0) AS way_pixels,
               CASE WHEN building = 'no' OR building IS NULL THEN 'no' ELSE 'yes' END AS is_building,
+              tags->'parking_space' as parking_space,
               way_area
             FROM planet_osm_polygon
             WHERE (landuse IS NOT NULL
@@ -2047,7 +2049,7 @@ Layer:
                     THEN CONCAT(ROUND((tags->'height')::NUMERIC)::TEXT, U&'\00A0', 'm') END
                   )
                 ) AS name,
-                tags->'parking' as "parking",
+              tags->'parking' as "parking",
               COALESCE(
                 'aeroway_' || CASE WHEN aeroway IN ('gate', 'apron', 'helipad', 'aerodrome') THEN aeroway END,
 
