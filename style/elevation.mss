@@ -17,6 +17,7 @@
 
 @darken-lighten: 15%;
 
+// hiking trails grades
 @hiking: orange;  // instead of yellow because it fades into the bg in some places
 @mountain_hiking: red;
 @demanding_mountain_hiking: violet;
@@ -25,9 +26,17 @@
 @difficult_alpine_hiking: black;
 @climbing: @transportation-icon;
 
-// quarry
-@retail: #c5c3c3;
-@commercial: #c5c3c3;
+@residential: #cfcfcf;      // Lch(89,0,0)
+@residential-line: #b9b9b9; // Lch(75,0,0)
+// also used for quarry
+@retail: @residential;
+@retail-line: @residential-line;
+@commercial: @residential;
+@commercial-line: @residential-line;
+// also used for railway, wastewater_plant
+@industrial: @residential;
+// also used for railway-line, wastewater_plant-line
+@industrial-line: @residential-line;
 
 // size of icons so they can be seen while driving
 @car-gps-icon-size: 24;
@@ -63,10 +72,13 @@
 .hillshade-overlay {
   [zoom >= 9] {
     raster-scaling: lanczos;
+
     // this has its beauty too
     // comp-op: overlay;
     // raster-opacity: 0.7;
+
     // comp-op: soft-light;
+
     comp-op: hard-light;
     raster-opacity: 0.6;
     [zoom >= 11] {
