@@ -121,6 +121,8 @@
   */
 
   comp-op: color-burn;
+  opacity: 0.6;
+
   line-color: #181818;
   line-smooth: 0.8;
 
