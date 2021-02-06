@@ -32,7 +32,7 @@ _parts:
   osm2pgsql: &osm2pgsql
     type: "postgis"
     port: 5434
-    dbname: "paca"
+    dbname: "gis"
     key_field: ""
     geometry_field: "way"
     extent: "-20037508,-20037508,20037508,20037508"
