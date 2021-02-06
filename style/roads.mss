@@ -44,13 +44,6 @@
 @service-casing: #999;
 // was @default-casing
 @living-street-casing: @residential-casing;
-@pedestrian-casing: grey;
-@path-casing: @default-casing;
-@footway-casing: @default-casing;
-@steps-casing: @default-casing;
-@cycleway-casing: @default-casing;
-@bridleway-casing: @default-casing;
-@track-casing: @default-casing;
 
 @tertiary-shield: #3b3b3b;
 
