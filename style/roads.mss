@@ -28,12 +28,13 @@
 @access-marking-living-street: #cccccc;
 
 // TODO: dupes!
-@default-casing: white;
+@default-casing: white;  // footways et al
 @tertiary-casing: black;
 @residential-casing: black;
 @road-casing: @residential-casing;
 @service-casing: #999;
 @pedestrian-casing: gray;
+
 @path-casing: @default-casing;
 @footway-casing: @default-casing;
 @steps-casing: @default-casing;
