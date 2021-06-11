@@ -74,16 +74,28 @@
     raster-scaling: lanczos;
 
     // this has its beauty too
-    // comp-op: overlay;
-    // raster-opacity: 0.7;
+    /*
+    comp-op: overlay;
+    raster-opacity: 0.7;
+    */
 
-    // comp-op: soft-light;
+    // nice effect, but washes away the vibrantness of mountains
+    /*
+    comp-op: multiply;
+    raster-opacity: 0.4;
+    */
 
+    comp-op: soft-light;
+    /*
+    */
+
+    /*
     comp-op: hard-light;
     raster-opacity: 0.6;
     [zoom >= 11] {
       raster-opacity: 0.3;
     }
+    */
   }
 }
 
