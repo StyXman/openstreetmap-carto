@@ -28,12 +28,13 @@
 @access-marking-living-street: #cccccc;
 
 // TODO: dupes!
-@default-casing: white;
+@default-casing: white;  // footways et al
 @tertiary-casing: black;
 @residential-casing: black;
 @road-casing: @residential-casing;
 @service-casing: #999;
 @pedestrian-casing: gray;
+
 @path-casing: @default-casing;
 @footway-casing: @default-casing;
 @steps-casing: @default-casing;
@@ -43,13 +44,6 @@
 @service-casing: #999;
 // was @default-casing
 @living-street-casing: @residential-casing;
-@pedestrian-casing: grey;
-@path-casing: @default-casing;
-@footway-casing: @default-casing;
-@steps-casing: @default-casing;
-@cycleway-casing: @default-casing;
-@bridleway-casing: @default-casing;
-@track-casing: @default-casing;
 
 @tertiary-shield: #3b3b3b;
 

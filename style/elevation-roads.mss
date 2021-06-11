@@ -1,3 +1,5 @@
+// same as road-colors-generated.mss, but with local values
+
 @motorway-low-zoom: #cf3030;
 @trunk-low-zoom: #cf6868;
 @primary-low-zoom: #8a5c00;
