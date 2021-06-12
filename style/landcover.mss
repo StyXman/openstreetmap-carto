@@ -790,6 +790,9 @@
   [feature = 'amenity_motorcycle_parking'] {
     [zoom >= 14] {
       polygon-fill: @parking;
+      [access != ''][access != 'permissive'][access != 'yes'] {
+        polygon-opacity: 0.5;
+      }
       [zoom >= 15] {
         line-width: 0.3;
         line-color: @parking-outline;
