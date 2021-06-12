@@ -711,10 +711,10 @@ Layer:
             tags->'leaf_type' AS leaf_type,
             way_area/NULLIF(POW(!scale_denominator!*0.001*0.28,2),0) AS way_pixels
           FROM planet_osm_polygon
-                                                                                   -- added 'sand'
-          WHERE ("natural" IN ('mud', 'wetland', 'wood', 'beach', 'shoal', 'reef', 'scrub', 'sand')
-                                 -- added 'vineyard', 'orchard', 'meadow', 'grass', 'salt_pond'
-                 OR landuse IN ('forest', 'vineyard', 'orchard', 'meadow', 'grass', 'salt_pond'))
+                                                                                   -- added 'sand', 'grassland'
+          WHERE ("natural" IN ('mud', 'wetland', 'wood', 'beach', 'shoal', 'reef', 'scrub', 'sand', 'grassland')
+                                 -- added 'vineyard', 'orchard', 'meadow', 'grass', 'salt_pond', 'village_green'
+                 OR landuse IN ('forest', 'vineyard', 'orchard', 'meadow', 'grass', 'salt_pond', 'village_green'))
             AND building IS NULL
             AND way_area > 1*!pixel_width!::real*!pixel_height!::real
           ORDER BY COALESCE(layer,0), way_area DESC
