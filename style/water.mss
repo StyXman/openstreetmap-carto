@@ -60,18 +60,6 @@
   [natural = 'water'],
   [landuse = 'reservoir'],
   [waterway = 'riverbank'] {
-  /*
-  [landuse = 'basin']::landuse {
-    [zoom >= 7][way_pixels >= 32],
-    [zoom >= 8] {
-  [natural = 'water']::natural,
-  [landuse = 'reservoir']::landuse,
-  [waterway = 'riverbank']::waterway {
-    [zoom >= 0][zoom < 1][way_pixels >= 4],
-    [zoom >= 1][zoom < 2][way_pixels >= 16],
-    [zoom >= 2][zoom < 8][way_pixels >= 32],
-    [zoom >= 8] {
-  */
     [int_intermittent = 'no'] {
       polygon-fill: @water-color;
     }
