@@ -2115,6 +2115,8 @@
   [feature = 'natural_peak'][zoom >= 13],
   [feature = 'natural_volcano'][zoom >= 13],
   [feature = 'natural_saddle'][zoom >= 15],
+  // was 15
+  [feature = 'natural_cave_entrance'][zoom >= @nice],
   [feature = 'tourism_viewpoint'][zoom >= 16] {
     text-name: "[name]";
     text-size: @standard-font-size;
@@ -2124,6 +2126,9 @@
     [feature = 'natural_volcano'] { text-fill: #d40000; }
     text-dy: 7;
     [feature = 'tourism_viewpoint'] { text-dy: 11; }
+    [feature = 'natural_cave_entrance'] {
+      text-dy: 11;
+    }
     text-face-name: @standard-font;
     text-halo-radius: @standard-halo-radius;
     text-halo-fill: @standard-halo-fill;
@@ -2181,8 +2186,6 @@
   [feature = 'power_generator']['generator:source' = 'wind'][zoom >= 19],
   // was 17
   [feature = 'historic_city_gate'][zoom >= @nice],
-  // was 15
-  [feature = 'natural_cave_entrance'][zoom >= @nice],
   [feature = 'man_made_mast'][zoom >= 18],
   [feature = 'man_made_tower'][zoom >= 17],
   [feature = 'man_made_storage_tank'][zoom >= 18],
@@ -2211,9 +2214,6 @@
     [feature = 'man_made_chimney'],
     [feature = 'man_made_crane'] {
       text-dy: 10;
-    }
-    [feature = 'natural_cave_entrance'] {
-      text-dy: 11;
     }
     text-face-name: @standard-font;
     text-halo-radius: @standard-halo-radius;
