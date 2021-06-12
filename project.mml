@@ -1,5 +1,7 @@
+# kate: syntax yaml;
+
 scale: 1
-metatile: 2
+metatile: 4
 name: Elevation
 description: A OSM-carto based map with relief info, contrasting roads and other minor changes.
 bounds: &world
