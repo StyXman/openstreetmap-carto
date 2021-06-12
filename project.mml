@@ -39,7 +39,11 @@ _parts:
     key_field: ""
     geometry_field: "way"
     extent: "-20037508,-20037508,20037508,20037508"
-
+  # back here while we fix the use of the new script scripts/get-external-data.py
+  extents84: &extents84
+    extent: *world
+    srs-name: "WGS84"
+    srs: "+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs"
 
 Stylesheet:
   - style/style.mss
@@ -492,6 +496,16 @@ Layer:
     geometry: polygon
     <<: *extents
     Datasource:
+      file: data/antarctica-icesheet-polygons-3857/icesheet_polygons.shp
+      type: shape
+    properties:
+      minzoom: 5
+
+
+  - id: icesheet-poly-new
+    geometry: polygon
+    <<: *extents
+    Datasource:
       <<: *osm2pgsql
       table: |-
         (SELECT
@@ -624,6 +638,16 @@ Layer:
     geometry: polygon
     <<: *extents
     Datasource:
+      file: data/simplified-water-polygons-split-3857/simplified_water_polygons.shp
+      type: shape
+    properties:
+      maxzoom: 9
+
+
+  - id: ocean-lz-new
+    geometry: polygon
+    <<: *extents
+    Datasource:
       <<: *osm2pgsql
       table: |-
         (SELECT
@@ -635,6 +659,16 @@ Layer:
 
 
   - id: ocean
+    geometry: polygon
+    <<: *extents
+    Datasource:
+      file: data/water-polygons-split-3857/water_polygons.shp
+      type: shape
+    properties:
+      minzoom: 10
+
+
+  - id: ocean-new
     geometry: polygon
     <<: *extents
     Datasource:
@@ -688,6 +722,16 @@ Layer:
 
 
   - id: icesheet-outlines
+    # TODO: was: geometry: linestring
+    geometry: polygon
+    <<: *extents
+    Datasource:
+      file: data/antarctica-icesheet-polygons-3857/icesheet_polygons.shp
+      type: shape
+    properties:
+      minzoom: 5
+
+  - id: icesheet-outlines-new
     geometry: linestring
     <<: *extents
     Datasource:
@@ -1618,7 +1662,7 @@ Layer:
       minzoom: 11
 
 
-  - id: necountries
+  - id: necountries-new
     geometry: linestring
     <<: *extents
     Datasource:
