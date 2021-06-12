@@ -619,7 +619,9 @@ Layer:
               OR tags->'basin' IN ('detention', 'infiltration')
               THEN 'yes' ELSE 'no' END AS int_intermittent,
             -- local
-            CASE WHEN tags->'salt' IN ('yes') THEN 'yes' ELSE 'no' END AS int_salt
+            CASE WHEN tags->'salt' IN ('yes')
+              OR landuse = 'salt_pond'
+              THEN 'yes' ELSE 'no' END AS int_salt
           FROM planet_osm_polygon
           WHERE
             (waterway IN ('dock', 'riverbank')

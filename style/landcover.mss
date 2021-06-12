@@ -469,7 +469,8 @@
   */
 
   [feature = 'landuse_salt_pond'][zoom >= 10] {
-    polygon-fill: @water-color;
+    // was @water-color
+    polygon-fill: @water-salt;
     [way_pixels >= 4]  { polygon-gamma: 0.75; }
     [way_pixels >= 64] { polygon-gamma: 0.3;  }
   }
