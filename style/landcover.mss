@@ -328,7 +328,6 @@
     [way_pixels >= 4]  { polygon-gamma: 0.75; }
     [way_pixels >= 64] { polygon-gamma: 0.3;  }
     */
-    polygon-pattern-file: url('symbols/local/grass2.png');
   }
 
   [feature = 'landuse_retail'],
@@ -764,7 +763,11 @@
         [way_pixels >= 4]  { polygon-gamma: 0.75; }
         [way_pixels >= 64] { polygon-gamma: 0.3;  }
       }
+      // TODO: local, but no record of what it was
       polygon-pattern-file: url('symbols/local/grass2.png');
+      polygon-pattern-alignment: global;
+      [way_pixels >= 4]  { polygon-pattern-gamma: 0.75; }
+      [way_pixels >= 64] { polygon-pattern-gamma: 0.3;  }
     }
   }
 
@@ -979,6 +982,16 @@
 
   [landuse = 'orchard'][zoom >= 13] {
     polygon-pattern-file: url('symbols/local/orchard.png');
+    polygon-pattern-alignment: global;
+    [way_pixels >= 4]  { polygon-pattern-gamma: 0.75; }
+    [way_pixels >= 64] { polygon-pattern-gamma: 0.3;  }
+  }
+
+  [natural = 'grassland'][zoom >= 13],
+  [landuse = 'meadow'][zoom >= 13],
+  [landuse = 'grass'][zoom >= 13],
+  [landuse = 'village_green'][zoom >= 13] {
+    polygon-pattern-file: url('symbols/local/grass2.png');
     polygon-pattern-alignment: global;
     [way_pixels >= 4]  { polygon-pattern-gamma: 0.75; }
     [way_pixels >= 64] { polygon-pattern-gamma: 0.3;  }
