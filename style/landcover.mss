@@ -123,13 +123,14 @@
     [way_pixels >= 64] { polygon-pattern-gamma: 0.3;  }
   }
 
-  /*
   [feature = 'landuse_vineyard'] {
+    /*
     [zoom >= 5] {
       polygon-fill: @orchard;
       [way_pixels >= 4]  { polygon-gamma: 0.75; }
       [way_pixels >= 64] { polygon-gamma: 0.3;  }
     }
+    */
     [zoom >= 13] {
       polygon-pattern-file: url('symbols/vineyard.png');
       polygon-pattern-alignment: global;
@@ -137,15 +138,15 @@
       [way_pixels >= 64] { polygon-pattern-gamma: 0.3;  }
     }
   }
-  */
 
-  /*
   [feature = 'landuse_orchard'] {
+    /*
     [zoom >= 5] {
       polygon-fill: @orchard;
       [way_pixels >= 4]  { polygon-gamma: 0.75; }
       [way_pixels >= 64] { polygon-gamma: 0.3;  }
     }
+    */
     [zoom >= 13] {
       polygon-pattern-file: url('symbols/orchard.png');
       polygon-pattern-alignment: global;
@@ -153,7 +154,6 @@
       [way_pixels >= 64] { polygon-pattern-gamma: 0.3;  }
     }
   }
-  */
 
   [feature = 'leisure_garden'] {
     /*
