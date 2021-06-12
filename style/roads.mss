@@ -143,9 +143,9 @@ local
 @bridleway-width-z13:             0.3;
 @footway-width-z14:               0.7;
 @cycleway-width-z13:              0.7;
-@track-width-z13:                 0.5;
-@track-grade1-width-z13:          0.5;
-@track-grade2-width-z13:          0.5;
+@track-width-z13:                 0.75;
+@track-grade1-width-z13:          0.75;
+@track-grade2-width-z13:          0.75;
 
 @secondary-width-z14:             5;
 @tertiary-width-z14:              5;
