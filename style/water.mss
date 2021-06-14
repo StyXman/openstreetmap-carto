@@ -19,6 +19,7 @@
     [zoom >= 2][zoom < 8][way_pixels >= 32],
     [zoom >= 8] {
       line-width: 1.5;
+      // no special color for salt_ponds
       line-color: @water-dark-low-zoom;
       [zoom >= 8] {
         line-color: @water-dark;
@@ -64,7 +65,8 @@
       polygon-fill: @water-color;
     }
     [int_intermittent = 'yes'] {
-      // was something else, I like this pattern better
+      // was symbols/intermittent_water.png
+      // TODO: shows up as plain dark grey
       polygon-pattern-file: url('symbols/local/water_intermittent_bg.png');
       // local
       [int_salt = 'yes'] {

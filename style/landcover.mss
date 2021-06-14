@@ -457,6 +457,7 @@
   }
   */
 
+  // TODO: add some symbol for this, maybe x'es
   /*
   [feature = 'landuse_landfill'] {
     [zoom >= 10] {
@@ -970,7 +971,7 @@
     [leaf_type = "broadleaved"] { polygon-pattern-file: url('symbols/local/forest-broad.png'); }
     [leaf_type = "needleleaved"] { polygon-pattern-file: url('symbols/local/forest-needle.png'); }
     [leaf_type = "mixed"] { polygon-pattern-file: url('symbols/local/forest-mixed.png'); }
-    // TODO:
+    // TODO: customize
     [leaf_type = "leafless"] { polygon-pattern-file: url('symbols/leaftype_leafless.svg'); }
     polygon-pattern-alignment: global;
     opacity: 0.4; // The entire layer has opacity to handle overlapping forests

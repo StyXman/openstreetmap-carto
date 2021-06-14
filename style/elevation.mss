@@ -206,7 +206,6 @@
     }
   }
 
-
   [zoom >= 14] {
     line-width: 2;
     line-opacity: 0.6;
