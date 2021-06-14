@@ -953,7 +953,8 @@
       polygon-pattern-alignment: global;
     }
     [landuse = 'salt_pond'] {
-      polygon-pattern-file: url('symbols/salt_pond.png');
+      // was symbols/salt_pond.png
+      polygon-pattern-file: url('symbols/salt-dots-2.png');
       polygon-pattern-alignment: global;
     }
     [natural = 'beach'],

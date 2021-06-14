@@ -63,6 +63,15 @@
   [waterway = 'riverbank'] {
     [int_intermittent = 'no'] {
       polygon-fill: @water-color;
+      // local
+      [int_salt = 'yes'] {
+        polygon-fill: @water-salt;
+      }
+      [way_pixels >= 4] { polygon-gamma: 0.75; }
+      // comment brought back from old commits
+      // Turn down polygon-gamma even more for bigger areas
+      // This completely eliminates white lines where large areas join
+      [way_pixels >= 64] { polygon-gamma: 0.6; }
     }
     [int_intermittent = 'yes'] {
       // was symbols/intermittent_water.png
@@ -73,31 +82,8 @@
         polygon-pattern-file: url('symbols/local/water_intermittent_salt_bg.png');
       }
       polygon-pattern-alignment: global;
-    }
-
-    // factored
-    [way_pixels >= 4] { polygon-gamma: 0.75; }
-    // comment brought back from old commits
-    // Turn down polygon-gamma even more for bigger areas
-    // This completely eliminates white lines where large areas join
-    [way_pixels >= 64] { polygon-gamma: 0.6; }
-
-    // local
-    [int_salt = 'yes'] {
-      polygon-fill: @water-salt;
-    }
-  }
-
-  // local
-  [landuse = 'salt_pond'] {
-    [zoom >= 13] {
-      polygon-fill: @water-salt;
-      [way_pixels >= 4]  { polygon-gamma: 0.75; }
-      [way_pixels >= 64] { polygon-gamma: 0.3;  }
-      polygon-pattern-file: url('symbols/salt-dots-2.png');
-      polygon-pattern-alignment: global;
-      [way_pixels >= 4]  { polygon-pattern-gamma: 0.75; }
-      [way_pixels >= 64] { polygon-pattern-gamma: 0.3;  }
+      [way_pixels >= 4] { polygon-gamma: 0.75; }
+      [way_pixels >= 64] { polygon-gamma: 0.6; }
     }
   }
 }
