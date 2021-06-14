@@ -410,7 +410,6 @@
     [way_pixels >= 64] { polygon-gamma: 0.3;  }
   }
 
-  /*
   [feature = 'power_station'][zoom >= 10],
   [feature = 'power_plant'][zoom >= 10],
   [feature = 'power_generator'][zoom >= 10],
@@ -429,7 +428,6 @@
     [way_pixels >= 4]  { polygon-gamma: 0.75; }
     [way_pixels >= 64] { polygon-gamma: 0.3;  }
   }
-  */
 
   [feature = 'landuse_commercial'][zoom >= 8] {
     polygon-fill: @built-up-lowzoom;
