@@ -151,7 +151,7 @@ local
 @tertiary-width-z14:              5;
 @residential-width-z14:           3;
 @living-street-width-z14:         3;
-@pedestrian-width-z14:            3;
+@pedestrian-width-z14:            2;
 @road-width-z14:                  2;
 @service-width-z14:               2;
 @steps-width-z14:                 0.7;
@@ -168,7 +168,7 @@ local
 @tertiary-link-width-z15:         7;
 @residential-width-z15:           5;
 @living-street-width-z15:         5;
-@pedestrian-width-z15:            5;
+@pedestrian-width-z15:            4;
 @bridleway-width-z15:             1.2;
 @footway-width-z15:               1;
 @cycleway-width-z15:              0.9;
@@ -181,7 +181,7 @@ local
 @tertiary-width-z16:             10;
 @residential-width-z16:           6;
 @living-street-width-z16:         6;
-@pedestrian-width-z16:            6;
+@pedestrian-width-z16:            5;
 @road-width-z16:                  3.5;
 @service-width-z16:               3.5;
 @minor-service-width-z16:         2;
@@ -200,7 +200,7 @@ local
 @tertiary-link-width-z17:        12;
 @residential-width-z17:          12;
 @living-street-width-z17:        12;
-@pedestrian-width-z17:           12;
+@pedestrian-width-z17:            9;
 @road-width-z17:                  7;
 @service-width-z17:               7;
 @minor-service-width-z17:         3.5;
@@ -217,7 +217,7 @@ local
 @tertiary-link-width-z18:        13;
 @residential-width-z18:          13;
 @living-street-width-z18:        13;
-@pedestrian-width-z18:           13;
+@pedestrian-width-z18:           10;
 @road-width-z18:                  8.5;
 @service-width-z18:               8.5;
 @minor-service-width-z18:         4.75;
@@ -236,7 +236,7 @@ local
 @tertiary-link-width-z19:        16;
 @residential-width-z19:          17;
 @living-street-width-z19:        17;
-@pedestrian-width-z19:           17;
+@pedestrian-width-z19:           13;
 @road-width-z19:                 11;
 @service-width-z19:              11;
 @minor-service-width-z19:         5.5;
