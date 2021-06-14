@@ -1472,7 +1472,6 @@
 
   [feature = 'tourism_picnic_site'][zoom >= 16] {
     marker-file: url('symbols/tourism/picnic.svg');
-    marker-width: @medium;
     marker-fill: @leisure-green;
     marker-clip: false;
     [access != ''][access != 'permissive'][access != 'yes'] {
@@ -1482,7 +1481,8 @@
 
   [feature = 'leisure_picnic_table'][zoom >= 17] {
     marker-file: url('symbols/tourism/picnic.svg');
-    marker-fill: @man-made-icon;
+    // was: @man-made-icon
+    marker-fill: @leisure-green;
     marker-clip: false;
     [access != ''][access != 'permissive'][access != 'yes'] {
       marker-opacity: 0.33;
