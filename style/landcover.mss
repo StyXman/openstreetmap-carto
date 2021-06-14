@@ -155,14 +155,14 @@
     }
   }
 
+  // gone to lc-flat
+  /*
   [feature = 'leisure_garden'] {
-    /*
     [zoom >= 10] {
       polygon-fill: @grass;
       [way_pixels >= 4]  { polygon-gamma: 0.75; }
       [way_pixels >= 64] { polygon-gamma: 0.3;  }
     }
-    */
     [zoom >= 13] {
       polygon-pattern-file: url('symbols/plant_nursery.png');
       polygon-pattern-opacity: 0.6;
@@ -171,6 +171,7 @@
       [way_pixels >= 64] { polygon-pattern-gamma: 0.3;  }
     }
   }
+  */
 
   [feature = 'landuse_plant_nursery'] {
     /*
@@ -766,6 +767,20 @@
       }
       // TODO: local, but no record of what it was
       polygon-pattern-file: url('symbols/local/grass2.png');
+      polygon-pattern-alignment: global;
+      [way_pixels >= 4]  { polygon-pattern-gamma: 0.75; }
+      [way_pixels >= 64] { polygon-pattern-gamma: 0.3;  }
+    }
+  }
+  [feature = 'leisure_garden'] {
+    [zoom >= 10] {
+      polygon-fill: @grass;
+      [way_pixels >= 4]  { polygon-gamma: 0.75; }
+      [way_pixels >= 64] { polygon-gamma: 0.3;  }
+    }
+    [zoom >= 13] {
+      polygon-pattern-file: url('symbols/plant_nursery.png');
+      polygon-pattern-opacity: 0.6;
       polygon-pattern-alignment: global;
       [way_pixels >= 4]  { polygon-pattern-gamma: 0.75; }
       [way_pixels >= 64] { polygon-pattern-gamma: 0.3;  }
