@@ -61,8 +61,8 @@
   [natural = 'water'],
   [landuse = 'reservoir'],
   [waterway = 'riverbank'] {
+    polygon-fill: @water-color;
     [int_intermittent = 'no'] {
-      polygon-fill: @water-color;
       // local
       [int_salt = 'yes'] {
         polygon-fill: @water-salt;
@@ -75,7 +75,6 @@
     }
     [int_intermittent = 'yes'] {
       // was symbols/intermittent_water.png
-      // TODO: shows up as plain dark grey
       polygon-pattern-file: url('symbols/local/water_intermittent_bg.png');
       // local
       [int_salt = 'yes'] {
