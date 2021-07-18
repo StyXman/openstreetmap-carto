@@ -1602,6 +1602,12 @@
     marker-fill: @water-amenity;
   }
 
+  // local
+  [feature = 'man_made_cross'][zoom >= 11] {
+    marker-file: url('symbols/religion/christian.svg');
+    marker-fill: @religious-icon;
+  }
+
   [feature = 'natural_peak'][zoom >= 11] {
     marker-file: url('symbols/natural/peak.svg');
     marker-fill: @landform-color;
@@ -2110,6 +2116,19 @@
     text-face-name: @standard-font;
     text-halo-radius: @standard-halo-radius;
     text-halo-fill: rgba(255, 255, 255, 0.6);
+  }
+
+  // local TODO
+  [feature = 'man_made_cross'][zoom >= 13] {
+    text-name: "[name]";
+    text-size: @standard-font-size;
+    text-wrap-width: @standard-wrap-width;
+    text-line-spacing: @standard-line-spacing-size;
+    text-fill: @religious-icon;
+    text-dy: 7;
+    text-face-name: @standard-font;
+    text-halo-radius: @standard-halo-radius;
+    text-halo-fill: @standard-halo-fill;
   }
 
   [feature = 'natural_peak'][zoom >= 13],
@@ -3290,7 +3309,8 @@
 }
 
 #text-low-priority {
-  [feature = 'man_made_cross'][zoom >= 17],
+  // moved to text-point
+  // [feature = 'man_made_cross'][zoom >= 17],
   [feature = 'historic_wayside_cross'][zoom >= 17],
   [feature = 'historic_wayside_shrine'][zoom >= 17] {
     text-name: "[name]";

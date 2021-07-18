@@ -2155,6 +2155,8 @@ Layer:
 
                 'power_' || CASE WHEN power IN ('plant', 'generator', 'substation') THEN power END,
 
+                -- local, moved from lowprio, added summit_cross, before the next man_made_ to give higher prio
+                'man_made_' || CASE WHEN man_made IN ('cross', 'summit_cross') THEN 'cross' END,
                 'man_made_' || CASE WHEN (man_made IN ('chimney', 'communications_tower', 'crane', 'lighthouse', 'mast', 'obelisk', 'silo', 'storage_tank',
                                                        'telescope', 'tower', 'wastewater_plant', 'water_tower', 'water_works', 'windmill', 'works')
                                             AND (tags->'location' NOT IN ('roof', 'rooftop') OR NOT (tags ? 'location'))) THEN man_made END,
@@ -2936,7 +2938,8 @@ Layer:
               'railway_' || CASE WHEN railway IN ('level_crossing', 'crossing') AND way_area IS NULL THEN railway END,
               'amenity_' || CASE WHEN amenity IN ('bench', 'waste_basket', 'waste_disposal') AND way_area IS NULL THEN amenity END,
               'historic_' || CASE WHEN historic IN ('wayside_cross', 'wayside_shrine') AND way_area IS NULL THEN historic END,
-              'man_made_' || CASE WHEN man_made IN ('cross') AND way_area IS NULL THEN man_made END,
+              -- moved back to amenity-points
+              -- 'man_made_' || CASE WHEN man_made IN ('cross') AND way_area IS NULL THEN man_made END,
               'barrier_' || CASE WHEN barrier IN ('bollard', 'gate', 'lift_gate', 'swing_gate', 'block', 'log', 'cattle_grid', 'stile', 'motorcycle_barrier', 'cycle_barrier', 'full-height_turnstile', 'turnstile', 'kissing_gate') THEN barrier END
             )  AS feature,
             access,
@@ -2951,7 +2954,8 @@ Layer:
                   barrier,
                   highway,
                   historic,
-                  man_made,
+                  -- moved back to amenity-points
+                  -- man_made,
                   railway,
                   tags,
                   way_area
@@ -2967,7 +2971,8 @@ Layer:
                   barrier,
                   highway,
                   historic,
-                  man_made,
+                  -- moved back to amenity-points
+                  -- man_made,
                   railway,
                   tags,
                   NULL AS way_area
@@ -2977,7 +2982,8 @@ Layer:
             WHERE railway IN ('level_crossing', 'crossing')
                OR amenity IN ('bench', 'waste_basket', 'waste_disposal')
                OR historic IN ('wayside_cross', 'wayside_shrine')
-               OR man_made IN ('cross')
+               -- moved back to amenity-points
+               -- OR man_made IN ('cross')
                OR barrier IN ('bollard', 'gate', 'lift_gate', 'swing_gate', 'block', 'log', 'cattle_grid', 'stile', 'motorcycle_barrier', 'cycle_barrier', 'full-height_turnstile', 'turnstile', 'kissing_gate')
             ORDER BY
               CASE amenity
