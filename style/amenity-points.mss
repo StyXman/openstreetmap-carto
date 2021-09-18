@@ -526,8 +526,8 @@
     marker-clip: false;
   }
 
-  [feature = 'man_made_mast']["tower:type" != 'lighting'],
-  [feature = 'man_made_mast']["tower:type" = 'lighting'][zoom >= 18]   {
+  [feature = 'man_made_mast']["tower:type" != 'lighting'] {
+  // [feature = 'man_made_mast']["tower:type" = 'lighting'][zoom >= 18]   {
     [zoom >= 14][height >= 160],
     [zoom >= 15][height >= 80],
     [zoom >= 16][height >= 40],
@@ -536,9 +536,11 @@
       marker-file: url('symbols/man_made/mast.svg');
       marker-fill: @man-made-icon;
       marker-clip: false;
+      /*
       ["tower:type" = 'lighting'] {
         marker-file: url('symbols/man_made/mast_lighting.svg');
       }
+      */
       ["tower:type" = 'communication'] {
         marker-file: url('symbols/man_made/mast_communications.svg');
       }
