@@ -29,14 +29,14 @@ _parts:
     srs: "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over"
   osm2pgsql: &osm2pgsql
     type: "postgis"
-    port: 5434
+    port: 5432
     dbname: "gis"
     key_field: ""
     geometry_field: "way"
     extent: "-20037508,-20037508,20037508,20037508"
   contours: &contours
     type: "postgis"
-    port: 5434
+    port: 5432
     dbname: "contours"
     key_field: ""
     geometry_field: "way"
@@ -69,7 +69,7 @@ Stylesheet:
   - style/aerialways.mss
   - style/admin.mss
   - style/addressing.mss
-
+  # - style/golf.mss
 
 Layer:
   - id: terrain-small
@@ -161,13 +161,14 @@ Layer:
         (SELECT
             way, name, religion, way_pixels, is_building,
             parking_space,
-            -- see -->                                                                              tourism, gone to lc-flat
-            COALESCE(aeroway, amenity, wetland, power, landuse, leisure, man_made, "natural", shop,          highway, railway) AS feature
+            -- see -->        golf gone                                                             tourism, gone to lc-flat
+            COALESCE(aeroway,       amenity, wetland, power, landuse, leisure, man_made, "natural", shop,          highway, railway) AS feature
           FROM (SELECT
               way, COALESCE(name, '') AS name,
               ('aeroway_' || (CASE WHEN aeroway IN ('apron', 'aerodrome') THEN aeroway END)) AS aeroway,
                                                  -- 'bicycle_parking', 'motorcycle_parking', gone to lc-flat -----------------> 'taxi' too
 
+              -- ('golf_' || (CASE WHEN (tags->'golf') IN ('rough', 'fairway', 'driving_range', 'water_hazard', 'green', 'bunker', 'tee') THEN tags->'golf' ELSE NULL END)) AS golf,
               ('amenity_' || (CASE WHEN amenity IN (                                         'university', 'college', 'school',
                                                  --                             'grave_yard' gone to landcover-flat
                                                     'hospital', 'kindergarten',               'prison', 'place_of_worship', 'clinic', 'ferry_terminal',
@@ -209,6 +210,7 @@ Layer:
             WHERE (landuse IS NOT NULL
               OR leisure IS NOT NULL
               OR aeroway IN ('apron', 'aerodrome')
+              -- OR (tags->'golf') IS NOT NULL
                           -- 'parking', 'bicycle_parking', 'motorcycle_parking', gone to lc-flat, 'taxi', gone
               OR amenity IN (                                                            'university', 'college', 'school', 'hospital', 'kindergarten',
                           -- 'grave_yard', gone to lc-flat
@@ -380,6 +382,7 @@ Layer:
     advanced: {}
     properties:
       minzoom: 15
+    status: off
 
 
   - id: contour-50
@@ -395,6 +398,7 @@ Layer:
     advanced: {}
     properties:
       minzoom: 13
+    status: off
 
 
   - id: contour-100
@@ -411,6 +415,7 @@ Layer:
     advanced: {}
     properties:
       minzoom: 11
+    status: off
 
 
   - id: contour-250
@@ -427,6 +432,7 @@ Layer:
     properties:
       minzoom: 10
       maxzoom: 10
+    status: off
 
 
   - id: contour-500
@@ -443,6 +449,7 @@ Layer:
     advanced: {}
     properties:
       minzoom: 9
+    status: off
 
 
   - id: contour-1000
@@ -459,6 +466,7 @@ Layer:
     advanced: {}
     properties:
       minzoom: 8
+    status: off
 
 
   - id: landcover-flat
@@ -1666,7 +1674,23 @@ Layer:
       minzoom: 11
 
 
-  - id: necountries-new
+  - id: golf-line
+    geometry: linestring
+    <<: *extents
+    Datasource:
+      <<: *osm2pgsql
+      table: |-
+        (SELECT
+            way, tags->'golf' AS golf
+          FROM planet_osm_line
+          WHERE tags @> 'golf=>hole'
+        ) AS golf_line
+    properties:
+      minzoom: 16
+    status: off
+
+  # - id: necountries-new
+  - id: necountries
     geometry: linestring
     <<: *extents
     Datasource:
@@ -2187,7 +2211,7 @@ Layer:
                                           THEN boundary END,
 
                 'leisure_' || CASE WHEN leisure IN ('nature_reserve') THEN leisure END,
-                'tourism_' || CASE WHEN tourism IN ('information') THEN tourism END,
+                'tourism_' || CASE WHEN tourism IN ('information') AND tags->'information' IN ('audioguide', 'board', 'guidepost', 'office', 'map', 'tactile_map', 'terminal') THEN tourism END,
                 'office' || CASE WHEN tags->'office' IN ('no', 'vacant', 'closed', 'disused', 'empty') OR (tags->'office') IS NULL THEN NULL ELSE '' END,
                 'barrier_' || CASE WHEN barrier IN ('toll_booth') AND way_area IS NULL THEN barrier END,
                 'waterway_' || CASE WHEN waterway IN ('dam', 'weir', 'dock') THEN waterway END,
@@ -2203,6 +2227,7 @@ Layer:
                 -- local
                 'sport_' || CASE WHEN tags @> 'sport=>climbing' THEN 'climbing' END,
                 'place_' || CASE WHEN place IN ('locality') AND way_area IS NULL THEN place END
+                -- 'golf_' || CASE WHEN tags->'golf' IN ('hole', 'pin') THEN tags->'golf' END
               ) AS feature,
               access,
               CASE
@@ -2706,7 +2731,7 @@ Layer:
         (SELECT
             way,
             NULL as way_pixels,
-            COALESCE('aerialway_' || aerialway, 'attraction_' || CASE WHEN tags @> 'attraction=>water_slide' THEN 'water_slide' END, 'leisure_' || leisure, 'man_made_' || man_made, 'waterway_' || waterway, 'natural_' || "natural") AS feature,
+            COALESCE('aerialway_' || aerialway, 'attraction_' || CASE WHEN tags @> 'attraction=>water_slide' THEN 'water_slide' END, 'leisure_' || leisure, 'man_made_' || man_made, 'waterway_' || waterway, 'natural_' || "natural", 'golf_' || (tags->'golf')) AS feature,
             access,
             name,
             tags->'operator' as operator,
@@ -2715,7 +2740,7 @@ Layer:
             NULL AS way_area,
             CASE WHEN building = 'no' OR building IS NULL THEN 'no' ELSE 'yes' END AS is_building
           FROM planet_osm_line
-          WHERE (man_made IN ('pier', 'breakwater', 'groyne', 'embankment')
+          WHERE  (man_made IN ('pier', 'breakwater', 'groyne', 'embankment')
               OR (man_made = 'pipeline'
                  AND tags-> 'location' IN ('overground', 'overhead', 'surface', 'outdoor')
                  OR bridge IN ('yes', 'aqueduct', 'cantilever', 'covered', 'trestle', 'viaduct'))
@@ -2726,6 +2751,7 @@ Layer:
               --                                        |--> local
               OR "natural" IN ('arete', 'cliff', 'ridge', 'valley', 'glacier', 'dale', 'gorge', 'couloir', 'mountain_range', 'massif'))
             AND name IS NOT NULL
+            -- OR (tags @> 'golf=>hole' AND ref IS NOT NULL)
         ) AS text_line
     properties:
       minzoom: 10

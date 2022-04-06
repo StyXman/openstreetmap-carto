@@ -74,15 +74,15 @@
       [way_pixels >= 64] { polygon-gamma: 0.6; }
     }
     [int_intermittent = 'yes'] {
-      // was symbols/intermittent_water.png
+      // was patterns/intermittent_water.png
       polygon-pattern-file: url('symbols/local/water_intermittent_bg.png');
       // local
       [int_salt = 'yes'] {
         polygon-pattern-file: url('symbols/local/water_intermittent_salt_bg.png');
       }
       polygon-pattern-alignment: global;
-      [way_pixels >= 4] { polygon-gamma: 0.75; }
-      [way_pixels >= 64] { polygon-gamma: 0.6; }
+      [way_pixels >= 4] { polygon-pattern-gamma: 0.75; }
+      [way_pixels >= 64] { polygon-pattern-gamma: 0.6; }
     }
   }
 }
