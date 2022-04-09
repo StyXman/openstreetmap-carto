@@ -205,17 +205,7 @@
     }
   }
 
-  [feature = 'amenity_prison'][zoom >= 10][way_pixels > 75] {
-    polygon-fill: #8e8e8e;
-    polygon-opacity: 0.14;
-    // TODO: reenable
-    // polygon-pattern-file: url('symbols/grey_vertical_hatch.svg');
-    polygon-pattern-file: url('patterns/military_red_hatch.svg');
-    polygon-pattern-alignment: global;
-    line-color: #888;
-    line-width: 3;
-    line-opacity: 0.329;
-  }
+  // amenity_prison moved to lc-flat
 
   [feature = 'landuse_residential'][zoom >= 8] {
     polygon-fill: @built-up-lowzoom;
@@ -891,6 +881,16 @@
     }
     [way_pixels >= 4]  { polygon-gamma: 0.75; }
     [way_pixels >= 64] { polygon-gamma: 0.3;  }
+  }
+
+  [feature = 'amenity_prison'][zoom >= 10][way_pixels > 75] {
+    polygon-fill: #8e8e8e;
+    polygon-opacity: 0.14;
+    polygon-pattern-file: url('patterns/grey_vertical_hatch.svg');
+    polygon-pattern-alignment: global;
+    line-color: #888;
+    line-width: 3;
+    line-opacity: 0.329;
   }
 }
 

@@ -480,7 +480,7 @@ Layer:
             COALESCE(amenity, landuse, leisure, tourism, "natural") AS feature
           FROM (SELECT
               way, COALESCE(name, '') AS name, access,
-              ('amenity_' || (CASE WHEN amenity IN ('grave_yard', 'parking', 'bicycle_parking', 'motorcycle_parking')
+              ('amenity_' || (CASE WHEN amenity IN ('grave_yard', 'parking', 'bicycle_parking', 'motorcycle_parking', 'prison')
                                      OR amenity IN ('parking') AND (tags->'parking' NOT IN ('underground') OR (tags->'parking') IS NULL) THEN amenity ELSE NULL END)) AS amenity,
               ('landuse_' || (CASE WHEN landuse IN ('cemetery', 'recreation_ground', 'village_green') THEN landuse ELSE NULL END)) AS landuse,
               ('leisure_' || (CASE WHEN leisure IN ('swimming_pool', 'playground', 'park', 'recreation_ground', 'garden',
@@ -491,7 +491,7 @@ Layer:
               way_area/NULLIF(!pixel_width!::real*!pixel_height!::real,0) AS way_pixels
             FROM planet_osm_polygon
             WHERE (landuse IS NOT NULL
-              OR amenity IN ('parking', 'bicycle_parking', 'motorcycle_parking', 'grave_yard')
+              OR amenity IN ('parking', 'bicycle_parking', 'motorcycle_parking', 'grave_yard', 'prison')
               OR leisure IS NOT NULL
               OR "natural" IN ('beach', 'shoal'))
               AND way_area > 0.01*!pixel_width!::real*!pixel_height!::real
@@ -2161,7 +2161,8 @@ Layer:
                                                     'fast_food', 'ferry_terminal', 'fire_station', 'food_court', 'fountain', 'fuel', 'grave_yard',
                                                     'hospital', 'hunting_stand', 'ice_cream', 'internet_cafe', 'kindergarten', 'library', 'marketplace',
                                                     'nightclub', 'nursing_home', 'pharmacy', 'place_of_worship', 'police', 'post_box',
-                                                    'post_office', 'prison', 'pub', 'public_bath', 'public_bookcase', 'recycling', 'restaurant', 'school',
+                                                    --             'prison',  moved to lc-flat
+                                                    'post_office',           'pub', 'public_bath', 'public_bookcase', 'recycling', 'restaurant', 'school',
                                                     'shelter', 'shower', 'social_facility', 'taxi', 'telephone', 'theatre', 'toilets', 'townhall',
                                                     'university', 'vehicle_inspection', 'veterinary') THEN amenity END,
 
