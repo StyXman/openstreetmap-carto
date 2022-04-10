@@ -1755,7 +1755,7 @@
 }
 
 #amenity-low-priority {
-  [feature = 'man_made_cross'][zoom >= 16],
+  // [feature = 'man_made_cross'][zoom >= 16],
   [feature = 'historic_wayside_cross'][zoom >= 16] {
     marker-file: url('symbols/man_made/cross.svg');
     marker-width: @small;
