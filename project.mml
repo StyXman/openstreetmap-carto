@@ -382,7 +382,6 @@ Layer:
     advanced: {}
     properties:
       minzoom: 15
-    status: off
 
 
   - id: contour-50
@@ -398,7 +397,6 @@ Layer:
     advanced: {}
     properties:
       minzoom: 13
-    status: off
 
 
   - id: contour-100
@@ -415,7 +413,6 @@ Layer:
     advanced: {}
     properties:
       minzoom: 11
-    status: off
 
 
   - id: contour-250
@@ -432,7 +429,6 @@ Layer:
     properties:
       minzoom: 10
       maxzoom: 10
-    status: off
 
 
   - id: contour-500
@@ -449,7 +445,6 @@ Layer:
     advanced: {}
     properties:
       minzoom: 9
-    status: off
 
 
   - id: contour-1000
@@ -466,7 +461,6 @@ Layer:
     advanced: {}
     properties:
       minzoom: 8
-    status: off
 
 
   - id: landcover-flat
