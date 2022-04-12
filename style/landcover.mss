@@ -230,16 +230,7 @@
 
   // leisure_park gone to lc-flat
 
-  [feature = 'leisure_ice_rink'][is_building = 'no'] {
-    // what size does an ice rink have to be to be visible from ZL10
-    [zoom >= 14] {
-      polygon-fill: @glacier;
-      line-width: 0.5;
-      line-color: saturate(darken(@pitch, 30%), 20%);
-      [way_pixels >= 4]  { polygon-gamma: 0.75; }
-      [way_pixels >= 64] { polygon-gamma: 0.3;  }
-    }
-  }
+  // leisure_ice_rink gone to lc-flat
 
   // leisure_dog_park gone to lc-flat
 
@@ -842,6 +833,17 @@
         [way_pixels >= 4]  { polygon-gamma: 0.75; }
         [way_pixels >= 64] { polygon-gamma: 0.3;  }
       }
+    }
+  }
+
+  [feature = 'leisure_ice_rink'][is_building = 'no'] {
+    // what size does an ice rink have to be to be visible from ZL10
+    [zoom >= 14] {
+      polygon-fill: @glacier;
+      line-width: 0.5;
+      line-color: saturate(darken(@pitch, 30%), 20%);
+      [way_pixels >= 4]  { polygon-gamma: 0.75; }
+      [way_pixels >= 64] { polygon-gamma: 0.3;  }
     }
   }
 
