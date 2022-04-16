@@ -53,6 +53,9 @@
 // size of icons so they can be seen while driving
 @huge: 24;
 
+// local
+@electric: green;  // TODO: find a better color
+
 #amenity-points {
   [feature = 'tourism_alpine_hut'][zoom >= 13],
   [feature = 'tourism_wilderness_hut'][zoom >= 13],
@@ -367,7 +370,7 @@
   [feature = 'amenity_charging_station'][zoom >= @useful] {
     marker-file: url('symbols/amenity/charging_station.svg');
     marker-width: @huge;
-    marker-fill: @transportation-icon;
+    marker-fill: @electric;
     marker-clip: false;
     [access != ''][access != 'permissive'][access != 'yes'] {
       marker-opacity: 0.33;
@@ -1732,7 +1735,7 @@
         marker-file: url('symbols/amenity/parking.svg');
         marker-width: @huge;
         [charging_places > 0] {
-          marker-fill: green;
+          marker-fill: @electric;
         }
       }
       [feature = 'amenity_parking']["parking" = 'street_side'],
