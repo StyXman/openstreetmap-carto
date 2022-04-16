@@ -1724,12 +1724,16 @@
   [feature = 'amenity_motorcycle_parking'],
   [feature = 'amenity_parking_entrance'] {
     [zoom >= 14][way_pixels > 750]["parking" != 'street_side']["parking" != 'lane'],
+    [zoom >= 14][charging_places > 0],
     [zoom >= 17][feature = 'amenity_parking']["parking" != 'street_side']["parking" != 'lane'],
     [zoom >= 18] {
       marker-width: @medium;
       [feature = 'amenity_parking'] {
         marker-file: url('symbols/amenity/parking.svg');
         marker-width: @huge;
+        [charging_places > 0] {
+          marker-fill: green;
+        }
       }
       [feature = 'amenity_parking']["parking" = 'street_side'],
       [feature = 'amenity_parking']["parking" = 'lane'] { 

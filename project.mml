@@ -2142,6 +2142,13 @@ Layer:
                   )
                 ) AS name,
               tags->'parking' as "parking",
+              CASE
+                WHEN tags ? 'capacity:charging' THEN CASE
+                  WHEN tags->'capacity:charging' = 'yes' THEN 1
+                  ELSE (SUBSTRING(tags->'capacity:charging', '^(\d{1,3}(\.\d+)?)( m)?$'))::NUMERIC
+                END
+                ELSE 0
+              END AS charging_places,
               COALESCE(
                 'aeroway_' || CASE WHEN aeroway IN ('gate', 'apron', 'helipad', 'aerodrome') THEN aeroway END,
 
