@@ -471,6 +471,7 @@ Layer:
       table: |-
         (SELECT
             way, name, religion, way_pixels, access, is_building,
+            surface,
             COALESCE(amenity, landuse, leisure, tourism, "natural") AS feature
           FROM (SELECT
               way, COALESCE(name, '') AS name, access,
@@ -483,6 +484,7 @@ Layer:
               ('natural_' || (CASE WHEN "natural" IN ('beach', 'shoal') THEN "natural" ELSE NULL END)) AS "natural",
               CASE WHEN religion IN ('christian', 'jewish') THEN religion ELSE 'INT-generic'::text END AS religion,
               CASE WHEN building = 'no' OR building IS NULL THEN 'no' ELSE 'yes' END AS is_building,
+              surface,
               way_area/NULLIF(!pixel_width!::real*!pixel_height!::real,0) AS way_pixels
             FROM planet_osm_polygon
             WHERE (landuse IS NOT NULL

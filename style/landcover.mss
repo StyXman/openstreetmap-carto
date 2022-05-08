@@ -783,7 +783,10 @@
   [feature = 'natural_shoal'][zoom >= 10] {
     // beaches are flat enough
     polygon-fill: @beach;
-    polygon-pattern-file: url('symbols/beach.png');
+    [surface = 'pebblestone'],
+    [surface = 'gravel']{
+      polygon-fill: #bbbbbb;
+    }
     [way_pixels >= 4]  { polygon-gamma: 0.75; }
     [way_pixels >= 64] { polygon-gamma: 0.3;  }
   }
