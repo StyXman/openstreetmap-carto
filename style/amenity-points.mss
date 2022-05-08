@@ -367,7 +367,7 @@
     }
   }
 
-  [feature = 'amenity_charging_station'][zoom >= @useful] {
+  [feature = 'amenity_charging_station'][zoom >= @emergency] {
     marker-file: url('symbols/amenity/charging_station.svg');
     marker-width: @huge;
     marker-fill: @electric;
