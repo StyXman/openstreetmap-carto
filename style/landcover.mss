@@ -1082,9 +1082,9 @@
     line-pattern-file: url('symbols/local/ridge.svg');
   }
   [natural = 'cliff'][zoom >= 13] {
-    line-pattern-file: url('symbols/local/cliff_mdione.png');
+    line-pattern-file: url('symbols/local/cliff.svg');
     [zoom >= 15] {
-      line-pattern-file: url('symbols/local/cliff2_mdione.png');
+      line-pattern-file: url('symbols/local/cliff2.svg');
     }
     // TODO: climbing color for climbing crags
   }
