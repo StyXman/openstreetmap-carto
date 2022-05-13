@@ -103,6 +103,7 @@
 // @contour-halo: black;
 
 #contour-10,
+#contour-20,
 #contour-50,
 #contour-100,
 #contour-250,
@@ -162,6 +163,10 @@
 
   #contour-50 {
     [zoom >= 13] { line-width: 0.2; }
+  }
+
+  #contour-20 {
+    [zoom >= 14] { line-width: 0.1; }
   }
 
   #contour-10 {

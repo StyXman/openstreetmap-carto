@@ -384,6 +384,22 @@ Layer:
       minzoom: 15
 
 
+  - id: contour-20
+    geometry: linestring
+    <<: *extents
+    Datasource:
+      <<: *contours
+      table: |-
+        (SELECT height, way
+         FROM contours
+         WHERE height::int%100 in (20, 40, 60, 80)
+        ) as c20
+    advanced: {}
+    properties:
+      minzoom: 14
+      maxzoom: 14
+
+
   - id: contour-50
     geometry: linestring
     <<: *extents
