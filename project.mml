@@ -319,6 +319,65 @@ Layer:
       minzoom: 9
 
 
+  - id: landcover-flat
+    geometry: polygon
+    <<: *extents
+    Datasource:
+      <<: *osm2pgsql
+      table: |-
+        (SELECT
+            way, name, religion, way_pixels, access, is_building,
+            surface,
+            COALESCE(amenity, landuse, leisure, tourism, "natural") AS feature
+          FROM (SELECT
+              way, COALESCE(name, '') AS name, access,
+              ('amenity_' || (CASE WHEN amenity IN ('grave_yard', 'parking', 'bicycle_parking', 'motorcycle_parking', 'prison')
+                                     OR amenity IN ('parking') AND (tags->'parking' NOT IN ('underground') OR (tags->'parking') IS NULL) THEN amenity ELSE NULL END)) AS amenity,
+              ('landuse_' || (CASE WHEN landuse IN ('cemetery', 'recreation_ground', 'village_green') THEN landuse ELSE NULL END)) AS landuse,
+              ('leisure_' || (CASE WHEN leisure IN ('swimming_pool', 'playground', 'park', 'recreation_ground', 'garden',
+                                                    'sports_centre', 'stadium', 'pitch', 'track', 'dog_park', 'ice_rink') THEN leisure ELSE NULL END)) AS leisure,
+              ('tourism_' || (CASE WHEN tourism IN ('camp_site', 'caravan_site', 'picnic_site') THEN tourism ELSE NULL END)) AS tourism,
+              ('natural_' || (CASE WHEN "natural" IN ('beach', 'shoal') THEN "natural" ELSE NULL END)) AS "natural",
+              CASE WHEN religion IN ('christian', 'jewish') THEN religion ELSE 'INT-generic'::text END AS religion,
+              CASE WHEN building = 'no' OR building IS NULL THEN 'no' ELSE 'yes' END AS is_building,
+              surface,
+              way_area/NULLIF(!pixel_width!::real*!pixel_height!::real,0) AS way_pixels
+            FROM planet_osm_polygon
+            WHERE (landuse IS NOT NULL
+              OR amenity IN ('parking', 'bicycle_parking', 'motorcycle_parking', 'grave_yard', 'prison')
+              OR leisure IS NOT NULL
+              OR "natural" IN ('beach', 'shoal'))
+              AND way_area > 0.01*!pixel_width!::real*!pixel_height!::real
+            ORDER BY layer, way_area DESC
+          ) AS landcover
+        ) AS features
+    properties:
+      minzoom: 10
+
+
+  - id: icesheet-poly
+    geometry: polygon
+    <<: *extents
+    Datasource:
+      file: data/antarctica-icesheet-polygons-3857/icesheet_polygons.shp
+      type: shape
+    properties:
+      minzoom: 5
+
+
+  - id: icesheet-poly-new
+    geometry: polygon
+    <<: *extents
+    Datasource:
+      <<: *osm2pgsql
+      table: |-
+        (SELECT
+            way
+          FROM icesheet_polygons
+        ) AS icesheet_polygons
+    properties:
+      minzoom: 5
+
 
   - id: hillshade-small
     class: hillshade-over
@@ -478,66 +537,6 @@ Layer:
     advanced: {}
     properties:
       minzoom: 8
-
-
-  - id: landcover-flat
-    geometry: polygon
-    <<: *extents
-    Datasource:
-      <<: *osm2pgsql
-      table: |-
-        (SELECT
-            way, name, religion, way_pixels, access, is_building,
-            surface,
-            COALESCE(amenity, landuse, leisure, tourism, "natural") AS feature
-          FROM (SELECT
-              way, COALESCE(name, '') AS name, access,
-              ('amenity_' || (CASE WHEN amenity IN ('grave_yard', 'parking', 'bicycle_parking', 'motorcycle_parking', 'prison')
-                                     OR amenity IN ('parking') AND (tags->'parking' NOT IN ('underground') OR (tags->'parking') IS NULL) THEN amenity ELSE NULL END)) AS amenity,
-              ('landuse_' || (CASE WHEN landuse IN ('cemetery', 'recreation_ground', 'village_green') THEN landuse ELSE NULL END)) AS landuse,
-              ('leisure_' || (CASE WHEN leisure IN ('swimming_pool', 'playground', 'park', 'recreation_ground', 'garden',
-                                                    'sports_centre', 'stadium', 'pitch', 'track', 'dog_park', 'ice_rink') THEN leisure ELSE NULL END)) AS leisure,
-              ('tourism_' || (CASE WHEN tourism IN ('camp_site', 'caravan_site', 'picnic_site') THEN tourism ELSE NULL END)) AS tourism,
-              ('natural_' || (CASE WHEN "natural" IN ('beach', 'shoal') THEN "natural" ELSE NULL END)) AS "natural",
-              CASE WHEN religion IN ('christian', 'jewish') THEN religion ELSE 'INT-generic'::text END AS religion,
-              CASE WHEN building = 'no' OR building IS NULL THEN 'no' ELSE 'yes' END AS is_building,
-              surface,
-              way_area/NULLIF(!pixel_width!::real*!pixel_height!::real,0) AS way_pixels
-            FROM planet_osm_polygon
-            WHERE (landuse IS NOT NULL
-              OR amenity IN ('parking', 'bicycle_parking', 'motorcycle_parking', 'grave_yard', 'prison')
-              OR leisure IS NOT NULL
-              OR "natural" IN ('beach', 'shoal'))
-              AND way_area > 0.01*!pixel_width!::real*!pixel_height!::real
-            ORDER BY layer, way_area DESC
-          ) AS landcover
-        ) AS features
-    properties:
-      minzoom: 10
-
-
-  - id: icesheet-poly
-    geometry: polygon
-    <<: *extents
-    Datasource:
-      file: data/antarctica-icesheet-polygons-3857/icesheet_polygons.shp
-      type: shape
-    properties:
-      minzoom: 5
-
-
-  - id: icesheet-poly-new
-    geometry: polygon
-    <<: *extents
-    Datasource:
-      <<: *osm2pgsql
-      table: |-
-        (SELECT
-            way
-          FROM icesheet_polygons
-        ) AS icesheet_polygons
-    properties:
-      minzoom: 5
 
 
   - id: springs-casing
