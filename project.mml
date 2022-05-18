@@ -269,56 +269,6 @@ Layer:
       minzoom: 4
 
 
-  - id: hillshade-small
-    class: hillshade-over
-    geometry: raster
-    <<: *extents
-    Datasource:
-      file: data/height/mixed-hillshade-small.tif
-      type: gdal
-    advanced: {}
-    properties:
-      maxzoom: 6
-
-
-  - id: hillshade-medium-over
-    class: hillshade-over
-    geometry: raster
-    <<: *extents
-    Datasource:
-      file: data/height/mixed-hillshade-medium.tif
-      type: gdal
-    advanced: {}
-    properties:
-      minzoom: 7
-      maxzoom: 8
-
-
-  - id: hillshade-medium-overlay
-    class: hillshade-overlay
-    geometry: raster
-    <<: *extents
-    Datasource:
-      file: data/height/mixed-hillshade-medium.tif
-      type: gdal
-    advanced: {}
-    properties:
-      minzoom: 8
-      maxzoom: 8
-
-
-  - id: hillshade-big
-    class: hillshade-overlay
-    geometry: raster
-    <<: *extents
-    Datasource:
-      file: data/height/mixed-hillshade.vrt
-      type: gdal
-    advanced: {}
-    properties:
-      minzoom: 9
-
-
   - id: slopeshade-small
     class: slopeshade-over
     geometry: raster
@@ -363,6 +313,57 @@ Layer:
     <<: *extents
     Datasource:
       file: data/height/mixed-slopeshade.vrt
+      type: gdal
+    advanced: {}
+    properties:
+      minzoom: 9
+
+
+
+  - id: hillshade-small
+    class: hillshade-over
+    geometry: raster
+    <<: *extents
+    Datasource:
+      file: data/height/mixed-hillshade-small.tif
+      type: gdal
+    advanced: {}
+    properties:
+      maxzoom: 6
+
+
+  - id: hillshade-medium-over
+    class: hillshade-over
+    geometry: raster
+    <<: *extents
+    Datasource:
+      file: data/height/mixed-hillshade-medium.tif
+      type: gdal
+    advanced: {}
+    properties:
+      minzoom: 7
+      maxzoom: 8
+
+
+  - id: hillshade-medium-overlay
+    class: hillshade-overlay
+    geometry: raster
+    <<: *extents
+    Datasource:
+      file: data/height/mixed-hillshade-medium.tif
+      type: gdal
+    advanced: {}
+    properties:
+      minzoom: 8
+      maxzoom: 8
+
+
+  - id: hillshade-big
+    class: hillshade-overlay
+    geometry: raster
+    <<: *extents
+    Datasource:
+      file: data/height/mixed-hillshade.vrt
       type: gdal
     advanced: {}
     properties:
