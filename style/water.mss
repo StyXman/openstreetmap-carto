@@ -48,7 +48,7 @@
         line-width: 1;
       }
       [zoom >= 13] {
-        line-dasharray: 4,2;
+        // line-dasharray: 4,2;
         line-width: 1.5;
       }
     }
