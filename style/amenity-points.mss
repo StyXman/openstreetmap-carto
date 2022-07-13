@@ -174,6 +174,9 @@
   }
 
   [feature = 'highway_bus_stop'] {
+    /*
+      was: square symbol for ZL16, but symbol for ZL17+
+    */
     [zoom >= 15] {
       marker-file: url('symbols/square.svg');
       marker-fill: @transportation-icon;
@@ -184,15 +187,16 @@
       marker-width: @dot;
     }
     [zoom >= 17] {
-      marker-file: url('symbols/highway/bus_stop.12.svg');
+      // TODO: parametrize size
       marker-width: 14;
+      marker-clip: false;
     }
   }
 
   [feature = 'highway_elevator'][zoom >= 18] {
     [access = null],
     [access = 'yes'] {
-      marker-file: url('symbols/highway/elevator.12.svg');
+      marker-file: url('symbols/highway/elevator.svg');
       marker-width: @small;
       marker-fill: @transportation-icon;
     }
@@ -234,7 +238,7 @@
   }
 
   [feature = 'highway_traffic_signals'][zoom >= 17] {
-    marker-file: url('symbols/highway/traffic_light.13.svg');
+    marker-file: url('symbols/highway/traffic_light.svg');
     // make it darker, was #545454
     marker-fill: #0a0a0a;
     marker-placement: interior;
@@ -713,7 +717,11 @@
     marker-clip: false;
     [religion = 'christian'] {
       marker-file: url('symbols/religion/christian.svg');
-      [denomination = 'jehovahs_witness']{
+      // Some Christian denominations do not use a cross, so reset them to the default marker
+      [denomination = 'jehovahs_witness'],
+      [denomination = 'la_luz_del_mundo'],
+      [denomination = 'iglesia_ni_cristo'],
+      [denomination = 'mormon'] {
         marker-file: url('symbols/amenity/place_of_worship.svg');
       }
     }
@@ -1189,7 +1197,6 @@
     [shop = 'car_repair'][zoom >= @useful] {
       marker-width: @medium;
       marker-file: url('symbols/shop/car_repair.svg');
-      marker-fill: @amenity-brown;
     }
 
     [shop = 'dairy'][zoom >= 18] {
@@ -1281,7 +1288,7 @@
 
     [shop = 'motorcycle'][zoom >= 18] {
       marker-width: @small;
-      marker-file: url('symbols/motorcycle.svg');
+      marker-file: url('symbols/shop/motorcycle.svg');
     }
 
     [shop = 'music'][zoom >= 18] {
@@ -1383,7 +1390,7 @@
 
   /*
   [feature = 'advertising_column'][zoom >= 19]{
-      marker-file: url('symbols/advertising_column.svg');
+      marker-file: url('symbols/amenity/advertising_column.svg');
       marker-fill: @advertising-grey;
       marker-clip: false;
   }
@@ -1576,7 +1583,7 @@
   }
 
   [feature = 'aeroway_helipad'][zoom >= 16] {
-    marker-file: url('symbols/helipad.16.svg');
+    marker-file: url('symbols/amenity/helipad.svg');
     marker-width: @small;
     marker-clip: false;
     marker-fill: @airtransport;
@@ -1588,7 +1595,7 @@
   [feature = 'aeroway_aerodrome']['iata' = null][zoom >= 12][zoom < 18] {
     [way_pixels <= 192000],
     [way_pixels = null] {
-      marker-file: url('symbols/aerodrome.12.svg');
+      marker-file: url('symbols/amenity/aerodrome.svg');
       marker-width: @medium;
       marker-clip: false;
       marker-fill: @airtransport;
@@ -1631,32 +1638,14 @@
     marker-clip: false;
   }
 
-  /* moved
-  [feature = 'natural_spring'][zoom >= 14] {
-    marker-file: url('symbols/spring.svg');
-    marker-clip: false;
-  }
-  */
-
-  // was: 15
-  [feature = 'natural_cave_entrance'][zoom >= @nice] {
-    marker-file: url('symbols/natural/cave.svg');
-    marker-fill: @landform-color;
+  // local?
+  [feature = 'mountain_pass'][zoom >= 15] {
+    marker-file: url('symbols/natural/saddle.svg');
+    marker-fill: @transportation-icon;
     marker-clip: false;
   }
 
-  [feature = 'waterway_waterfall'] {
-    [zoom >= @nice][height > 20],
-    [zoom >= @nice][height > 10],
-    [zoom >= 15][name != null],
-    [zoom >= 16] {
-      marker-file: url('symbols/waterfall.svg');
-      marker-fill: @water-amenity;
-      marker-width: @big;
-      marker-clip: false;
-    }
-  }
-
+  // was: svg symbol
   [feature = 'natural_spring'][zoom >= 14] {
     marker-fill: @water-color;
     marker-line-width: 0;
@@ -1676,8 +1665,27 @@
     }
   }
 
+  // was: 15
+  [feature = 'natural_cave_entrance'][zoom >= @nice] {
+    marker-file: url('symbols/natural/cave.svg');
+    marker-fill: @landform-color;
+    marker-clip: false;
+  }
+
+  [feature = 'waterway_waterfall'] {
+    [zoom >= @nice][height > 20],
+    [zoom >= @nice][height > 10],
+    [zoom >= 15][name != null],
+    [zoom >= 16] {
+      marker-file: url('symbols/natural/waterfall.svg');
+      marker-fill: @water-amenity;
+      marker-width: @big;
+      marker-clip: false;
+    }
+  }
+
   [feature = 'military_bunker'][zoom >= @nice] {
-    marker-file: url('symbols/bunker.svg');
+    marker-file: url('symbols/man_made/bunker.svg');
     marker-fill: @man-made-icon;
     marker-clip: false;
   }
@@ -1686,7 +1694,7 @@
     [zoom >= 15][location != 'rooftop'][location != 'roof'],
     [zoom >= 15][location = null],
     [zoom >= 19] {
-      marker-file: url('symbols/generator_wind.svg');
+      marker-file: url('symbols/man_made/generator_wind.svg');
       marker-width: @small;
       marker-fill: @man-made-icon;
       marker-clip: false;
@@ -1779,9 +1787,11 @@
 
   [feature = 'railway_level_crossing'][zoom >= 14]::railway,
   [feature = 'railway_crossing'][zoom >= 15]::railway{
-    marker-file: url('symbols/level_crossing.svg');
+    marker-file: url('symbols/barrier/level_crossing.svg');
+    marker-fill: #4d4d4d;
+    marker-clip: false;
     [zoom >= 16] {
-      marker-file: url('symbols/level_crossing2.svg');
+      marker-file: url('symbols/barrier/level_crossing2.svg');
     }
   }
 
@@ -2149,6 +2159,7 @@
   [feature = 'natural_saddle'][zoom >= 15],
   // was 15
   [feature = 'natural_cave_entrance'][zoom >= @nice],
+  [feature = 'mountain_pass'][zoom >= 15],
   [feature = 'tourism_viewpoint'][zoom >= 16] {
     text-name: "[name]";
     text-size: @standard-font-size;
@@ -2156,6 +2167,7 @@
     text-line-spacing: @standard-line-spacing-size;
     text-fill: darken(@landform-color, 30%);
     [feature = 'natural_volcano'] { text-fill: #d40000; }
+    [feature = 'mountain_pass'] { text-fill: @transportation-text; }
     text-dy: 7;
     [feature = 'tourism_viewpoint'] { text-dy: 11; }
     [feature = 'natural_cave_entrance'] {
@@ -2681,7 +2693,7 @@
     text-halo-radius: @standard-halo-radius;
     // was @standard-halo-fill
     text-halo-fill: @water-color;
-    text-dy: 6;
+    text-dy: 7;
   }
 
   // was 19
@@ -2953,9 +2965,6 @@
       text-face-name: @standard-font;
       text-halo-radius: @standard-halo-radius;
       text-halo-fill: rgba(255, 255, 255, 0.6);
-      [shop = 'car_repair'] {
-        text-fill: @amenity-brown;
-      }
       [shop = 'massage'] {
         text-fill: @leisure-green;
       }

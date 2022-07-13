@@ -2,11 +2,11 @@
 @station-text: @transportation-text;
 
 #stations {
-  // changed locally for lower ZL and another icon
+  // lower ZL and another icon
   [railway = 'subway_entrance'][zoom >= @emergency] {
-    // marker-file: url('symbols/entrance.10.svg');
+    // was: symbols/amenity/entrance.svg
     marker-file: url('symbols/maki-0.5/london-underground-18.png');
-    // marker-fill: @transportation-icon;
+    // was: transportation-icon;
     marker-fill: @station-color;
     marker-clip: false;
     [zoom >= 19] {
