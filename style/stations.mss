@@ -98,7 +98,7 @@
       text-size: @standard-font-size;
       text-fill: @station-text;
       text-dy: 10;
-      text-halo-radius: @standard-halo-radius * 1.5;
+      text-halo-radius: @standard-halo-radius;
       text-halo-fill: @standard-halo-fill;
       text-wrap-width: @standard-wrap-width;
       text-line-spacing: @standard-line-spacing-size;

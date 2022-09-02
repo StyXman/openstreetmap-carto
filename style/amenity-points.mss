@@ -1923,7 +1923,7 @@
     text-fill: @placenames;
     text-face-name: @book-fonts;
     text-halo-fill: @standard-halo-fill;
-    text-halo-radius: @standard-halo-radius * 1.5;
+    text-halo-radius: @standard-halo-radius;
     text-wrap-width: 45; // 4.5 em
     text-line-spacing: -0.8; // -0.08 em
     text-margin: 7.0; // 0.7 em
