@@ -333,7 +333,7 @@
       text-face-name: @oblique-fonts;
       text-fill: @water-text;
       text-halo-radius: @standard-halo-radius;
-      text-halo-fill: @standard-halo-fill;
+      text-halo-fill: @water-color;
       text-spacing: 400;
       text-placement: line;
       text-repeat-distance: @waterway-text-repeat-distance;
@@ -346,7 +346,7 @@
       text-face-name: @oblique-fonts;
       text-fill: @water-text;
       text-halo-radius: @standard-halo-radius;
-      text-halo-fill: @standard-halo-fill;
+      text-halo-fill: @water-color;
       text-placement: line;
       text-repeat-distance: @waterway-text-repeat-distance;
     }
@@ -357,7 +357,7 @@
       text-face-name: @oblique-fonts;
       text-fill: @water-text;
       text-halo-radius: @standard-halo-radius;
-      text-halo-fill: @standard-halo-fill;
+      text-halo-fill: @water-color;
       text-spacing: 600;
       text-placement: line;
       text-vertical-alignment: middle;
@@ -373,7 +373,7 @@
         text-face-name: @oblique-fonts;
         text-fill: @water-text;
         text-halo-radius: @standard-halo-radius;
-        text-halo-fill: @standard-halo-fill;
+        text-halo-fill: @water-color;
         text-spacing: 600;
         text-placement: line;
         text-vertical-alignment: middle;
@@ -389,7 +389,7 @@
     text-face-name: @oblique-fonts;
     text-fill: @water-text;
     text-halo-radius: @standard-halo-radius;
-    text-halo-fill: @standard-halo-fill;
+    text-halo-fill: @water-color;
     text-max-char-angle-delta: 15;
     text-spacing: 400;
     text-placement: line;
