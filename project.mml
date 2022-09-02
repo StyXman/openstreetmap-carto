@@ -2414,7 +2414,8 @@ Layer:
             way,
             power
         FROM planet_osm_point
-        WHERE power IN ('tower', 'pole')
+        --                     , 'pole'  gone
+        WHERE power IN ('tower'        )
         ORDER BY
           CASE power
             WHEN 'tower' THEN 2
