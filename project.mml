@@ -109,17 +109,6 @@ Layer:
       minzoom: 8
 
 
-  - id: necountries
-    geometry: linestring
-    <<: *extents84
-    Datasource:
-      file: data/ne_110m_admin_0_boundary_lines_land/ne_110m_admin_0_boundary_lines_land.shp
-      type: shape
-    properties:
-      minzoom: 1
-      maxzoom: 3
-
-
   - id: landcover-low-zoom
     geometry: polygon
     <<: *extents
