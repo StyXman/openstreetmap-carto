@@ -1976,7 +1976,7 @@
   [feature = 'amenity_cinema'],
   [feature = 'amenity_arts_centre'],
   [feature = 'amenity_community_centre'],
-  [feature = 'historic_archaeological_site'],
+  // [feature = 'historic_archaeological_site'],
   [feature = 'amenity_nightclub'] {
     [zoom >= 17] {
       text-name: "[name]";
@@ -1992,6 +1992,20 @@
       [feature = 'amenity_nightclub']{
         text-dy: 12;
       }
+    }
+  }
+
+  [feature = 'historic_archaeological_site'] {
+    [zoom >= @nice] {
+      text-name: "[name]";
+      text-size: @standard-font-size;
+      text-wrap-width: @standard-wrap-width;
+      text-line-spacing: @standard-line-spacing-size;
+      text-fill: @culture;
+      text-dy: 11;
+      text-face-name: @standard-font;
+      text-halo-radius: @standard-halo-radius;
+      text-halo-fill: @standard-halo-fill;
     }
   }
 
