@@ -474,7 +474,7 @@
       text-fill: @placenames;
       text-face-name: @book-fonts;
       text-halo-fill: white;
-      text-halo-radius: @standard-halo-radius * 1.5;
+      text-halo-radius: @standard-halo-radius;
       [zoom >= 14] {
         text-size: 10;
         text-wrap-width: 55; // 5.0 em
