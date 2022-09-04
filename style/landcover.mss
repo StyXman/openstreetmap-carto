@@ -103,7 +103,6 @@
   */
 
   /* gone to lc-flat
-  [feature = 'leisure_recreation_ground'][zoom >= 10],
   [feature = 'landuse_recreation_ground'][zoom >= 10],
   [feature = 'leisure_playground'][zoom >= 13],
   [feature = 'leisure_fitness_station'][zoom >= 13] {
