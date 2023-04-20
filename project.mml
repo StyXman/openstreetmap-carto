@@ -1,14 +1,49 @@
 # kate: syntax yaml;
 
+# Various parts to be included later on
+_parts:
+  # Extents are used for tilemill, and don't actually make it to the generated XML
+  srid: &srid "3857"
+  srs: &srs "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over"
+
+  world: &world
+    - -180
+    - -85.05112877980659
+    - 180
+    - 85.05112877980659
+
+  extents: &extents
+    extent: *world
+    srs-name: "900913"
+    srs: "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over"
+
+  osm2pgsql: &osm2pgsql
+    type: "postgis"
+    port: 5432
+    dbname: "gis"
+    key_field: ""
+    geometry_field: "way"
+    extent: "-20037508,-20037508,20037508,20037508"
+
+  contours: &contours
+    type: "postgis"
+    port: 5432
+    dbname: "contours"
+    key_field: ""
+    geometry_field: "way"
+    extent: "-20037508,-20037508,20037508,20037508"
+
+  # back here while we fix the use of the new script scripts/get-external-data.py
+  extents84: &extents84
+    extent: *world
+    srs-name: "WGS84"
+    srs: "+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs"
+
 scale: 1
 metatile: 4
 name: Elevation
 description: A OSM-carto based map with relief info, contrasting roads and other minor changes.
-bounds: &world
-  - -180
-  - -85.05112877980659
-  - 180
-  - 85.05112877980659
+bounds: *world
 center:
   - 5.5
   - 43.25
@@ -17,35 +52,7 @@ format: png
 interactivity: false
 minzoom: 0
 maxzoom: 22
-srs: "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over"
-
-
-# Various parts to be included later on
-_parts:
-  # Extents are used for tilemill, and don't actually make it to the generated XML
-  extents: &extents
-    extent: *world
-    srs-name: "900913"
-    srs: "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over"
-  osm2pgsql: &osm2pgsql
-    type: "postgis"
-    port: 5432
-    dbname: "gis"
-    key_field: ""
-    geometry_field: "way"
-    extent: "-20037508,-20037508,20037508,20037508"
-  contours: &contours
-    type: "postgis"
-    port: 5432
-    dbname: "contours"
-    key_field: ""
-    geometry_field: "way"
-    extent: "-20037508,-20037508,20037508,20037508"
-  # back here while we fix the use of the new script scripts/get-external-data.py
-  extents84: &extents84
-    extent: *world
-    srs-name: "WGS84"
-    srs: "+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs"
+srs: *srs
 
 Stylesheet:
   - style/style.mss
@@ -839,7 +846,7 @@ Layer:
       minzoom: 14
 
 
-  # moved here
+  # moved here TODO: why?
   - id: protected-areas
     geometry: polygon
     <<: *extents
@@ -874,6 +881,12 @@ Layer:
             way, man_made
           FROM planet_osm_polygon
           WHERE man_made IN ('pier', 'breakwater', 'groyne')
+          ORDER BY CASE
+              WHEN man_made = 'pier' THEN 3
+              WHEN man_made = 'groyne' THEN 2
+              WHEN man_made = 'breakwater' THEN 1
+              ELSE 0
+            END ASC
         ) AS piers_poly
     properties:
       minzoom: 12
@@ -889,6 +902,12 @@ Layer:
             way, man_made
           FROM planet_osm_line
           WHERE man_made IN ('pier', 'breakwater', 'groyne')
+          ORDER BY CASE
+              WHEN man_made = 'pier' THEN 3
+              WHEN man_made = 'groyne' THEN 2
+              WHEN man_made = 'breakwater' THEN 1
+              ELSE 0
+            END ASC
         ) AS piers_line
     properties:
       minzoom: 12
@@ -1034,7 +1053,7 @@ Layer:
             CASE WHEN substring(feature for 8) = 'railway_' THEN 2 ELSE 1 END,
             CASE WHEN feature IN ('railway_INT-preserved-ssy', 'railway_INT-spur-siding-yard', 'railway_tram-service') THEN 0 ELSE 1 END,
             CASE WHEN access IN ('no', 'private') THEN 0 WHEN access IN ('destination') THEN 1 ELSE 2 END,
-            CASE WHEN int_surface IN ('unpaved') THEN 0 ELSE 2 END
+            CASE WHEN int_surface IN ('unpaved') THEN 0 ELSE 1 END
         ) AS tunnels
     properties:
       cache-features: true
@@ -1060,29 +1079,6 @@ Layer:
         ) AS landuse_overlay
     properties:
       minzoom: 8
-
-
-  - id: tourism-boundary
-    geometry: polygon
-    <<: *extents
-    Datasource:
-      <<: *osm2pgsql
-      table: |-
-        (SELECT
-            way,
-            way_area/NULLIF(POW(!scale_denominator!*0.001*0.28,2),0) AS way_pixels,
-            -- added
-            name,
-            -- added
-            historic,
-            tourism
-          FROM planet_osm_polygon
-          WHERE tourism = 'theme_park'
-            OR tourism = 'zoo'
-            OR (historic = 'archaeological_site' and tourism='attraction')
-        ) AS tourism_boundary
-    properties:
-      minzoom: 10
 
 
   - id: barriers
@@ -1321,7 +1317,12 @@ Layer:
                 foot,
                 bicycle,
                 tracktype,
-                'null',
+                CASE WHEN surface IN ('unpaved', 'compacted', 'dirt', 'earth', 'fine_gravel', 'grass', 'grass_paver', 'gravel', 'ground',
+                                      'mud', 'pebblestone', 'salt', 'sand', 'woodchips', 'clay', 'ice', 'snow') THEN 'unpaved'
+                  WHEN surface IN ('paved', 'asphalt', 'cobblestone', 'cobblestone:flattened', 'sett', 'concrete', 'concrete:lanes',
+                                      'concrete:plates', 'paving_stones', 'metal', 'wood', 'unhewn_cobblestone') THEN 'paved'
+                  ELSE NULL
+                END AS int_surface,
                 CASE
                   WHEN access IN ('destination') THEN 'destination'::text
                   WHEN access IN ('no', 'private') THEN 'no'::text
@@ -1345,7 +1346,7 @@ Layer:
             CASE WHEN substring(feature for 8) = 'railway_' THEN 2 ELSE 1 END,
             CASE WHEN feature IN ('railway_INT-preserved-ssy', 'railway_INT-spur-siding-yard', 'railway_tram-service') THEN 0 ELSE 1 END,
             CASE WHEN access IN ('no', 'private') THEN 0 WHEN access IN ('destination') THEN 1 ELSE 2 END,
-            CASE WHEN int_surface IN ('unpaved') THEN 0 ELSE 2 END,
+            CASE WHEN int_surface IN ('unpaved') THEN 0 ELSE 1 END,
             osm_id
         ) AS roads_sql
     properties:
@@ -1354,7 +1355,7 @@ Layer:
 
 
   - id: highway-area-fill
-    # FIXME: No geometry?
+    geometry: polygon
     <<: *extents
     Datasource:
       <<: *osm2pgsql
@@ -1369,8 +1370,14 @@ Layer:
                               AND (tunnel NOT IN ('yes', 'building_passage') OR tunnel IS NULL)
                               AND (covered NOT IN ('yes') OR covered IS NULL))
                               THEN railway END)),
-              (('aeroway_' || CASE WHEN aeroway IN ('runway', 'taxiway', 'helipad') THEN aeroway END))
-            ) AS feature
+              (('aeroway_' || CASE WHEN aeroway IN ('runway', 'taxiway', 'helipad') THEN aeroway ELSE NULL END))
+            ) AS feature,
+            CASE WHEN surface IN ('unpaved', 'compacted', 'dirt', 'earth', 'fine_gravel', 'grass', 'grass_paver', 'gravel', 'ground',
+                                  'mud', 'pebblestone', 'salt', 'sand', 'woodchips', 'clay', 'ice', 'snow') THEN 'unpaved'
+              WHEN surface IN ('paved', 'asphalt', 'cobblestone', 'cobblestone:flattened', 'sett', 'concrete', 'concrete:lanes',
+                                  'concrete:plates', 'paving_stones', 'metal', 'wood', 'unhewn_cobblestone') THEN 'paved'
+              ELSE NULL
+            END AS int_surface
           FROM planet_osm_polygon
           WHERE highway IN ('pedestrian', 'footway', 'service', 'living_street', 'platform', 'services')
             OR (railway IN ('platform')
@@ -1593,7 +1600,7 @@ Layer:
             CASE WHEN substring(feature for 8) = 'railway_' THEN 2 ELSE 1 END,
             CASE WHEN feature IN ('railway_INT-preserved-ssy', 'railway_INT-spur-siding-yard', 'railway_tram-service') THEN 0 ELSE 1 END,
             CASE WHEN access IN ('no', 'private') THEN 0 WHEN access IN ('destination') THEN 1 ELSE 2 END,
-            CASE WHEN int_surface IN ('unpaved') THEN 0 ELSE 2 END
+            CASE WHEN int_surface IN ('unpaved') THEN 0 ELSE 1 END
         ) AS bridges
     properties:
       cache-features: true
@@ -1665,11 +1672,20 @@ Layer:
         (SELECT
             way,
             aeroway,
-            bridge IN ('yes', 'boardwalk', 'cantilever', 'covered', 'low_water_crossing', 'movable', 'trestle', 'viaduct') AS bridge
+            bridge IN ('yes', 'boardwalk', 'cantilever', 'covered', 'low_water_crossing', 'movable', 'trestle', 'viaduct') AS bridge,
+            CASE WHEN surface IN ('unpaved', 'compacted', 'dirt', 'earth', 'fine_gravel', 'grass', 'grass_paver', 'gravel', 'ground',
+                                  'mud', 'pebblestone', 'salt', 'sand', 'woodchips', 'clay', 'ice', 'snow') THEN 'unpaved'
+              WHEN surface IN ('paved', 'asphalt', 'cobblestone', 'cobblestone:flattened', 'sett', 'concrete', 'concrete:lanes',
+                                  'concrete:plates', 'paving_stones', 'metal', 'wood', 'unhewn_cobblestone') THEN 'paved'
+              ELSE NULL
+            END AS int_surface
           FROM planet_osm_line
           WHERE aeroway IN ('runway', 'taxiway')
-          ORDER BY bridge NULLS FIRST,
-            CASE WHEN aeroway = 'runway' THEN 1 ELSE 0 END
+          ORDER BY
+            bridge NULLS FIRST,
+            CASE WHEN aeroway = 'runway' THEN 1 ELSE 0 END,
+            CASE WHEN surface IN ('unpaved', 'compacted', 'dirt', 'earth', 'fine_gravel', 'grass', 'grass_paver', 'gravel', 'ground',
+                                  'mud', 'pebblestone', 'salt', 'sand', 'woodchips', 'clay', 'ice', 'snow') THEN 0 ELSE 1 END
         ) AS aeroways
     properties:
       cache-features: true
@@ -1801,6 +1817,29 @@ Layer:
       minzoom: 14
 
 
+  - id: tourism-boundary
+    geometry: polygon
+    <<: *extents
+    Datasource:
+      <<: *osm2pgsql
+      table: |-
+        (SELECT
+            way,
+            way_area/NULLIF(POW(!scale_denominator!*0.001*0.28,2),0) AS way_pixels,
+            -- added
+            name,
+            -- added
+            historic,
+            tourism
+          FROM planet_osm_polygon
+          WHERE tourism = 'theme_park'
+            OR tourism = 'zoo'
+            OR (historic = 'archaeological_site' and tourism='attraction')
+        ) AS tourism_boundary
+    properties:
+      minzoom: 10
+
+
   # moved to line ~763
   # - id: protected-areas
 
@@ -1834,13 +1873,20 @@ Layer:
     <<: *extents
     Datasource:
       <<: *osm2pgsql
+      # By splitting MPs into polygons, finding the largest in real area, and
+      # finding a label point in 4326 we get better labeling points. 4326 does
+      # distort the placement, but it does so in a way that results in better
+      # results for most countries.
       table: |-
         (SELECT
-            ST_PointOnSurface(way) AS way,
+            (SELECT ST_Transform(ST_PointOnSurface(geom),3857)
+              FROM ST_Dump(ST_Transform(way,4326))
+              ORDER BY ST_Area(geom::geography) DESC
+              LIMIT 1) AS way,
             way_area/NULLIF(POW(!scale_denominator!*0.001*0.28,2),0) AS way_pixels,
             name
           FROM planet_osm_polygon
-          WHERE ST_PointOnSurface(way) && !bbox!
+          WHERE way && !bbox!
             AND name IS NOT NULL
             AND boundary = 'administrative'
             AND admin_level = '2'
@@ -2143,7 +2189,8 @@ Layer:
                     CASE
                       WHEN (tags ? 'ele') AND tags->'ele' ~ '^-?\d{1,4}(\.\d+)?$'
                         AND ("natural" IN ('peak', 'volcano', 'saddle')
-                          OR tourism = 'alpine_hut' OR (tourism = 'information' AND tags->'information' = 'guidepost')
+                          OR (tourism = 'information' AND tags->'information' = 'guidepost')
+                          OR tourism IN ('alpine_hut', 'wilderness_hut')
                           OR (amenity = 'shelter' AND tags->'shelter_type' NOT IN ('public_transport', 'picnic_shelter'))
                           OR tags->'mountain_pass' = 'yes')
                       THEN CONCAT(REPLACE(ROUND((tags->'ele')::NUMERIC)::TEXT, '-', U&'\2212'), U&'\00A0', 'm') END,
@@ -2243,14 +2290,14 @@ Layer:
 
                 'amenity_' || CASE WHEN amenity IN ('parking_entrance')
                                         AND tags->'parking' IN ('multi-storey', 'underground')
-                                        AND (access IS NULL OR access NOT IN ('private', 'no'))
+                                        AND (access IS NULL OR access NOT IN ('private', 'no', 'customers', 'permit', 'delivery'))
                                         AND way_area IS NULL
                                    THEN amenity END,
                 'tourism_' || CASE WHEN tourism IN ('viewpoint', 'attraction') THEN tourism END,
                 'place_' || CASE WHEN place IN ('locality') AND way_area IS NULL THEN place END
                 -- 'golf_' || CASE WHEN tags->'golf' IN ('hole', 'pin') THEN tags->'golf' END
               ) AS feature,
-              access,
+              CASE WHEN access IN ('private', 'no', 'customers', 'permit', 'delivery') THEN 'restricted' ELSE 'yes' END AS int_access,
               CASE
                 -- local
                 WHEN tags->'sport' IN ('climbing') THEN 10000 -- higher than any peak
@@ -2991,7 +3038,7 @@ Layer:
               -- 'man_made_' || CASE WHEN man_made IN ('cross') AND way_area IS NULL THEN man_made END,
               'barrier_' || CASE WHEN barrier IN ('bollard', 'gate', 'lift_gate', 'swing_gate', 'block', 'log', 'cattle_grid', 'stile', 'motorcycle_barrier', 'cycle_barrier', 'full-height_turnstile', 'turnstile', 'kissing_gate') THEN barrier END
             )  AS feature,
-            access,
+            CASE WHEN access IN ('private', 'no', 'customers', 'permit', 'delivery') THEN 'restricted' ELSE 'yes' END AS int_access,
             way_area,
             way_area/NULLIF(POW(!scale_denominator!*0.001*0.28,2),0) AS way_pixels
             FROM
