@@ -394,7 +394,7 @@ local
 
 @rail-fill: #404040;
 @railway-text-repeat-distance: 200;
-@tram: #6E6E6E;
+@tram: @rail-fill;
 @subway: @rail-fill;
 
 /* NOTE NOTE NOTE
