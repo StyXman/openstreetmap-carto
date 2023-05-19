@@ -21,7 +21,8 @@
 @man-made-icon: #666666;
 @advertising-grey: @man-made-icon;
 @barrier-icon: #3f3f3f;
-@landform-color: #d08f55;
+// was #d08f55
+@landform-color: @amenity-brown;
 @leisure-green: darken(@park, 60%);
 @protected-area: #008000;
 @aboriginal: #82643a;
