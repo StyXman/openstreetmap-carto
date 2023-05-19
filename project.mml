@@ -33,6 +33,14 @@ _parts:
     geometry_field: "way"
     extent: "-20037508,-20037508,20037508,20037508"
 
+  polygons: &polygons
+    type: "postgis"
+    port: 5432
+    dbname: "polygons"
+    key_field: ""
+    geometry_field: "way"
+    extent: "-20037508,-20037508,20037508,20037508"
+
   # back here while we fix the use of the new script scripts/get-external-data.py
   extents84: &extents84
     extent: *world
@@ -354,17 +362,7 @@ Layer:
     geometry: polygon
     <<: *extents
     Datasource:
-      file: data/antarctica-icesheet-polygons-3857/icesheet_polygons.shp
-      type: shape
-    properties:
-      minzoom: 5
-
-
-  - id: icesheet-poly-new
-    geometry: polygon
-    <<: *extents
-    Datasource:
-      <<: *osm2pgsql
+      <<: *polygons
       table: |-
         (SELECT
             way
@@ -658,17 +656,7 @@ Layer:
     geometry: polygon
     <<: *extents
     Datasource:
-      file: data/simplified-water-polygons-split-3857/simplified_water_polygons.shp
-      type: shape
-    properties:
-      maxzoom: 9
-
-
-  - id: ocean-lz-new
-    geometry: polygon
-    <<: *extents
-    Datasource:
-      <<: *osm2pgsql
+      <<: *polygons
       table: |-
         (SELECT
             way
@@ -682,17 +670,7 @@ Layer:
     geometry: polygon
     <<: *extents
     Datasource:
-      file: data/water-polygons-split-3857/water_polygons.shp
-      type: shape
-    properties:
-      minzoom: 10
-
-
-  - id: ocean-new
-    geometry: polygon
-    <<: *extents
-    Datasource:
-      <<: *osm2pgsql
+      <<: *polygons
       table: |-
         (SELECT
             way
@@ -742,20 +720,10 @@ Layer:
 
 
   - id: icesheet-outlines
-    # TODO: was: geometry: linestring
-    geometry: polygon
-    <<: *extents
-    Datasource:
-      file: data/antarctica-icesheet-polygons-3857/icesheet_polygons.shp
-      type: shape
-    properties:
-      minzoom: 5
-
-  - id: icesheet-outlines-new
     geometry: linestring
     <<: *extents
     Datasource:
-      <<: *osm2pgsql
+      <<: *polygons
       table: |-
         (SELECT
             way,
@@ -1707,12 +1675,11 @@ Layer:
       minzoom: 16
     status: off
 
-  # - id: necountries-new
   - id: necountries
     geometry: linestring
     <<: *extents
     Datasource:
-      <<: *osm2pgsql
+      <<: *polygons
       table: |-
         (SELECT
             way
