@@ -190,7 +190,7 @@
     }
     [zoom >= 17] {
       // TODO: parametrize size
-      marker-width: 14;
+      marker-width: @medium;
       marker-clip: false;
     }
   }
