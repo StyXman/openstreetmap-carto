@@ -269,7 +269,7 @@
   }
 
   [feature = 'tourism_artwork'][zoom >= 17] {
-    marker-width: @medium;
+    marker-width: @small;
     [artwork_type != 'statue'] {
       marker-file: url('symbols/tourism/artwork.svg');
     }
