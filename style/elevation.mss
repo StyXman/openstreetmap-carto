@@ -45,6 +45,9 @@
 .terrain {
   raster-scaling: lanczos;
   raster-opacity: 0.7;
+  [zoom >= 14] {
+    raster-opacity: 0.5;
+  }
 }
 
 // slopeshade-small [0-6], slopeshade-medium [7-8]
