@@ -191,7 +191,6 @@
     [zoom >= 17] {
       // TODO: parametrize size
       marker-width: @medium;
-      marker-clip: false;
     }
   }
 
