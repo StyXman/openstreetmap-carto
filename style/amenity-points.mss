@@ -1621,7 +1621,7 @@
     marker-fill: @airtransport;
   }
 
-  [feature = 'man_made_lighthouse'][zoom >= 15] {
+  [feature = 'man_made_lighthouse'][zoom >= 11] {
     marker-file: url('symbols/man_made/lighthouse.svg');
     marker-clip: false;
     marker-fill: @water-amenity;
