@@ -8,7 +8,7 @@
 
 // from https://github.com/gravitystorm/openstreetmap-carto/pull/3065
 @water-dark-low-zoom: #5a5aa1;
-@water-dark: darken(@water-color,20%);
+@water-dark: darken(@water-color,40%);
 @water-salt: #f1dddf;
 @land-color: #f2efe9;
 
