@@ -4479,7 +4479,7 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
 
 #roads-text-name::directions,
 #paths-text-name::directions {
-  [zoom >= 16] {
+  [zoom >= 16][junction != 'roundabout'] {
     // intentionally omitting highway_platform, highway_construction
     [highway = 'motorway'],
     [highway = 'motorway_link'],
