@@ -169,11 +169,11 @@
   }
 
   #contour-20 {
-    [zoom >= 14] { line-width: 0.1; }
+    [zoom >= 14] { line-width: 0.15; }
   }
 
   #contour-10 {
-    [zoom >= 15] { line-width: 0.1; }
+    [zoom >= 15] { line-width: 0.15; }
   }
 
   #contour-1000[zoom >= 11],
