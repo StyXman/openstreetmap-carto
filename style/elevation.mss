@@ -179,6 +179,7 @@
   #contour-1000[zoom >= 11],
    #contour-500[zoom >= 12],
    #contour-100[zoom >= 13],
+    #contour-50[zoom >= 16],
   {
     // text-comp-op: minus;
     text-name: "[height]";
