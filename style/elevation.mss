@@ -229,6 +229,15 @@
     text-halo-radius: 1.5;
     text-placement: line;
   }
+
+  [zoom >= 16] {
+    line-width: 8;
+    line-opacity: 0.3;
+  }
+
+  [zoom >= 17] {
+    line-width: 10;
+  }
 }
 
 #pistes-areas {
