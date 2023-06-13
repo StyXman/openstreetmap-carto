@@ -230,3 +230,39 @@
     text-placement: line;
   }
 }
+
+#pistes-areas {
+  [zoom >= 14] {
+    line-width: 2;
+    line-opacity: 0.3;
+
+    polygon-opacity: 0.3;
+
+    [grade = 'novice'] {
+      line-color:   green;
+      polygon-fill: green;
+    }
+    [grade = 'easy'] {
+      line-color:   blue;
+      polygon-fill: blue;
+    }
+    [grade = 'intermediate'] {
+      line-color:   red;
+      polygon-fill: red;
+    }
+    [grade = 'advanced'] {
+      line-color:   black;
+      polygon-fill: black;
+    }
+  }
+
+  [zoom >= 15] {
+    text-name: "[name]";
+    text-size: 12;
+    text-fill: #666;
+    text-face-name: @bold-fonts;
+    text-halo-radius: 1.5;
+    // text-placement: line;
+    text-wrap-width: 10;
+  }
+}

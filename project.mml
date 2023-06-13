@@ -1370,6 +1370,24 @@ Layer:
       minzoom: 10
 
 
+  - id: pistes-areas
+    geometry: polygon
+    <<: *extents
+    Datasource:
+      <<: *osm2pgsql
+      table: |-
+        (SELECT way,
+          tags->'piste:difficulty' AS grade,
+          name
+        FROM planet_osm_polygon
+        WHERE
+          tags->'piste:difficulty' IS NOT NULL
+        ) AS pistes_areas
+    advanced: {}
+    properties:
+      minzoom: 14
+
+
   - id: pistes
     geometry: linestring
     <<: *extents
