@@ -217,8 +217,6 @@
 
   [zoom >= 14] {
     line-width: 2;
-    line-opacity: 0.6;
-    line-smooth: 0.4;
   }
 
   [zoom >= 15] {
