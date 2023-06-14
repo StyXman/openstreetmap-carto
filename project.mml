@@ -64,6 +64,7 @@ srs: *srs
 
 Stylesheet:
   - style/style.mss
+
   # local
   - style/elevation.mss
   - style/fonts.mss
@@ -72,9 +73,12 @@ Stylesheet:
   - style/water.mss
   - style/water-features.mss
   - style/road-colors-generated.mss
+  - style/roads.mss
+
   # local
   - style/elevation-roads.mss
-  - style/roads.mss
+  - style/track-footway-path.mss
+
   - style/power.mss
   - style/placenames.mss
   - style/buildings.mss

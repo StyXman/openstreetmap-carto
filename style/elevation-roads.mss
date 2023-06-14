@@ -30,3 +30,9 @@
 @trunk-oneway-arrow-color: white;
 @primary-oneway-arrow-color: white;
 @secondary-oneway-arrow-color: white;
+
+// fills
+@track-fill: black;
+@track-fill-noaccess: #bbbbbb;
+@footway-fill: #402a00;
+@footway-fill-noaccess: #e2c5bb;
