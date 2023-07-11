@@ -562,10 +562,11 @@ Then all three layers are added to the rendering with comp-op: darken, so that t
         }
       }
     }
+
     [zoom >= 10] {
       // inner line
       ::wideline {
-        opacity: 0.15;
+        opacity: 0.2;
         line-width: 3.6;
         // Unlike planet_osm_line, planet_osm_polygon does not preserves the
         // original direction of the OSM way: Following OGS at
@@ -589,9 +590,10 @@ Then all three layers are added to the rendering with comp-op: darken, so that t
           line-offset: -2;
         }
       }
+
       // outer line
       ::narrowline {
-        opacity: 0.15;
+        opacity: 0.4;
         line-width: 1.8;
         line-color: @protected-area;
         [boundary = 'aboriginal_lands'] {
@@ -602,6 +604,16 @@ Then all three layers are added to the rendering with comp-op: darken, so that t
         [zoom >= 12] {
             line-width: 2;
         }
+
+        /*
+        polygon-fill: #55ff55;
+        polygon-opacity: 0.5;
+        */
+        polygon-pattern-file: url('patterns/np_nr_green_hatch-low_zoom.svg');
+        [zoom >= 15] {
+          polygon-pattern-file: url('patterns/np_nr_green_hatch.svg');
+        }
+        polygon-pattern-alignment: global;
       }
     }
   }
