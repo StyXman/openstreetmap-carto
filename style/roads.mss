@@ -4122,6 +4122,8 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
   }
 
   [route = 'bus'][zoom >= 14] {
+    // I would like to not draw (bus) routes on highways, but since the relations are rebuilt as ways by osm2psql
+    // and they lose the highway information, I can't do it until we write our own style.lua
     bg/line-width: 1;
     bg/line-color: white;
     bg/line-join: round;
