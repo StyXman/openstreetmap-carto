@@ -44,16 +44,6 @@
 @standard-line-spacing-size: -1.5; // -0.15 em
 @standard-font: @book-fonts;
 
-// icon sizes
-@tiny: 4;
-@dot: 6;
-@small: 8;
-@medium: 10;
-@normal: 12;
-@big: 16;
-// size of icons so they can be seen while driving
-@huge: 24;
-
 // local
 @electric: green;  // TODO: find a better color
 @private-opacity: 0.33;

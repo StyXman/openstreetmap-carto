@@ -6,6 +6,16 @@
 // things that are useful and common enough to see in the near range
 @useful: 16;
 
+// icon sizes
+@tiny: 4;
+@dot: 6;
+@small: 8;
+@medium: 10;
+@normal: 12;
+@big: 16;
+// size of icons so they can be seen while driving
+@huge: 24;
+
 // from https://github.com/gravitystorm/openstreetmap-carto/pull/3065
 @water-dark-low-zoom: #5a5aa1;
 @water-dark: darken(@water-color,40%);
