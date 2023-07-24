@@ -2176,6 +2176,10 @@ Layer:
                   name,
                   E'\n' || CONCAT( -- by doing this with a || if both the ele and height branches are null, this entire expression is null and only name is used
                     CASE
+                      WHEN historic IN ('archaeological_site', 'fort', 'castle', 'city_gate')
+                       AND (tags ? 'start_date')
+                      THEN CONCAT( '(', tags->'start_date', ')' ) END,
+                    CASE
                       WHEN (tags ? 'ele') AND tags->'ele' ~ '^-?\d{1,4}(\.\d+)?$'
                         AND ("natural" IN ('peak', 'volcano', 'saddle')
                           OR (tourism = 'information' AND tags->'information' = 'guidepost')
