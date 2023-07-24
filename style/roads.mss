@@ -159,6 +159,9 @@ local
 @residential-width-z13:           2.5;
 @living-street-width-z13:         2;
 
+// *******************************************************************
+// for track, footpath and path widths, check track-footway-path.mss
+// *******************************************************************
 @bridleway-width-z13:             0.3;
 @footway-width-z14:               0.7;
 @cycleway-width-z13:              0.7;
@@ -331,23 +334,32 @@ local
 @secondary-casing-width-z20:      1;
 @major-casing-width-z20:          1;
 
+
 @bridge-casing-width-z12:         0.1;
 @major-bridge-casing-width-z12:   0.5;
+
 @bridge-casing-width-z13:         0.5;
 @major-bridge-casing-width-z13:   0.5;
+
 @bridge-casing-width-z14:         0.5;
 @major-bridge-casing-width-z14:   0.6;
+
 @bridge-casing-width-z15:         0.75;
 @major-bridge-casing-width-z15:   0.75;
+
 @bridge-casing-width-z16:         0.75;
 @major-bridge-casing-width-z16:   0.75;
+
 @bridge-casing-width-z17:         0.8;
 @major-bridge-casing-width-z17:   1;
+
 @bridge-casing-width-z18:         0.8;
 @major-bridge-casing-width-z18:   1;
+
 @bridge-casing-width-z19:         0.8;
 // v4.22.0 was 1
 @major-bridge-casing-width-z19:   1.2;
+
 @bridge-casing-width-z20:         0.8;
 @major-bridge-casing-width-z20:   1;
 
@@ -2882,6 +2894,7 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
             background/line-color: @difficult_alpine_hiking;
             background/line-opacity: 0.2;
           }
+
           background/line-cap: round;
           background/line-join: round;
           background/line-width: @path-width-z14 + 2 * @paths-background-width;
