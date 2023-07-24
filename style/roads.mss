@@ -2905,6 +2905,18 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
             line/line-width: @path-width-z19;
           }
         }
+
+        [zoom >= 14][trailblazed = 'yes'] {
+          marker-fill: black;
+          marker-height: @tiny;
+          marker-width: @tiny;
+          marker-placement: line;
+          marker-spacing: 30;
+          [zoom >= 16] {
+            marker-height: @dot;
+            marker-width: @dot;
+          }
+        }
       }
     }
 
@@ -3103,6 +3115,18 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
 
         [zoom >= 19] {
           line/line-width: @track-width-z19;
+        }
+
+        [zoom >= 14][trailblazed = 'yes'] {
+          marker-fill: black;
+          marker-height: @tiny;
+          marker-width: @tiny;
+          marker-placement: line;
+          marker-spacing: 30;
+          [zoom >= 16] {
+            marker-height: @dot;
+            marker-width: @dot;
+          }
         }
       }
     }

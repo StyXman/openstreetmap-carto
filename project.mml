@@ -963,6 +963,7 @@ Layer:
             construction,
             service,
             link,
+            NULL as trailblazed,
             layernotnull
           FROM ( -- subselect that contains both roads and rail
             SELECT
@@ -1243,6 +1244,7 @@ Layer:
             service,
             link,
             sac_scale,
+            trailblazed,
             layernotnull
           FROM ( -- subselect that contains both roads and rail/aero
             SELECT
@@ -1270,6 +1272,7 @@ Layer:
                   ELSE 'no'
                 END AS link,
                 tags->'sac_scale' as sac_scale,
+                tags->'trailblazed' as trailblazed,
                 COALESCE(layer,0) AS layernotnull,
                 osm_id,
                 z_order
@@ -1303,6 +1306,7 @@ Layer:
                 CASE WHEN service IN ('parking_aisle', 'drive-through', 'driveway') OR leisure IN ('slipway') THEN 'INT-minor'::text ELSE 'INT-normal'::text END AS service,
                 'no' AS link,
                 NULL as sac_scale,
+                NULL as trailblazed,
                 COALESCE(layer,0) AS layernotnull,
                 osm_id,
                 z_order
@@ -1407,7 +1411,7 @@ Layer:
         ) AS pistes
     advanced: {}
     properties:
-      minzoom: 12
+      minzoom: 11
 
 
   - id: turning-circle-fill
@@ -1528,6 +1532,7 @@ Layer:
             construction,
             service,
             link,
+            NULL as trailblazed,
             layernotnull
           FROM ( -- subselect that contains both roads and rail/aero
             SELECT
