@@ -2837,6 +2837,17 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
           }
         }
 
+        [zoom >= 14][trailblazed = 'yes'] {
+          marker-fill: black;
+          marker-height: @tiny;
+          marker-width: @tiny;
+          marker-placement: line;
+          marker-spacing: 30;
+          [zoom >= 16] {
+            marker-height: @dot;
+            marker-width: @dot;
+          }
+        }
       }
     }
 
