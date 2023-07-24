@@ -1703,12 +1703,11 @@
   }
 
   [feature = 'power_generator']['generator:source' = 'wind'] {
-    [zoom >= 15][location != 'rooftop'][location != 'roof'],
-    [zoom >= 15][location = null],
+    [zoom >= 13][location != 'rooftop'][location != 'roof'],
+    [zoom >= 13][location = null],
     [zoom >= 19] {
       marker-file: url('symbols/man_made/generator_wind.svg');
-      marker-width: @small;
-      marker-fill: @man-made-icon;
+      marker-fill: black;
       marker-clip: false;
     }
   }
