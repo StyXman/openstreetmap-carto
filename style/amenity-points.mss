@@ -165,6 +165,15 @@
     marker-clip: false;
   }
 
+  [feature = 'highway_services'][is_building = 'no'],
+  [feature = 'highway_rest_area'][is_building = 'no'] {
+    [zoom >= 11][zoom < 16] {
+      marker-fill: @motorway-low-zoom;
+      marker-height: @small;
+      marker-width: @small;
+    }
+  }
+
   [feature = 'highway_bus_stop'] {
     /*
       was: square symbol for ZL16, but symbol for ZL17+
