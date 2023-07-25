@@ -95,9 +95,14 @@
       line-join: round;
       line-clip: false;
     }
-    line-color: @water-color;
+    // was @water-color;
+    line-color: @water-dark;
     line-width: 0.7;
-    [zoom >= 9] { line-width: 1.2; }
+    [zoom >= 8] { line-width: 1; }
+    [zoom >= 9] {
+      line-width: 1.2;
+      // line-color: @water-color;
+    }
     [zoom >= 10] { line-width: 1.6; }
   }
 }
@@ -165,26 +170,6 @@
         line-width: 13.5;
       }
     }
-  }
-}
-
-#water-lines-low-zoom {
-  [waterway = 'river'][zoom >= 8][zoom < 12] {
-    [int_intermittent = 'yes'] {
-      line-dasharray: 8,4;
-      line-cap: butt;
-      line-join: round;
-      line-clip: false;
-    }
-    // was @water-color;
-    line-color: @water-dark;
-    line-width: 0.7;
-    [zoom >= 8] { line-width: 1; }
-    [zoom >= 9] {
-      line-width: 1.2;
-      line-color: @water-color;
-    }
-    [zoom >= 10] { line-width: 1.6; }
   }
 }
 
