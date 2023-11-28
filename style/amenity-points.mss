@@ -2623,7 +2623,6 @@
       [feature = 'landuse_farmyard'] {
         text-fill: darken(@farmyard, 50%);
       }
-      [feature = 'landuse_farm'],
       [feature = 'landuse_farmland'],
       [feature = 'landuse_greenhouse_horticulture'] {
         text-fill: darken(@farmland, 50%);
