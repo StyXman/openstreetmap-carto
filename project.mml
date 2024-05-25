@@ -169,7 +169,6 @@ Layer:
       table: |-
         (SELECT
             way, name, religion, way_pixels, is_building,
-            parking_space,
             -- see -->        golf gone                                                             tourism, gone to lc-flat
             COALESCE(aeroway,       amenity, wetland, power, landuse, leisure, man_made, "natural", shop,          highway, railway) AS feature
           FROM (SELECT
@@ -181,7 +180,7 @@ Layer:
               ('amenity_' || (CASE WHEN amenity IN (                                         'university', 'college', 'school',
                                                  --                             'grave_yard', 'prison', gone to landcover-flat
                                                     'hospital', 'kindergarten',                         'place_of_worship', 'clinic', 'ferry_terminal',
-                                                    'marketplace', 'community_centre', 'social_facility', 'arts_centre', 'parking_space', 'bus_station',
+                                                    'marketplace', 'community_centre', 'social_facility', 'arts_centre', 'bus_station',
                                                     'fire_station', 'police')
                               -- OR amenity IN ('parking') AND (tags->'parking' NOT IN ('underground') OR (tags->'parking') IS NULL)  gone to lc-flat
                                                                                                                                   THEN amenity END)) AS amenity,
@@ -212,7 +211,6 @@ Layer:
               CASE WHEN religion IN ('christian', 'jewish', 'muslim') THEN religion ELSE 'INT-generic'::text END AS religion,
               way_area/NULLIF(POW(!scale_denominator!*0.001*0.28,2),0) AS way_pixels,
               CASE WHEN building = 'no' OR building IS NULL THEN 'no' ELSE 'yes' END AS is_building,
-              tags->'parking_space' as parking_space,
               way_area
             FROM planet_osm_polygon
             WHERE (landuse IS NOT NULL
@@ -223,7 +221,7 @@ Layer:
               OR amenity IN (                                                            'university', 'college', 'school', 'hospital', 'kindergarten',
                           -- 'grave_yard',                     'prison', gone to lc-flat
                                            'place_of_worship',           'clinic', 'ferry_terminal', 'marketplace', 'community_centre', 'social_facility',
-                             'arts_centre', 'parking_space', 'bus_station', 'fire_station', 'police')
+                             'arts_centre', 'bus_station', 'fire_station', 'police')
               OR man_made IN ('works', 'wastewater_plant','water_works')
               OR "natural" IN ('beach', 'shoal', 'heath', 'mud', 'wetland', 'grassland', 'wood', 'sand', 'scree', 'shingle', 'bare_rock', 'scrub')
               OR power IN ('plant', 'substation', 'generator')
@@ -336,10 +334,12 @@ Layer:
         (SELECT
             way, name, religion, way_pixels, access, is_building,
             surface,
+            parking_space,
             COALESCE(amenity, landuse, leisure, tourism, "natural") AS feature
           FROM (SELECT
               way, COALESCE(name, '') AS name, access,
-              ('amenity_' || (CASE WHEN amenity IN ('grave_yard', 'parking', 'bicycle_parking', 'motorcycle_parking', 'prison')
+              ('amenity_' || (CASE WHEN amenity IN ('grave_yard', 'parking', 'bicycle_parking', 'motorcycle_parking', 'prison',
+                                                    'parking_space')
                                      OR amenity IN ('parking') AND (tags->'parking' NOT IN ('underground') OR (tags->'parking') IS NULL) THEN amenity ELSE NULL END)) AS amenity,
               ('landuse_' || (CASE WHEN landuse IN ('cemetery', 'recreation_ground', 'village_green') THEN landuse ELSE NULL END)) AS landuse,
               ('leisure_' || (CASE WHEN leisure IN ('swimming_pool', 'playground', 'park', 'recreation_ground', 'garden',
@@ -348,11 +348,12 @@ Layer:
               ('natural_' || (CASE WHEN "natural" IN ('beach', 'shoal') THEN "natural" ELSE NULL END)) AS "natural",
               CASE WHEN religion IN ('christian', 'jewish') THEN religion ELSE 'INT-generic'::text END AS religion,
               CASE WHEN building = 'no' OR building IS NULL THEN 'no' ELSE 'yes' END AS is_building,
+              tags->'parking_space' as parking_space,
               surface,
               way_area/NULLIF(!pixel_width!::real*!pixel_height!::real,0) AS way_pixels
             FROM planet_osm_polygon
             WHERE (landuse IS NOT NULL
-              OR amenity IN ('parking', 'bicycle_parking', 'motorcycle_parking', 'grave_yard', 'prison')
+              OR amenity IN ('parking', 'parking_space', 'bicycle_parking', 'motorcycle_parking', 'grave_yard', 'prison')
               OR leisure IS NOT NULL
               OR "natural" IN ('beach', 'shoal'))
               AND way_area > 0.01*!pixel_width!::real*!pixel_height!::real

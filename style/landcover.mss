@@ -644,19 +644,12 @@
   [feature = 'amenity_taxi'] {
   */
 
-  /* not interested
+  /* not interested, but see lc-flat
   [feature = 'amenity_parking_space'][zoom >= 18] {
     line-width: 0.3;
     line-color: mix(@parking-outline, @parking, 50%);
   }
   */
-
-  // local
-  [feature = 'amenity_parking_space'][parking_space = 'disabled'][zoom >= 17] {
-    line-width: 0.3;
-    line-color: mix(@parking-outline, @parking, 50%);
-    polygon-fill: #3e92fb;
-  }
 
   [feature = 'aeroway_apron'][zoom >= 10] {
     polygon-fill: @apron;
@@ -795,6 +788,22 @@
       }
       [way_pixels >= 4]  { polygon-gamma: 0.75; }
       [way_pixels >= 64] { polygon-gamma: 0.3;  }
+    }
+  }
+
+  // local
+  [feature = 'amenity_parking_space'][parking_space = 'disabled'][zoom >= 18],
+  [feature = 'amenity_parking_space'][parking_space = 'charging'][zoom >= 18] {
+    line-width: 0.3;
+    line-color: mix(@parking-outline, @parking, 50%);
+    [parking_space = 'disabled'] {
+      polygon-fill: #3e92fb;
+    }
+    [parking_space = 'charging'] {
+      polygon-fill: green;
+    }
+    [parking_space = 'car_pooling'] {
+      polygon-fill: orange;
     }
   }
 
