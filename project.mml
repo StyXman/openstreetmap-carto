@@ -1674,7 +1674,7 @@ Layer:
     properties:
       group-by: layernotnull
       minzoom: 15
->>>>>>> v5.8.0
+
   - id: entrances
     geometry: point
     <<: *extents
