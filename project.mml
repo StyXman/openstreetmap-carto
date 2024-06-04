@@ -1685,7 +1685,7 @@ Layer:
             -- was:         IN ('2', '3')
             AND admin_level = '2'
             AND osm_id < 0
-          ORDER BY admin_level DESC
+          -- ORDER BY admin_level DESC
         ) AS admin_low_zoom
     properties:
       # was: 7
