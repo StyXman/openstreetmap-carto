@@ -278,6 +278,20 @@ Layer:
       minzoom: 4
 
 
+  - id: icesheet-poly
+    geometry: polygon
+    <<: *extents
+    Datasource:
+      <<: *polygons
+      table: |-
+        (SELECT
+            way
+          FROM icesheet_polygons
+        ) AS icesheet_polygons
+    properties:
+      minzoom: 5
+
+
   - id: slopeshade-small
     class: slopeshade-over
     geometry: raster
@@ -365,20 +379,6 @@ Layer:
         ) AS features
     properties:
       minzoom: 10
-
-
-  - id: icesheet-poly
-    geometry: polygon
-    <<: *extents
-    Datasource:
-      <<: *polygons
-      table: |-
-        (SELECT
-            way
-          FROM icesheet_polygons
-        ) AS icesheet_polygons
-    properties:
-      minzoom: 5
 
 
   - id: hillshade-small
