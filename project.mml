@@ -646,8 +646,8 @@ Layer:
         ) AS landcover_area_symbols
     properties:
       cache-features: true
-      # was: 9
-      minzoom: 5
+      # was: 5
+      minzoom: 9
 
 
   - id: icesheet-outlines
