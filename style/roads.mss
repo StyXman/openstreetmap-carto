@@ -4904,10 +4904,12 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
         text-upright: right;
         text-vertical-alignment: middle;
         text-face-name: @book-fonts;
+
         [oneway = '-1'] {
           text-upright: left;
           text-dy: -3;
         }
+
         [highway = 'footway'] {
           text-fill: @footway-oneway-arrow-color;
         }

@@ -123,7 +123,7 @@
 #contour-500,
 #contour-1000 {
   /*
-  all hsvc ops look ugly because the operate at pixel level regardless of underlying data,
+  all hsvc ops look ugly because they operate at pixel level regardless of underlying data,
   and 'value' seems even broken
   // comp-op: value;
   line-comp-op: value;
