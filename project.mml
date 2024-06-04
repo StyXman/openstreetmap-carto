@@ -2129,30 +2129,31 @@ Layer:
               way,
               CASE
                 WHEN amenity = 'parcel_locker'
-                THEN CONCAT_WS(E'\n', COALESCE(tags->'brand', tags->'operator', name), ref)
+                  THEN CONCAT_WS(E'\n', COALESCE(tags->'brand', tags->'operator', name), ref)
                 ELSE
-                CONCAT(
-                  name,
-                  E'\n' || CONCAT( -- by doing this with a || if both the ele and height branches are null, this entire expression is null and only name is used
-                    CASE
-                      WHEN historic IN ('archaeological_site', 'fort', 'castle', 'city_gate')
-                       AND (tags ? 'start_date')
-                      THEN CONCAT( '(', tags->'start_date', ')' ) END,
-                    CASE
-                      WHEN (tags ? 'ele') AND tags->'ele' ~ '^-?\d{1,4}(\.\d+)?$'
-                        AND ("natural" IN ('peak', 'volcano', 'saddle')
-                          OR (tourism = 'information' AND tags->'information' = 'guidepost')
-                          OR tourism IN ('alpine_hut', 'wilderness_hut')
-                          OR (amenity = 'shelter' AND tags->'shelter_type' NOT IN ('public_transport', 'picnic_shelter'))
-                          OR tags->'mountain_pass' = 'yes')
-                      THEN CONCAT(REPLACE(ROUND((tags->'ele')::NUMERIC)::TEXT, '-', U&'\2212'), U&'\00A0', 'm') END,
-                    CASE
-                      WHEN (tags ? 'height') AND tags->'height' ~ '^\d{1,3}(\.\d+)?$'
-                        AND waterway = 'waterfall'
-                      THEN CONCAT(ROUND((tags->'height')::NUMERIC)::TEXT, U&'\00A0', 'm') END
+                  CONCAT(
+                    name,
+                    E'\n' || CONCAT( -- by doing this with a || if both the ele and height branches are null, this entire expression is null and only name is used
+                      CASE
+                        WHEN historic IN ('archaeological_site', 'fort', 'castle', 'city_gate')
+                         AND (tags ? 'start_date')
+                          THEN CONCAT( '(', tags->'start_date', ')' ) END,
+                      CASE
+                        WHEN (tags ? 'ele') AND tags->'ele' ~ '^-?\d{1,4}(\.\d+)?$'
+                         AND ("natural" IN ('peak', 'volcano', 'saddle')
+                            OR (tourism = 'information' AND tags->'information' = 'guidepost')
+                            OR tourism IN ('alpine_hut', 'wilderness_hut')
+                            OR (amenity = 'shelter' AND tags->'shelter_type' NOT IN ('public_transport', 'picnic_shelter'))
+                            OR tags->'mountain_pass' = 'yes')
+                          THEN CONCAT(REPLACE(ROUND((tags->'ele')::NUMERIC)::TEXT, '-', U&'\2212'), U&'\00A0', 'm') END,
+                      CASE
+                        WHEN (tags ? 'height')
+                         AND tags->'height' ~ '^\d{1,3}(\.\d+)?$'
+                         AND (waterway = 'waterfall' OR "natural" = 'waterfall')
+                          THEN CONCAT(ROUND((tags->'height')::NUMERIC)::TEXT, U&'\00A0', 'm') END
+                      )
                     )
-                  )
-                -- ) AS name,
+                  -- ) AS name,
               END AS name,
               tags->'parking' as "parking",
               CASE
