@@ -793,17 +793,20 @@
 
   // local
   [feature = 'amenity_parking_space'][parking_space = 'disabled'][zoom >= 18],
-  [feature = 'amenity_parking_space'][parking_space = 'charging'][zoom >= 18] {
+  [feature = 'amenity_parking_space'][parking_space = 'charging'][zoom >= 18],
+  [feature = 'amenity_parking_space'][parking_space = 'car_pooling'][zoom >= 18],
+  [feature = 'amenity_parking_space'][parking_space = 'car_sharing'][zoom >= 18] {
     line-width: 0.3;
     line-color: mix(@parking-outline, @parking, 50%);
     [parking_space = 'disabled'] {
-      polygon-fill: #3e92fb;
+      polygon-fill: lighten(#3e92fb, 20%);
     }
     [parking_space = 'charging'] {
-      polygon-fill: green;
+      polygon-fill: lighten(green, 10%);
     }
-    [parking_space = 'car_pooling'] {
-      polygon-fill: orange;
+    [parking_space = 'car_pooling'],
+    [parking_space = 'car_sharing'] {
+      polygon-fill: lighten(orange, 25%);
     }
   }
 
