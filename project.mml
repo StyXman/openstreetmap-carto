@@ -94,41 +94,14 @@ Stylesheet:
   - style/tourism.mss
 
 Layer:
-  - id: terrain-small
+  - id: terrain
     class: terrain
     geometry: raster
     <<: *extents
     Datasource:
-      file: data/height/mixed-terrain-small.tif
+      file: data/height/terrain.vrt
       type: gdal
     advanced: {}
-    properties:
-      maxzoom: 6
-
-
-  - id: terrain-medium
-    class: terrain
-    geometry: raster
-    <<: *extents
-    Datasource:
-      file: data/height/mixed-terrain-medium.tif
-      type: gdal
-    advanced: {}
-    properties:
-      minzoom: 7
-      maxzoom: 7
-
-
-  - id: terrain-big
-    class: terrain
-    geometry: raster
-    <<: *extents
-    Datasource:
-      file: data/height/mixed-terrain.vrt
-      type: gdal
-    advanced: {}
-    properties:
-      minzoom: 8
 
 
   - id: landcover-low-zoom
@@ -292,50 +265,48 @@ Layer:
       minzoom: 5
 
 
-  - id: slopeshade-small
+  - id: slopeshade-over
     class: slopeshade-over
     geometry: raster
     <<: *extents
     Datasource:
-      file: data/height/mixed-slopeshade-small.tif
+      file: data/height/slopeshade.vrt
       type: gdal
     advanced: {}
     properties:
-      maxzoom: 6
-
-
-  - id: slopeshade-medium-over
-    class: slopeshade-over
-    geometry: raster
-    <<: *extents
-    Datasource:
-      file: data/height/mixed-slopeshade-medium.tif
-      type: gdal
-    advanced: {}
-    properties:
-      minzoom: 7
-      maxzoom: 7
-
-
-  - id: slopeshade-medium-overlay
-    class: slopeshade-overlay
-    geometry: raster
-    <<: *extents
-    Datasource:
-      file: data/height/mixed-slopeshade-medium.tif
-      type: gdal
-    advanced: {}
-    properties:
-      minzoom: 8
       maxzoom: 8
 
 
-  - id: slopeshade-big
+  - id: slopeshade-overlay
     class: slopeshade-overlay
     geometry: raster
     <<: *extents
     Datasource:
-      file: data/height/mixed-slopeshade.vrt
+      file: data/height/slopeshade.vrt
+      type: gdal
+    advanced: {}
+    properties:
+      minzoom: 9
+
+
+  - id: hillshade-over
+    class: hillshade-over
+    geometry: raster
+    <<: *extents
+    Datasource:
+      file: data/height/hillshade.vrt
+      type: gdal
+    advanced: {}
+    properties:
+      maxzoom: 8
+
+
+  - id: hillshade-overlay
+    class: hillshade-overlay
+    geometry: raster
+    <<: *extents
+    Datasource:
+      file: data/height/hillshade.vrt
       type: gdal
     advanced: {}
     properties:
@@ -379,56 +350,6 @@ Layer:
         ) AS features
     properties:
       minzoom: 10
-
-
-  - id: hillshade-small
-    class: hillshade-over
-    geometry: raster
-    <<: *extents
-    Datasource:
-      file: data/height/mixed-hillshade-small.tif
-      type: gdal
-    advanced: {}
-    properties:
-      maxzoom: 6
-
-
-  - id: hillshade-medium-over
-    class: hillshade-over
-    geometry: raster
-    <<: *extents
-    Datasource:
-      file: data/height/mixed-hillshade-medium.tif
-      type: gdal
-    advanced: {}
-    properties:
-      minzoom: 7
-      maxzoom: 8
-
-
-  - id: hillshade-medium-overlay
-    class: hillshade-overlay
-    geometry: raster
-    <<: *extents
-    Datasource:
-      file: data/height/mixed-hillshade-medium.tif
-      type: gdal
-    advanced: {}
-    properties:
-      minzoom: 8
-      maxzoom: 8
-
-
-  - id: hillshade-big
-    class: hillshade-overlay
-    geometry: raster
-    <<: *extents
-    Datasource:
-      file: data/height/mixed-hillshade.vrt
-      type: gdal
-    advanced: {}
-    properties:
-      minzoom: 9
 
 
   - id: contour-10
