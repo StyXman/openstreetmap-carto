@@ -23,14 +23,27 @@
     [amenity = 'place_of_worship'],
     [aeroway = 'terminal'],
     [aerialway = 'station'],
+    [historic = 'castle'],
+    [historic = 'fort'],
     [building = 'train_station'],
     [public_transport = 'station'] {
+      line-color: @tourism;
+      line-width: 0.5;
+      line-offset: -0.25;
       polygon-fill: @building-major-z14;
       [zoom >= 15] {
         polygon-fill: @building-major-z15;
+        /*
         line-color: @building-major-line;
+        */
         [zoom >= 16] {
           polygon-fill: @building-major-fill;
+          line-width: 1;
+          line-offset: -0.5;
+        }
+        [zoom >= 16] {
+          line-width: 1.5;
+          line-offset: -0.75;
         }
       }
     }
