@@ -159,6 +159,7 @@ Layer:
       cache-features: true
       minzoom: 5
       maxzoom: 9
+    status: off
 
 
   - id: landcover
