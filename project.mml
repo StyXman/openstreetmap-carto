@@ -763,14 +763,9 @@ Layer:
       table: |-
         (SELECT
             way,
-            -- added
-            "natural",
-            -- added
-            name,
             waterway
           FROM planet_osm_line
-          WHERE waterway IN ('dam', 'weir', 'lock_gate', 'waterfall')
-             OR "natural" = 'waterfall'
+          WHERE waterway IN ('dam', 'weir', 'lock_gate')
         ) AS water_barriers_line
     properties:
       minzoom: 13
@@ -895,12 +890,9 @@ Layer:
       table: |-
         (SELECT
             way,
-            waterway,
-            "natural",
-            name
+            waterway
           FROM planet_osm_point
-          WHERE waterway IN ('dam', 'weir', 'lock_gate', 'waterfall')
-             OR "natural" = 'waterfall'
+          WHERE waterway IN ('dam', 'weir', 'lock_gate')
         ) AS water_barriers_points
     properties:
       minzoom: 13

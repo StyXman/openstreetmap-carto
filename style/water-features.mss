@@ -78,12 +78,14 @@
 
 // local
 // see amenity-points.mss for the point symbol
+/*
 #water-barriers-line[zoom >= 13] {
   [waterway = 'waterfall'],
   [natural  = 'waterfall'] {
     line-pattern-file: url('symbols/local/big_waterfall.svg');
   }
 }
+*/
 
 #piers-poly, #piers-line {
   [man_made = 'pier'][zoom >= 12] {
