@@ -2217,7 +2217,9 @@ Layer:
                                                       'grassland', 'scrub', 'beach', 'glacier', 'tree', 'strait', 'cape')
                                                       THEN "natural" END,
 
-                'waterway_' || CASE WHEN "waterway" IN ('waterfall') AND way_area IS NULL THEN waterway END,
+                'waterway_' || CASE WHEN ( waterway = 'waterfall' OR "natural" = 'waterfall' ) AND way_area IS NULL
+                  THEN COALESCE(waterway, "natural")
+                END,
 
                 'place_' || CASE WHEN place IN ('island', 'islet', 'square') THEN place END,
 
@@ -2258,7 +2260,7 @@ Layer:
                   CASE
                     WHEN tags->'ele' ~ '^-?\d{1,4}(\.\d+)?$' THEN (tags->'ele')::NUMERIC
                   END
-                WHEN waterway IN ('waterfall') THEN
+                WHEN waterway = 'waterfall' OR "natural" = 'waterfall' THEN
                   CASE
                     WHEN tags->'height' ~ '^\d{1,3}(\.\d+)?( m)?$' THEN (SUBSTRING(tags->'height', '^(\d{1,3}(\.\d+)?)( m)?$'))::NUMERIC
                   END
@@ -2268,7 +2270,7 @@ Layer:
               tags->'generator:source' as "generator:source",
               CASE
                 WHEN (man_made IN ('mast', 'tower', 'chimney', 'crane') AND (tags->'location' NOT IN ('roof', 'rooftop') OR (tags->'location') IS NULL))
-                      OR waterway IN ('waterfall') THEN
+                      OR waterway = 'waterfall' OR "natural" = 'waterfall' THEN
                   CASE
                     WHEN tags->'height' ~ '^\d{1,3}(\.\d+)?( m)?$' THEN (SUBSTRING(tags->'height', '^(\d{1,3}(\.\d+)?)( m)?$'))::NUMERIC
                   END
