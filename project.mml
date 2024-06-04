@@ -2690,6 +2690,7 @@ Layer:
               WHEN junction IN ('roundabout') AND (oneway IS NULL OR NOT oneway IN ('no', 'reversible')) THEN 'yes'
             END AS oneway,
             junction,
+            tags->'incline' as incline,
             horse,
             bicycle
           FROM planet_osm_line
