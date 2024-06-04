@@ -67,6 +67,8 @@ Stylesheet:
 
   # local
   - style/elevation.mss
+  - style/elevation-terrain.mss
+
   - style/fonts.mss
   - style/shapefiles.mss
   - style/landcover.mss
