@@ -667,6 +667,14 @@
     }
   }
 
+  // local
+  [feature = 'man_made_cairn'][zoom >= 16] {
+    marker-file: url('symbols/local/cairn.svg');
+    marker-fill: black;
+    marker-placement: interior;
+    marker-clip: false;
+  }
+
   [feature = 'historic_city_gate'][zoom >= @nice] {
     marker-file: url('symbols/historic/city_gate.svg');
     // was @man-made-icon;

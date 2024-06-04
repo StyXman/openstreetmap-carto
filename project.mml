@@ -2202,6 +2202,7 @@ Layer:
                 -- local, moved from lowprio, added summit_cross, before the next man_made_ to give higher prio
                 'man_made_' || CASE WHEN man_made IN ('cross', 'summit_cross') THEN 'cross' END,
                 'man_made_' || CASE WHEN (man_made IN ('chimney', 'communications_tower', 'crane', 'lighthouse', 'mast', 'obelisk', 'silo', 'storage_tank',
+                                                       'cairn',
                                                        'telescope', 'tower', 'wastewater_plant', 'water_tower', 'water_works', 'windmill', 'works')
                                             AND (tags->'location' NOT IN ('roof', 'rooftop') OR NOT (tags ? 'location'))) THEN man_made END,
 
