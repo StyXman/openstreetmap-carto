@@ -2255,11 +2255,13 @@ Layer:
                 -- 'golf_' || CASE WHEN tags->'golf' IN ('pin') THEN tags->'golf' END
               ) AS feature,
               CASE WHEN access IN ('private', 'no', 'customers', 'permit', 'delivery') THEN 'restricted' ELSE 'yes' END AS int_access,
+              -- score is used for sorting later
               CASE
                 -- local
                 WHEN tags->'sport' IN ('climbing') THEN 10000 -- higher than any peak
+                WHEN amenity = 'charging_station' THEN 9900
                 WHEN "natural" IN ('peak', 'volcano', 'saddle') 
-                     OR tags->'mountain_pass' = 'yes' THEN
+                  OR tags->'mountain_pass' = 'yes' THEN
                   CASE
                     WHEN tags->'ele' ~ '^-?\d{1,4}(\.\d+)?$' THEN (tags->'ele')::NUMERIC
                   END
@@ -2297,6 +2299,8 @@ Layer:
               tags->'ruins' as ruins,
               -- local
               tags->'sport' as sport,
+              -- local
+              tags->'bicycle' as bicycle,
               tags->'information' as information,
               tags->'memorial' as memorial,
               tags->'artwork_type' as artwork_type,

@@ -387,6 +387,9 @@
     marker-width: @huge;
     marker-fill: @electric;
     marker-clip: false;
+    [bicycle = 'yes'] {
+      marker-fill: @transportation-icon;
+    }
     [int_access = 'restricted'] {
       marker-opacity: @private-opacity;
     }
