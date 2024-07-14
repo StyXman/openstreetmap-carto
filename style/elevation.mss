@@ -28,9 +28,9 @@
 @darken-lighten: 15%;
 
 // hiking trails grades
-@hiking: orange;  // instead of yellow because it fades into the bg in some places
+@hiking: #ff7800;  // instead of yellow because it fades into the bg in some places
 @mountain_hiking: red;
-@demanding_mountain_hiking: violet;
+@demanding_mountain_hiking: #813d9c;
 @alpine_hiking: blue;
 @demanding_alpine_hiking: gray;
 @difficult_alpine_hiking: black;
