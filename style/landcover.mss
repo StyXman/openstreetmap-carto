@@ -1092,8 +1092,8 @@
 
 #relief-symbols {
   [natural = 'arete'][zoom >= 12] {
-    line-pattern-smooth: 0.3;
     /*
+    line-pattern-smooth: 0.3;
     line-pattern-file: url('symbols/arete_small.png');
     [zoom >= 15] {
       line-pattern-file: url('symbols/arete_medium.png');
