@@ -1140,9 +1140,13 @@
 }
 
 #barriers {
+  // includes chain, ditch, fence, guard_rail, handrail, retaining wall and wall
   [zoom >= 16] {
     line-width: 0.4;
     line-color: #444;
+  }
+  [feature = 'barrier_wall'][zoom >= 16] {
+    line-width: 1;
   }
   [feature = 'barrier_hedge'][zoom >= 16] {
     line-width: 1.5;
