@@ -1104,8 +1104,8 @@
     */
     line-pattern-file: url('symbols/local/arete.svg');
   }
+  /*
   [natural = 'ridge'][zoom >= 12] {
-    /*
     line-pattern-smooth: 0.3;
     line-pattern-file: url('symbols/ridge_small.png');
     [zoom >= 15] {
@@ -1114,9 +1114,9 @@
     [zoom >= 16] {
       line-pattern-file: url('symbols/ridge_large.png');
     }
-    */
     line-pattern-file: url('symbols/local/ridge.svg');
   }
+  */
   [natural = 'cliff'][zoom >= 13] {
     line-pattern-file: url('symbols/local/cliff.svg');
     [zoom >= 15] {
@@ -1124,6 +1124,7 @@
     }
     // TODO: climbing color for climbing crags
   }
+  /*
   [natural = 'ridge'][zoom >= 14] {
     line-pattern-file: url('symbols/ridge-mid.svg');
     [zoom >= 15] {
@@ -1136,6 +1137,7 @@
       line-pattern-file: url('symbols/arete2.svg');
     }
   }
+  */
   [man_made = 'embankment'][zoom >= 15]::man_made {
     line-pattern-file: url('symbols/embankment.svg');
   }
