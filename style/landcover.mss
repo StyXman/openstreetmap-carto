@@ -928,6 +928,8 @@
     line-width: 3;
     line-opacity: 0.329;
   }
+
+  // same as tourism-boundary and barrier_city_wall / historic_citywalls
 }
 
 /* man_made=cutline */
@@ -1167,16 +1169,35 @@
   [feature = 'historic_citywalls'],
   [feature = 'barrier_city_wall'] {
     [zoom >= 15] {
+      /*
       line-width: 1;
       line-color: lighten(#444, 30%);
+      */
+      // same as tourism-boundary
+      a/line-width: 1;
+      a/line-offset: -0.5;
+      a/line-color: @tourism;
+      a/line-opacity: 0.5;
+      a/line-join: round;
+      a/line-cap: round;
+      b/line-width: 4;
+      b/line-offset: -2;
+      b/line-color: @tourism;
+      b/line-opacity: 0.3;
+      b/line-join: round;
+      b/line-cap: round;
     }
     [zoom >= 16] {
-      line-width: 1.5;
+      a/line-width: 1.5;
     }
     [zoom >= 17] {
-      line-width: 2;
+      a/line-width: 2;
+      /*
       barrier/line-width: 0.4;
       barrier/line-color: #444;
+      */
+      b/line-width: 6;
+      b/line-offset: -3;
     }
     [zoom >= 18] {
       line-width: 3;
@@ -1197,6 +1218,7 @@
   [historic = 'archaeological_site'][zoom >= 17],
   [tourism = 'theme_park'][zoom >= 10][way_pixels >= 750],
   [tourism = 'theme_park'][zoom >= 17] {
+    // a is outer line, b is the inner shade
     a/line-width: 1;
     a/line-offset: -0.5;
     a/line-color: @tourism;
