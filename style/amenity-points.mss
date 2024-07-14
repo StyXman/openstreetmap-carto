@@ -3501,42 +3501,44 @@
     }
 
     [natural = 'tree'] {
-      marker-fill: darken(@forest,10%);
+      marker-fill: darken(@forest,40%);
       marker-allow-overlap: true;
       marker-line-width: 0;
       marker-ignore-placement: true;
-      marker-width: 2.5;
-      marker-height: 2.5;
+      marker-width: 10;
       [zoom >= 17] {
-        marker-width: 5;
-        marker-height: 5;
+        marker-width: 15;
       }
       [zoom >= 18] {
-        marker-width: 10;
+        marker-width: 20;
       }
+      /*
       [zoom >= 19] {
         marker-width: 15;
       }
       [zoom >= 20] {
         marker-width: 30;
       }
+      */
     }
   }
 
   [natural = 'tree']::trunk {
     [zoom >= 18] {
-      trunk/opacity: 0.4;
-      trunk/marker-fill: #6b8d5e; // Same opacity and color as forest svg patterns
+      // trunk/opacity: 0.4;
+      trunk/marker-fill: #944a00;
       trunk/marker-allow-overlap: true;
       trunk/marker-line-width: 0;
-      trunk/marker-width: 2;
+      trunk/marker-width: 5;
       trunk/marker-ignore-placement: true;
     }
+    /*
     [zoom >= 19] {
       trunk/marker-width: 3;
     }
     [zoom >= 20] {
       trunk/marker-width: 6;
     }
+    */
   }
 }
