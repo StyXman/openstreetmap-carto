@@ -2573,12 +2573,13 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
     /*
     [feature = 'highway_raceway'][int_surface != 'unpaved'] {
     */
-    [feature = 'highway_raceway'] {
-      [zoom >= 12] {
-        line-color: @raceway-fill;
-        line-width: 1.2;
-        line-join: round;
-        line-cap: round;
+    [feature = 'highway_raceway'][zoom >= 12]  {
+      line-color: @raceway-fill;
+      line-width: 1.2;
+      line-join: round;
+      line-cap: round;
+      [int_surface = 'unpaved'] {
+        line-dasharray: 8,2;
       }
       [zoom >= 13] { line-width: 2; }
       [zoom >= 14] { line-width: 3; }
@@ -2586,9 +2587,6 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
       [zoom >= 18] { line-width: 8; }
       [zoom >= 19] { line-width: 12; }
       [zoom >= 20] { line-width: 24; }
-      [int_surface = 'unpaved'] {
-        line-dasharray: 8,2;
-      }
     }
 
     /*
