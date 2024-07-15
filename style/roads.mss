@@ -2701,29 +2701,31 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
         // background
         #roads-fill[zoom >= 13] {
           background/line-color: @footway-casing;
-          [sac_scale = 'hiking'] {
-            background/line-color: @hiking;
-            background/line-opacity: 0.4;
-          }
-          [sac_scale = 'mountain_hiking'] {
-            background/line-color: @mountain_hiking;
-            background/line-opacity: 0.4;
-          }
-          [sac_scale = 'demanding_mountain_hiking'] {
-            background/line-color: @demanding_mountain_hiking;
-            background/line-opacity: 0.4;
-          }
-          [sac_scale = 'alpine_hiking'] {
-            background/line-color: @alpine_hiking;
-            background/line-opacity: 0.4;
-          }
-          [sac_scale = 'demanding_alpine_hiking'] {
-            background/line-color: @demanding_alpine_hiking;
-            background/line-opacity: 0.4;
-          }
-          [sac_scale = 'difficult_alpine_hiking'] {
-            background/line-color: @difficult_alpine_hiking;
-            background/line-opacity: 0.4;
+          [sac_scale != null][zoom >= 14] {
+            [sac_scale = 'hiking'] {
+              background/line-color: @hiking;
+              background/line-opacity: 0.4;
+            }
+            [sac_scale = 'mountain_hiking'] {
+              background/line-color: @mountain_hiking;
+              background/line-opacity: 0.4;
+            }
+            [sac_scale = 'demanding_mountain_hiking'] {
+              background/line-color: @demanding_mountain_hiking;
+              background/line-opacity: 0.4;
+            }
+            [sac_scale = 'alpine_hiking'] {
+              background/line-color: @alpine_hiking;
+              background/line-opacity: 0.4;
+            }
+            [sac_scale = 'demanding_alpine_hiking'] {
+              background/line-color: @demanding_alpine_hiking;
+              background/line-opacity: 0.4;
+            }
+            [sac_scale = 'difficult_alpine_hiking'] {
+              background/line-color: @difficult_alpine_hiking;
+              background/line-opacity: 0.4;
+            }
           }
           background/line-cap: round;
           background/line-join: round;
@@ -2870,7 +2872,7 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
           background/line-color: @footway-casing;
           background/line-opacity: 0.4;
 
-          [sac_scale != null] {
+          [sac_scale != null][zoom >= 14] {
             background/line-color: grey;
 
             background/line-opacity: 0.2;
@@ -3035,34 +3037,37 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
     [feature = 'highway_track'] {
       [zoom >= 13][access != 'no'],
       [zoom >= 13][access = 'no'][foot != 'no'],
+      // [zoom >= 13][access = 'no'][bicycle != 'no'],
       [zoom >= 15] {
         /* The white casing that you mainly see against forests and other dark features */
         #roads-fill[zoom >= 13] {
           background/line-opacity: 0.4;
           background/line-color: @track-casing;
-          [sac_scale = 'hiking'] {
-            background/line-color: @hiking;
-            background/line-opacity: 0.2;
-          }
-          [sac_scale = 'mountain_hiking'] {
-            background/line-color: @mountain_hiking;
-            background/line-opacity: 0.2;
-          }
-          [sac_scale = 'demanding_mountain_hiking'] {
-            background/line-color: @demanding_mountain_hiking;
-            background/line-opacity: 0.2;
-          }
-          [sac_scale = 'alpine_hiking'] {
-            background/line-color: @alpine_hiking;
-            background/line-opacity: 0.2;
-          }
-          [sac_scale = 'demanding_alpine_hiking'] {
-            background/line-color: @demanding_alpine_hiking;
-            background/line-opacity: 0.2;
-          }
-          [sac_scale = 'difficult_alpine_hiking'] {
-            background/line-color: @difficult_alpine_hiking;
-            background/line-opacity: 0.2;
+          [sac_scale != null][zoom >= 14] {
+            [sac_scale = 'hiking'] {
+              background/line-color: @hiking;
+              background/line-opacity: 0.2;
+            }
+            [sac_scale = 'mountain_hiking'] {
+              background/line-color: @mountain_hiking;
+              background/line-opacity: 0.2;
+            }
+            [sac_scale = 'demanding_mountain_hiking'] {
+              background/line-color: @demanding_mountain_hiking;
+              background/line-opacity: 0.2;
+            }
+            [sac_scale = 'alpine_hiking'] {
+              background/line-color: @alpine_hiking;
+              background/line-opacity: 0.2;
+            }
+            [sac_scale = 'demanding_alpine_hiking'] {
+              background/line-color: @demanding_alpine_hiking;
+              background/line-opacity: 0.2;
+            }
+            [sac_scale = 'difficult_alpine_hiking'] {
+              background/line-color: @difficult_alpine_hiking;
+              background/line-opacity: 0.2;
+            }
           }
           background/line-join: round;
           background/line-cap: round;
