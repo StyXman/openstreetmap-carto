@@ -115,14 +115,25 @@
   */
 
   [feature = 'landuse_quarry'][zoom >= 10] {
-    polygon-fill: @quarry;
+    // polygon-fill: @quarry;
     polygon-pattern-file: url('symbols/local/quarry.svg');
-    [zoom >= 13] {
-      line-width: 0.5;
-      line-color: darken(@quarry, 10%);
-    }
+    // similar to tourism-boundary
+    a/line-width: 1;
+    a/line-offset: -0.5;
+    a/line-color: black;
+    // a/line-opacity: 0.5;
+    a/line-join: round;
+    a/line-cap: round;
+    b/line-width: 4;
+    b/line-offset: -2;
+    b/line-color: black;
+    b/line-opacity: 0.5;
+    b/line-join: round;
+    b/line-cap: round;
+    /*
     [way_pixels >= 4]  { polygon-pattern-gamma: 0.75; }
     [way_pixels >= 64] { polygon-pattern-gamma: 0.3;  }
+    */
   }
 
   [feature = 'landuse_vineyard'] {
