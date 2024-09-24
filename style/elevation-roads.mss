@@ -32,6 +32,7 @@
 @secondary-oneway-arrow-color: white;
 
 // fills
+@pedestrian-fill: #ffffff;
 @track-fill: black;
 @track-fill-noaccess: #bbbbbb;
 @footway-fill: #402a00;
