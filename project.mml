@@ -884,6 +884,7 @@ Layer:
             service,
             link,
             NULL as trailblazed,
+            sac_scale,
             layernotnull
           FROM ( -- subselect that contains both roads and rail
             SELECT
@@ -910,6 +911,7 @@ Layer:
                   WHEN highway IN ('motorway_link', 'trunk_link', 'primary_link', 'secondary_link', 'tertiary_link') THEN 'yes'
                   ELSE 'no'
                 END AS link,
+                tags->'sac_scale' as sac_scale,
                 COALESCE(layer,0) AS layernotnull,
                 z_order
               FROM planet_osm_line
@@ -934,6 +936,7 @@ Layer:
                 construction,
                 CASE WHEN service IN ('parking_aisle', 'drive-through', 'driveway') THEN 'INT-minor'::text ELSE 'INT-normal'::text END AS service,
                 'no' AS link,
+                NULL as sac_scale,
                 COALESCE(layer,0) AS layernotnull,
                 z_order
               FROM planet_osm_line
@@ -1451,6 +1454,7 @@ Layer:
             service,
             link,
             NULL as trailblazed,
+            sac_scale,
             layernotnull
           FROM ( -- subselect that contains both roads and rail/aero
             SELECT
@@ -1477,6 +1481,7 @@ Layer:
                   WHEN highway IN ('motorway_link', 'trunk_link', 'primary_link', 'secondary_link', 'tertiary_link') THEN 'yes'
                   ELSE 'no'
                 END AS link,
+                tags->'sac_scale' as sac_scale,
                 COALESCE(layer,0) AS layernotnull,
                 z_order
               FROM planet_osm_line
@@ -1501,6 +1506,7 @@ Layer:
                 construction,
                 CASE WHEN service IN ('parking_aisle', 'drive-through', 'driveway') THEN 'INT-minor'::text ELSE 'INT-normal'::text END AS service,
                 'no' AS link,
+                NULL as sac_scale,
                 COALESCE(layer,0) AS layernotnull,
                 z_order
               FROM planet_osm_line

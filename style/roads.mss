@@ -2720,32 +2720,6 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
         // background
         #roads-fill[zoom >= 13] {
           background/line-color: @footway-casing;
-          [sac_scale != null][zoom >= 14] {
-            [sac_scale = 'hiking'] {
-              background/line-color: @hiking;
-              background/line-opacity: 0.4;
-            }
-            [sac_scale = 'mountain_hiking'] {
-              background/line-color: @mountain_hiking;
-              background/line-opacity: 0.4;
-            }
-            [sac_scale = 'demanding_mountain_hiking'] {
-              background/line-color: @demanding_mountain_hiking;
-              background/line-opacity: 0.4;
-            }
-            [sac_scale = 'alpine_hiking'] {
-              background/line-color: @alpine_hiking;
-              background/line-opacity: 0.4;
-            }
-            [sac_scale = 'demanding_alpine_hiking'] {
-              background/line-color: @demanding_alpine_hiking;
-              background/line-opacity: 0.4;
-            }
-            [sac_scale = 'difficult_alpine_hiking'] {
-              background/line-color: @difficult_alpine_hiking;
-              background/line-opacity: 0.4;
-            }
-          }
           background/line-cap: round;
           background/line-join: round;
           background/line-opacity: 0.4;
