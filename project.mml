@@ -925,8 +925,9 @@ Layer:
                 osm_id,
                 z_order
               FROM planet_osm_line
-              WHERE (tunnel = 'yes' OR tunnel = 'building_passage' OR covered = 'yes')
-                AND highway IS NOT NULL -- end of road select
+              WHERE highway IS NOT NULL
+                AND (tunnel = 'yes' OR tunnel = 'building_passage' OR covered = 'yes')
+              -- end of road select
             UNION ALL
               SELECT
                 way,
@@ -953,8 +954,10 @@ Layer:
                 osm_id,
                 z_order
               FROM planet_osm_line
-              WHERE (tunnel = 'yes' OR tunnel = 'building_passage' OR covered = 'yes')
-                AND (railway NOT IN ('platform') AND railway IS NOT NULL) -- end of rail select
+              WHERE railway IS NOT NULL
+                AND (railway NOT IN ('platform'))
+                AND (tunnel = 'yes' OR tunnel = 'building_passage' OR covered = 'yes')
+              -- end of rail select
             ) AS features
           ORDER BY
             layernotnull,
@@ -1219,10 +1222,11 @@ Layer:
                 osm_id,
                 z_order
               FROM planet_osm_line
-              WHERE (tunnel IS NULL OR NOT tunnel IN ('yes', 'building_passage'))
+              WHERE highway IS NOT NULL
+                AND (tunnel IS NULL OR NOT tunnel IN ('yes', 'building_passage'))
                 AND (covered IS NULL OR NOT covered = 'yes')
                 AND (bridge IS NULL OR NOT bridge IN ('yes', 'boardwalk', 'cantilever', 'covered', 'low_water_crossing', 'movable', 'trestle', 'viaduct'))
-                AND highway IS NOT NULL -- end of road select
+              -- end of road select
             UNION ALL
               SELECT
                 way,
@@ -1249,11 +1253,12 @@ Layer:
                 osm_id,
                 z_order
               FROM planet_osm_line
-              WHERE (tunnel IS NULL OR NOT tunnel IN ('yes', 'building_passage'))
+              WHERE railway IS NOT NULL
+                AND (tunnel IS NULL OR NOT tunnel IN ('yes', 'building_passage'))
                 AND (covered IS NULL OR NOT covered = 'yes' OR railway IN ('platform'))
                 AND (bridge IS NULL OR NOT bridge IN ('yes', 'boardwalk', 'cantilever', 'covered', 'low_water_crossing', 'movable', 'trestle', 'viaduct'))
                 AND (railway NOT IN ('platform') OR (tags->'location' NOT IN ('underground')) OR (tags->'location') IS NULL)
-                AND railway IS NOT NULL -- end of rail select
+              -- end of rail select
             ) AS features
           ORDER BY
             layernotnull,
@@ -1513,8 +1518,9 @@ Layer:
                 osm_id,
                 z_order
               FROM planet_osm_line
-              WHERE bridge IN ('yes', 'boardwalk', 'cantilever', 'covered', 'low_water_crossing', 'movable', 'trestle', 'viaduct')
-                AND highway IS NOT NULL -- end of road select
+              WHERE highway IS NOT NULL
+                AND bridge IN ('yes', 'boardwalk', 'cantilever', 'covered', 'low_water_crossing', 'movable', 'trestle', 'viaduct')
+              -- end of road select
             UNION ALL
               SELECT
                 way,
@@ -1541,8 +1547,10 @@ Layer:
                 osm_id,
                 z_order
               FROM planet_osm_line
-              WHERE bridge IN ('yes', 'boardwalk', 'cantilever', 'covered', 'low_water_crossing', 'movable', 'trestle', 'viaduct')
-                AND railway IS NOT NULL -- end of rail select
+              WHERE railway IS NOT NULL
+                AND (railway NOT IN ('platform'))
+                AND bridge IN ('yes', 'boardwalk', 'cantilever', 'covered', 'low_water_crossing', 'movable', 'trestle', 'viaduct')
+              -- end of rail select
             ) AS features
           ORDER BY
             layernotnull,
