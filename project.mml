@@ -937,14 +937,14 @@ Layer:
                 horse,
                 foot,
                 bicycle,
-                tracktype,
-                'null',
+                NULL as tracktype,
+                NULL as int_surface,
                 CASE
                   WHEN access IN ('destination') THEN 'destination'::text
                   WHEN access IN ('no', 'private') THEN 'no'::text
                 END AS access,
                 construction,
-                CASE WHEN service IN ('parking_aisle', 'drive-through', 'driveway') THEN 'INT-minor'::text ELSE 'INT-normal'::text END AS service,
+                NULL as service,
                 'no' AS link,
                 NULL as sac_scale,
                 NULL as trailblazed,
@@ -1233,19 +1233,14 @@ Layer:
                 horse,
                 foot,
                 bicycle,
-                tracktype,
-                CASE WHEN surface IN ('unpaved', 'compacted', 'dirt', 'earth', 'fine_gravel', 'grass', 'grass_paver', 'gravel', 'ground',
-                                      'mud', 'pebblestone', 'salt', 'sand', 'woodchips', 'clay', 'ice', 'snow') THEN 'unpaved'
-                  WHEN surface IN ('paved', 'asphalt', 'cobblestone', 'cobblestone:flattened', 'sett', 'concrete', 'concrete:lanes',
-                                      'concrete:plates', 'paving_stones', 'metal', 'wood', 'unhewn_cobblestone') THEN 'paved'
-                  ELSE NULL
-                END AS int_surface,
+                NULL as tracktype,
+                NULL as int_surface,
                 CASE
                   WHEN access IN ('destination') THEN 'destination'::text
                   WHEN access IN ('no', 'private') THEN 'no'::text
                 END AS access,
                 construction,
-                CASE WHEN service IN ('parking_aisle', 'drive-through', 'driveway') OR leisure IN ('slipway') THEN 'INT-minor'::text ELSE 'INT-normal'::text END AS service,
+                NULL as service,
                 'no' AS link,
                 NULL as sac_scale,
                 NULL as trailblazed,
@@ -1530,14 +1525,14 @@ Layer:
                 horse,
                 foot,
                 bicycle,
-                tracktype,
-                'null',
+                NULL as tracktype,
+                NULL as int_surface,
                 CASE
                   WHEN access IN ('destination') THEN 'destination'::text
                   WHEN access IN ('no', 'private') THEN 'no'::text
                 END AS access,
                 construction,
-                CASE WHEN service IN ('parking_aisle', 'drive-through', 'driveway') THEN 'INT-minor'::text ELSE 'INT-normal'::text END AS service,
+                NULL as service,
                 'no' AS link,
                 NULL as sac_scale,
                 NULL as trailblazed,
