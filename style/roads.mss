@@ -840,7 +840,7 @@ local
       }
     }
 
-    [feature = 'highway_footway'] {
+    [feature = 'highway_footway'][sidewalk = 'no'] {
       #bridges {
         [zoom >= 14][access != 'no'],
         [zoom >= 15] {
@@ -1103,7 +1103,7 @@ local
       }
     }
 
-    [feature = 'highway_footway'] {
+    [feature = 'highway_footway'][sidewalk = 'no'] {
       #bridges {
         [zoom >= 14][access != 'no'],
         [zoom >= 15] {
@@ -2713,7 +2713,7 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
     }
     */
 
-    [feature = 'highway_footway'] {
+    [feature = 'highway_footway'][sidewalk = 'no'] {
       [zoom >= 13][access != 'no'],
       [zoom >= 13][access = 'no'][foot != 'no'],
       [zoom >= 15] {

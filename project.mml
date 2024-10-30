@@ -913,6 +913,10 @@ Layer:
                 END AS link,
                 tags->'sac_scale' as sac_scale,
                 tags->'trailblazed' as trailblazed,
+                CASE
+                  WHEN tags->'footway' = 'sidewalk' THEN 'yes'
+                  ELSE 'no'
+                END AS sidewalk,
                 COALESCE(layer,0) AS layernotnull,
                 z_order
               FROM planet_osm_line
@@ -939,6 +943,7 @@ Layer:
                 'no' AS link,
                 NULL as sac_scale,
                 NULL as trailblazed,
+                'no' AS sidewalk,
                 COALESCE(layer,0) AS layernotnull,
                 z_order
               FROM planet_osm_line
@@ -1169,6 +1174,7 @@ Layer:
             link,
             sac_scale,
             trailblazed,
+            sidewalk,
             layernotnull
           FROM ( -- subselect that contains both roads and rail/aero
             SELECT
@@ -1198,6 +1204,10 @@ Layer:
                 tags->'sac_scale' as sac_scale,
                 tags->'trailblazed' as trailblazed,
                 COALESCE(layer,0) AS layernotnull,
+                CASE
+                  WHEN tags->'footway' = 'sidewalk' THEN 'yes'
+                  ELSE 'no'
+                END AS sidewalk,
                 osm_id,
                 z_order
               FROM planet_osm_line
@@ -1232,6 +1242,7 @@ Layer:
                 NULL as sac_scale,
                 NULL as trailblazed,
                 COALESCE(layer,0) AS layernotnull,
+                'no' AS sidewalk,
                 osm_id,
                 z_order
               FROM planet_osm_line
@@ -1457,6 +1468,7 @@ Layer:
             link,
             sac_scale,
             trailblazed,
+            sidewalk,
             layernotnull
           FROM ( -- subselect that contains both roads and rail/aero
             SELECT
@@ -1485,6 +1497,10 @@ Layer:
                 END AS link,
                 tags->'sac_scale' as sac_scale,
                 tags->'trailblazed' as trailblazed,
+                CASE
+                  WHEN tags->'footway' = 'sidewalk' THEN 'yes'
+                  ELSE 'no'
+                END AS sidewalk,
                 COALESCE(layer,0) AS layernotnull,
                 z_order
               FROM planet_osm_line
@@ -1511,6 +1527,7 @@ Layer:
                 'no' AS link,
                 NULL as sac_scale,
                 NULL as trailblazed,
+                'no' AS sidewalk,
                 COALESCE(layer,0) AS layernotnull,
                 z_order
               FROM planet_osm_line
