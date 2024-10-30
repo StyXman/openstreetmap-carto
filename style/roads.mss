@@ -141,8 +141,8 @@ local
 @tertiary-width-z12:              2.5;
 @tertiary-link-width-z12:         1.5;
 
-@residential-width-z12:           0.5;
-@unclassified-width-z12:          0.8;
+@residential-width-z12:           1;
+@unclassified-width-z12:          1;
 
 
 @motorway-width-z13:              6;
@@ -925,7 +925,7 @@ local
 
     [feature = 'highway_track'] {
       #bridges {
-        [zoom >= 13][access != 'no'] {
+        [zoom >= 12][access != 'no'] {
           line-color: @bridge-casing;
           line-join: round;
           line-width: @track-width-z13 + 2 * (@paths-background-width + @paths-bridge-casing-width);
@@ -966,7 +966,7 @@ local
         }
       }
       #tunnels {
-        [zoom >= 13][access != 'no'],
+        [zoom >= 12][access != 'no'],
         [zoom >= 15] {
           line-color: @tunnel-casing;
           line-dasharray: 4,2;
@@ -1134,7 +1134,7 @@ local
 
     [feature = 'highway_path'][bicycle != 'designated'][horse != 'designated'] {
       #bridges {
-        [zoom >= 14][access != 'no'],
+        [zoom >= 12][access != 'no'],
         [zoom >= 15] {
           line-width: @path-width-z14 + 2 * @paths-background-width;
           [zoom >= 15] { line-width: @path-width-z15 + 2 * @paths-background-width; }
@@ -1146,7 +1146,7 @@ local
         }
       }
       #tunnels {
-        [zoom >= 14][access != 'no'],
+        [zoom >= 12][access != 'no'],
         [zoom >= 15] {
           line-color: @footway-casing;
           line-cap: round;
@@ -1214,7 +1214,7 @@ local
     [feature = 'highway_track'] {
       /* We don't set opacity here, so it's 1.0. Aside from that, it's basically a copy of roads-fill::background in the track part of ::fill */
       #bridges {
-        [zoom >= 13][access != 'no'] {
+        [zoom >= 12][access != 'no'] {
           line-color: @track-casing;
           line-join: round;
           line-width: @track-width-z13 + 2 * @paths-background-width;
@@ -2859,10 +2859,10 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
     }
 
     [feature = 'highway_path'][horse != 'designated'] {
-      [zoom >= 13][access != 'no'],
-      [zoom >= 13][access = 'no'][foot != 'no'],
+      [zoom >= 12][access != 'no'],
+      [zoom >= 12][access = 'no'][foot != 'no'],
       [zoom >= 15] {
-        #roads-fill[zoom >= 13] {
+        #roads-fill[zoom >= 12] {
           background/line-color: @footway-casing;
           background/line-opacity: 0.4;
 
@@ -2950,7 +2950,7 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
     [feature = 'highway_cycleway'],
     [feature = 'highway_path'][bicycle = 'yes'],
     [feature = 'highway_path'][bicycle = 'designated'] {
-      [zoom >= 13][access != 'no'],
+      [zoom >= 12][access != 'no'],
       [zoom >= 15] {
         #roads-fill[zoom >= 15] {
           background/line-color: @cycleway-casing;
@@ -3030,7 +3030,7 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
     }
 
     [feature = 'highway_track'] {
-      [zoom >= 13][access != 'no'],
+      [zoom >= 12][access != 'no'],
       [zoom >= 13][access = 'no'][foot != 'no'],
       // [zoom >= 13][access = 'no'][bicycle != 'no'],
       [zoom >= 15] {
