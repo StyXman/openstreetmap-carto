@@ -1696,7 +1696,7 @@
 
   [feature = 'waterway_waterfall'] {
     [zoom >= @nice][height > 20],
-    [zoom >= @nice][height > 10],
+    [zoom >= 13][height > 10],
     [zoom >= 15][name != null],
     [zoom >= 16] {
       marker-file: url('symbols/natural/waterfall.svg');
