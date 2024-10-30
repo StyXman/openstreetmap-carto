@@ -1,4 +1,4 @@
-// same as road-colors-generated.mss, but with local values
+// like road-colors-generated.mss, but with local values and more
 
 @motorway-low-zoom: #cf3030;
 @trunk-low-zoom: #cf6868;

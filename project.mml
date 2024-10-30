@@ -104,6 +104,7 @@ Layer:
     advanced: {}
 
 
+  # TODO: big deserts and maybe other big lc's
   - id: landcover-low-zoom
     geometry: polygon
     <<: *extents
@@ -711,6 +712,7 @@ Layer:
     properties:
       minzoom: 13
 
+
   # added
   - id: springs
     geometry: point
@@ -762,7 +764,6 @@ Layer:
     properties:
       cache-features: true
       minzoom: 8
-    # status: off
 
 
   - id: piers-poly
@@ -924,7 +925,7 @@ Layer:
               WHERE (tunnel = 'yes' OR tunnel = 'building_passage' OR covered = 'yes')
                 AND highway IS NOT NULL -- end of road select
             UNION ALL
-            SELECT
+              SELECT
                 way,
                 'railway_' || (CASE WHEN railway = 'preserved' AND service IN ('spur', 'siding', 'yard') THEN 'INT-preserved-ssy'::text
                                  WHEN (railway = 'rail' AND service IN ('spur', 'siding', 'yard')) THEN 'INT-spur-siding-yard'
@@ -953,6 +954,7 @@ Layer:
             ) AS features
           ORDER BY
             layernotnull,
+            -- z_order is defined in the .lua file
             z_order,
             CASE WHEN substring(feature for 8) = 'railway_' THEN 2 ELSE 1 END,
             CASE WHEN feature IN ('railway_INT-preserved-ssy', 'railway_INT-spur-siding-yard', 'railway_tram-service') THEN 0 ELSE 1 END,
@@ -1204,11 +1206,11 @@ Layer:
                 END AS link,
                 tags->'sac_scale' as sac_scale,
                 tags->'trailblazed' as trailblazed,
-                COALESCE(layer,0) AS layernotnull,
                 CASE
                   WHEN tags->'footway' = 'sidewalk' THEN 'yes'
                   ELSE 'no'
                 END AS sidewalk,
+                COALESCE(layer, 0) AS layernotnull,
                 osm_id,
                 z_order
               FROM planet_osm_line
@@ -1217,7 +1219,7 @@ Layer:
                 AND (bridge IS NULL OR NOT bridge IN ('yes', 'boardwalk', 'cantilever', 'covered', 'low_water_crossing', 'movable', 'trestle', 'viaduct'))
                 AND highway IS NOT NULL -- end of road select
             UNION ALL
-            SELECT
+              SELECT
                 way,
                 ('railway_' || (CASE WHEN railway = 'preserved' AND service IN ('spur', 'siding', 'yard') THEN 'INT-preserved-ssy'::text
                                      WHEN (railway = 'rail' AND service IN ('spur', 'siding', 'yard')) THEN 'INT-spur-siding-yard'
@@ -1242,8 +1244,8 @@ Layer:
                 'no' AS link,
                 NULL as sac_scale,
                 NULL as trailblazed,
-                COALESCE(layer,0) AS layernotnull,
                 'no' AS sidewalk,
+                COALESCE(layer, 0) AS layernotnull,
                 osm_id,
                 z_order
               FROM planet_osm_line
@@ -1255,6 +1257,7 @@ Layer:
             ) AS features
           ORDER BY
             layernotnull,
+            -- z_order is defined in the .lua file
             z_order,
             CASE WHEN substring(feature for 8) = 'railway_' THEN 2 ELSE 1 END,
             CASE WHEN feature IN ('railway_INT-preserved-ssy', 'railway_INT-spur-siding-yard', 'railway_tram-service') THEN 0 ELSE 1 END,
@@ -1454,6 +1457,10 @@ Layer:
     <<: *extents
     Datasource:
       <<: *osm2pgsql
+      # This is one of the most complex layers, so it bears explaining in some detail
+      # It is necessary to
+      # - Have roads and railways in the same layer to get ordering right
+      # - Return two linestrings for ways which are both a road and railway
       table: |-
         (SELECT
             way,
@@ -1508,7 +1515,7 @@ Layer:
               WHERE bridge IN ('yes', 'boardwalk', 'cantilever', 'covered', 'low_water_crossing', 'movable', 'trestle', 'viaduct')
                 AND highway IS NOT NULL -- end of road select
             UNION ALL
-            SELECT
+              SELECT
                 way,
                 'railway_' || (CASE WHEN railway = 'preserved' AND service IN ('spur', 'siding', 'yard') THEN 'INT-preserved-ssy'::text
                                  WHEN (railway = 'rail' AND service IN ('spur', 'siding', 'yard')) THEN 'INT-spur-siding-yard'
@@ -1537,6 +1544,7 @@ Layer:
             ) AS features
           ORDER BY
             layernotnull,
+            -- z_order is defined in the .lua file
             z_order,
             CASE WHEN substring(feature for 8) = 'railway_' THEN 2 ELSE 1 END,
             CASE WHEN feature IN ('railway_INT-preserved-ssy', 'railway_INT-spur-siding-yard', 'railway_tram-service') THEN 0 ELSE 1 END,
@@ -1601,6 +1609,7 @@ Layer:
     properties:
       minzoom: 15
 
+
   - id: roller-coaster
     geometry: linestring
     <<: *extents
@@ -1620,6 +1629,7 @@ Layer:
     properties:
       group-by: layernotnull
       minzoom: 15
+
 
   - id: entrances
     geometry: point
@@ -1683,7 +1693,9 @@ Layer:
         ) AS golf_line
     properties:
       minzoom: 16
+    # who wants golf...
     status: off
+
 
   - id: necountries
     geometry: linestring
@@ -1740,7 +1752,8 @@ Layer:
     properties:
       minzoom: 8
       maxzoom: 12
-    staus: off
+    # only country limits
+    status: off
 
 
   - id: admin-high-zoom
@@ -1761,7 +1774,8 @@ Layer:
         ) AS admin_high_zoom
     properties:
       minzoom: 13
-    staus: off
+    # only country limits
+    status: off
 
 
   - id: power-minorline
@@ -1777,6 +1791,8 @@ Layer:
         ) AS power_minorline
     properties:
       minzoom: 16
+    # not minor lines, only big ones can be used for orienteering
+    status: off
 
 
   - id: power-line
@@ -1921,6 +1937,7 @@ Layer:
         ) AS state_names
     properties:
       minzoom: 4
+    # no limits, no names
     status: off
 
 
