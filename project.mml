@@ -290,8 +290,8 @@ Layer:
       minzoom: 9
 
 
-  - id: hillshade-over
-    class: hillshade-over
+  - id: hillshade
+    class: hillshade
     geometry: raster
     <<: *extents
     Datasource:
@@ -299,19 +299,7 @@ Layer:
       type: gdal
     advanced: {}
     properties:
-      maxzoom: 8
-
-
-  - id: hillshade-overlay
-    class: hillshade-overlay
-    geometry: raster
-    <<: *extents
-    Datasource:
-      file: data/height/hillshade.vrt
-      type: gdal
-    advanced: {}
-    properties:
-      minzoom: 9
+      minzoom: 0
 
 
   - id: landcover-flat
