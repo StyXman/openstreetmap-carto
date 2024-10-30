@@ -80,8 +80,7 @@
 // see amenity-points.mss for the point symbol
 /*
 #water-barriers-line[zoom >= 13] {
-  [waterway = 'waterfall'],
-  [natural  = 'waterfall'] {
+  [waterway = 'waterfall'] {
     line-pattern-file: url('symbols/local/big_waterfall.svg');
   }
 }
