@@ -37,3 +37,7 @@
 @track-fill-noaccess: #bbbbbb;
 @footway-fill: #402a00;
 @footway-fill-noaccess: #e2c5bb;
+
+// cycleways
+@cycleway-casing: #a0f0a0;
+@cycleway-fill: #004000;
