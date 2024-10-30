@@ -885,6 +885,7 @@ Layer:
             link,
             sac_scale,
             trailblazed,
+            sidewalk,
             layernotnull
           FROM ( -- subselect that contains both roads and rail
             SELECT
