@@ -1035,7 +1035,8 @@ Layer:
             way, "natural", man_made, name,
             ST_Length(way)/NULLIF(SQRT(!pixel_width!::real*!pixel_width!::real),0) AS pixel_length
           FROM planet_osm_line
-          WHERE "natural" IN ('arete', 'cliff', 'ridge') OR man_made = 'embankment'
+          --                                    'ridge' gone
+          WHERE "natural" IN ('arete', 'cliff'         ) OR man_made = 'embankment'
         ) AS cliffs
     properties:
       cache-features: true
