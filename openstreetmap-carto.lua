@@ -204,11 +204,16 @@ local roads_info = {
         secondary_link  = {z = 210, roads = true},
         tertiary_link   = {z = 200, roads = false},
         service         = {z = 150, roads = false},
-        track           = {z = 110, roads = false},
-        path            = {z = 100, roads = false},
-        footway         = {z = 100, roads = false},
-        bridleway       = {z = 100, roads = false},
-        cycleway        = {z = 100, roads = false},
+        -- local
+        -- because these are rendered with thin lines, we want them rendered above thicker lines
+        -- was 110
+        track           = {z = 510, roads = false},
+        -- were all 100
+        path            = {z = 500, roads = false},
+        footway         = {z = 500, roads = false},
+        bridleway       = {z = 500, roads = false},
+        cycleway        = {z = 500, roads = false},
+
         steps           = {z = 90,  roads = false},
         platform        = {z = 90,  roads = false}
     },
