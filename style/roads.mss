@@ -2921,6 +2921,9 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
         line/line-color: @footway-fill;
         [access = 'no'][foot != 'yes'] { line/line-color: @footway-fill-noaccess; }
         line/line-dasharray: 4,2;
+        [informal = 'yes'] {
+          line/line-dasharray: 2,4;
+        }
         line/line-join: round;
         // line/line-cap: round;
         line/line-width: @path-width-z14;
