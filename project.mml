@@ -877,6 +877,7 @@ Layer:
             sac_scale,
             trailblazed,
             sidewalk,
+            informal,
             layernotnull
           FROM ( -- subselect that contains both roads and rail/aero
             SELECT
@@ -909,6 +910,7 @@ Layer:
                   WHEN tags->'footway' = 'sidewalk' THEN 'yes'
                   ELSE 'no'
                 END AS sidewalk,
+                tags->'informal' AS informal,
                 COALESCE(layer,0) AS layernotnull,
                 osm_id,
                 z_order
@@ -938,6 +940,7 @@ Layer:
                 NULL as sac_scale,
                 NULL as trailblazed,
                 'no' AS sidewalk,
+                NULL AS informal,
                 COALESCE(layer,0) AS layernotnull,
                 osm_id,
                 z_order
@@ -1175,6 +1178,7 @@ Layer:
             sac_scale,
             trailblazed,
             sidewalk,
+            informal,
             layernotnull
           FROM ( -- subselect that contains both roads and rail/aero
             SELECT
@@ -1207,6 +1211,7 @@ Layer:
                   WHEN tags->'footway' = 'sidewalk' THEN 'yes'
                   ELSE 'no'
                 END AS sidewalk,
+                tags->'informal' AS informal,
                 COALESCE(layer, 0) AS layernotnull,
                 osm_id,
                 z_order
@@ -1238,6 +1243,7 @@ Layer:
                 NULL as sac_scale,
                 NULL as trailblazed,
                 'no' AS sidewalk,
+                NULL AS informal,
                 COALESCE(layer, 0) AS layernotnull,
                 osm_id,
                 z_order
@@ -1471,6 +1477,7 @@ Layer:
             sac_scale,
             trailblazed,
             sidewalk,
+            informal,
             layernotnull
           FROM ( -- subselect that contains both roads and rail/aero
             SELECT
@@ -1503,6 +1510,7 @@ Layer:
                   WHEN tags->'footway' = 'sidewalk' THEN 'yes'
                   ELSE 'no'
                 END AS sidewalk,
+                tags->'informal' AS informal,
                 COALESCE(layer,0) AS layernotnull,
                 osm_id,
                 z_order
@@ -1532,6 +1540,7 @@ Layer:
                 NULL as sac_scale,
                 NULL as trailblazed,
                 'no' AS sidewalk,
+                NULL AS informal,
                 COALESCE(layer,0) AS layernotnull,
                 osm_id,
                 z_order
