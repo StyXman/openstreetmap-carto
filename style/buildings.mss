@@ -65,7 +65,7 @@
     marker-width: 5.0;
     marker-height: 5.0;
     marker-opacity: 0.0;
-    ["entrance" = "main"] {
+    ["entrance" = 'main'] {
       marker-opacity: 1.0;
       marker-file: url('symbols/square.svg');
     }
@@ -79,23 +79,23 @@
   }
   // all entrances from ZL18, as I don't render ZL19
   [zoom >= 18]["entrance" != null] {
-    ["entrance" = "yes"],
-    ["entrance" = "main"],
-    ["entrance" = "home"],
-    ["entrance" = "service"],
-    ["entrance" = "staircase"] {
+    ["entrance" = 'yes'],
+    ["entrance" = 'main'],
+    ["entrance" = 'home'],
+    ["entrance" = 'service'],
+    ["entrance" = 'staircase'] {
       marker-opacity: 1.0;
       marker-width: 6.0;
       marker-height: 6.0;
-      ["entrance" = "service"] {
+      ["entrance" = 'service'] {
         marker-file: url('symbols/corners.svg');
       }
     }
-    ["access" = "yes"],
-    ["access" = "permissive"] {
+    ["access" = 'yes'],
+    ["access" = 'permissive'] {
       marker-fill: @entrance-permissive;
     }
-    ["access" = "no"] {
+    ["access" = 'no'] {
       marker-fill: @entrance-normal;
       marker-file: url('symbols/rectdiag.svg');
     }
