@@ -864,6 +864,7 @@ Layer:
       table: |-
         (SELECT
             way,
+            bicycle,
             (CASE WHEN feature IN ('highway_motorway_link', 'highway_trunk_link', 'highway_primary_link', 'highway_secondary_link', 'highway_tertiary_link') THEN substr(feature, 0, length(feature)-4) ELSE feature END) AS feature,
             tracktype,
             int_surface,
@@ -880,6 +881,10 @@ Layer:
           FROM ( -- subselect that contains both roads and rail/aero
             SELECT
                 way,
+                CASE
+                  WHEN bicycle in ('yes', 'designated') THEN 'yes'
+                  ELSE 'no'
+                END AS bicycle,
                 'highway_' || (CASE WHEN highway = 'path' THEN carto_path_type(bicycle, horse) ELSE highway END) AS feature,
                 tracktype,
                 CASE WHEN surface IN ('unpaved', 'compacted', 'dirt', 'earth', 'fine_gravel', 'grass', 'grass_paver', 'gravel', 'ground',
@@ -915,6 +920,7 @@ Layer:
             UNION ALL
               SELECT
                 way,
+                'no' AS bicycle,
                 'railway_' || (CASE
                                  WHEN (railway = 'rail' AND service IN ('spur', 'siding', 'yard')) THEN 'INT-spur-siding-yard'
                                  WHEN (railway = 'tram' AND service IN ('spur', 'siding', 'yard')) THEN 'tram-service'
@@ -1157,6 +1163,7 @@ Layer:
       table: &roads_sql |-
         (SELECT
             way,
+            bicycle,
             (CASE WHEN feature IN ('highway_motorway_link', 'highway_trunk_link', 'highway_primary_link', 'highway_secondary_link', 'highway_tertiary_link') THEN substr(feature, 0, length(feature)-4) ELSE feature END) AS feature,
             tracktype,
             int_surface,
@@ -1173,6 +1180,10 @@ Layer:
           FROM ( -- subselect that contains both roads and rail/aero
             SELECT
                 way,
+                CASE
+                  WHEN bicycle in ('yes', 'designated') THEN 'yes'
+                  ELSE 'no'
+                END AS bicycle,
                 'highway_' || (CASE WHEN highway = 'path' THEN carto_path_type(bicycle, horse) ELSE highway END) AS feature,
                 tracktype,
                 CASE WHEN surface IN ('unpaved', 'compacted', 'dirt', 'earth', 'fine_gravel', 'grass', 'grass_paver', 'gravel', 'ground',
@@ -1210,6 +1221,7 @@ Layer:
             UNION ALL
               SELECT
                 way,
+                'no' AS bicycle,
                 'railway_' || (CASE
                                  WHEN (railway = 'rail' AND service IN ('spur', 'siding', 'yard')) THEN 'INT-spur-siding-yard'
                                  WHEN (railway = 'tram' AND service IN ('spur', 'siding', 'yard')) THEN 'tram-service'
@@ -1453,6 +1465,7 @@ Layer:
       table: |-
         (SELECT
             way,
+            bicycle,
             (CASE WHEN feature IN ('highway_motorway_link', 'highway_trunk_link', 'highway_primary_link', 'highway_secondary_link', 'highway_tertiary_link') THEN substr(feature, 0, length(feature)-4) ELSE feature END) AS feature,
             tracktype,
             int_surface,
@@ -1469,6 +1482,10 @@ Layer:
           FROM ( -- subselect that contains both roads and rail/aero
             SELECT
                 way,
+                CASE
+                  WHEN bicycle in ('yes', 'designated') THEN 'yes'
+                  ELSE 'no'
+                END AS bicycle,
                 'highway_' || (CASE WHEN highway = 'path' THEN carto_path_type(bicycle, horse) ELSE highway END) AS feature,
                 tracktype,
                 CASE WHEN surface IN ('unpaved', 'compacted', 'dirt', 'earth', 'fine_gravel', 'grass', 'grass_paver', 'gravel', 'ground',
@@ -1504,6 +1521,7 @@ Layer:
             UNION ALL
               SELECT
                 way,
+                'no' AS bicycle,
                 'railway_' || (CASE
                                  WHEN (railway = 'rail' AND service IN ('spur', 'siding', 'yard')) THEN 'INT-spur-siding-yard'
                                  WHEN (railway = 'tram' AND service IN ('spur', 'siding', 'yard')) THEN 'tram-service'
