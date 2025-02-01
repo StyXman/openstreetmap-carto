@@ -961,13 +961,22 @@
     }
   }
 
+  [feature = 'historic_castle']
+    [castle_type != 'palace']
+    [castle_type != 'stately']
+    [castle_type != 'manor']
+    [castle_type != 'mansion']
+    [feature != 'historic_manor']
+    [zoom >= @nice],
+  [feature = 'historic_castle'][castle_type = 'palace'][zoom >= 15],
+  [feature = 'historic_castle'][castle_type = 'stately'][zoom >= 15],
+  [feature = 'historic_castle'][castle_type = 'manor'][zoom >= 15],
+  [feature = 'historic_castle'][castle_type = 'mansion'][zoom >= 15],
+  [feature = 'historic_manor'][zoom >= 15] {
   /*
   the original code had this, but I prefer a more fine grained version below
-  [feature = 'historic_castle'][castle_type != 'stately'][zoom >= @nice],
-  [feature = 'historic_castle'][castle_type = 'stately'][zoom >= 16],
-  [feature = 'historic_manor'][zoom >= 15] {
-  */
   [feature = 'historic_castle'][zoom >= @nice] {
+  */
     marker-file: url('symbols/historic/castle.svg');
     marker-width: 14;
     marker-fill: @memorials;
@@ -975,16 +984,15 @@
     [ruins = 'yes'] {
       marker-fill: @ruin;
     }
-    [zoom >= 15] {
-      [castle_type = 'palace'],
-      [castle_type = 'stately'][zoom >= 16] {
-        marker-file: url('symbols/historic/palace.svg');
-      }
+    [castle_type = 'palace'],
+    [castle_type = 'stately'][zoom >= 16] {
+      marker-file: url('symbols/historic/palace.svg');
+    }
 
-      [castle_type = 'manor'][zoom >= 16],
-      [feature = 'historic_manor'][zoom >= 16] {
-        marker-file: url('symbols/historic/manor.svg');
-      }
+    [castle_type = 'manor'][zoom >= 16],
+    [castle_type = 'mansion'][zoom >= 16],
+    [feature = 'historic_manor'][zoom >= 16] {
+      marker-file: url('symbols/historic/manor.svg');
     }
     [castle_type = 'fortress'],
     [castle_type = 'defensive'],
@@ -2327,8 +2335,18 @@
   [feature = 'man_made_obelisk'][zoom >= 17],
   [feature = 'historic_monument'][zoom >= 16],
   [feature = 'historic_fort'][zoom >= @nice],
-  [feature = 'historic_castle'][zoom >= @nice],
-  [feature = 'historic_manor'][zoom >= 16] {
+  [feature = 'historic_castle']
+    [castle_type != 'palace']
+    [castle_type != 'stately']
+    [castle_type != 'manor']
+    [castle_type != 'mansion']
+    [feature != 'historic_manor']
+    [zoom >= @nice],
+  [feature = 'historic_castle'][castle_type = 'palace'][zoom >= 15],
+  [feature = 'historic_castle'][castle_type = 'stately'][zoom >= 15],
+  [feature = 'historic_castle'][castle_type = 'manor'][zoom >= 15],
+  [feature = 'historic_castle'][castle_type = 'mansion'][zoom >= 15],
+  [feature = 'historic_manor'][zoom >= 15] {
     text-name: "[name]";
     text-size: @standard-font-size;
     text-wrap-width: @standard-wrap-width;
