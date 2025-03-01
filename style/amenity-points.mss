@@ -590,6 +590,7 @@
       }
       ["tower:type" = 'bell_tower'] {
         marker-file: url('symbols/man_made/bell_tower.svg');
+        marker-fill: @amenity-brown;
       }
       ["tower:type" = 'cooling'] {
         marker-file: url('symbols/man_made/tower_cooling.svg');
