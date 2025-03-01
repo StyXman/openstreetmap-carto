@@ -570,9 +570,15 @@
 
   [feature = 'man_made_tower']["tower:type" = 'cooling'][zoom >= 15],
   [feature = 'man_made_tower']["tower:type" = 'lighting'][zoom >= 18],
-  [feature = 'man_made_tower']["tower:type" = 'bell_tower'][zoom >= 18],
+  [feature = 'man_made_tower']["tower:type" = 'bell_tower'][zoom >= 16],
+  [feature = 'man_made_tower']["tower:type" = 'clock'][zoom >= 16],
   [feature = 'man_made_tower']["tower:type" = 'watchtower'][zoom >= 18],
-  [feature = 'man_made_tower']["tower:type" != 'cooling']["tower:type" != 'lighting']["tower:type" != 'bell_tower']["tower:type" != 'watchtower'] {
+  [feature = 'man_made_tower']
+      ["tower:type" != 'cooling']
+      ["tower:type" != 'lighting']
+      ["tower:type" != 'bell_tower']
+      ["tower:type" != 'clock']
+      ["tower:type" != 'watchtower'] {
     [zoom >= 14][height >= 160],
     [zoom >= 15][height >= 80],
     [zoom >= 16][height >= 40],
@@ -587,6 +593,10 @@
       ["tower:type" = 'observation'],
       ["tower:type" = 'watchtower'] {
         marker-file: url('symbols/man_made/tower_observation.svg');
+      }
+      ["tower:type" = 'clock'] {
+        marker-file: url('symbols/man_made/clock_tower.svg');
+        marker-fill: @amenity-brown;
       }
       ["tower:type" = 'bell_tower'] {
         marker-file: url('symbols/man_made/bell_tower.svg');
