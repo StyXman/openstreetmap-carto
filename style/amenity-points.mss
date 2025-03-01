@@ -582,6 +582,7 @@
       marker-clip: false;
       ["tower:type" = 'defensive'] {
         marker-file: url('symbols/man_made/tower_defensive.svg');
+        marker-fill: @amenity-brown;
       }
       ["tower:type" = 'observation'],
       ["tower:type" = 'watchtower'] {
