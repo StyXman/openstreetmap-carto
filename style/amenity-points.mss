@@ -595,7 +595,7 @@
         marker-file: url('symbols/man_made/tower_observation.svg');
       }
       ["tower:type" = 'clock'] {
-        marker-file: url('symbols/man_made/clock_tower.svg');
+        marker-file: url('symbols/local/clock_tower-5.svg');
         marker-fill: @amenity-brown;
       }
       ["tower:type" = 'bell_tower'] {
