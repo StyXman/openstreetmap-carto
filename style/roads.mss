@@ -3188,14 +3188,16 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
     [feature = 'railway_rail'][preserved != 'yes'][zoom >= 10][zoom < 12],
     [feature = 'railway_rail'][zoom >= 12],
     [feature = 'railway_INT-spur-siding-yard'][zoom >= 13] {
-      [zoom < 13] {
-        line-color: @rail-fill;
-        line-width: 0.5;
-        [zoom >= 8] { line-width: 1.0; }
-        [zoom >= 12] { line-width: 2.0; }
-        line-join: round;
-        .roads_low_zoom[int_tunnel = 'yes'], #tunnels {
-          line-dasharray: 5,2;
+      [zoom < 12] {
+        line-color: @rail-fill-low-zoom;
+        ::line {
+          line-width: 0.5;
+          [zoom >= 8] { line-width: 1.0; }
+          [zoom >= 12] { line-width: 2.0; }
+          line-join: round;
+          .roads_low_zoom[int_tunnel = 'yes'], #tunnels {
+            line-dasharray: 5,2;
+          }
         }
       }
       [zoom >= 12] {
@@ -3220,10 +3222,10 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
               light/line-width: 2;
             }
           }
-          // TODO: render this from ZL14
+          // TODO: render this only from ZL14
           [feature = 'railway_INT-spur-siding-yard'] {
             dark/line-width: 2;
-            dark/line-color: #aaa;
+            dark/line-color: @rail-fill;
             light/line-width: 0.8;
             light/line-dasharray: 0,8,8,1;
             [zoom >= 18] {
@@ -3241,16 +3243,16 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
         }
         #tunnels {
           line-color: @rail-fill;
-          line-width: 2.8;
-          line-dasharray: 6,4;
+          line-width: 0.75;
+          line-dasharray: 8,8;
           line-clip: false;
           // TODO: render this from ZL14
           [feature = 'railway_INT-spur-siding-yard'] {
             line-color: #aaa;
-            line-width: 1.9;
-            line-dasharray: 3,3;
+            line-width: 0.8;
+            line-dasharray: 8,8;
             [zoom >= 18] {
-              line-width: 2.7;
+              line-width: 1;
             }
           }
           [feature = 'railway_rail'][zoom >= 18] {

@@ -41,3 +41,6 @@
 // cycleways
 @cycleway-casing: #a0f0a0;
 @cycleway-fill: #004000;
+
+@rail-fill-low-zoom: #606060;
+@rail-fill: black;
