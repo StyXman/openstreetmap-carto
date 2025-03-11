@@ -1202,7 +1202,10 @@ Layer:
                   ELSE 'no'
                 END AS link,
                 tags->'sac_scale' as sac_scale,
-                tags->'trailblazed' as trailblazed,
+                CASE
+                  WHEN NOT tags ? 'trailblazed' OR tags->'trailblazed' = 'no' THEN 'no'
+                  ELSE 'yes'
+                END AS trailblazed,
                 CASE
                   WHEN tags->'footway' = 'sidewalk' THEN 'yes'
                   ELSE 'no'
