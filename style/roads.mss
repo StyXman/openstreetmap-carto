@@ -3189,8 +3189,8 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
     [feature = 'railway_rail'][zoom >= 12],
     [feature = 'railway_INT-spur-siding-yard'][zoom >= 13] {
       [zoom < 12] {
-        line-color: @rail-fill-low-zoom;
         ::line {
+          line-color: @rail-fill-low-zoom;
           line-width: 0.5;
           [zoom >= 8] { line-width: 1.0; }
           [zoom >= 12] { line-width: 2.0; }
@@ -3207,13 +3207,15 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
           light/line-join: round;
           [feature = 'railway_rail'] {
             dark/line-color: @rail-fill;
-            dark/line-width: 2;
-            light/line-width: 0.75;
+            dark/line-width: 3;
+            light/line-width: 1;
             light/line-dasharray: 8,8;
+            /*
             [zoom >= 13] {
               dark/line-width: 3;
               light/line-width: 1;
             }
+            */
             [zoom >= 15][preserved != 'yes'] {
               light/line-dasharray: 0,8,8,1;
             }
@@ -3222,8 +3224,9 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
               light/line-width: 2;
             }
           }
+
           // TODO: render this only from ZL14
-          [feature = 'railway_INT-spur-siding-yard'] {
+          [feature = 'railway_INT-spur-siding-yard'][zoom >= 14] {
             dark/line-width: 2;
             dark/line-color: @rail-fill;
             light/line-width: 0.8;
@@ -3233,7 +3236,7 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
               light/line-width: 1;
             }
           }
-          [preserved = 'yes'] {
+          [preserved = 'yes'][zoom >= 14] {
             dark/line-width: 3;
             dark/line-color: #666;
             light/line-width: 1;

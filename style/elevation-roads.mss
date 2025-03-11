@@ -42,5 +42,5 @@
 @cycleway-casing: #a0f0a0;
 @cycleway-fill: #004000;
 
-@rail-fill-low-zoom: #606060;
-@rail-fill: black;
+@rail-fill-low-zoom: #202020;
+@rail-fill: #404040;
