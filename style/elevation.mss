@@ -34,7 +34,7 @@
 @alpine_hiking: blue;
 @demanding_alpine_hiking: gray;
 @difficult_alpine_hiking: black;
-@climbing: @transportation-icon;
+@climbing: #c00000;
 
 @residential: #cfcfcf;      // Lch(89,0,0)
 @residential-line: #b9b9b9; // Lch(75,0,0)

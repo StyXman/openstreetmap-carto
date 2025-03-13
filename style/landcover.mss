@@ -1134,8 +1134,14 @@
   */
   [natural = 'cliff'][zoom >= 13] {
     line-pattern-file: url('symbols/local/cliff.svg');
+    [climbing = 'yes'] {
+      line-pattern-file: url('symbols/local/cliff-climbing.svg');
+    }
     [zoom >= 15] {
       line-pattern-file: url('symbols/local/cliff2.svg');
+      [climbing = 'yes'] {
+        line-pattern-file: url('symbols/local/cliff2-climbing.svg');
+      }
     }
     // TODO: climbing color for climbing crags
   }
@@ -1271,7 +1277,9 @@
     text-halo-radius: @standard-halo-radius;
     text-halo-fill: @standard-halo-fill;
     text-fill: @cliff-text;
-    // TODO: text for climbing crags
+    [feature = 'natural_cliff'][climbing = 'yes'] {
+      text-fill: @climbing;
+    }
     text-size: 10;
     text-face-name: @book-fonts;
     text-dy: 8;
@@ -1284,6 +1292,7 @@
       text-placement: point;
     }
   }
+
   [feature = 'natural_dale'][zoom >= 13],
   [feature = 'natural_gorge'][zoom >= 14],
   [feature = 'natural_couloir'][zoom >= 14],

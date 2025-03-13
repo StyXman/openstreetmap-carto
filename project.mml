@@ -1034,6 +1034,10 @@ Layer:
       table: |-
         (SELECT
             way, "natural", man_made, name,
+            CASE
+              WHEN tags->'sport' = 'climbing' THEN 'yes'
+              ELSE 'no'
+            END as climbing,
             ST_Length(way)/NULLIF(SQRT(!pixel_width!::real*!pixel_width!::real),0) AS pixel_length
           FROM planet_osm_line
           --                                    'ridge' gone
@@ -2353,6 +2357,11 @@ Layer:
               tags->'sport' as sport,
               -- local
               tags->'bicycle' as bicycle,
+              -- local
+              CASE
+                WHEN tags->'sport' = 'climbing' THEN 'yes'
+                ELSE 'no'
+              END as climbing,
               tags->'information' as information,
               tags->'memorial' as memorial,
               tags->'artwork_type' as artwork_type,
@@ -2830,6 +2839,10 @@ Layer:
             ref,
             ST_Length(way)/NULLIF(SQRT(!pixel_width!::real*!pixel_width!::real),0) AS pixel_length,
             NULL AS way_area,
+            CASE
+              WHEN tags->'sport' = 'climbing' THEN 'yes'
+              ELSE 'no'
+            END as climbing,
             CASE WHEN building = 'no' OR building IS NULL THEN 'no' ELSE 'yes' END AS is_building
           FROM planet_osm_line
           WHERE  (man_made IN ('pier', 'breakwater', 'groyne', 'embankment')
