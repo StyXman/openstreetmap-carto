@@ -1118,6 +1118,9 @@
     }
     */
     line-pattern-file: url('symbols/local/arete.svg');
+    [climbing = 'yes'] {
+      line-pattern-file: url('symbols/local/arete-climbing.svg');
+    }
   }
   /*
   [natural = 'ridge'][zoom >= 12] {
