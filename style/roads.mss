@@ -4992,8 +4992,7 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
 #paths-text-name::incline {
   [zoom > 16][highway = 'steps']/*[incline != null]*/ {
     // the arrow points down
-    // text-name: "'⇐'";
-    text-name: "'foo!'";
+    text-name: "'«'";
     text-size: 15;
     text-clip: false;
     text-spacing: 100;
@@ -5001,17 +5000,12 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
     text-halo-fill: @standard-halo-fill;
     text-halo-radius: 1.5;
     text-margin: 2;
-    text-dy: 3;
+    text-dy: 1;
     text-upright: right;
     text-vertical-alignment: middle;
     text-face-name: @book-fonts;
-    /*
-    [incline = 'up'] {
-      text-name: "'⇐'";
-    }
-    */
     [incline = 'down'] {
-      text-name: "'⇒'";
+      text-name: "'»'";
     }
   }
 }
