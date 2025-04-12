@@ -490,6 +490,28 @@ Layer:
       minzoom: 6
 
 
+  - id: water-lines-very-low-zoom
+    geometry: linestring
+    # TODO: convert to WebMerc
+    <<: *extents84
+    Datasource:
+      type: "postgis"
+      port: 5432
+      dbname: "rivers"
+      key_field: ""
+      geometry_field: "way"
+      table: |-
+        (
+          SELECT
+            size,
+            way
+          FROM rivers
+        ) AS rivers
+    properties:
+      minzoom: 2
+      maxzoom: 7
+
+
   - id: water-lines-low-zoom
     geometry: linestring
     <<: *extents

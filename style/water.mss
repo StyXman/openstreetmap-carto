@@ -87,6 +87,22 @@
   }
 }
 
+// ZLs 0-7
+#water-lines-very-low-zoom {
+  [zoom >= 2][size >= 7.25],
+  [zoom >= 3][size >= 7],
+  [zoom >= 4][size >= 6.75],
+  [zoom >= 5][size >= 6.3],
+  [zoom >= 6][size >= 6] {
+    line-color: @water-dark;
+    // line-width: [size];
+    line-width: 2;
+    [zoom >= 6][size >= 6.75] {
+      line-width: 3;
+    }
+  }
+}
+
 #water-lines-low-zoom {
   [waterway = 'river'][zoom >= 8][zoom < 12] {
     [int_intermittent = 'yes'] {
