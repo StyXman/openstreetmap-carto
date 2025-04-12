@@ -2135,7 +2135,7 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
 
     [feature = 'highway_tertiary'] {
       [zoom >= 10] {
-        line-color: @unimportant-road;
+        line-color: @tertiary-fill-z12;
         line-width: @tertiary-width-z10;
         [zoom >= 11] {
           line-width: @tertiary-width-z11;
@@ -2144,7 +2144,7 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
           line-dasharray: 8,2;
         }
         [zoom >= 12] {
-          line-color: @tertiary-fill-z12;
+          // line-color: @tertiary-fill-z12;
           line-width: @tertiary-width-z12 - 2 * @casing-width-z12;
           [zoom >= 13] {
             line-color: @tertiary-fill;

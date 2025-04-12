@@ -2,23 +2,21 @@
 
 @motorway-low-zoom: #cf3030;
 @trunk-low-zoom: #cf6868;
+
+// ZL9-12
 @primary-low-zoom: #8a5c00;
-@secondary-low-zoom: #2f6f2f;
+@secondary-low-zoom: #9f4f9f;
 
 @motorway-fill: @motorway-low-zoom;
 @trunk-fill: @motorway-fill;
-@primary-fill: @primary-low-zoom;
-@secondary-fill: @secondary-low-zoom;
 
-@motorway-casing: darken(@motorway-fill, @darken-lighten);
-@trunk-casing: darken(@trunk-fill, @darken-lighten);
-@primary-casing: darken(@primary-fill, @darken-lighten);
-@secondary-casing: darken(@secondary-fill, @darken-lighten);
+// @primary-fill: lighten(@primary-low-zoom, 30%);
 
-@motorway-low-zoom-casing: #c24e6b;
-@trunk-low-zoom-casing: #cf6649;
-@primary-low-zoom-casing: #c38a27;
-@secondary-low-zoom-casing: #9eae23;
+// @primary-fill: #b0893a;
+// @secondary-fill: @secondary-low-zoom;
+
+// @primary-fill: #ebdab9;
+@secondary-fill: #ebb9eb;
 
 @motorway-shield: #620728;
 @trunk-shield: #5d1b0b;
@@ -41,6 +39,10 @@
 // cycleways
 @cycleway-casing: #a0f0a0;
 @cycleway-fill: #004000;
+
+@asphalt: #999999;
+
+@tertiary-fill-z12: darken(@asphalt, 40%);
 
 @rail-fill-low-zoom: #202020;
 @rail-fill: #404040;
