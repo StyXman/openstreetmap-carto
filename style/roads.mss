@@ -415,6 +415,98 @@ local
    LOW ZOOM DEFINITIONS ARE BELOW!!!
    NOTE NOTE NOTE */
 
+
+/*
+NOTE: The structure of the styling goes like this:
+
+There are two types of lines: encased and simple.
+
+Encased lines are all major roads (motorway to tertiary) and all minor roads (residential to pedestrian)
+simple lines are all paths (track, steps, bridleway, footway, path, cycleway) and trains (rail,
+monorail, tram, subway, light_rail, funicular, narrow_gauge)
+
+encased lines have a coloured fill and can be in thin mode (< ZL12, width < 3) with a halo,
+or a thick mode (>= ZL12, width > 3) with a casing.
+
+simple lines are just a line with a casing and a background in case of tunnels or bridges.
+
+There are 5 layers (in order of definition/drawing, lower to higher):
+
+* #tunnels
+* #roads-casing
+* #roads-fill
+* #roads-low-zoom
+* #bridges
+
+tunnels, roads-casing and bridges are grouped in the first style, but then differentiated again.
+  inside there are two attachments, ::casing and ::bridges_and_tunnels_background
+    for simple lines, tunnels and bridges have an outer border and a background
+  this style provides the borders of the line, only for >= ZL12
+
+tunnels, roads-fill, roads-low-zoom and bridges are grouped in the second style, but then differentiated again.
+  inside there are two attachments, ::halo and ::fill
+    ::halo provides a highlight background for simple lines for mayor roads for < ZL12
+    ::fill is the final fill
+
+so in all you get:
+
+--- semi transparent
+=== solid
+= = dotted
+··· background
+*** fill colour
++++ lighter fill
+### black
+* * dotted fill
+
+< ZL12
+                road       tunnel     bridge
+* major roads
+                -------    -------    -------  ::halo
+                *******    *******    *******  ::fill
+                -------    -------    -------  ::halo
+
+>= ZL12
+* motorway, trunk
+                =======    = = = =    #######  ::casing
+                *******    +++++++    *******  :: fill
+                =======    = = = =    #######  ::casing
+
+* paved primary, secondary, tertiary,
+                =======    = = = =    #######  ::casing
+                *******    +++++++    *******  :: fill
+                =======    = = = =    #######  ::casing
+
+* unpaved primary, secondary, tertiary, residential, unclassified, road, service, living_street
+                == == =    = = = =    #######  ::casing
+                *******    +++++++    *******  :: fill
+                == == =    = = = =    #######  ::casing
+
+* pedestrian
+                           = = = =    #######  ::casing
+                *******    +++++++    *******  :: fill
+                           = = = =    #######  ::casing
+
+* steps, bridleway, footway, path, cycleway, track
+                           = = = =    #######  ::casing
+                           ·······    ·······  ::bridges_and_tunnels_background
+                *******    +++++++    *******  :: fill
+                           ·······    ·······  ::bridges_and_tunnels_background
+                           = = = =    #######  ::casing
+
+* trains
+                                      #######  ::casing
+                                      ·······  ::bridges_and_tunnels_background
+                *******    + + + +    *******  :: fill
+                                      ·······  ::bridges_and_tunnels_background
+                                      #######  ::casing
+
+
+Widths include casing and bridges, except for tunnels and bridges on simple lines.
+
+TODO: make at least cycleway encased
+*/
+
 #roads-casing, #bridges, #tunnels {
   ::casing {
     [zoom >= 12] {
