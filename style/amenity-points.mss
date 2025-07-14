@@ -258,6 +258,31 @@
     marker-clip: false;
   }
 
+  [feature = 'highway_crossing'][zoom >= 17] {
+    // marker-file: url('symbols/highway/traffic_light.svg');
+    marker-width: @dot;
+    [zoom >= 18] {
+      marker-width: @small;
+    }
+    marker-fill: #0a0a0a;
+    marker-placement: interior;
+    marker-clip: false;
+  }
+
+  // see https://wiki.openstreetmap.org/wiki/Key:traffic_calming#R%C3%B6ntgen_icons
+  [feature = 'highway_traffic_calming'][zoom >= 17] {
+    marker-file: url('symbols/local/bump.svg');
+    [traffic_calming = 'chicane'] {
+      marker-file: url('symbols/local/chicane.svg');
+    }
+    [traffic_calming = 'choker'] {
+      marker-file: url('symbols/local/choke.svg');
+    }
+    marker-fill: @car-color;
+    marker-placement: interior;
+    marker-clip: false;
+  }
+
   [feature = 'barrier_toll_booth'][zoom >= 16] {
     marker-file: url('symbols/barrier/toll_booth.svg');
     // make it bigger, darker, as red on red does not work on highways
