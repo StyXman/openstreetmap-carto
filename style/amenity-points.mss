@@ -1793,6 +1793,9 @@
       marker-width: @medium;
       [feature = 'amenity_parking'] {
         marker-file: url('symbols/amenity/parking.svg');
+        [fee = 'yes'] {
+          marker-file: url('symbols/local/parking_fee.svg');
+        }
         marker-width: @huge;
         [charging_places > 0] {
           marker-fill: @electric;

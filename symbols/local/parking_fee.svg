@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="12"
+   height="12"
+   viewBox="0 0 12 12"
+   version="1.1"
+   id="svg1"
+   sodipodi:docname="parking_fee.svg"
+   inkscape:version="1.4 (e7c3feb100, 2024-10-09)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs1" />
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     showgrid="true"
+     inkscape:zoom="86.083333"
+     inkscape:cx="6"
+     inkscape:cy="6"
+     inkscape:window-width="2259"
+     inkscape:window-height="1242"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg1">
+    <inkscape:grid
+       id="grid1"
+       units="px"
+       originx="0"
+       originy="0"
+       spacingx="1"
+       spacingy="1"
+       empcolor="#0099e5"
+       empopacity="0.30196078"
+       color="#0099e5"
+       opacity="0.14901961"
+       empspacing="5"
+       enabled="true"
+       visible="true" />
+  </sodipodi:namedview>
+  <path
+     d="m 1.000968,0 v 12 h 1.75 V 7 h 4.25 a 3,3.5 0 0 0 0,-7 z m 1.75,1.75 h 3.75 a 1.58,1.75 0 0 1 0,3.5 h -3.75 z"
+     id="path1" />
+  <path
+     d="m 7.9725351,12.170676 q -0.3128345,-0.0057 -0.6086053,-0.05119 -0.2957708,-0.05119 -0.4777836,-0.13651 v -0.483472 q 0.1933886,0.09101 0.4948473,0.159262 0.3014587,0.06825 0.5915416,0.07394 V 10.583752 Q 7.409433,10.430178 7.1477896,10.196974 6.8861462,9.9637705 6.8861462,9.5599295 q 0,-0.4209046 0.2900829,-0.6597964 0.2957708,-0.2388918 0.796306,-0.2673313 V 8.1322666 h 0.3640256 v 0.4948473 q 0.3014587,0.00569 0.5460384,0.068255 0.2502676,0.056879 0.455032,0.1421975 L 9.1840578,9.2584708 Q 9.002045,9.1845281 8.7802169,9.133337 8.5640767,9.076458 8.3365607,9.0593943 v 1.1432677 q 0.3754014,0.10807 0.625669,0.233204 0.2502676,0.119446 0.3754014,0.301459 0.1308217,0.176325 0.1308217,0.46072 0,0.398153 -0.2957708,0.64842 -0.2957708,0.24458 -0.8361213,0.301459 v 0.631357 H 7.9725351 Z m 0,-3.0999059 q -0.3071466,0.022752 -0.455032,0.1421975 -0.1421975,0.1194459 -0.1421975,0.3071466 0,0.2275161 0.1251338,0.3526499 0.1308217,0.1194459 0.4720957,0.2047639 z m 0.3640256,2.6334979 q 0.3355861,-0.03413 0.4891594,-0.153573 0.1535733,-0.125134 0.1535733,-0.318523 0,-0.21614 -0.1365096,-0.32421 -0.1365096,-0.113758 -0.5062231,-0.204765 z"
+     id="text1"
+     style="font-size:5.6879px;stroke-width:0.473991"
+     transform="scale(1.1617528,0.86076829)"
+     aria-label="$" />
+</svg>

@@ -2384,6 +2384,11 @@ Layer:
                 WHEN tags->'sport' = 'climbing' THEN 'yes'
                 ELSE 'no'
               END as climbing,
+              -- local
+              CASE
+                WHEN COALESCE(tags->'fee', 'no') = 'no' THEN 'no'
+                ELSE 'yes'
+              END AS fee,
               tags->'information' as information,
               tags->'memorial' as memorial,
               tags->'artwork_type' as artwork_type,
