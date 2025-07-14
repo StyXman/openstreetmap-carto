@@ -571,12 +571,19 @@
     }
   }
 
+  [feature = 'man_made_tower']["tower:type" = 'defensive'][zoom >= @nice] {
+    marker-file: url('symbols/man_made/tower_defensive.svg');
+    marker-fill: @amenity-brown;
+    marker-clip: false;
+  }
+
   [feature = 'man_made_tower']["tower:type" = 'cooling'][zoom >= 15],
   [feature = 'man_made_tower']["tower:type" = 'lighting'][zoom >= 18],
   [feature = 'man_made_tower']["tower:type" = 'bell_tower'][zoom >= 16],
   [feature = 'man_made_tower']["tower:type" = 'clock'][zoom >= 16],
   [feature = 'man_made_tower']["tower:type" = 'watchtower'][zoom >= 18],
   [feature = 'man_made_tower']
+      ["tower:type" != 'defensive']
       ["tower:type" != 'cooling']
       ["tower:type" != 'lighting']
       ["tower:type" != 'bell_tower']
@@ -589,10 +596,14 @@
       marker-file: url('symbols/man_made/tower_generic.svg');
       marker-fill: @man-made-icon;
       marker-clip: false;
-      ["tower:type" = 'defensive'] {
+      /*
+      // moved to its own block to simplify things
+      [feature = 'man_made_tower']["tower:type" = 'defensive'][zoom >= @nice] {
         marker-file: url('symbols/man_made/tower_defensive.svg');
         marker-fill: @amenity-brown;
+        marker-clip: false;
       }
+      */
       ["tower:type" = 'observation'],
       ["tower:type" = 'watchtower'] {
         marker-file: url('symbols/man_made/tower_observation.svg');
