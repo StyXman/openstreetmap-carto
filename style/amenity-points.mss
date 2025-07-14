@@ -238,6 +238,7 @@
     marker-clip: false;
   }
 
+  /*
   [feature = 'amenity_parcel_locker'][zoom >= 17] {
     marker-fill: @amenity-brown;
     [zoom >= 17][zoom < 18] {
@@ -249,6 +250,7 @@
       marker-clip: false;
     }
   }
+  */
 
   [feature = 'highway_traffic_signals'][zoom >= 17] {
     marker-file: url('symbols/highway/traffic_light.svg');
