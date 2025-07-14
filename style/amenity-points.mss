@@ -418,10 +418,11 @@
     marker-clip: false;
   }
 
-  // was 19, but 18 is my limit
-  [feature = 'amenity_bicycle_repair_station'][zoom >= 18] {
+  // was 19
+  [feature = 'amenity_bicycle_repair_station'][zoom >= @emergency] {
     marker-file: url('symbols/amenity/bicycle_repair_station.svg');
-    marker-width: @medium;
+    marker-width: @huge;
+    marker-height: @huge;
     marker-fill: @bicycle;
     marker-clip: false;
     [int_access = 'restricted'] {
@@ -1807,7 +1808,11 @@
       [feature = 'amenity_parking']["parking" = 'lane'] { 
         marker-file: url('symbols/amenity/parking_subtle.svg'); 
       }
-      [feature = 'amenity_bicycle_parking'] { marker-file: url('symbols/amenity/bicycle_parking.svg'); }
+      [feature = 'amenity_bicycle_parking'] {
+        marker-file: url('symbols/amenity/bicycle_parking.svg');
+        marker-width: @medium;
+        marker-fill: @bicycle;
+      }
       [feature = 'amenity_motorcycle_parking'] { marker-file: url('symbols/amenity/motorcycle_parking.svg'); }
       [feature = 'amenity_parking_entrance']["parking"='underground'] {
         marker-file: url('symbols/amenity/parking_entrance_underground.svg');
@@ -2165,7 +2170,8 @@
   }
 
   // [feature = 'amenity_bbq'][zoom >= 17],
-  [feature = 'amenity_bicycle_repair_station'][zoom >= 19],
+  // was 19
+  [feature = 'amenity_bicycle_repair_station'][zoom >= @emergency],
   [feature = 'amenity_drinking_water'][zoom >= 17],
   [feature = 'amenity_shower'][zoom >= 18],
   [feature = 'tourism_picnic_site'][zoom >= 17] {
