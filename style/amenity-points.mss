@@ -2,8 +2,10 @@
 @wetland-text: darken(#4aa5fa, 25%); /* Also for mud */
 @shop-icon: #ac39ac;
 @shop-text: #939;
-@transportation-icon: #c00000;
-@transportation-text: #800000;
+@transportation-icon: #0000c0;
+@transportation-text: #000080;
+@transportation: @transportation-icon;
+@bicycle: @transportation;
 // ex water-dark
 @accommodation-icon: #5a5aa1;
 @accommodation-text: #5a5aa1;
@@ -161,7 +163,7 @@
 
   [feature = 'amenity_bicycle_rental'][zoom >= @useful] {
     marker-file: url('symbols/amenity/rental_bicycle.svg');
-    marker-fill: @transportation-icon;
+    marker-fill: @bicycle;
     marker-clip: false;
   }
 
@@ -388,7 +390,7 @@
     marker-fill: @electric;
     marker-clip: false;
     [bicycle = 'yes'] {
-      marker-fill: @transportation-icon;
+      marker-fill: @bicycle;
     }
     [int_access = 'restricted'] {
       marker-opacity: @private-opacity;
@@ -398,7 +400,7 @@
   [feature = 'amenity_fuel'][zoom >= @useful] {
     marker-file: url('symbols/amenity/fuel.svg');
     marker-width: @huge;
-    marker-fill: @transportation-icon;
+    marker-fill: @car-color;
     marker-clip: false;
   }
 
@@ -420,7 +422,7 @@
   [feature = 'amenity_bicycle_repair_station'][zoom >= 18] {
     marker-file: url('symbols/amenity/bicycle_repair_station.svg');
     marker-width: @medium;
-    marker-fill: @amenity-brown;
+    marker-fill: @bicycle;
     marker-clip: false;
     [int_access = 'restricted'] {
       marker-opacity: @private-opacity;
@@ -1818,7 +1820,7 @@
         marker-width: @huge;
       }
       marker-clip: false;
-      marker-fill: @transportation-icon;
+      marker-fill: @car-color;
       [int_access = 'restricted'] { marker-opacity: @private-opacity; }
     }
   }
