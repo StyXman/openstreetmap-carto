@@ -1963,6 +1963,9 @@
   // was 19, but 18 is my limit
   [feature = 'amenity_bench'][zoom >= 18]::amenity {
     marker-file: url('symbols/amenity/bench.svg');
+    [backrest = 'yes'] {
+      marker-file: url('symbols/local/bench_backrest.svg');
+    }
     marker-fill: @man-made-icon;
     [int_access = 'restricted'] {
       marker-opacity: @private-opacity;
