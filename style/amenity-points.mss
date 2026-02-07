@@ -1474,6 +1474,19 @@
     }
   }
 
+  [feature = 'craft'] {
+    [zoom >= 17] {
+      marker-clip: false;
+      marker-fill: @shop-icon;
+      marker-width: @tiny;
+      marker-line-width: 0;
+    }
+
+    [zoom >= 18] {
+      marker-width: @dot;
+    }
+  }
+
   /*
   [feature = 'advertising_column'][zoom >= 19]{
       marker-file: url('symbols/amenity/advertising_column.svg');
@@ -3062,6 +3075,7 @@
     }
   }
 
+  [feature = 'craft'],
   [feature = 'shop'][shop != 'mall'] {
     [way_pixels > 3000][zoom >= 17],
     [zoom >= 18] {
