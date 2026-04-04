@@ -2248,7 +2248,10 @@ Layer:
               END AS charging_places,
               COALESCE(
                 -- local
-                'sport_' || CASE WHEN tags @> 'sport=>climbing' THEN 'climbing' END,
+                'sport_' || CASE
+                  WHEN tags @> 'sport=>climbing' THEN 'climbing'
+                  WHEN highway = 'via_ferrata' THEN  'via_ferrata'
+                END,
                 'aeroway_' || CASE WHEN aeroway IN ('gate', 'apron', 'helipad', 'aerodrome') THEN aeroway END,
 
                 'tourism_' || CASE WHEN tourism IN ('alpine_hut', 'apartment', 'artwork', 'camp_site', 'caravan_site', 'chalet', 'gallery', 'guest_house',
@@ -2480,8 +2483,9 @@ Layer:
                 FROM planet_osm_line
                 WHERE way && !bbox!
                   -- if we left this query open, we would get _all_ lines here, but so far we're only interested in
-                  -- traffic_calming segments
-                  AND tags ? 'traffic_calming'
+                  -- traffic_calming and via_ferrata segments
+                  AND (tags ? 'traffic_calming' OR
+                       highway = 'via_ferrata')
               UNION ALL
               SELECT
                   way,

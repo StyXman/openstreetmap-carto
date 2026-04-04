@@ -1516,6 +1516,15 @@
     }
   }
 
+  // local
+  [feature = 'sport_via_ferrata'][zoom >= @nice][zoom < 15] {
+    marker-placement: interior;
+    marker-fill: @climbing;
+    marker-width: @big;
+    marker-file: url('symbols/local/via_ferrata.svg');
+    marker-clip: false;
+  }
+
   [feature = 'diplomatic_embassy'][zoom >= 17] {
     marker-file: url('symbols/office/embassy.svg');
     marker-width: @small;

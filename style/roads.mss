@@ -3275,6 +3275,38 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
       }
     }
 
+    // ::fill
+    [feature = 'highway_via_ferrata'][zoom >= 15] {
+      ::line {
+        line-color: @climbing;
+        line-width: 2;
+        /*
+        [zoom >= 16] {
+          line-width: 1;
+        }
+        [zoom >= 16] {
+          line-width: 1.5;
+        }
+        */
+      }
+      ::dash {
+        line-color: @climbing;
+        line-width: 8;
+        line-dasharray: 2,8;
+        /*
+        [zoom >= 16] {
+          line-width: 6;
+          line-dasharray: 1,9;
+        }
+        [zoom >= 17] {
+          line-width: 7;
+          line-dasharray: 1.5,13.5;
+        }
+        */
+      }
+    }
+
+    // ::fill
     // [feature = 'railway_rail'][zoom >= 8][zoom < 10],
     [feature = 'railway_rail'][zoom >= 5][zoom < 10],
     [feature = 'railway_rail'][preserved != 'yes'][zoom >= 10][zoom < 12],
