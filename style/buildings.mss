@@ -26,6 +26,7 @@
     [aerialway = 'station'],
     [historic = 'castle'],
     [historic = 'fort'],
+    [historic = 'aqueduct'],
     [building = 'train_station'],
     [public_transport = 'station'] {
       line-color: @tourism;

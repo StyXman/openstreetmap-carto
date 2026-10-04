@@ -858,15 +858,20 @@ Layer:
       table: |-
         (SELECT
             way,
-            building,
+            CASE
+              WHEN building IS NOT NULL THEN 'yes'
+              WHEN bridge = 'aqueduct' THEN 'yes'
+            END AS building,
             amenity,
             aeroway,
             aerialway,
             historic,
+            tourism,
             tags->'public_transport' as public_transport
           FROM planet_osm_polygon
-          WHERE building IS NOT NULL
-            AND building != 'no'
+          WHERE ((building IS NOT NULL
+              AND building != 'no')
+              OR bridge = 'aqueduct')
             AND way_area > 1*!pixel_width!::real*!pixel_height!::real
           ORDER BY COALESCE(layer,0), way_area DESC
         ) AS buildings
