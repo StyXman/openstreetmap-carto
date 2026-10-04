@@ -2267,14 +2267,19 @@ Layer:
                                                     'bicycle_repair_station','biergarten', 'boat_rental', 'bureau_de_change', 'bus_station', 'cafe',
                                                     'car_rental', 'car_wash', 'casino', 'charging_station', 'childcare', 'cinema', 'clinic', 'college',
                                                     'community_centre', 'courthouse', 'dentist', 'doctors', 'drinking_water', 'driving_school',
-                                                    'fast_food', 'ferry_terminal', 'fire_station', 'food_court', 'fountain', 'fuel', 'grave_yard',
+                                                    --                                                           'fountain', see next case
+                                                    'fast_food', 'ferry_terminal', 'fire_station', 'food_court',             'fuel', 'grave_yard',
                                                     'hospital', 'hunting_stand', 'ice_cream', 'internet_cafe', 'kindergarten', 'library', 'marketplace',
                                                     'nightclub', 'nursing_home', 'pharmacy', 'place_of_worship', 'police', 'post_box',
                                                     --             'prison',  moved to lc-flat
                                                     'post_office',           'pub', 'public_bath', 'public_bookcase', 'recycling', 'restaurant', 'school',
                                                     'shelter', 'shower', 'social_facility', 'taxi', 'telephone', 'theatre', 'toilets', 'townhall',
                                                     'university', 'vehicle_inspection', 'veterinary') THEN amenity END,
-
+                'amenity_' || CASE WHEN amenity = 'fountain' THEN
+                                  CASE WHEN tags->'drinking_water' = 'yes' THEN 'drinking_water'
+                                       ELSE amenity
+                                  END
+                              END,
                 'amenity_' || CASE WHEN amenity IN ('waste_disposal') AND way_area IS NOT NULL THEN amenity END, -- Waste disposal points are rendered in the low priority layer
                 'amenity_' || CASE WHEN amenity IN ('vending_machine') AND tags->'vending' IN ('excrement_bags', 'parking_tickets', 'public_transport_tickets') THEN amenity END,
                 -- 'amenity_' || CASE WHEN amenity IN ('parcel_locker') THEN amenity END,
