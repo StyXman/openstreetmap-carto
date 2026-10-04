@@ -21,6 +21,7 @@
       line-width: .75;
       line-clip: false;
     }
+    [tourism = 'museum'],
     [amenity = 'place_of_worship'],
     [aeroway = 'terminal'],
     [aerialway = 'station'],
