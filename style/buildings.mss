@@ -60,7 +60,7 @@
 }
 
 #entrances {
-  [zoom >= 18]["entrance" != null]  {
+  [zoom >= 18]  {
     marker-fill: @entrance-normal;
     marker-allow-overlap: true;
     marker-ignore-placement: true;
@@ -80,13 +80,15 @@
     text-size: 8;
     text-name: [name];
   }
-  // all entrances from ZL18, as I don't render ZL19
+
+  // was 19
   [zoom >= 18]["entrance" != null] {
     ["entrance" = 'yes'],
     ["entrance" = 'main'],
     ["entrance" = 'home'],
     ["entrance" = 'service'],
-    ["entrance" = 'staircase'] {
+    ["entrance" = 'staircase'],
+    ["entrance" = 'shop'] {
       marker-opacity: 1.0;
       marker-width: 6.0;
       marker-height: 6.0;
@@ -103,7 +105,7 @@
       marker-file: url('symbols/rectdiag.svg');
     }
   }
-  [zoom >= 20]["entrance" != null] {
+  [zoom >= 20] {
     marker-width: 8.0;
     marker-height: 8.0;
   }
